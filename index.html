@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>QwickStep AI — B2B Lead Generation Systems</title>
+<title>QwickStep AI — B2B Growth Systems</title>
+<link rel="icon" type="image/png" href="brand_assets/qwickstep.ai iconic mark (white).png">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
@@ -221,6 +222,10 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
   background: linear-gradient(to bottom, transparent, #DDD8CF, transparent);
 }
 .stats-item:last-child::after { display: none; }
+@media (max-width: 767px) {
+  .stats-item:nth-child(2n)::after { display: none; }
+  .stats-item::after { right: -20px; }
+}
 
 /* Counting animation */
 @keyframes countUp {
@@ -535,7 +540,30 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
       <span class="metal-btn-face text-xs px-5 py-2.5">Book Your Strategy Call</span>
     </a>
   </div>
+  <!-- Mobile hamburger -->
+  <button id="mobile-menu-btn" class="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5" aria-label="Open menu">
+    <span class="mobile-bar block w-5 h-[1.5px] bg-ink rounded-full" style="transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), opacity 0.2s ease;"></span>
+    <span class="mobile-bar block w-5 h-[1.5px] bg-ink rounded-full" style="transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), opacity 0.2s ease;"></span>
+    <span class="mobile-bar block w-5 h-[1.5px] bg-ink rounded-full" style="transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), opacity 0.2s ease;"></span>
+  </button>
 </nav>
+
+<!-- Mobile menu overlay -->
+<div id="mobile-menu" class="fixed inset-0 z-40 pointer-events-none" style="opacity:0; transition: opacity 0.3s ease;">
+  <div class="absolute inset-0 bg-ink/40 backdrop-blur-sm" id="mobile-menu-backdrop"></div>
+  <div id="mobile-menu-panel" class="absolute top-0 right-0 w-72 h-full bg-cream border-l border-cream-border flex flex-col pt-20 px-8 gap-1" style="transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);">
+    <a href="#services" class="mobile-nav-link font-mono text-[12px] tracking-widest text-ink-3 uppercase py-3 border-b border-cream-border/60 hover:text-ink" style="transition: color 0.2s;">SERVICES</a>
+    <a href="#reviews" class="mobile-nav-link font-mono text-[12px] tracking-widest text-ink-3 uppercase py-3 border-b border-cream-border/60 hover:text-ink" style="transition: color 0.2s;">REVIEWS</a>
+    <a href="#case-studies" class="mobile-nav-link font-mono text-[12px] tracking-widest text-ink-3 uppercase py-3 border-b border-cream-border/60 hover:text-ink" style="transition: color 0.2s;">CASE STUDIES</a>
+    <a href="#faq" class="mobile-nav-link font-mono text-[12px] tracking-widest text-ink-3 uppercase py-3 border-b border-cream-border/60 hover:text-ink" style="transition: color 0.2s;">FAQ</a>
+    <div class="mt-6">
+      <a href="#" data-cal-link="hsienjun.ong/general-meeting-asia" data-cal-config='{"layout":"month_view"}' class="metal-btn w-full">
+        <span class="metal-btn-inner-ring"></span>
+        <span class="metal-btn-face text-sm px-5 py-3 w-full">Book Your Strategy Call</span>
+      </a>
+    </div>
+  </div>
+</div>
 
 <!-- ═══════════════════════════ SECTION 1: HERO ═══════════════════════════ -->
 <section id="hero-section" class="relative min-h-screen flex flex-col items-center justify-center text-center overflow-hidden pt-16">
@@ -705,8 +733,8 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
   <div class="max-w-7xl mx-auto px-6 md:px-12">
     <div class="grid md:grid-cols-2 gap-12 md:gap-20 items-center reveal">
       <div>
-        <h2 class="font-serif text-3xl md:text-4xl lg:text-[2.8rem] leading-tight mb-6" style="letter-spacing:-0.025em;">Custom Lead Generation Systems for All Businesses</h2>
-        <p class="text-ink-3 leading-[1.75] text-base md:text-[17px] mb-8">QwickStep AI is a lead generation company focused on building reliable inbound and outbound growth systems using cold email infrastructure, AI voice agents, and LinkedIn content automation. We find the gaps in your pipeline and build solutions that fit your business and fix real, practical problems. Our systems don't just look good on paper. They actually put qualified leads in your inbox.</p>
+        <h2 class="font-serif text-3xl md:text-4xl lg:text-[2.8rem] leading-tight mb-6" style="letter-spacing:-0.025em;">Custom AI Growth Systems for All Businesses</h2>
+        <p class="text-ink-3 leading-[1.75] text-base md:text-[17px] mb-8">QwickStep AI is an AI growth company focused on building reliable inbound and outbound growth systems using cold email infrastructure, AI voice agents, and LinkedIn content automation. We find the gaps in your pipeline and build solutions that fit your business and fix real, practical problems. Our systems don't just look good on paper. They actually put qualified leads in your inbox.</p>
         <a href="#" data-cal-link="hsienjun.ong/general-meeting-asia" data-cal-config='{"layout":"month_view"}' class="metal-btn">
           <span class="metal-btn-inner-ring"></span>
           <span class="metal-btn-face">Book Your Strategy Call</span>
@@ -805,8 +833,8 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
     <div class="mb-10 reveal">
       <span class="font-mono text-[11px] tracking-widest text-ink-4 uppercase">WHO YOU'RE WORKING WITH</span>
     </div>
-    <div class="grid gap-12 md:gap-16 items-start reveal" style="grid-template-columns: 320px 1fr;">
-      <div class="founder-img-wrap relative rounded-2xl overflow-hidden" style="aspect-ratio:1/1; cursor:default;">
+    <div class="grid grid-cols-1 md:grid-cols-[320px_1fr] gap-12 md:gap-16 items-start reveal">
+      <div class="founder-img-wrap relative rounded-2xl overflow-hidden mx-auto md:mx-0" style="aspect-ratio:1/1; cursor:default; max-width:320px;">
         <img src="upscaled jun's profile pic.png" alt="Founder" class="w-full h-full object-cover" style="object-position: center 35%;">
         <div class="absolute inset-0 bg-gradient-to-t from-ink/15 to-transparent"></div>
         <!-- hover glow overlay -->
@@ -833,7 +861,8 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
     <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl text-center mb-16 reveal" style="letter-spacing:-0.03em;">
       Why We <span class="text-gold italic">Outperform</span> Others
     </h2>
-    <div class="grid md:grid-cols-2 gap-0 reveal">
+    <!-- Desktop: side-by-side comparison -->
+    <div class="hidden md:grid md:grid-cols-2 gap-0 reveal">
       <div class="pb-4 pr-4 md:pr-8"><h3 class="text-lg font-medium text-ink-2">What Most Agencies Do</h3></div>
       <div class="pb-4 pl-4 md:pl-8"><h3 class="text-lg font-medium text-ink-2">The <span class="font-mono text-gold tracking-wider text-base">QWICKSTEP</span> Way</h3></div>
 
@@ -890,6 +919,39 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
       <div class="compare-row border-t border-b border-cream-border py-5 pl-4 md:pl-8 flex items-start gap-3 bg-gold/[0.03]">
         <svg class="w-5 h-5 text-gold flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
         <p class="text-ink-2 text-[15px] leading-relaxed font-medium">Simple to operate. We handle the complexity. You show up to the conversations.</p>
+      </div>
+    </div>
+
+    <!-- Mobile: stacked comparison cards -->
+    <div class="md:hidden space-y-6 reveal">
+      <div class="rounded-xl border border-cream-border overflow-hidden">
+        <div class="px-5 py-3 bg-cream-dark/40 border-b border-cream-border"><p class="font-mono text-[10px] tracking-widest text-ink-4 uppercase">Others vs QwickStep</p></div>
+        <div class="divide-y divide-cream-border">
+          <div class="p-5">
+            <div class="flex items-start gap-2.5 mb-3"><svg class="w-4 h-4 text-red-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg><p class="text-ink-4 text-sm leading-relaxed">Cookie-cutter templates they give to everyone.</p></div>
+            <div class="flex items-start gap-2.5 bg-gold/[0.04] rounded-lg p-3 -mx-1"><svg class="w-4 h-4 text-gold flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><p class="text-ink-2 text-sm leading-relaxed font-medium">Every system built from scratch around your business.</p></div>
+          </div>
+          <div class="p-5">
+            <div class="flex items-start gap-2.5 mb-3"><svg class="w-4 h-4 text-red-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg><p class="text-ink-4 text-sm leading-relaxed">No guarantee. Just a monthly bill.</p></div>
+            <div class="flex items-start gap-2.5 bg-gold/[0.04] rounded-lg p-3 -mx-1"><svg class="w-4 h-4 text-gold flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><p class="text-ink-2 text-sm leading-relaxed font-medium">Pay per verified lead. No results, no payment.</p></div>
+          </div>
+          <div class="p-5">
+            <div class="flex items-start gap-2.5 mb-3"><svg class="w-4 h-4 text-red-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg><p class="text-ink-4 text-sm leading-relaxed">You rent the system. Cancel, it disappears.</p></div>
+            <div class="flex items-start gap-2.5 bg-gold/[0.04] rounded-lg p-3 -mx-1"><svg class="w-4 h-4 text-gold flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><p class="text-ink-2 text-sm leading-relaxed font-medium">Full ownership available. The system is yours.</p></div>
+          </div>
+          <div class="p-5">
+            <div class="flex items-start gap-2.5 mb-3"><svg class="w-4 h-4 text-red-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg><p class="text-ink-4 text-sm leading-relaxed">More tools instead of fixing how you work.</p></div>
+            <div class="flex items-start gap-2.5 bg-gold/[0.04] rounded-lg p-3 -mx-1"><svg class="w-4 h-4 text-gold flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><p class="text-ink-2 text-sm leading-relaxed font-medium">Fits into your existing workflow seamlessly.</p></div>
+          </div>
+          <div class="p-5">
+            <div class="flex items-start gap-2.5 mb-3"><svg class="w-4 h-4 text-red-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg><p class="text-ink-4 text-sm leading-relaxed">Random, unvetted leads with no qualification.</p></div>
+            <div class="flex items-start gap-2.5 bg-gold/[0.04] rounded-lg p-3 -mx-1"><svg class="w-4 h-4 text-gold flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><p class="text-ink-2 text-sm leading-relaxed font-medium">Only ICP-matched leads with genuine buying intent.</p></div>
+          </div>
+          <div class="p-5">
+            <div class="flex items-start gap-2.5 mb-3"><svg class="w-4 h-4 text-red-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg><p class="text-ink-4 text-sm leading-relaxed">Complicated systems that add bloat and headache.</p></div>
+            <div class="flex items-start gap-2.5 bg-gold/[0.04] rounded-lg p-3 -mx-1"><svg class="w-4 h-4 text-gold flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><p class="text-ink-2 text-sm leading-relaxed font-medium">Simple to operate. You just show up to conversations.</p></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1088,7 +1150,7 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
     <div class="review-scroll reveal">
 
       <!-- Review 1: Voice AI -->
-      <div class="review-card w-[400px] md:w-[420px] bg-white rounded-xl border border-cream-border p-8 flex flex-col">
+      <div class="review-card w-[85vw] sm:w-[400px] md:w-[420px] bg-white rounded-xl border border-cream-border p-8 flex flex-col">
         <span class="font-mono text-[11px] tracking-widest text-gold uppercase mb-4">VOICE AI</span>
         <div class="border-t border-cream-border pt-4 mb-3">
           <div class="flex gap-0.5">
@@ -1112,7 +1174,7 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
       </div>
 
       <!-- Review 2: Ventures -->
-      <div class="review-card w-[400px] md:w-[420px] bg-white rounded-xl border border-cream-border p-8 flex flex-col">
+      <div class="review-card w-[85vw] sm:w-[400px] md:w-[420px] bg-white rounded-xl border border-cream-border p-8 flex flex-col">
         <span class="font-mono text-[11px] tracking-widest text-gold uppercase mb-4">VENTURES</span>
         <div class="border-t border-cream-border pt-4 mb-3">
           <div class="flex gap-0.5">
@@ -1136,7 +1198,7 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
       </div>
 
       <!-- Review 3: Digital Marketing -->
-      <div class="review-card w-[400px] md:w-[420px] bg-white rounded-xl border border-cream-border p-8 flex flex-col">
+      <div class="review-card w-[85vw] sm:w-[400px] md:w-[420px] bg-white rounded-xl border border-cream-border p-8 flex flex-col">
         <span class="font-mono text-[11px] tracking-widest text-gold uppercase mb-4">DIGITAL MARKETING</span>
         <div class="border-t border-cream-border pt-4 mb-3">
           <div class="flex gap-0.5">
@@ -1159,29 +1221,6 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
         </div>
       </div>
 
-      <!-- Review 4: Wellness -->
-      <div class="review-card w-[400px] md:w-[420px] bg-white rounded-xl border border-cream-border p-8 flex flex-col">
-        <span class="font-mono text-[11px] tracking-widest text-gold uppercase mb-4">WELLNESS</span>
-        <div class="border-t border-cream-border pt-4 mb-3">
-          <div class="flex gap-0.5">
-            <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-          </div>
-        </div>
-        <div class="border-t border-cream-border pt-4 flex-1">
-          <p class="text-ink-3 text-[15px] leading-relaxed">QwickStep scaled Valens Health from zero social presence to 462K followers and 31M organic reach in only 3 months. 11 viral videos, without paid ads, booths, or promotions. Their platform-native content system and viral format research gave us a repeatable distribution engine that compounds. Incredible results.</p>
-        </div>
-        <div class="mt-6 pt-4 border-t border-cream-border">
-          <div class="flex items-center gap-2">
-            <span class="font-semibold text-sm text-ink">Nicolette Friedman</span>
-            <span class="inline-flex items-center gap-1 text-xs text-gold"><svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>Verified Client</span>
-          </div>
-          <p class="text-xs text-ink-4 mt-0.5">Founder, Valens Health</p>
-        </div>
-      </div>
 
     </div>
 
@@ -1197,7 +1236,7 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
 
     <div class="review-scroll reveal">
       <!-- Case Study 1: Meridian Group (Featured) -->
-      <div class="case-card w-[480px] md:w-[520px] bg-white rounded-xl border border-cream-border overflow-hidden flex flex-col">
+      <div class="case-card w-[85vw] sm:w-[480px] md:w-[520px] bg-white rounded-xl border border-cream-border overflow-hidden flex flex-col">
         <div class="p-8 pb-0">
           <div class="flex flex-wrap items-center gap-2 mb-4">
             <span class="font-mono text-[10px] tracking-widest text-gold uppercase">REAL ESTATE</span>
@@ -1219,7 +1258,7 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
           </div>
           <div class="pt-3 border-t border-cream-border mt-auto">
             <p class="font-mono text-[10px] tracking-widest text-ink-4 uppercase mb-3">RESULTS</p>
-            <div class="flex items-center gap-3 text-sm">
+            <div class="flex flex-wrap items-center gap-2 sm:gap-3 text-sm">
               <span class="font-semibold text-gold">300K Impressions (2 wks)</span><span class="text-cream-border">|</span>
               <span class="font-semibold text-ink">8+ Hrs/wk Saved</span><span class="text-cream-border">|</span>
               <span class="font-semibold text-ink">20 Calls/wk</span>
@@ -1229,7 +1268,7 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
       </div>
 
       <!-- Case Study 2 -->
-      <div class="case-card w-[480px] md:w-[520px] bg-white rounded-xl border border-cream-border overflow-hidden flex flex-col">
+      <div class="case-card w-[85vw] sm:w-[480px] md:w-[520px] bg-white rounded-xl border border-cream-border overflow-hidden flex flex-col">
         <div class="p-8 pb-0">
           <div class="flex flex-wrap items-center gap-2 mb-4">
             <span class="font-mono text-[10px] tracking-widest text-gold uppercase">LEGAL / CLAIMS</span>
@@ -1251,7 +1290,7 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
           </div>
           <div class="pt-3 border-t border-cream-border mt-auto">
             <p class="font-mono text-[10px] tracking-widest text-ink-4 uppercase mb-3">RESULTS</p>
-            <div class="flex items-center gap-3 text-sm">
+            <div class="flex flex-wrap items-center gap-2 sm:gap-3 text-sm">
               <span class="font-semibold text-ink">1,290 Calls</span><span class="text-cream-border">|</span>
               <span class="font-semibold text-ink">18 High-Intent Cases</span><span class="text-cream-border">|</span>
               <span class="font-semibold text-gold">33,468 in Revenue Potential</span>
@@ -1261,7 +1300,7 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
       </div>
 
       <!-- Case Study 2 -->
-      <div class="case-card w-[480px] md:w-[520px] bg-white rounded-xl border border-cream-border overflow-hidden flex flex-col">
+      <div class="case-card w-[85vw] sm:w-[480px] md:w-[520px] bg-white rounded-xl border border-cream-border overflow-hidden flex flex-col">
         <div class="p-8 pb-0">
           <div class="flex flex-wrap items-center gap-2 mb-4">
             <span class="font-mono text-[10px] tracking-widest text-gold uppercase">LEGAL</span>
@@ -1283,7 +1322,7 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
           </div>
           <div class="pt-3 border-t border-cream-border mt-auto">
             <p class="font-mono text-[10px] tracking-widest text-ink-4 uppercase mb-3">RESULTS</p>
-            <div class="flex items-center gap-3 text-sm">
+            <div class="flex flex-wrap items-center gap-2 sm:gap-3 text-sm">
               <span class="font-semibold text-ink">2.2x Growth</span><span class="text-cream-border">|</span>
               <span class="font-semibold text-ink">250 Booked Calls</span><span class="text-cream-border">|</span>
               <span class="font-semibold text-gold">&lt;60s Response</span>
@@ -1293,7 +1332,7 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
       </div>
 
       <!-- Case Study 4: Northbridge -->
-      <div class="case-card w-[480px] md:w-[520px] bg-white rounded-xl border border-cream-border overflow-hidden flex flex-col">
+      <div class="case-card w-[85vw] sm:w-[480px] md:w-[520px] bg-white rounded-xl border border-cream-border overflow-hidden flex flex-col">
         <div class="p-8 pb-0">
           <div class="flex flex-wrap items-center gap-2 mb-4">
             <span class="font-mono text-[10px] tracking-widest text-gold uppercase">MARKETING AGENCY</span>
@@ -1315,7 +1354,7 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
           </div>
           <div class="pt-3 border-t border-cream-border mt-auto">
             <p class="font-mono text-[10px] tracking-widest text-ink-4 uppercase mb-3">RESULTS</p>
-            <div class="flex items-center gap-3 text-sm">
+            <div class="flex flex-wrap items-center gap-2 sm:gap-3 text-sm">
               <span class="font-semibold text-gold">1M+ Impressions</span><span class="text-cream-border">|</span>
               <span class="font-semibold text-ink">95% Cost Cut</span><span class="text-cream-border">|</span>
               <span class="font-semibold text-ink">4x Content Output</span>
@@ -1752,6 +1791,46 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   }, { threshold: 0.15 });
 
   processObserver.observe(processSection);
+})();
+
+// ═══ Mobile Menu ═══
+(function() {
+  var btn = document.getElementById('mobile-menu-btn');
+  var menu = document.getElementById('mobile-menu');
+  var panel = document.getElementById('mobile-menu-panel');
+  var backdrop = document.getElementById('mobile-menu-backdrop');
+  if (!btn || !menu || !panel) return;
+
+  var isOpen = false;
+  var bars = btn.querySelectorAll('.mobile-bar');
+
+  function openMenu() {
+    isOpen = true;
+    menu.style.opacity = '1';
+    menu.style.pointerEvents = 'auto';
+    panel.style.transform = 'translateX(0)';
+    document.body.style.overflow = 'hidden';
+    if (bars[0]) { bars[0].style.transform = 'translateY(4.5px) rotate(45deg)'; }
+    if (bars[1]) { bars[1].style.opacity = '0'; }
+    if (bars[2]) { bars[2].style.transform = 'translateY(-4.5px) rotate(-45deg)'; }
+  }
+
+  function closeMenu() {
+    isOpen = false;
+    menu.style.opacity = '0';
+    menu.style.pointerEvents = 'none';
+    panel.style.transform = 'translateX(100%)';
+    document.body.style.overflow = '';
+    if (bars[0]) { bars[0].style.transform = ''; }
+    if (bars[1]) { bars[1].style.opacity = '1'; }
+    if (bars[2]) { bars[2].style.transform = ''; }
+  }
+
+  btn.addEventListener('click', function() { isOpen ? closeMenu() : openMenu(); });
+  if (backdrop) backdrop.addEventListener('click', closeMenu);
+  menu.querySelectorAll('.mobile-nav-link').forEach(function(link) {
+    link.addEventListener('click', closeMenu);
+  });
 })();
 </script>
 </body>
