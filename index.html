@@ -1,0 +1,1758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QwickStep AI — B2B Lead Generation Systems</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        cream: '#F7F4EF',
+        'cream-dark': '#EDE9E1',
+        'cream-border': '#DDD8CF',
+        ink: '#111110',
+        'ink-2': '#2A2925',
+        'ink-3': '#6B6860',
+        'ink-4': '#9B9890',
+        gold: '#D4A745',
+        'gold-light': '#F5EEDC',
+        'gold-dark': '#B8912E',
+        navy: '#141928',
+        'navy-light': '#1E2640',
+        qblue: '#2563EB',
+        'qblue-light': '#EFF4FF',
+      },
+      fontFamily: {
+        serif: ['"DM Serif Display"', 'Georgia', 'serif'],
+        sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
+        mono: ['"DM Mono"', 'monospace'],
+      },
+    },
+  },
+}
+</script>
+<!-- Cal.com embed -->
+<script type="text/javascript">
+(function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+Cal("init", {origin:"https://cal.com"});
+Cal("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+</script>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+/* Liquid Glass Button */
+.liquid-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  padding: 0;
+  font-family: inherit;
+}
+.liquid-btn-inner {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 40px;
+  border-radius: 999px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #111110;
+  letter-spacing: -0.01em;
+  z-index: 1;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.liquid-btn:hover .liquid-btn-inner { transform: scale(1.04); }
+.liquid-btn:active .liquid-btn-inner { transform: scale(0.97); }
+.liquid-btn-glass {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(212,167,69,0.25) 0%, rgba(212,167,69,0.12) 50%, rgba(212,167,69,0.2) 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(212,167,69,0.35);
+  box-shadow:
+    0 0 6px rgba(0,0,0,0.03),
+    0 2px 8px rgba(212,167,69,0.12),
+    inset 0 1px 1px rgba(255,255,255,0.4),
+    inset 0 -1px 1px rgba(0,0,0,0.05),
+    0 0 20px rgba(212,167,69,0.08);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.liquid-btn:hover .liquid-btn-glass {
+  box-shadow:
+    0 0 8px rgba(0,0,0,0.04),
+    0 4px 16px rgba(212,167,69,0.18),
+    inset 0 1px 1px rgba(255,255,255,0.5),
+    inset 0 -1px 1px rgba(0,0,0,0.05),
+    0 0 30px rgba(212,167,69,0.12);
+  border-color: rgba(212,167,69,0.5);
+}
+.liquid-btn:focus-visible .liquid-btn-glass {
+  outline: 2px solid #D4A745;
+  outline-offset: 3px;
+}
+
+/* Hero Secondary CTA */
+.hero-secondary-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  background: transparent;
+  padding: 0;
+}
+.hero-secondary-btn-inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 16px 36px;
+  border-radius: 999px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #2A2925;
+  letter-spacing: -0.01em;
+  border: 1.5px solid rgba(17,17,16,0.15);
+  background: rgba(255,255,255,0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,0.6);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+.hero-secondary-btn:hover .hero-secondary-btn-inner {
+  transform: scale(1.04);
+  border-color: rgba(17,17,16,0.25);
+  background: rgba(255,255,255,0.7);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.7);
+}
+.hero-secondary-btn:active .hero-secondary-btn-inner {
+  transform: scale(0.97);
+}
+.hero-secondary-btn:focus-visible .hero-secondary-btn-inner {
+  outline: 2px solid #111110;
+  outline-offset: 3px;
+}
+
+/* Metal Button */
+.metal-btn {
+  position: relative;
+  display: inline-flex;
+  border-radius: 8px;
+  padding: 1.25px;
+  background: linear-gradient(to bottom, #917100, #EAD98F);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+  transition: transform 250ms cubic-bezier(0.1,0.4,0.2,1), box-shadow 250ms cubic-bezier(0.1,0.4,0.2,1);
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  text-decoration: none;
+}
+.metal-btn:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+.metal-btn:active {
+  transform: translateY(2px) scale(0.99);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+}
+.metal-btn-inner-ring {
+  position: absolute;
+  inset: 1px;
+  border-radius: 7px;
+  background: linear-gradient(to bottom, #FFFDDD, #856807, #FFF1B3);
+  pointer-events: none;
+}
+.metal-btn-face {
+  position: relative;
+  z-index: 1;
+  margin: 1px;
+  border-radius: 6px;
+  padding: 14px 32px;
+  background: linear-gradient(to bottom, #FFEBA1, #9B873F);
+  color: #FFFDE5;
+  font-weight: 600;
+  font-size: 16px;
+  text-shadow: 0 -1px 0 rgba(178,140,2,1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: filter 250ms cubic-bezier(0.1,0.4,0.2,1);
+  white-space: nowrap;
+}
+.metal-btn:hover .metal-btn-face { filter: brightness(1.02); }
+.metal-btn:focus-visible { outline: 2px solid #D4A745; outline-offset: 3px; }
+
+/* Stats section */
+.stats-section {
+  background: linear-gradient(160deg, #F0EBE1 0%, #EDE8DE 40%, #E8E1D4 100%);
+  border-top: 1px solid #DDD8CF;
+  border-bottom: 1px solid #DDD8CF;
+}
+.stats-number {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  transition: opacity 0.3s ease;
+}
+.stats-item {
+  position: relative;
+}
+.stats-item::after {
+  content: '';
+  position: absolute;
+  right: -24px;
+  top: 10%;
+  bottom: 10%;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, #DDD8CF, transparent);
+}
+.stats-item:last-child::after { display: none; }
+
+/* Counting animation */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.stats-number.counting { animation: countUp 0.5s cubic-bezier(0.2,0,0.2,1) forwards; }
+
+/* Service cards — spotlight glow */
+.service-card {
+  --x: 0;
+  --y: 0;
+  --xp: 0;
+  --spotlight-size: 280px;
+  --glow-hue: 40;
+  --glow-sat: 65%;
+  --glow-light: 55%;
+  position: relative;
+  transition: transform 0.4s cubic-bezier(0.1,0.4,0.2,1), border-color 0.3s ease;
+  overflow: hidden;
+}
+.service-card:hover { transform: translateY(-4px); }
+
+/* Spotlight background glow on card */
+.service-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  background: radial-gradient(
+    var(--spotlight-size) var(--spotlight-size) at
+    calc(var(--x) * 1px) calc(var(--y) * 1px),
+    hsla(var(--glow-hue), var(--glow-sat), var(--glow-light), 0.08),
+    transparent 100%
+  );
+  z-index: 1;
+}
+.service-card:hover::before { opacity: 1; }
+
+/* Border glow ring */
+.service-card::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  background: radial-gradient(
+    calc(var(--spotlight-size) * 0.7) calc(var(--spotlight-size) * 0.7) at
+    calc(var(--x) * 1px) calc(var(--y) * 1px),
+    hsla(var(--glow-hue), var(--glow-sat), var(--glow-light), 0.45),
+    transparent 100%
+  );
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  padding: 1.5px;
+  z-index: 2;
+}
+.service-card:hover::after { opacity: 1; }
+
+/* Ensure card content is above glow layers */
+.service-card > * { position: relative; z-index: 3; }
+.service-tag {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 100px;
+  border: 1px solid rgba(212,167,69,0.3);
+  background: rgba(212,167,69,0.08);
+  color: rgba(255,255,255,0.7);
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.service-tag-light {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 100px;
+  border: 1px solid #DDD8CF;
+  background: rgba(247,244,239,0.6);
+  color: #6B6760;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* Retell AI Diamond Partner — card badge */
+.retell-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px 3px 7px;
+  border-radius: 100px;
+  background: linear-gradient(135deg, rgba(212,167,69,0.1) 0%, rgba(212,167,69,0.04) 100%);
+  border: 1px solid rgba(212,167,69,0.25);
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #9B8545;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+/* Retell AI Diamond Partner — hero certificate badge */
+.retell-cert-badge {
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+}
+.retell-cert-inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 18px 8px 12px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #FFFDF7 0%, #FBF6EC 50%, #F5EDD8 100%);
+  border: 1px solid rgba(212,167,69,0.3);
+  box-shadow:
+    0 0 0 1px rgba(212,167,69,0.08),
+    0 1px 3px rgba(184,146,46,0.08),
+    0 4px 12px rgba(184,146,46,0.06),
+    inset 0 1px 0 rgba(255,255,255,0.8);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+.retell-cert-badge:hover .retell-cert-inner {
+  border-color: rgba(212,167,69,0.5);
+  box-shadow:
+    0 0 0 1px rgba(212,167,69,0.15),
+    0 1px 3px rgba(184,146,46,0.12),
+    0 6px 20px rgba(184,146,46,0.1),
+    inset 0 1px 0 rgba(255,255,255,0.8);
+  transform: translateY(-1px);
+}
+.retell-cert-seal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #F9F0D8 0%, #EDE0BD 100%);
+  box-shadow: 0 1px 3px rgba(184,146,46,0.15), inset 0 1px 0 rgba(255,255,255,0.6);
+  flex-shrink: 0;
+}
+.retell-cert-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.retell-cert-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #9B8545;
+  font-weight: 500;
+}
+.retell-cert-brand {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #111110;
+  letter-spacing: -0.01em;
+}
+.retell-cert-arrow {
+  color: #C4A84D;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  flex-shrink: 0;
+}
+.retell-cert-badge:hover .retell-cert-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* FAQ accordion */
+.faq-item { border-bottom: 1px solid #DDD8CF; }
+.faq-q {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 0;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 17px;
+  color: #111110;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  font-family: 'DM Sans', sans-serif;
+  transition: color 0.2s;
+  gap: 16px;
+}
+.faq-q:hover { color: #D4A745; }
+.faq-q:focus-visible { outline: 2px solid #111110; outline-offset: 2px; border-radius: 2px; }
+.faq-icon {
+  width: 24px; height: 24px; flex-shrink: 0;
+  transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+}
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1), padding 0.3s ease;
+  padding: 0 0 0 0;
+}
+.faq-item.open .faq-a {
+  max-height: 300px;
+  padding-bottom: 24px;
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Founder image hover glow */
+.founder-img-wrap {
+  transition: transform 0.45s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.45s cubic-bezier(0.4,0,0.2,1);
+  box-shadow: 0 4px 24px -4px rgba(0,0,0,0.08);
+}
+.founder-img-wrap:hover {
+  transform: translateY(-4px) scale(1.015);
+  box-shadow:
+    0 0 0 1px rgba(198,158,80,0.18),
+    0 8px 32px -4px rgba(0,0,0,0.12),
+    0 0 60px 8px rgba(198,158,80,0.22),
+    0 0 120px 24px rgba(198,158,80,0.10);
+}
+.founder-img-wrap:hover .founder-glow {
+  opacity: 1 !important;
+}
+.founder-glow {
+  background: radial-gradient(ellipse at 50% 80%, rgba(198,158,80,0.22) 0%, rgba(198,158,80,0.06) 50%, transparent 75%);
+  mix-blend-mode: overlay;
+  transition: opacity 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+
+/* Review scroll */
+.review-scroll {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 16px;
+  scrollbar-width: thin;
+  scrollbar-color: #DDD8CF transparent;
+}
+.review-scroll::-webkit-scrollbar { height: 6px; }
+.review-scroll::-webkit-scrollbar-track { background: transparent; }
+.review-scroll::-webkit-scrollbar-thumb { background: #DDD8CF; border-radius: 3px; }
+.review-card, .case-card { scroll-snap-align: start; flex-shrink: 0; }
+
+/* Comparison row hover */
+.compare-row { transition: background-color 0.2s ease; }
+.compare-row:hover { background-color: rgba(212,167,69,0.03); }
+
+/* Process card illustration */
+.process-illustration {
+  background: #fff;
+  border: 1px solid #DDD8CF;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
+  transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s ease;
+}
+.process-illustration:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.06);
+}
+.process-dark { background: #111110; border-color: #2A2925; }
+.process-arrow { transition: opacity 0.5s cubic-bezier(0.4,0,0.2,1); }
+.process-arrow.active { opacity: 1 !important; }
+@keyframes arrowPulse { 0%,100%{ opacity:0.3; } 50%{ opacity:1; } }
+.process-arrow.pulse { animation: arrowPulse 0.8s cubic-bezier(0.4,0,0.2,1); }
+</style>
+</head>
+<body class="bg-cream text-ink font-sans">
+
+<!-- ═══════════════════════════ NAV ═══════════════════════════ -->
+<nav class="fixed top-0 left-0 right-0 z-50 h-16 flex items-center justify-between px-6 md:px-12 bg-cream/82 backdrop-blur-xl border-b border-cream-border">
+  <a href="#" class="flex items-center gap-2.5 font-semibold text-sm tracking-tight">
+    <img src="brand_assets/qwickstep.ai iconic mark (white).png" alt="QwickStep AI" class="w-7 h-7" style="filter: brightness(0) saturate(100%);">
+    QwickStep AI
+  </a>
+  <div class="hidden md:flex items-center gap-8">
+    <a href="#services" class="font-mono text-[11px] tracking-wide text-ink-4 hover:text-ink transition-colors duration-200">SERVICES</a>
+    <a href="#reviews" class="font-mono text-[11px] tracking-wide text-ink-4 hover:text-ink transition-colors duration-200">REVIEWS</a>
+    <a href="#case-studies" class="font-mono text-[11px] tracking-wide text-ink-4 hover:text-ink transition-colors duration-200">CASE STUDIES</a>
+    <a href="#faq" class="font-mono text-[11px] tracking-wide text-ink-4 hover:text-ink transition-colors duration-200">FAQ</a>
+    <a href="#" data-cal-link="hsienjun.ong/general-meeting-asia" data-cal-config='{"layout":"month_view"}' class="metal-btn">
+      <span class="metal-btn-inner-ring"></span>
+      <span class="metal-btn-face text-xs px-5 py-2.5">Book Your Strategy Call</span>
+    </a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════ SECTION 1: HERO ═══════════════════════════ -->
+<section id="hero-section" class="relative min-h-screen flex flex-col items-center justify-center text-center overflow-hidden pt-16">
+  <!-- Grid background -->
+  <div class="absolute inset-0 overflow-hidden">
+    <svg width="100%" height="100%" viewBox="0 0 1220 810" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <g clip-path="url(#heroClip)">
+        <mask id="heroMask" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="10" y="-1" width="1200" height="812">
+          <rect x="10" y="-0.85" width="1200" height="811.7" fill="url(#heroGrad0)"/>
+        </mask>
+        <g mask="url(#heroMask)">
+          <!-- Rectangle grid cells -->
+          <g id="heroGridCells"></g>
+          <!-- Subtle highlight rectangles -->
+          <rect x="700" y="81" width="36" height="36" fill="#111110" fill-opacity="0.06"/>
+          <rect x="196" y="153" width="36" height="36" fill="#111110" fill-opacity="0.07"/>
+          <rect x="1024" y="153" width="36" height="36" fill="#111110" fill-opacity="0.07"/>
+          <rect x="124" y="225" width="36" height="36" fill="#111110" fill-opacity="0.07"/>
+          <rect x="1096" y="225" width="36" height="36" fill="#111110" fill-opacity="0.07"/>
+          <rect x="952" y="297" width="36" height="36" fill="#111110" fill-opacity="0.07"/>
+          <rect x="232" y="333" width="36" height="36" fill="#111110" fill-opacity="0.05"/>
+          <rect x="304" y="405" width="36" height="36" fill="#111110" fill-opacity="0.05"/>
+          <rect x="88" y="405" width="36" height="36" fill="#111110" fill-opacity="0.07"/>
+          <rect x="520" y="405" width="36" height="36" fill="#111110" fill-opacity="0.06"/>
+          <rect x="772" y="405" width="36" height="36" fill="#111110" fill-opacity="0.07"/>
+          <rect x="592" y="477" width="36" height="36" fill="#111110" fill-opacity="0.05"/>
+        </g>
+
+        <!-- Mouse-following glow -->
+        <circle id="heroMouseGlow" cx="610" cy="405" r="120" fill="url(#heroMouseGrad)" opacity="0" style="pointer-events:none;transition:opacity 0.3s ease;"/>
+
+        <!-- Ambient glow layer 1 -->
+        <g filter="url(#heroBlur1)"><path d="M1447 -87V-149H1770V1249H466V894C1008 894 1447 455 1447 -87Z" fill="url(#heroGrad1)" opacity="0.5"/></g>
+        <!-- Ambient glow layer 2 -->
+        <g filter="url(#heroBlur2)"><path d="M1383 -151V-213H1706V1185H402V830C944 830 1383 391 1383 -151Z" fill="url(#heroGrad2)" fill-opacity="0.3"/></g>
+        <!-- Ambient glow layer 3 (lighten blend) -->
+        <g style="mix-blend-mode:lighten" filter="url(#heroBlur3)"><path d="M1567 -231V-293H1890V1105H586V750C1128 750 1567 311 1567 -231Z" fill="url(#heroGrad3)" opacity="0.25"/></g>
+        <!-- Ambient glow layer 4 (overlay blend) -->
+        <g style="mix-blend-mode:overlay" filter="url(#heroBlur4)"><path d="M66 750H284C860 750 1327 283 1327 -293H1650V1105H66V750Z" fill="url(#heroGrad4)" fill-opacity="0.2"/></g>
+      </g>
+
+      <rect x="0.5" y="0.5" width="1219" height="809" rx="15.5" stroke="#111110" stroke-opacity="0.06"/>
+
+      <defs>
+        <radialGradient id="heroMouseGrad" cx="0" cy="0" r="1"><stop offset="0%" stop-color="#D4A745"/><stop offset="100%" stop-color="#D4A745" stop-opacity="0"/></radialGradient>
+        <filter id="heroBlur1" x="147" y="-468" width="1942" height="2036" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="bg"/><feBlend in="SourceGraphic" in2="bg" result="s"/><feGaussianBlur stdDeviation="160" result="b"/></filter>
+        <filter id="heroBlur2" x="-554" y="-1169" width="3217" height="3311" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="bg"/><feBlend in="SourceGraphic" in2="bg" result="s"/><feGaussianBlur stdDeviation="478" result="b"/></filter>
+        <filter id="heroBlur3" x="427" y="-452" width="1623" height="1717" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="bg"/><feBlend in="SourceGraphic" in2="bg" result="s"/><feGaussianBlur stdDeviation="80" result="b"/></filter>
+        <filter id="heroBlur4" x="-253" y="-612" width="2222" height="2036" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="bg"/><feBlend in="SourceGraphic" in2="bg" result="s"/><feGaussianBlur stdDeviation="160" result="b"/></filter>
+        <linearGradient id="heroGrad0" x1="35" y1="24" x2="904" y2="632" gradientUnits="userSpaceOnUse"><stop stop-color="#111110" stop-opacity="0"/><stop offset="1" stop-color="#9B9890"/></linearGradient>
+        <linearGradient id="heroGrad1" x1="1118" y1="-149" x2="1118" y2="1249" gradientUnits="userSpaceOnUse"><stop stop-color="#111110"/><stop offset="0.58" stop-color="#D4A745" stop-opacity="0.5"/><stop offset="1" stop-color="#D4A745"/></linearGradient>
+        <linearGradient id="heroGrad2" x1="1054" y1="-213" x2="1054" y2="1185" gradientUnits="userSpaceOnUse"><stop stop-color="#111110"/><stop offset="0.58" stop-color="#D4A745" stop-opacity="0.5"/><stop offset="1" stop-color="#D4A745"/></linearGradient>
+        <linearGradient id="heroGrad3" x1="1238" y1="-293" x2="1238" y2="1105" gradientUnits="userSpaceOnUse"><stop stop-color="#111110"/><stop offset="0.58" stop-color="#D4A745" stop-opacity="0.6"/><stop offset="1" stop-color="#D4A745"/></linearGradient>
+        <radialGradient id="heroGrad4" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(989 557) rotate(48) scale(466 471)"><stop stop-color="#111110"/><stop offset="0.16" stop-color="#D4A745" stop-opacity="0.6"/><stop offset="1" stop-color="#D4A745"/></radialGradient>
+        <clipPath id="heroClip"><rect width="1220" height="810" rx="16" fill="#111110"/></clipPath>
+      </defs>
+    </svg>
+  </div>
+
+  <!-- Hero content -->
+  <div class="relative z-10 flex flex-col items-center justify-center px-6 md:px-12 py-24 max-w-4xl mx-auto">
+    <!-- Eyebrow tagline -->
+    <div class="inline-flex items-center gap-3 px-5 py-2 rounded-full mb-8" style="background: linear-gradient(135deg, rgba(212,167,69,0.08) 0%, rgba(212,167,69,0.03) 100%); border: 1px solid rgba(212,167,69,0.15);">
+      <span class="w-1.5 h-1.5 rounded-full bg-gold" style="box-shadow: 0 0 6px rgba(212,167,69,0.5);"></span>
+      <span class="font-mono text-[10.5px] md:text-[11.5px] tracking-widest uppercase text-ink-3" style="letter-spacing: 0.1em;">The Definitive AI Growth Partner for Fast-Moving B2B Companies</span>
+    </div>
+
+    <!-- Main headline -->
+    <h1 class="font-serif text-4xl md:text-5xl lg:text-[4rem] leading-[1.04] text-ink max-w-3xl text-center mb-5" style="letter-spacing: -0.035em;">
+      We just filled your entire B2B pipeline, <span class="font-serif italic" style="background: linear-gradient(135deg, #D4A745 0%, #B8912E 70%, #86700A 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">you're welcome.</span>
+    </h1>
+
+    <!-- Subheadline -->
+    <p class="text-xl md:text-2xl text-ink-3 font-light mb-10" style="letter-spacing: -0.015em;">
+      Deploy our <span class="font-serif italic" style="background: linear-gradient(135deg, #D4A745 0%, #B8912E 60%, #96750A 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Growth Engine.</span>
+    </p>
+
+    <!-- CTA buttons — side by side -->
+    <div class="flex flex-col sm:flex-row items-center gap-4 mb-10">
+      <a href="#" data-cal-link="hsienjun.ong/general-meeting-asia" data-cal-config='{"layout":"month_view"}' class="liquid-btn">
+        <span class="liquid-btn-glass"></span>
+        <span class="liquid-btn-inner">Book Your Strategy Call</span>
+      </a>
+      <a href="#reviews" class="hero-secondary-btn group">
+        <span class="hero-secondary-btn-inner">
+          See Client Results
+          <svg class="w-4 h-4 opacity-50 group-hover:opacity-100 transition-opacity duration-200 transform group-hover:translate-x-0.5" style="transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), opacity 0.2s ease;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+        </span>
+      </a>
+    </div>
+
+    <!-- Social proof row -->
+    <div class="flex flex-col items-center gap-5">
+      <!-- Stars + rating -->
+      <div class="flex items-center gap-3">
+        <div class="flex gap-0.5">
+          <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+        </div>
+        <span class="text-sm font-medium text-ink-2">5.0 from verified clients</span>
+      </div>
+      <!-- Industry tags -->
+      <div class="flex flex-wrap items-center justify-center gap-2">
+        <span class="inline-block px-3 py-1 rounded-full bg-cream-dark/60 border border-cream-border/60 font-mono text-[11px] tracking-wide text-ink-4 uppercase">Mortgage</span>
+        <span class="inline-block px-3 py-1 rounded-full bg-cream-dark/60 border border-cream-border/60 font-mono text-[11px] tracking-wide text-ink-4 uppercase">Insurance</span>
+        <span class="inline-block px-3 py-1 rounded-full bg-cream-dark/60 border border-cream-border/60 font-mono text-[11px] tracking-wide text-ink-4 uppercase">Legal</span>
+        <span class="inline-block px-3 py-1 rounded-full bg-cream-dark/60 border border-cream-border/60 font-mono text-[11px] tracking-wide text-ink-4 uppercase">B2B Services</span>
+      </div>
+      <!-- Retell AI Certified Diamond Partner Badge -->
+      <a href="https://www.retellai.com/partner/qwickstep" target="_blank" rel="noopener" class="retell-cert-badge mt-2 group">
+        <div class="retell-cert-inner">
+          <div class="retell-cert-seal">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" stroke="url(#certGoldGrad)" stroke-width="1.5" fill="none"/>
+              <path d="M12 2L13.8 8.1L20 8.1L15.1 12L16.9 18.1L12 14.2L7.1 18.1L8.9 12L4 8.1L10.2 8.1L12 2Z" fill="url(#certGoldGrad)" stroke="#B8922E" stroke-width="0.3"/>
+              <defs><linearGradient id="certGoldGrad" x1="4" y1="2" x2="20" y2="22"><stop stop-color="#E8D48B"/><stop offset="0.5" stop-color="#D4A745"/><stop offset="1" stop-color="#B8922E"/></linearGradient></defs>
+            </svg>
+          </div>
+          <div class="retell-cert-text">
+            <span class="retell-cert-label">Certified Diamond Partner</span>
+            <span class="retell-cert-brand">Retell AI</span>
+          </div>
+          <svg class="retell-cert-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ SECTION 2: STATS BAR ═══════════════════════════ -->
+<section class="stats-section relative overflow-hidden">
+  <!-- Subtle grain overlay -->
+  <div class="absolute inset-0 opacity-[0.015]" style="background-image:url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E\");background-size:128px;"></div>
+  <div class="relative max-w-5xl mx-auto px-6 md:px-12 py-16 md:py-20">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-12 stats-grid reveal text-center">
+      <div class="stats-item">
+        <div class="font-serif stats-number text-gold mb-1" style="letter-spacing:-0.03em;" data-target="2.03" data-prefix="$" data-suffix="M">$0M</div>
+        <p class="font-mono text-[10px] tracking-widest uppercase text-ink-4">Revenue Added</p>
+      </div>
+      <div class="stats-item">
+        <div class="font-serif stats-number text-gold mb-1" style="letter-spacing:-0.03em;" data-target="2881" data-prefix="" data-suffix="" data-comma="true">0</div>
+        <p class="font-mono text-[10px] tracking-widest uppercase text-ink-4">Appointments Booked</p>
+      </div>
+      <div class="stats-item">
+        <div class="font-serif stats-number text-gold mb-1" style="letter-spacing:-0.03em;" data-target="5388" data-prefix="" data-suffix="+" data-comma="true">0</div>
+        <p class="font-mono text-[10px] tracking-widest uppercase text-ink-4">Hours Saved Monthly</p>
+      </div>
+      <div class="stats-item">
+        <div class="font-serif stats-number text-gold mb-1" style="letter-spacing:-0.03em;" data-target="812" data-prefix="" data-suffix="k">0k</div>
+        <p class="font-mono text-[10px] tracking-widest uppercase text-ink-4">Followers Added</p>
+      </div>
+    </div>
+    <p class="font-mono text-[9px] tracking-widest uppercase text-center mt-8 text-ink-4 reveal" style="opacity:0.6;">As of March 2026 · Based on verified client results</p>
+    <div class="mt-10 pt-10 border-t text-center reveal" style="border-color:#DDD8CF;">
+      <p class="font-serif italic text-lg md:text-xl max-w-2xl mx-auto text-ink-3" style="letter-spacing:-0.01em;">
+        "AI and automation are no longer the future, they're the present. Those adopting now are pulling ahead. Those hesitating are falling behind."
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ SECTION 3: WHAT WE DO ═══════════════════════════ -->
+<section class="py-20 md:py-28">
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    <div class="grid md:grid-cols-2 gap-12 md:gap-20 items-center reveal">
+      <div>
+        <h2 class="font-serif text-3xl md:text-4xl lg:text-[2.8rem] leading-tight mb-6" style="letter-spacing:-0.025em;">Custom Lead Generation Systems for All Businesses</h2>
+        <p class="text-ink-3 leading-[1.75] text-base md:text-[17px] mb-8">QwickStep AI is a lead generation company focused on building reliable inbound and outbound growth systems using cold email infrastructure, AI voice agents, and LinkedIn content automation. We find the gaps in your pipeline and build solutions that fit your business and fix real, practical problems. Our systems don't just look good on paper. They actually put qualified leads in your inbox.</p>
+        <a href="#" data-cal-link="hsienjun.ong/general-meeting-asia" data-cal-config='{"layout":"month_view"}' class="metal-btn">
+          <span class="metal-btn-inner-ring"></span>
+          <span class="metal-btn-face">Book Your Strategy Call</span>
+        </a>
+      </div>
+      <div class="founder-img-wrap relative rounded-xl overflow-hidden">
+        <img src="london_skool_event.png" alt="London Skool Event" class="w-full object-cover aspect-[6/5]">
+        <div class="absolute inset-0 bg-gradient-to-t from-ink/20 to-transparent"></div>
+        <div class="founder-glow absolute inset-0 rounded-xl pointer-events-none"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ SECTION 3B: OUR SERVICES ═══════════════════════════ -->
+<section id="services" class="py-20 md:py-28 border-t border-cream-border">
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    <div class="mb-6 reveal">
+      <span class="font-mono text-[11px] tracking-widest text-ink-4 uppercase">What We Offer</span>
+    </div>
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-14 reveal">
+      <h2 class="font-serif text-3xl md:text-4xl leading-tight max-w-xl" style="letter-spacing:-0.025em;">Three systems. One pipeline.<br><em class="text-gold">Zero gaps.</em></h2>
+    </div>
+
+    <div class="grid md:grid-cols-[1fr_1.15fr_1fr] gap-6 items-center reveal">
+
+      <!-- Service Card 1: Cold Email System -->
+      <div class="group rounded-2xl bg-white border border-cream-border p-8 md:p-9 flex flex-col justify-between service-card" style="min-height:340px;box-shadow:0 1px 3px rgba(17,17,16,0.04),0 8px 24px rgba(17,17,16,0.03);">
+        <div>
+          <div class="flex items-center gap-2 mb-5">
+            <span class="w-2 h-2 rounded-full bg-gold"></span>
+            <span class="font-mono text-[10px] tracking-widest text-ink-4 uppercase">Outbound</span>
+          </div>
+          <h3 class="font-serif text-2xl md:text-[1.65rem] text-ink mb-4" style="letter-spacing:-0.02em;">Cold Email System</h3>
+          <p class="text-sm text-ink-3 leading-relaxed">Precision-targeted outbound that fills your calendar with qualified decision-makers. You only pay for qualified leads.</p>
+        </div>
+        <div class="flex flex-wrap gap-2 mt-6">
+          <span class="service-tag-light">ICP Targeting</span>
+          <span class="service-tag-light">Pay-Per-Lead</span>
+          <span class="service-tag-light">Done-For-You</span>
+        </div>
+      </div>
+
+      <!-- Service Card 2: LinkedIn Growth System (FEATURED) -->
+      <div class="group rounded-2xl flex flex-col justify-between service-card relative" style="min-height:390px; padding: 2px; background: linear-gradient(160deg, rgba(212,167,69,0.4) 0%, rgba(212,167,69,0.12) 40%, rgba(212,167,69,0.3) 100%); box-shadow: 0 2px 6px rgba(17,17,16,0.05), 0 12px 32px rgba(212,167,69,0.1), 0 0 0 1px rgba(212,167,69,0.08);">
+        <div class="bg-white rounded-[14px] p-8 md:p-10 flex flex-col justify-between h-full">
+          <div>
+            <div class="flex items-center justify-between mb-5">
+              <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-gold" style="box-shadow: 0 0 6px rgba(212,167,69,0.5);"></span>
+                <span class="font-mono text-[10px] tracking-widest text-ink-4 uppercase">Inbound</span>
+              </div>
+            </div>
+            <h3 class="font-serif text-[1.75rem] md:text-[2rem] text-ink mb-4" style="letter-spacing:-0.025em;">LinkedIn Growth System</h3>
+            <p class="text-[15px] text-ink-3 leading-relaxed">Authority-building LinkedIn content, fully managed. Your brand attracts inbound leads on autopilot while you close deals.</p>
+          </div>
+          <div class="flex flex-wrap gap-2 mt-7">
+            <span class="service-tag-light">LinkedIn Automation</span>
+            <span class="service-tag-light">100 Leads/Mo</span>
+            <span class="service-tag-light">Brand Authority</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Service Card 3: AI Voice Agents -->
+      <div class="group rounded-2xl bg-white border border-cream-border p-8 md:p-9 flex flex-col justify-between service-card" style="min-height:340px;box-shadow:0 1px 3px rgba(17,17,16,0.04),0 8px 24px rgba(17,17,16,0.03);">
+        <div>
+          <div class="flex items-center justify-between mb-5">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-gold"></span>
+              <span class="font-mono text-[10px] tracking-widest text-ink-4 uppercase">Automation</span>
+            </div>
+            <!-- Diamond Partner Badge -->
+            <a href="https://www.retellai.com/partner/qwickstep" target="_blank" rel="noopener" class="retell-badge hover:border-gold/40 transition-colors duration-200">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 2L13.8 8.1L20 8.1L15.1 12L16.9 18.1L12 14.2L7.1 18.1L8.9 12L4 8.1L10.2 8.1L12 2Z" fill="url(#cardBadgeGold)"/><defs><linearGradient id="cardBadgeGold" x1="4" y1="2" x2="20" y2="22"><stop stop-color="#E8D48B"/><stop offset="0.5" stop-color="#D4A745"/><stop offset="1" stop-color="#B8922E"/></linearGradient></defs></svg>
+              <span>Retell Diamond Partner</span>
+            </a>
+          </div>
+          <h3 class="font-serif text-2xl md:text-[1.65rem] text-ink mb-4" style="letter-spacing:-0.02em;">AI Voice Agents</h3>
+          <p class="text-sm text-ink-3 leading-relaxed">Human-sounding AI that answers, follows up, and reactivates. No lead ever slips through the cracks again.</p>
+        </div>
+        <div class="flex flex-wrap gap-2 mt-6">
+          <span class="service-tag-light">AI Receptionist</span>
+          <span class="service-tag-light">Lead Follow-Up</span>
+          <span class="service-tag-light">Dead Lead Reactivation</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ SECTION 4: MEET THE FOUNDER ═══════════════════════════ -->
+<section class="py-20 md:py-28 border-t border-cream-border">
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    <div class="mb-10 reveal">
+      <span class="font-mono text-[11px] tracking-widest text-ink-4 uppercase">WHO YOU'RE WORKING WITH</span>
+    </div>
+    <div class="grid gap-12 md:gap-16 items-start reveal" style="grid-template-columns: 320px 1fr;">
+      <div class="founder-img-wrap relative rounded-2xl overflow-hidden" style="aspect-ratio:1/1; cursor:default;">
+        <img src="upscaled jun's profile pic.png" alt="Founder" class="w-full h-full object-cover" style="object-position: center 35%;">
+        <div class="absolute inset-0 bg-gradient-to-t from-ink/15 to-transparent"></div>
+        <!-- hover glow overlay -->
+        <div class="founder-glow absolute inset-0 rounded-2xl pointer-events-none" style="opacity:0; transition: opacity 0.4s cubic-bezier(0.4,0,0.2,1);"></div>
+      </div>
+      <div>
+        <h2 class="font-serif text-3xl md:text-4xl leading-tight mb-6" style="letter-spacing:-0.025em;">Meet the founder.</h2>
+        <p class="text-gold font-medium text-sm mb-1">Jun</p>
+        <p class="text-ink-4 text-sm mb-6">Founder, QwickStep AI</p>
+        <p class="text-ink-3 leading-[1.75] text-base md:text-[17px] mb-8">A UCL engineering graduate and AI automation specialist, Jun spent years learning what actually drives revenue in service businesses: speed, follow-up, and process. He runs a YouTube channel (<a href="https://youtube.com/@jun.handle" target="_blank" class="text-gold hover:underline">@jun.handle</a>) documenting and teaching others how to build these systems. Jun and his team of senior developers now build and install the infrastructure that turns those fundamentals into growth.</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="inline-flex items-center px-3 py-1.5 rounded-full bg-cream-dark text-ink-4 text-xs font-mono tracking-wide">University College London — World Ranked #9</span>
+          <span class="inline-flex items-center px-3 py-1.5 rounded-full bg-cream-dark text-ink-4 text-xs font-mono tracking-wide">AI Automation Specialist</span>
+          <span class="inline-flex items-center px-3 py-1.5 rounded-full bg-cream-dark text-ink-4 text-xs font-mono tracking-wide">Worked with 30+ Service Businesses</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ SECTION 5: WHY WE OUTPERFORM OTHERS ═══════════════════════════ -->
+<section class="py-20 md:py-28 border-t border-cream-border">
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl text-center mb-16 reveal" style="letter-spacing:-0.03em;">
+      Why We <span class="text-gold italic">Outperform</span> Others
+    </h2>
+    <div class="grid md:grid-cols-2 gap-0 reveal">
+      <div class="pb-4 pr-4 md:pr-8"><h3 class="text-lg font-medium text-ink-2">What Most Agencies Do</h3></div>
+      <div class="pb-4 pl-4 md:pl-8"><h3 class="text-lg font-medium text-ink-2">The <span class="font-mono text-gold tracking-wider text-base">QWICKSTEP</span> Way</h3></div>
+
+      <!-- Row 1 -->
+      <div class="compare-row border-t border-cream-border py-5 pr-4 md:pr-8 flex items-start gap-3">
+        <svg class="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        <p class="text-ink-3 text-[15px] leading-relaxed">Sell you the same cookie-cutter templates they give to everyone else.</p>
+      </div>
+      <div class="compare-row border-t border-cream-border py-5 pl-4 md:pl-8 flex items-start gap-3 bg-gold/[0.03]">
+        <svg class="w-5 h-5 text-gold flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+        <p class="text-ink-2 text-[15px] leading-relaxed font-medium">Every system is built from scratch around your business. No templates, no recycled logic.</p>
+      </div>
+      <!-- Row 2 -->
+      <div class="compare-row border-t border-cream-border py-5 pr-4 md:pr-8 flex items-start gap-3">
+        <svg class="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        <p class="text-ink-3 text-[15px] leading-relaxed">No guarantee. Just a monthly bill.</p>
+      </div>
+      <div class="compare-row border-t border-cream-border py-5 pl-4 md:pl-8 flex items-start gap-3 bg-gold/[0.03]">
+        <svg class="w-5 h-5 text-gold flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+        <p class="text-ink-2 text-[15px] leading-relaxed font-medium">You only pay per verified lead delivered. If we don't perform, you don't pay.</p>
+      </div>
+      <!-- Row 3 -->
+      <div class="compare-row border-t border-cream-border py-5 pr-4 md:pr-8 flex items-start gap-3">
+        <svg class="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        <p class="text-ink-3 text-[15px] leading-relaxed">You don't own the system. You rent it. Cancel, and it all disappears.</p>
+      </div>
+      <div class="compare-row border-t border-cream-border py-5 pl-4 md:pl-8 flex items-start gap-3 bg-gold/[0.03]">
+        <svg class="w-5 h-5 text-gold flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+        <p class="text-ink-2 text-[15px] leading-relaxed font-medium">Full ownership available. If you want to keep the system, it's yours.</p>
+      </div>
+      <!-- Row 4 -->
+      <div class="compare-row border-t border-cream-border py-5 pr-4 md:pr-8 flex items-start gap-3">
+        <svg class="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        <p class="text-ink-3 text-[15px] leading-relaxed">Throw more tools at you instead of fixing the way you work.</p>
+      </div>
+      <div class="compare-row border-t border-cream-border py-5 pl-4 md:pl-8 flex items-start gap-3 bg-gold/[0.03]">
+        <svg class="w-5 h-5 text-gold flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+        <p class="text-ink-2 text-[15px] leading-relaxed font-medium">We fit into your existing workflow so you don't waste time learning new software.</p>
+      </div>
+      <!-- Row 5 -->
+      <div class="compare-row border-t border-cream-border py-5 pr-4 md:pr-8 flex items-start gap-3">
+        <svg class="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        <p class="text-ink-3 text-[15px] leading-relaxed">Drop random, unvetted leads in your inbox with no qualification behind them.</p>
+      </div>
+      <div class="compare-row border-t border-cream-border py-5 pl-4 md:pl-8 flex items-start gap-3 bg-gold/[0.03]">
+        <svg class="w-5 h-5 text-gold flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+        <p class="text-ink-2 text-[15px] leading-relaxed font-medium">Your team only talks to leads that match your ICP and show genuine buying intent.</p>
+      </div>
+      <!-- Row 6 -->
+      <div class="compare-row border-t border-b border-cream-border py-5 pr-4 md:pr-8 flex items-start gap-3">
+        <svg class="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        <p class="text-ink-3 text-[15px] leading-relaxed">Complicated systems that add more bloat, management, and headache to your workload.</p>
+      </div>
+      <div class="compare-row border-t border-b border-cream-border py-5 pl-4 md:pl-8 flex items-start gap-3 bg-gold/[0.03]">
+        <svg class="w-5 h-5 text-gold flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+        <p class="text-ink-2 text-[15px] leading-relaxed font-medium">Simple to operate. We handle the complexity. You show up to the conversations.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ SECTION 6: OUR PROCESS ═══════════════════════════ -->
+<section class="py-20 md:py-28 border-t border-cream-border">
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    <div class="mb-4 reveal"><span class="font-mono text-[11px] tracking-widest text-ink-4 uppercase">HOW IT WORKS</span></div>
+    <h2 class="font-serif text-3xl md:text-4xl leading-tight mb-16 reveal" style="letter-spacing:-0.025em;">Three steps. Verified leads in your inbox.</h2>
+
+    <!-- Process flow: cards + arrows -->
+    <div class="hidden md:flex items-start justify-center gap-0 reveal" id="process-cards">
+      <!-- Step 1: Diagnose -->
+      <div class="flex flex-col" style="width:380px; flex-shrink:0;">
+        <div class="relative">
+          <span class="font-serif text-6xl text-gold/20 absolute -top-4 left-2 select-none" style="letter-spacing:-0.04em;">1</span>
+          <div class="process-illustration p-4 pt-8 overflow-hidden" id="audit-card" style="height:240px;">
+            <div class="flex items-center justify-between mb-3">
+              <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-gold"></span><span class="font-mono text-[10px] tracking-widest text-ink-4 uppercase">Audit Intelligence</span></div>
+              <span class="font-mono text-[10px] text-red-400" id="audit-errors">0 errors</span>
+            </div>
+            <div class="space-y-0" id="audit-rows">
+              <div class="audit-row flex items-center justify-between py-1.5 border-t border-cream-border" style="opacity:0; transform:translateX(-12px);">
+                <span class="text-[13px] text-ink-2">Follow-Up Cadence</span>
+                <span class="audit-status flex items-center gap-1 text-[11px] font-medium" data-status="error">
+                  <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
+                  <span>Missing</span>
+                </span>
+              </div>
+              <div class="audit-row flex items-center justify-between py-1.5 border-t border-cream-border" style="opacity:0; transform:translateX(-12px);">
+                <span class="text-[13px] text-ink-2">CRM Sync</span>
+                <span class="audit-status flex items-center gap-1 text-[11px] font-medium" data-status="ok">
+                  <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                  <span>Healthy</span>
+                </span>
+              </div>
+              <div class="audit-row flex items-center justify-between py-1.5 border-t border-cream-border" style="opacity:0; transform:translateX(-12px);">
+                <span class="text-[13px] text-ink-2">Lead Scoring</span>
+                <span class="audit-status flex items-center gap-1 text-[11px] font-medium" data-status="error">
+                  <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
+                  <span>Inactive</span>
+                </span>
+              </div>
+              <div class="audit-row flex items-center justify-between py-1.5 border-t border-cream-border" style="opacity:0; transform:translateX(-12px);">
+                <span class="text-[13px] text-ink-2">Pipeline Velocity</span>
+                <span class="audit-status flex items-center gap-1 text-[11px] font-medium" data-status="warn">
+                  <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
+                  <span>Slow</span>
+                </span>
+              </div>
+              <div class="audit-row flex items-center justify-between py-1.5 border-t border-cream-border" style="opacity:0; transform:translateX(-12px);">
+                <span class="text-[13px] text-ink-2">Email Deliverability</span>
+                <span class="audit-status flex items-center gap-1 text-[11px] font-medium" data-status="ok">
+                  <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                  <span>Healthy</span>
+                </span>
+              </div>
+              <div class="audit-row flex items-center justify-between py-1.5 border-t border-cream-border" style="opacity:0; transform:translateX(-12px);">
+                <span class="text-[13px] text-ink-2">Response Time</span>
+                <span class="audit-status flex items-center gap-1 text-[11px] font-medium" data-status="warn">
+                  <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/></svg>
+                  <span>4.2h avg</span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <h3 class="font-serif text-xl mb-3 text-center mt-6">Diagnose</h3>
+        <p class="text-ink-3 text-sm leading-relaxed text-center">We define your ICP, offer positioning, and exactly what a qualified lead looks like. Target market, job titles, geography, and buying intent criteria locked in before anything goes out.</p>
+      </div>
+
+      <!-- Arrow 1→2 -->
+      <div class="flex items-center self-center pt-0" style="margin: 0 -4px; margin-top: -80px;">
+        <svg width="56" height="24" viewBox="0 0 56 24" fill="none" class="process-arrow" style="opacity:0.3;">
+          <line x1="0" y1="12" x2="44" y2="12" stroke="var(--gold)" stroke-width="1.5" stroke-dasharray="4 3"/>
+          <path d="M42 6 L52 12 L42 18" stroke="var(--gold)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <!-- Step 2: Design (bigger) -->
+      <div class="flex flex-col" style="width:380px; flex-shrink:0;">
+        <div class="relative">
+          <span class="font-serif text-6xl text-gold/20 absolute -top-4 left-2 select-none z-10" style="letter-spacing:-0.04em;">2</span>
+          <div class="process-illustration process-dark p-5 pt-8 overflow-hidden" id="terminal-card" style="height:300px;">
+            <div class="flex items-center gap-2 mb-4">
+              <span class="w-3 h-3 rounded-full bg-red-400"></span><span class="w-3 h-3 rounded-full bg-gold"></span><span class="w-3 h-3 rounded-full bg-green-400"></span>
+              <span class="font-mono text-[10px] tracking-widest text-white/40 uppercase ml-2">System Architect</span>
+            </div>
+            <div class="font-mono text-[13px] leading-relaxed text-white/70" id="terminal-lines">
+            </div>
+          </div>
+        </div>
+        <h3 class="font-serif text-xl mb-3 text-center mt-6">Design</h3>
+        <p class="text-ink-3 text-sm leading-relaxed text-center">We build the full outbound system. Prospect lists, domain infrastructure, warm-up, copywriting, and sequence logic. All custom-built around your ICP and your offer.</p>
+      </div>
+
+      <!-- Arrow 2→3 -->
+      <div class="flex items-center self-center pt-0" style="margin: 0 -4px; margin-top: -80px;">
+        <svg width="56" height="24" viewBox="0 0 56 24" fill="none" class="process-arrow" style="opacity:0.3;">
+          <line x1="0" y1="12" x2="44" y2="12" stroke="var(--gold)" stroke-width="1.5" stroke-dasharray="4 3"/>
+          <path d="M42 6 L52 12 L42 18" stroke="var(--gold)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <!-- Step 3: Deploy -->
+      <div class="flex flex-col" style="width:380px; flex-shrink:0;">
+        <div class="relative">
+          <span class="font-serif text-6xl text-gold/20 absolute -top-4 left-2 select-none" style="letter-spacing:-0.04em;">3</span>
+          <div class="process-illustration p-4 pt-8 overflow-hidden" id="deploy-card" style="height:240px;">
+            <div class="flex items-center justify-between mb-3">
+              <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full" id="deploy-dot" style="background:#999;"></span><span class="font-mono text-[10px] tracking-widest text-ink-4 uppercase">Deployment</span></div>
+              <span class="font-mono text-[10px] tracking-widest uppercase" id="deploy-status-label" style="opacity:0; color:var(--gold);">Live</span>
+            </div>
+            <div class="space-y-2" id="deploy-items">
+              <div class="deploy-row flex items-center justify-between" style="opacity:0.3;">
+                <span class="text-[13px] text-ink-4">CRM Integration</span>
+                <svg class="w-3.5 h-3.5 deploy-check" style="color:var(--cream-border);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              </div>
+              <div class="deploy-row flex items-center justify-between" style="opacity:0.3;">
+                <span class="text-[13px] text-ink-4">Email Sequences</span>
+                <svg class="w-3.5 h-3.5 deploy-check" style="color:var(--cream-border);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              </div>
+              <div class="deploy-row flex items-center justify-between" style="opacity:0.3;">
+                <span class="text-[13px] text-ink-4">Lead Routing</span>
+                <svg class="w-3.5 h-3.5 deploy-check" style="color:var(--cream-border);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              </div>
+              <div class="deploy-row flex items-center justify-between" style="opacity:0.3;">
+                <span class="text-[13px] text-ink-4">Analytics Dashboard</span>
+                <svg class="w-3.5 h-3.5 deploy-check" style="color:var(--cream-border);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              </div>
+              <div class="deploy-row flex items-center justify-between" style="opacity:0.3;">
+                <span class="text-[13px] text-ink-4">Handoff Protocol</span>
+                <svg class="w-3.5 h-3.5 deploy-check" style="color:var(--cream-border);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              </div>
+            </div>
+            <div class="mt-2" id="deploy-progress-wrap" style="opacity:0;">
+              <div class="flex items-center justify-between mb-1"><span class="font-mono text-[10px] text-ink-4">Deploying...</span><span class="font-mono text-[10px] text-gold" id="deploy-pct">0%</span></div>
+              <div class="w-full h-1 bg-cream-dark rounded-full overflow-hidden"><div class="h-full rounded-full" id="deploy-bar" style="width:0%; background:var(--gold); transition: width 0.4s cubic-bezier(0.4,0,0.2,1);"></div></div>
+            </div>
+          </div>
+        </div>
+        <h3 class="font-serif text-xl mb-3 text-center mt-6">Deploy</h3>
+        <p class="text-ink-3 text-sm leading-relaxed text-center">Campaigns go live. Replies come in. We qualify every response against your criteria and deliver only the ones that meet the standard.</p>
+      </div>
+    </div>
+
+    <!-- Mobile fallback: stacked cards -->
+    <div class="md:hidden grid grid-cols-1 gap-10 reveal" id="process-cards-mobile">
+      <div class="text-center">
+        <span class="font-serif text-5xl text-gold/20" style="letter-spacing:-0.04em;">1</span>
+        <h3 class="font-serif text-xl mb-3">Diagnose</h3>
+        <p class="text-ink-3 text-sm leading-relaxed">We align on your Ideal Customer Profile, offer positioning, and what a qualified lead actually looks like for your business.</p>
+      </div>
+      <div class="text-center">
+        <span class="font-serif text-5xl text-gold/20" style="letter-spacing:-0.04em;">2</span>
+        <h3 class="font-serif text-xl mb-3">Design</h3>
+        <p class="text-ink-3 text-sm leading-relaxed">We build the full outbound system. Verified prospect lists, domain and inbox infrastructure, warm-up, copywriting, and sequence logic.</p>
+      </div>
+      <div class="text-center">
+        <span class="font-serif text-5xl text-gold/20" style="letter-spacing:-0.04em;">3</span>
+        <h3 class="font-serif text-xl mb-3">Deploy</h3>
+        <p class="text-ink-3 text-sm leading-relaxed">Campaigns go live. Replies come in. We qualify every response and deliver only the ones that meet the standard.</p>
+      </div>
+    </div>
+
+    <div class="text-center mt-16 reveal">
+      <p class="italic text-ink-4 text-sm mb-5">Ready to see it in action?</p>
+      <a href="#" data-cal-link="hsienjun.ong/general-meeting-asia" data-cal-config='{"layout":"month_view"}' class="metal-btn">
+        <span class="metal-btn-inner-ring"></span>
+        <span class="metal-btn-face">Book Your Strategy Call</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ SECTION 7A: REVIEWS ═══════════════════════════ -->
+<section id="reviews" class="py-20 md:py-28 border-t border-cream-border">
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    <div class="mb-4 reveal"><span class="font-mono text-[11px] tracking-widest text-ink-4 uppercase">WHAT OUR CLIENTS SAY</span></div>
+    <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl leading-tight mb-3 reveal" style="letter-spacing:-0.03em;">We hate to brag.</h2>
+    <p class="text-ink-3 text-base md:text-lg mb-4 reveal">But our clients are pretty good at it. Here's what they have to say.</p>
+    <div class="flex items-center gap-2 mb-12 reveal">
+      <div class="flex gap-0.5">
+        <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+        <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+        <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+        <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+        <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+      </div>
+      <span class="text-sm text-ink-3">5.0 out of 5</span>
+      <span class="text-cream-border">|</span>
+      <span class="text-sm text-ink-4">Based on verified client feedback</span>
+    </div>
+
+    <div class="review-scroll reveal">
+
+      <!-- Review 1: Voice AI -->
+      <div class="review-card w-[400px] md:w-[420px] bg-white rounded-xl border border-cream-border p-8 flex flex-col">
+        <span class="font-mono text-[11px] tracking-widest text-gold uppercase mb-4">VOICE AI</span>
+        <div class="border-t border-cream-border pt-4 mb-3">
+          <div class="flex gap-0.5">
+            <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          </div>
+        </div>
+        <div class="border-t border-cream-border pt-4 flex-1">
+          <p class="text-ink-3 text-[15px] leading-relaxed">I hired Jun to help me build out an outbound AI voice system that could call on my behalf. Jun positively surprised me, both with his professional onboarding, but also delivery practices. He kept everything very clear and easy to understand, so that the finished work would solve my required needs. I've heard the big boys talk about "hiring A-players" — I'm starting to get that quote.</p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-cream-border">
+          <div class="flex items-center gap-2">
+            <span class="font-semibold text-sm text-ink">Ask A.</span>
+            <span class="inline-flex items-center gap-1 text-xs text-gold"><svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>Verified Client</span>
+          </div>
+          <p class="text-xs text-ink-4 mt-0.5">Founder</p>
+        </div>
+      </div>
+
+      <!-- Review 2: Ventures -->
+      <div class="review-card w-[400px] md:w-[420px] bg-white rounded-xl border border-cream-border p-8 flex flex-col">
+        <span class="font-mono text-[11px] tracking-widest text-gold uppercase mb-4">VENTURES</span>
+        <div class="border-t border-cream-border pt-4 mb-3">
+          <div class="flex gap-0.5">
+            <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          </div>
+        </div>
+        <div class="border-t border-cream-border pt-4 flex-1">
+          <p class="text-ink-3 text-[15px] leading-relaxed">Jun did an excellent job as a Voice AI consultant on our project. He was highly knowledgeable, professional, and proactive, with a strong understanding of voice AI systems and real-world implementation.</p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-cream-border">
+          <div class="flex items-center gap-2">
+            <span class="font-semibold text-sm text-ink">Founder</span>
+            <span class="inline-flex items-center gap-1 text-xs text-gold"><svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>Verified Client</span>
+          </div>
+          <p class="text-xs text-ink-4 mt-0.5">Founder, Scale Ventures (Digital Marketing Agency)</p>
+        </div>
+      </div>
+
+      <!-- Review 3: Digital Marketing -->
+      <div class="review-card w-[400px] md:w-[420px] bg-white rounded-xl border border-cream-border p-8 flex flex-col">
+        <span class="font-mono text-[11px] tracking-widest text-gold uppercase mb-4">DIGITAL MARKETING</span>
+        <div class="border-t border-cream-border pt-4 mb-3">
+          <div class="flex gap-0.5">
+            <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          </div>
+        </div>
+        <div class="border-t border-cream-border pt-4 flex-1">
+          <p class="text-ink-3 text-[15px] leading-relaxed">Just wrapped up a speed-to-lead qualification voice agent with Jun, and the experience was exceptional. He built an AI voice agent that calls and qualifies leads within 60 seconds, and the execution was flawless. Jun is super fast, extremely detail-oriented, and clearly has a deep understanding of voice AI. If you have anything to do with voice AI, Jun is the guy to go to. It's a complete no-brainer.</p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-cream-border">
+          <div class="flex items-center gap-2">
+            <span class="font-semibold text-sm text-ink">Victor Smushkevich</span>
+            <span class="inline-flex items-center gap-1 text-xs text-gold"><svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>Verified Client</span>
+          </div>
+          <p class="text-xs text-ink-4 mt-0.5">Founder, Tested Media (Award-Winning Digital Marketing Agency)</p>
+        </div>
+      </div>
+
+      <!-- Review 4: Wellness -->
+      <div class="review-card w-[400px] md:w-[420px] bg-white rounded-xl border border-cream-border p-8 flex flex-col">
+        <span class="font-mono text-[11px] tracking-widest text-gold uppercase mb-4">WELLNESS</span>
+        <div class="border-t border-cream-border pt-4 mb-3">
+          <div class="flex gap-0.5">
+            <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          </div>
+        </div>
+        <div class="border-t border-cream-border pt-4 flex-1">
+          <p class="text-ink-3 text-[15px] leading-relaxed">QwickStep scaled Valens Health from zero social presence to 462K followers and 31M organic reach in only 3 months. 11 viral videos, without paid ads, booths, or promotions. Their platform-native content system and viral format research gave us a repeatable distribution engine that compounds. Incredible results.</p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-cream-border">
+          <div class="flex items-center gap-2">
+            <span class="font-semibold text-sm text-ink">Nicolette Friedman</span>
+            <span class="inline-flex items-center gap-1 text-xs text-gold"><svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>Verified Client</span>
+          </div>
+          <p class="text-xs text-ink-4 mt-0.5">Founder, Valens Health</p>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="text-ink-4 text-xs leading-relaxed mt-10 max-w-2xl reveal" style="opacity:0.6;">Some partners prefer anonymity because they've taken our bespoke systems to enhance their own offerings. We respect their privacy, while celebrating mutual success. Results shown reflect work delivered under QwickStep AI strategy and quality control, including implementations executed by trusted delivery partners.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ SECTION 7B: CASE STUDIES ═══════════════════════════ -->
+<section id="case-studies" class="py-20 md:py-28 border-t border-cream-border">
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    <div class="mb-4 reveal"><span class="font-mono text-[11px] tracking-widest text-ink-4 uppercase">PROOF OF WORK</span></div>
+    <h2 class="font-serif text-3xl md:text-4xl leading-tight mb-12 reveal" style="letter-spacing:-0.025em;">Results we're proud to put our name on.</h2>
+
+    <div class="review-scroll reveal">
+      <!-- Case Study 1: Meridian Group (Featured) -->
+      <div class="case-card w-[480px] md:w-[520px] bg-white rounded-xl border border-cream-border overflow-hidden flex flex-col">
+        <div class="p-8 pb-0">
+          <div class="flex flex-wrap items-center gap-2 mb-4">
+            <span class="font-mono text-[10px] tracking-widest text-gold uppercase">REAL ESTATE</span>
+            <span class="text-cream-border">|</span>
+            <span class="font-mono text-[10px] tracking-widest text-ink-4 uppercase">Crestview Properties</span>
+            <span class="text-cream-border">|</span>
+            <span class="inline-flex items-center px-2 py-0.5 rounded bg-gold/10 text-gold text-[10px] font-mono tracking-wider uppercase">Featured</span>
+          </div>
+          <h3 class="font-serif text-xl leading-tight mb-6" style="letter-spacing:-0.02em;">300K Impressions in 14 Days with Automated LinkedIn Content</h3>
+        </div>
+        <div class="px-8 pb-8 flex-1 flex flex-col gap-5">
+          <div>
+            <p class="font-mono text-[10px] tracking-widest text-ink-4 uppercase mb-2">THE PROBLEM</p>
+            <p class="text-ink-3 text-sm leading-relaxed">The team needed inbound demand from LinkedIn, but manual research, repurposing, and engagement made consistency impossible and slowed growth.</p>
+          </div>
+          <div>
+            <p class="font-mono text-[10px] tracking-widest text-ink-4 uppercase mb-2">THE SOLUTION</p>
+            <p class="text-ink-3 text-sm leading-relaxed">QwickStep AI built an automated LinkedIn system that scrapes relevant content, scores ICP relevance, generates branded posts, and runs engagement workflows, creating a repeatable inbound engine.</p>
+          </div>
+          <div class="pt-3 border-t border-cream-border mt-auto">
+            <p class="font-mono text-[10px] tracking-widest text-ink-4 uppercase mb-3">RESULTS</p>
+            <div class="flex items-center gap-3 text-sm">
+              <span class="font-semibold text-gold">300K Impressions (2 wks)</span><span class="text-cream-border">|</span>
+              <span class="font-semibold text-ink">8+ Hrs/wk Saved</span><span class="text-cream-border">|</span>
+              <span class="font-semibold text-ink">20 Calls/wk</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case Study 2 -->
+      <div class="case-card w-[480px] md:w-[520px] bg-white rounded-xl border border-cream-border overflow-hidden flex flex-col">
+        <div class="p-8 pb-0">
+          <div class="flex flex-wrap items-center gap-2 mb-4">
+            <span class="font-mono text-[10px] tracking-widest text-gold uppercase">LEGAL / CLAIMS</span>
+            <span class="text-cream-border">|</span>
+            <span class="font-mono text-[10px] tracking-widest text-ink-4 uppercase">Helping Tenants</span>
+            <span class="text-cream-border">|</span>
+            <span class="inline-flex items-center px-2 py-0.5 rounded bg-gold/10 text-gold text-[10px] font-mono tracking-wider uppercase">Featured</span>
+          </div>
+          <h3 class="font-serif text-xl leading-tight mb-6" style="letter-spacing:-0.02em;">1.46M in Revenue Potential Unlocked From 35,000 Dormant Leads</h3>
+        </div>
+        <div class="px-8 pb-8 flex-1 flex flex-col gap-5">
+          <div>
+            <p class="font-mono text-[10px] tracking-widest text-ink-4 uppercase mb-2">THE PROBLEM</p>
+            <p class="text-ink-3 text-sm leading-relaxed">Helping Tenants had 35,000 dormant leads sitting untouched in their CRM. Old enquiries and campaign opt-ins that had never been followed up. Manual reactivation would have taken over 11 months per employee. The leads were generating nothing.</p>
+          </div>
+          <div>
+            <p class="font-mono text-[10px] tracking-widest text-ink-4 uppercase mb-2">THE SOLUTION</p>
+            <p class="text-ink-3 text-sm leading-relaxed">QwickStep AI deployed a Database Reactivation AI Voice Agent that called every dormant lead automatically, retried up to 3 times per lead, qualified interest, and routed high-intent cases directly to human staff. Zero manual effort from the client team.</p>
+          </div>
+          <div class="pt-3 border-t border-cream-border mt-auto">
+            <p class="font-mono text-[10px] tracking-widest text-ink-4 uppercase mb-3">RESULTS</p>
+            <div class="flex items-center gap-3 text-sm">
+              <span class="font-semibold text-ink">1,290 Calls</span><span class="text-cream-border">|</span>
+              <span class="font-semibold text-ink">18 High-Intent Cases</span><span class="text-cream-border">|</span>
+              <span class="font-semibold text-gold">33,468 in Revenue Potential</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case Study 2 -->
+      <div class="case-card w-[480px] md:w-[520px] bg-white rounded-xl border border-cream-border overflow-hidden flex flex-col">
+        <div class="p-8 pb-0">
+          <div class="flex flex-wrap items-center gap-2 mb-4">
+            <span class="font-mono text-[10px] tracking-widest text-gold uppercase">LEGAL</span>
+            <span class="text-cream-border">|</span>
+            <span class="font-mono text-[10px] tracking-widest text-ink-4 uppercase">Charity Law Group, Canada</span>
+            <span class="text-cream-border">|</span>
+            <span class="inline-flex items-center px-2 py-0.5 rounded bg-gold/10 text-gold text-[10px] font-mono tracking-wider uppercase">Featured</span>
+          </div>
+          <h3 class="font-serif text-xl leading-tight mb-6" style="letter-spacing:-0.02em;">2.2x Booked Appointments Month-Over-Month</h3>
+        </div>
+        <div class="px-8 pb-8 flex-1 flex flex-col gap-5">
+          <div>
+            <p class="font-mono text-[10px] tracking-widest text-ink-4 uppercase mb-2">THE PROBLEM</p>
+            <p class="text-ink-3 text-sm leading-relaxed">The law group was losing inbound leads to slow follow-up. By the time their team called back, the prospect had moved on or booked with a competitor. They had no systematic way to respond to new leads instantly.</p>
+          </div>
+          <div>
+            <p class="font-mono text-[10px] tracking-widest text-ink-4 uppercase mb-2">THE SOLUTION</p>
+            <p class="text-ink-3 text-sm leading-relaxed">QwickStep AI deployed a Speed-to-Lead AI Voice Agent that called every new inbound lead within 60 seconds of form submission, qualified them, and booked appointments directly onto the sales team's calendar with zero human involvement until the meeting itself.</p>
+          </div>
+          <div class="pt-3 border-t border-cream-border mt-auto">
+            <p class="font-mono text-[10px] tracking-widest text-ink-4 uppercase mb-3">RESULTS</p>
+            <div class="flex items-center gap-3 text-sm">
+              <span class="font-semibold text-ink">2.2x Growth</span><span class="text-cream-border">|</span>
+              <span class="font-semibold text-ink">250 Booked Calls</span><span class="text-cream-border">|</span>
+              <span class="font-semibold text-gold">&lt;60s Response</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case Study 4: Northbridge -->
+      <div class="case-card w-[480px] md:w-[520px] bg-white rounded-xl border border-cream-border overflow-hidden flex flex-col">
+        <div class="p-8 pb-0">
+          <div class="flex flex-wrap items-center gap-2 mb-4">
+            <span class="font-mono text-[10px] tracking-widest text-gold uppercase">MARKETING AGENCY</span>
+            <span class="text-cream-border">|</span>
+            <span class="font-mono text-[10px] tracking-widest text-ink-4 uppercase">Vantage Partners</span>
+            <span class="text-cream-border">|</span>
+            <span class="inline-flex items-center px-2 py-0.5 rounded bg-gold/10 text-gold text-[10px] font-mono tracking-wider uppercase">Featured</span>
+          </div>
+          <h3 class="font-serif text-xl leading-tight mb-6" style="letter-spacing:-0.02em;">1 Million LinkedIn Impressions via Agentic AI</h3>
+        </div>
+        <div class="px-8 pb-8 flex-1 flex flex-col gap-5">
+          <div>
+            <p class="font-mono text-[10px] tracking-widest text-ink-4 uppercase mb-2">THE PROBLEM</p>
+            <p class="text-ink-3 text-sm leading-relaxed">The client needed to scale marketing output and insight generation for multiple agencies, but manual SEO, content testing, and market research workflows capped growth and wasted hours every week.</p>
+          </div>
+          <div>
+            <p class="font-mono text-[10px] tracking-widest text-ink-4 uppercase mb-2">THE SOLUTION</p>
+            <p class="text-ink-3 text-sm leading-relaxed">QwickStep AI deployed agentic AI systems that autonomously run LinkedIn growth experiments, generate SEO content, track market signals, and monitor competitors, continuously optimizing performance without human intervention.</p>
+          </div>
+          <div class="pt-3 border-t border-cream-border mt-auto">
+            <p class="font-mono text-[10px] tracking-widest text-ink-4 uppercase mb-3">RESULTS</p>
+            <div class="flex items-center gap-3 text-sm">
+              <span class="font-semibold text-gold">1M+ Impressions</span><span class="text-cream-border">|</span>
+              <span class="font-semibold text-ink">95% Cost Cut</span><span class="text-cream-border">|</span>
+              <span class="font-semibold text-ink">4x Content Output</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="text-ink-4 text-xs leading-relaxed mt-10 max-w-2xl reveal" style="opacity:0.6;">Some clients prefer anonymity because they've taken our bespoke systems to enhance their own offerings. We respect their privacy, while celebrating mutual success. Results shown reflect work delivered under QwickStep AI strategy and quality control, including implementations executed by trusted delivery partners.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ SECTION 8: FAQ ═══════════════════════════ -->
+<section id="faq" class="py-20 md:py-28 border-t border-cream-border">
+  <div class="max-w-3xl mx-auto px-6 md:px-12">
+    <h2 class="font-serif text-3xl md:text-4xl leading-tight mb-12 reveal" style="letter-spacing:-0.025em;">Have questions? We've got answers.</h2>
+    <div class="reveal">
+      <div class="faq-item open">
+        <button class="faq-q" onclick="toggleFaq(this)">Is there a long-term contract?<svg class="faq-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12M6 12h12"/></svg></button>
+        <div class="faq-a"><p class="text-ink-3 text-[15px] leading-relaxed">No. There's no lock-in. Clients stay because the leads are worth paying for. If they're not, we'd rather you tell us than stay out of obligation.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Do you offer performance-based options?<svg class="faq-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12M6 12h12"/></svg></button>
+        <div class="faq-a"><p class="text-ink-3 text-[15px] leading-relaxed">Yes. For qualified businesses, we offer performance-based arrangements where our compensation is tied directly to the results we generate.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Do you sell leads?<svg class="faq-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12M6 12h12"/></svg></button>
+        <div class="faq-a"><p class="text-ink-3 text-[15px] leading-relaxed">No. We build the machine that generates leads for your business. The leads are yours, generated from your ideal client profile, through infrastructure you own.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What tools do you use?<svg class="faq-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12M6 12h12"/></svg></button>
+        <div class="faq-a"><p class="text-ink-3 text-[15px] leading-relaxed">We work with best-in-class tools across cold email infrastructure, AI voice agents, CRM integrations, and LinkedIn automation. The specific stack depends on your engagement, and we'll walk you through what's needed on your strategy call.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What industries do you serve?<svg class="faq-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12M6 12h12"/></svg></button>
+        <div class="faq-a"><p class="text-ink-3 text-[15px] leading-relaxed">We work with any and all businesses. Automations are the future and will soon be the norm for all businesses.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Can I own the system you build?<svg class="faq-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12M6 12h12"/></svg></button>
+        <div class="faq-a"><p class="text-ink-3 text-[15px] leading-relaxed">It depends on the engagement. Some projects include full ownership transfer with documentation, while others are structured differently based on scope and pricing. We're happy to walk through the options during your strategy call.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ SECTION 9: FINAL CTA ═══════════════════════════ -->
+<section id="final-cta" class="py-24 md:py-32 border-t border-cream-border">
+  <div class="max-w-3xl mx-auto px-6 md:px-12 text-center reveal">
+    <h2 class="font-serif text-4xl md:text-5xl lg:text-[3.5rem] leading-tight mb-6" style="letter-spacing:-0.03em;">Just work with us.</h2>
+    <p class="text-ink-3 text-base md:text-lg leading-relaxed mb-10 max-w-xl mx-auto">No guesswork. No paying for effort that doesn't produce results. Book a 30-minute strategy call and we'll show you exactly what this looks like for your business.</p>
+    <a href="#" data-cal-link="hsienjun.ong/general-meeting-asia" data-cal-config='{"layout":"month_view"}' class="liquid-btn">
+      <span class="liquid-btn-glass"></span>
+      <span class="liquid-btn-inner text-lg px-12 py-5">Book Your Strategy Call</span>
+    </a>
+    <p class="italic text-ink-4 text-sm mt-5">30 minutes. No pitch deck. No pressure.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ SECTION 10: FOOTER ═══════════════════════════ -->
+<footer class="border-t border-cream-border py-12">
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+      <a href="#" class="flex items-center gap-2.5 font-semibold text-sm tracking-tight">
+        <img src="brand_assets/qwickstep.ai iconic mark (white).png" alt="QwickStep AI" class="w-6 h-6" style="filter: brightness(0) saturate(100%);">
+        QwickStep AI
+      </a>
+      <div class="flex items-center gap-6 text-sm text-ink-4">
+        <a href="#reviews" class="hover:text-ink transition-colors duration-200">Reviews and Case Studies</a>
+        <a href="#faq" class="hover:text-ink transition-colors duration-200">FAQ</a>
+        <a href="#" data-cal-link="hsienjun.ong/general-meeting-asia" data-cal-config='{"layout":"month_view"}' class="hover:text-gold transition-colors duration-200">Book Your Strategy Call</a>
+      </div>
+    </div>
+    <div class="mt-8 pt-6 border-t border-cream-border flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-ink-4">
+      <p>&copy; 2026 QwickStep AI. All rights reserved.</p>
+      <div class="flex items-center gap-4">
+        <a href="#" class="hover:text-ink transition-colors duration-200">Privacy Policy</a>
+        <a href="#" class="hover:text-ink transition-colors duration-200">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleFaq(btn) {
+  const item = btn.parentElement;
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!wasOpen) item.classList.add('open');
+}
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Hero grid: generate rectangle cells
+(function() {
+  const ns = 'http://www.w3.org/2000/svg';
+  const grid = document.getElementById('heroGridCells');
+  if (!grid) return;
+  const cols = 35, rows = 23, size = 35.6, gap = 36;
+  for (let i = 0; i < cols; i++) {
+    for (let j = 0; j < rows; j++) {
+      const r = document.createElementNS(ns, 'rect');
+      r.setAttribute('x', -20.09 + i * gap);
+      r.setAttribute('y', 9.2 + j * gap);
+      r.setAttribute('width', size);
+      r.setAttribute('height', size);
+      r.setAttribute('stroke', '#111110');
+      r.setAttribute('stroke-opacity', '0.08');
+      r.setAttribute('stroke-width', '0.4');
+      r.setAttribute('stroke-dasharray', '2 2');
+      r.setAttribute('fill', 'none');
+      grid.appendChild(r);
+    }
+  }
+})();
+
+// Hero mouse-following glow
+(function() {
+  const hero = document.getElementById('hero-section');
+  const glow = document.getElementById('heroMouseGlow');
+  if (!hero || !glow) return;
+  const svg = glow.closest('svg');
+
+  hero.addEventListener('mousemove', function(e) {
+    const rect = hero.getBoundingClientRect();
+    const svgRect = svg.getBoundingClientRect();
+    // Map mouse position to SVG viewBox coordinates
+    const scaleX = 1220 / svgRect.width;
+    const scaleY = 810 / svgRect.height;
+    const x = (e.clientX - svgRect.left) * scaleX;
+    const y = (e.clientY - svgRect.top) * scaleY;
+    glow.setAttribute('cx', x);
+    glow.setAttribute('cy', y);
+    glow.setAttribute('opacity', '0.06');
+  });
+
+  hero.addEventListener('mouseleave', function() {
+    glow.setAttribute('opacity', '0');
+  });
+})();
+
+// Stats number counting animation
+(function() {
+  function easeOutQuart(t) { return 1 - Math.pow(1 - t, 4); }
+
+  function animateCount(el) {
+    const target = parseFloat(el.dataset.target);
+    const prefix = el.dataset.prefix || '';
+    const suffix = el.dataset.suffix || '';
+    const useComma = el.dataset.comma === 'true';
+    const isDecimal = target % 1 !== 0;
+    const duration = 1600;
+    const start = performance.now();
+
+    el.classList.add('counting');
+
+    function format(val) {
+      if (isDecimal) return prefix + val.toFixed(2) + suffix;
+      const rounded = Math.round(val);
+      return prefix + (useComma ? rounded.toLocaleString() : rounded) + suffix;
+    }
+
+    function step(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      el.textContent = format(easeOutQuart(progress) * target);
+      if (progress < 1) requestAnimationFrame(step);
+      else el.textContent = format(target);
+    }
+    requestAnimationFrame(step);
+  }
+
+  const statsObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll('.stats-number').forEach(function(el, i) {
+          setTimeout(function() { animateCount(el); }, i * 120);
+        });
+        statsObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  const statsGrid = document.querySelector('.stats-grid');
+  if (statsGrid) statsObserver.observe(statsGrid);
+})();
+
+// Service card spotlight glow
+(function() {
+  document.querySelectorAll('.service-card').forEach(function(card) {
+    card.addEventListener('mousemove', function(e) {
+      var rect = card.getBoundingClientRect();
+      card.style.setProperty('--x', (e.clientX - rect.left).toFixed(1));
+      card.style.setProperty('--y', (e.clientY - rect.top).toFixed(1));
+      card.style.setProperty('--xp', ((e.clientX - rect.left) / rect.width).toFixed(2));
+    });
+  });
+})();
+
+// ═══ Process Cards Animation ═══
+(function() {
+  var processSection = document.getElementById('process-cards');
+  if (!processSection) return;
+
+  var animationTimer = null;
+  var isRunning = false;
+
+  // ── Card 1: Audit rows slide in one by one, errors count up ──
+  function animateAudit() {
+    var rows = document.querySelectorAll('#audit-rows .audit-row');
+    var errorsEl = document.getElementById('audit-errors');
+    var errorCount = 0;
+
+    // Reset
+    rows.forEach(function(r) {
+      r.style.opacity = '0';
+      r.style.transform = 'translateX(-12px)';
+      r.style.transition = 'none';
+      var st = r.querySelector('.audit-status');
+      if (st) { st.style.opacity = '0'; st.style.transform = 'scale(0.7)'; st.style.transition = 'none'; }
+    });
+    if (errorsEl) errorsEl.textContent = '0 errors';
+
+    var statusColors = { error: '#f87171', ok: '#22c55e', warn: '#f59e0b' };
+
+    rows.forEach(function(row, i) {
+      // Slide row in
+      setTimeout(function() {
+        row.style.transition = 'opacity 0.35s cubic-bezier(0.4,0,0.2,1), transform 0.35s cubic-bezier(0.4,0,0.2,1)';
+        row.style.opacity = '1';
+        row.style.transform = 'translateX(0)';
+
+        // Animate status badge after row appears
+        setTimeout(function() {
+          var st = row.querySelector('.audit-status');
+          if (!st) return;
+          var type = st.getAttribute('data-status');
+          st.style.color = statusColors[type] || statusColors.ok;
+          st.style.transition = 'opacity 0.25s, transform 0.25s cubic-bezier(0.34,1.56,0.64,1)';
+          st.style.opacity = '1';
+          st.style.transform = 'scale(1)';
+
+          if (type === 'error' && errorsEl) {
+            errorCount++;
+            errorsEl.textContent = errorCount + (errorCount === 1 ? ' error' : ' errors');
+          }
+        }, 200);
+      }, i * 400 + 200);
+    });
+  }
+
+  // ── Card 2: Terminal typewriter ──
+  var terminalData = [
+    { text: '// Architecting system...', cls: 'text-white/40' },
+    { text: '> Mapping ICP profile', cls: 'text-white/70', gold: true },
+    { text: '> Building trigger logic', cls: 'text-white/90 font-bold', gold: true },
+    { text: '  ├ inbound_lead → qualify', cls: 'text-white/50' },
+    { text: '  ├ no_reply_3d → nurture', cls: 'text-white/50' },
+    { text: '  └ engaged → route_to_rep', cls: 'text-white/50' },
+    { text: '> Connecting data layer', cls: 'text-white/70', gold: true },
+    { text: '  CRM ✓  Email ✓  Scoring ✓', cls: 'text-green-400/80' },
+    { text: '> System architecture complete.', cls: 'text-gold' }
+  ];
+
+  function animateTerminal() {
+    var container = document.getElementById('terminal-lines');
+    if (!container) return;
+    container.innerHTML = '';
+
+    var lineIndex = 0;
+
+    function typeLine() {
+      if (lineIndex >= terminalData.length || !isRunning) return;
+      var data = terminalData[lineIndex];
+      var p = document.createElement('p');
+      p.className = data.cls || '';
+      p.style.whiteSpace = 'pre';
+      p.style.minHeight = '1.4em';
+      container.appendChild(p);
+
+      var fullText = data.text;
+      var prefix = '';
+      if (data.gold && fullText.charAt(0) === '>') {
+        prefix = '<span class="text-gold">></span>';
+        fullText = fullText.substring(1);
+      }
+
+      var charIdx = 0;
+      var cursor = '█';
+
+      function typeChar() {
+        if (charIdx <= fullText.length && isRunning) {
+          p.innerHTML = prefix + fullText.substring(0, charIdx) + (charIdx < fullText.length ? '<span class="animate-pulse">' + cursor + '</span>' : '');
+          charIdx++;
+          setTimeout(typeChar, 18 + Math.random() * 25);
+        } else {
+          p.innerHTML = prefix + fullText;
+          lineIndex++;
+          setTimeout(typeLine, 120 + Math.random() * 80);
+        }
+      }
+      typeChar();
+    }
+    typeLine();
+  }
+
+  // ── Card 3: Deploy checklist + progress bar ──
+  function animateDeploy() {
+    var rows = document.querySelectorAll('#deploy-items .deploy-row');
+    var progressWrap = document.getElementById('deploy-progress-wrap');
+    var bar = document.getElementById('deploy-bar');
+    var pct = document.getElementById('deploy-pct');
+    var dot = document.getElementById('deploy-dot');
+    var statusLabel = document.getElementById('deploy-status-label');
+
+    // Reset
+    rows.forEach(function(r) {
+      r.style.opacity = '0.3';
+      r.querySelector('span').style.color = '';
+      r.querySelector('span').classList.remove('text-ink-2');
+      r.querySelector('span').classList.add('text-ink-4');
+      var chk = r.querySelector('.deploy-check');
+      if (chk) { chk.style.color = 'var(--cream-border)'; chk.style.transform = 'scale(0.7)'; chk.style.transition = 'none'; }
+    });
+    if (progressWrap) progressWrap.style.opacity = '0';
+    if (bar) { bar.style.transition = 'none'; bar.style.width = '0%'; }
+    if (pct) pct.textContent = '0%';
+    if (dot) dot.style.background = '#999';
+    if (statusLabel) statusLabel.style.opacity = '0';
+
+    var total = rows.length;
+    var checked = 0;
+
+    // Show progress bar after brief pause
+    setTimeout(function() {
+      if (progressWrap) {
+        progressWrap.style.transition = 'opacity 0.3s';
+        progressWrap.style.opacity = '1';
+      }
+    }, 300);
+
+    rows.forEach(function(row, i) {
+      setTimeout(function() {
+        // Activate row
+        row.style.transition = 'opacity 0.3s';
+        row.style.opacity = '1';
+        var label = row.querySelector('span');
+        label.classList.remove('text-ink-4');
+        label.classList.add('text-ink-2');
+        label.style.fontWeight = '500';
+
+        // Tick checkmark with pop
+        var chk = row.querySelector('.deploy-check');
+        if (chk) {
+          chk.style.transition = 'color 0.2s, transform 0.3s cubic-bezier(0.34,1.56,0.64,1)';
+          chk.style.color = '#22c55e';
+          chk.style.transform = 'scale(1.2)';
+          setTimeout(function() { chk.style.transform = 'scale(1)'; }, 200);
+        }
+
+        // Update progress
+        checked++;
+        var percent = Math.round((checked / total) * 100);
+        if (bar) {
+          bar.style.transition = 'width 0.5s cubic-bezier(0.4,0,0.2,1)';
+          bar.style.width = percent + '%';
+        }
+        if (pct) pct.textContent = percent + '%';
+
+        // All done?
+        if (checked === total) {
+          setTimeout(function() {
+            if (dot) { dot.style.transition = 'background 0.3s'; dot.style.background = '#22c55e'; }
+            if (statusLabel) { statusLabel.style.transition = 'opacity 0.4s'; statusLabel.style.opacity = '1'; }
+          }, 400);
+        }
+      }, i * 600 + 600);
+    });
+  }
+
+  // ── Arrow animation helpers ──
+  var arrows = document.querySelectorAll('.process-arrow');
+  function resetArrows() { arrows.forEach(function(a) { a.classList.remove('active', 'pulse'); a.style.opacity = '0.3'; }); }
+  function lightArrow(index) {
+    if (arrows[index]) {
+      arrows[index].classList.add('active', 'pulse');
+      arrows[index].style.opacity = '1';
+    }
+  }
+
+  // ── Master orchestrator: scroll-triggered, loops ──
+  function runAll() {
+    if (isRunning) return;
+    isRunning = true;
+
+    function cycle() {
+      resetArrows();
+      animateAudit();
+      // Arrow 1→2 lights up when audit finishes (~2.8s), then terminal starts
+      setTimeout(function() {
+        if (isRunning) { lightArrow(0); }
+      }, 2600);
+      setTimeout(function() { if (isRunning) animateTerminal(); }, 2800);
+      // Arrow 2→3 lights up when terminal is mostly done (~6.5s), then deploy starts
+      setTimeout(function() {
+        if (isRunning) { lightArrow(1); }
+      }, 6200);
+      setTimeout(function() { if (isRunning) animateDeploy(); }, 6400);
+
+      // Full cycle: audit(~2.6s) + arrow(0.2s) + terminal(~3.5s) + arrow(0.2s) + deploy(~3.6s) + pause(2s) ≈ 12s
+      animationTimer = setTimeout(function() {
+        if (isRunning) cycle();
+      }, 12000);
+    }
+    cycle();
+  }
+
+  function stopAll() {
+    isRunning = false;
+    if (animationTimer) { clearTimeout(animationTimer); animationTimer = null; }
+  }
+
+  var processObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        runAll();
+      } else {
+        stopAll();
+      }
+    });
+  }, { threshold: 0.15 });
+
+  processObserver.observe(processSection);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+node_modules/
+temporary screenshots/
+.DS_Store
+leftclick.ai.png
+Landing Page Copy Brief.pdf
+QwickStep AI Knowledge Base.pdf
+serve.mjs
+screenshot.mjs
+package.json
+package-lock.json
+CLAUDE.md
