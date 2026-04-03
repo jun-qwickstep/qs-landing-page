@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cold Email ROI Calculator — QwickStep AI</title>
+<link rel="icon" type="image/png" href="brand_assets/qwickstep.ai iconic mark (white).png">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        cream: '#F7F4EF',
+        'cream-dark': '#EDE9E1',
+        'cream-border': '#DDD8CF',
+        ink: '#111110',
+        'ink-2': '#2A2925',
+        'ink-3': '#6B6860',
+        'ink-4': '#9B9890',
+        gold: '#D4A745',
+        'gold-light': '#F5EEDC',
+        'gold-dark': '#B8912E',
+        navy: '#141928',
+        'navy-light': '#1E2640',
+        qblue: '#2563EB',
+        'qblue-light': '#EFF4FF',
+        teal: '#0D9488',
+        'teal-light': '#F0FDFA',
+        'teal-dark': '#0F766E',
+      },
+      fontFamily: {
+        serif: ['"DM Serif Display"', 'Georgia', 'serif'],
+        sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
+        mono: ['"DM Mono"', 'monospace'],
+      },
+    },
+  },
+}
+</script>
+<!-- Cal.com embed -->
+<script type="text/javascript">
+(function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+Cal("init", {origin:"https://cal.com"});
+Cal("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+</script>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+/* Metal Button */
+.metal-btn {
+  position: relative;
+  display: inline-flex;
+  border-radius: 8px;
+  padding: 1.25px;
+  background: linear-gradient(to bottom, #917100, #EAD98F);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+  transition: transform 250ms cubic-bezier(0.1,0.4,0.2,1), box-shadow 250ms cubic-bezier(0.1,0.4,0.2,1);
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  text-decoration: none;
+}
+.metal-btn:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
+.metal-btn:active { transform: translateY(2px) scale(0.99); box-shadow: 0 1px 2px rgba(0,0,0,0.15); }
+.metal-btn-inner-ring {
+  position: absolute;
+  inset: 1px;
+  border-radius: 7px;
+  background: linear-gradient(to bottom, #FFFDDD, #856807, #FFF1B3);
+  pointer-events: none;
+}
+.metal-btn-face {
+  position: relative;
+  z-index: 1;
+  margin: 1px;
+  border-radius: 6px;
+  padding: 14px 32px;
+  background: linear-gradient(to bottom, #FFEBA1, #9B873F);
+  color: #FFFDE5;
+  font-weight: 600;
+  font-size: 16px;
+  text-shadow: 0 -1px 0 rgba(178,140,2,1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: filter 250ms cubic-bezier(0.1,0.4,0.2,1);
+  white-space: nowrap;
+}
+.metal-btn:hover .metal-btn-face { filter: brightness(1.02); }
+
+/* Liquid Glass Button */
+.liquid-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  padding: 0;
+  font-family: inherit;
+}
+.liquid-btn-inner {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 40px;
+  border-radius: 999px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #111110;
+  letter-spacing: -0.01em;
+  z-index: 1;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.liquid-btn:hover .liquid-btn-inner { transform: scale(1.04); }
+.liquid-btn:active .liquid-btn-inner { transform: scale(0.97); }
+.liquid-btn-glass {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(212,167,69,0.25) 0%, rgba(212,167,69,0.12) 50%, rgba(212,167,69,0.2) 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(212,167,69,0.35);
+  box-shadow:
+    0 0 6px rgba(0,0,0,0.03),
+    0 2px 8px rgba(212,167,69,0.12),
+    inset 0 1px 1px rgba(255,255,255,0.4),
+    inset 0 -1px 1px rgba(0,0,0,0.05),
+    0 0 20px rgba(212,167,69,0.08);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.liquid-btn:hover .liquid-btn-glass {
+  box-shadow:
+    0 0 8px rgba(0,0,0,0.04),
+    0 4px 16px rgba(212,167,69,0.18),
+    inset 0 1px 1px rgba(255,255,255,0.5),
+    inset 0 -1px 1px rgba(0,0,0,0.05),
+    0 0 30px rgba(212,167,69,0.12);
+  border-color: rgba(212,167,69,0.5);
+}
+.liquid-btn:focus-visible .liquid-btn-glass {
+  outline: 2px solid #D4A745;
+  outline-offset: 3px;
+}
+
+/* ROI Calculator Nav Pill */
+.nav-calc-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #0D9488;
+  border: 1px solid rgba(13,148,136,0.35);
+  border-radius: 999px;
+  padding: 5px 14px;
+  text-decoration: none;
+  transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.nav-calc-pill:hover {
+  background: rgba(13,148,136,0.07);
+  border-color: rgba(13,148,136,0.55);
+  box-shadow: 0 0 12px rgba(13,148,136,0.1);
+}
+.nav-calc-pill:focus-visible {
+  outline: 2px solid #0D9488;
+  outline-offset: 2px;
+}
+.nav-calc-pill.active {
+  background: rgba(13,148,136,0.1);
+  border-color: rgba(13,148,136,0.5);
+}
+
+/* Custom Range Slider */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: #DDD8CF;
+  outline: none;
+  cursor: pointer;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid #0D9488;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+  box-shadow: 0 2px 8px rgba(13,148,136,0.25);
+}
+input[type="range"]::-webkit-slider-thumb:active {
+  transform: scale(1.05);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid #0D9488;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+  cursor: pointer;
+}
+input[type="range"]::-moz-range-track {
+  height: 6px;
+  border-radius: 3px;
+  background: #DDD8CF;
+}
+
+/* Tooltip */
+.tooltip-trigger {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid #9B9890;
+  color: #9B9890;
+  font-size: 10px;
+  font-weight: 600;
+  cursor: help;
+  transition: border-color 0.2s ease, color 0.2s ease;
+  flex-shrink: 0;
+}
+.tooltip-trigger:hover { border-color: #0D9488; color: #0D9488; }
+.tooltip-box {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: #111110;
+  color: #F7F4EF;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5;
+  padding: 10px 14px;
+  border-radius: 8px;
+  width: max-content;
+  max-width: 240px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 50;
+}
+.tooltip-box::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: #111110;
+}
+.tooltip-trigger:hover .tooltip-box {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Tab active state */
+.tab-btn { transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease; }
+.tab-btn.active {
+  background: white;
+  color: #111110;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 2px 8px rgba(0,0,0,0.04);
+}
+
+/* Card highlight */
+.output-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.output-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+}
+.output-card.highlight {
+  border-left: 3px solid #0D9488;
+  background: linear-gradient(135deg, #F0FDFA 0%, #FFFFFF 100%);
+}
+
+/* Funnel bar */
+.funnel-bar {
+  transition: width 0.5s cubic-bezier(0.4,0,0.2,1);
+  min-width: 100px;
+}
+
+/* Funnel card alignment — desktop only */
+@media (min-width: 768px) {
+  #funnel-right-panel .funnel-card { padding-top: 0.6rem; padding-bottom: 0.6rem; }
+  #funnel-right-panel .funnel-card:nth-child(1) { position: absolute; left: 0; right: 0; top: 9.17%; transform: translateY(-50%); }
+  #funnel-right-panel .funnel-card:nth-child(2) { position: absolute; left: 0; right: 0; top: 27.50%; transform: translateY(-50%); }
+  #funnel-right-panel .funnel-card:nth-child(3) { position: absolute; left: 0; right: 0; top: 45.83%; transform: translateY(-50%); }
+  #funnel-right-panel .funnel-card:nth-child(4) { position: absolute; left: 0; right: 0; top: 64.17%; transform: translateY(-50%); }
+  #funnel-right-panel .funnel-card:nth-child(5) { position: absolute; left: 0; right: 0; top: 82.50%; transform: translateY(-50%); }
+}
+
+/* Reveal animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s cubic-bezier(0.4,0,0.2,1), transform 0.6s cubic-bezier(0.4,0,0.2,1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Value pulse */
+@keyframes valuePulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+  100% { transform: scale(1); }
+}
+.value-pulse {
+  animation: valuePulse 0.25s ease;
+}
+
+/* Currency input */
+.currency-input {
+  -moz-appearance: textfield;
+}
+.currency-input::-webkit-outer-spin-button,
+.currency-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+</style>
+</head>
+<body class="bg-cream text-ink font-sans">
+
+<!-- ═══════════════════════════ NAV ═══════════════════════════ -->
+<nav class="fixed top-0 left-0 right-0 z-50 h-16 flex items-center justify-between px-6 md:px-12 bg-cream/82 backdrop-blur-xl border-b border-cream-border">
+  <a href="index.html" class="flex items-center gap-2.5 font-semibold text-sm tracking-tight">
+    <img src="brand_assets/qwickstep.ai iconic mark (white).png" alt="QwickStep AI" class="w-7 h-7" style="filter: brightness(0) saturate(100%);">
+    QwickStep AI
+  </a>
+  <div class="hidden md:flex items-center gap-8">
+    <a href="index.html#services" class="font-mono text-[11px] tracking-wide text-ink-4 hover:text-ink transition-colors duration-200">SERVICES</a>
+    <a href="index.html#reviews" class="font-mono text-[11px] tracking-wide text-ink-4 hover:text-ink transition-colors duration-200">REVIEWS</a>
+    <a href="index.html#case-studies" class="font-mono text-[11px] tracking-wide text-ink-4 hover:text-ink transition-colors duration-200">CASE STUDIES</a>
+    <a href="index.html#faq" class="font-mono text-[11px] tracking-wide text-ink-4 hover:text-ink transition-colors duration-200">FAQ</a>
+    <a href="roi-calculator.html" class="nav-calc-pill active">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="10" y2="10"/><line x1="14" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="10" y2="14"/><line x1="14" y1="14" x2="16" y2="14"/><line x1="8" y1="18" x2="10" y2="18"/><line x1="14" y1="18" x2="16" y2="18"/></svg>
+      ROI CALCULATOR
+    </a>
+    <a href="javascript:void(0)" data-cal-link="hsienjun.ong/digital-coffee" data-cal-config='{"layout":"month_view"}' class="metal-btn">
+      <span class="metal-btn-inner-ring"></span>
+      <span class="metal-btn-face text-xs px-5 py-2.5">Book Your Strategy Call</span>
+    </a>
+  </div>
+  <button id="mobile-menu-btn" class="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5" aria-label="Open menu">
+    <span class="mobile-bar block w-5 h-[1.5px] bg-ink rounded-full" style="transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), opacity 0.2s ease;"></span>
+    <span class="mobile-bar block w-5 h-[1.5px] bg-ink rounded-full" style="transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), opacity 0.2s ease;"></span>
+    <span class="mobile-bar block w-5 h-[1.5px] bg-ink rounded-full" style="transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), opacity 0.2s ease;"></span>
+  </button>
+</nav>
+
+<!-- Mobile menu overlay -->
+<div id="mobile-menu" class="fixed inset-0 z-40 pointer-events-none" style="opacity:0; transition: opacity 0.3s ease;">
+  <div class="absolute inset-0 bg-ink/40 backdrop-blur-sm" id="mobile-menu-backdrop"></div>
+  <div id="mobile-menu-panel" class="absolute top-0 right-0 w-72 h-full bg-cream border-l border-cream-border flex flex-col pt-20 px-8 gap-1" style="transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);">
+    <a href="index.html#services" class="mobile-nav-link font-mono text-[12px] tracking-widest text-ink-3 uppercase py-3 border-b border-cream-border/60 hover:text-ink" style="transition: color 0.2s;">SERVICES</a>
+    <a href="index.html#reviews" class="mobile-nav-link font-mono text-[12px] tracking-widest text-ink-3 uppercase py-3 border-b border-cream-border/60 hover:text-ink" style="transition: color 0.2s;">REVIEWS</a>
+    <a href="index.html#case-studies" class="mobile-nav-link font-mono text-[12px] tracking-widest text-ink-3 uppercase py-3 border-b border-cream-border/60 hover:text-ink" style="transition: color 0.2s;">CASE STUDIES</a>
+    <a href="index.html#faq" class="mobile-nav-link font-mono text-[12px] tracking-widest text-ink-3 uppercase py-3 border-b border-cream-border/60 hover:text-ink" style="transition: color 0.2s;">FAQ</a>
+    <a href="roi-calculator.html" class="nav-calc-pill active mt-3 mb-1 justify-center py-3" style="font-size: 12px; letter-spacing: 0.1em;">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="10" y2="10"/><line x1="14" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="10" y2="14"/><line x1="14" y1="14" x2="16" y2="14"/><line x1="8" y1="18" x2="10" y2="18"/><line x1="14" y1="18" x2="16" y2="18"/></svg>
+      ROI CALCULATOR
+    </a>
+    <div class="mt-4">
+      <a href="javascript:void(0)" data-cal-link="hsienjun.ong/digital-coffee" data-cal-config='{"layout":"month_view"}' class="metal-btn w-full">
+        <span class="metal-btn-inner-ring"></span>
+        <span class="metal-btn-face text-sm px-5 py-3 w-full">Book Your Strategy Call</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════ PAGE HEADER ═══════════════════════════ -->
+<section class="pt-28 pb-16 border-b border-cream-border">
+  <div class="max-w-4xl mx-auto px-6 md:px-12 text-center reveal">
+    <span class="inline-flex items-center gap-1.5 font-mono text-[10px] tracking-widest uppercase text-teal bg-teal-light border border-teal/20 rounded-full px-4 py-1.5 mb-6">
+      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      FREE TOOL
+    </span>
+    <h1 class="font-serif text-4xl md:text-5xl lg:text-[3.5rem] leading-tight mb-4" style="letter-spacing:-0.03em;">Cold Email ROI Calculator</h1>
+    <p class="text-ink-3 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">Calculate exactly how many leads, email accounts, and domains you need to hit your meeting targets. See the math behind every cold email campaign.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ CALCULATOR ═══════════════════════════ -->
+<section class="py-16 md:py-20">
+  <div class="max-w-5xl mx-auto px-6 md:px-12">
+
+    <!-- Currency Selector -->
+    <div class="flex justify-end mb-6 reveal">
+      <div class="flex items-center gap-3">
+        <span class="font-mono text-[11px] tracking-wide text-ink-4">Currency</span>
+        <select id="currency-select" class="bg-white border border-cream-border rounded-lg px-3 py-2 text-sm font-mono text-ink-2 cursor-pointer focus:outline-none focus:border-teal">
+          <option value="USD">$ USD</option>
+          <option value="EUR">&#8364; EUR</option>
+          <option value="GBP">&#163; GBP</option>
+          <option value="AUD">A$ AUD</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Tab Switcher -->
+    <div class="flex justify-center mb-10 reveal">
+      <div class="inline-flex bg-cream-dark rounded-xl p-1.5 border border-cream-border">
+        <button class="tab-btn active px-6 py-3 rounded-lg font-mono text-[11px] tracking-wide uppercase cursor-pointer" data-tab="leads" onclick="switchTab('leads')">
+          <span class="flex items-center gap-2">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            Leads Needed
+          </span>
+        </button>
+        <button class="tab-btn px-6 py-3 rounded-lg font-mono text-[11px] tracking-wide uppercase text-ink-4 cursor-pointer" data-tab="roi" onclick="switchTab('roi')">
+          <span class="flex items-center gap-2">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+            ROI Expected
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ══════ TAB 1: LEADS NEEDED ══════ -->
+    <div id="tab-leads" class="reveal">
+      <!-- Primary Slider -->
+      <div class="text-center mb-6">
+        <h2 class="font-serif text-2xl md:text-3xl mb-2" style="letter-spacing:-0.02em;">How many leads do I need?</h2>
+        <p class="text-ink-4 text-sm">Enter your desired meetings to calculate lead requirements</p>
+      </div>
+
+      <div class="bg-white rounded-2xl border border-cream-border p-8 mb-8" style="box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center gap-2">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <span class="font-medium text-ink-2 text-sm">Desired Meetings per Month</span>
+            <span class="tooltip-trigger">?<span class="tooltip-box">Set your target number of booked meetings per month. This drives all other calculations.</span></span>
+          </div>
+          <span id="meetings-value" class="font-mono text-xl font-semibold text-teal">10</span>
+        </div>
+        <input type="range" id="meetings-slider" min="1" max="100" value="10" class="w-full" oninput="updateState('desiredMeetings', this.value)">
+        <div class="flex justify-between mt-2 text-xs text-ink-4 font-mono">
+          <span>1</span>
+          <span>100</span>
+        </div>
+      </div>
+
+      <!-- Output Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        <div class="output-card highlight bg-white rounded-xl border border-cream-border p-6" style="box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);">
+          <div class="flex items-center justify-between mb-3">
+            <span class="font-mono text-[10px] tracking-widest text-ink-4 uppercase">Leads Required</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div id="leads-required" class="font-serif text-3xl text-teal mb-1">7,500</div>
+          <div class="text-xs text-ink-4">Unique contacts needed</div>
+        </div>
+        <div class="output-card bg-white rounded-xl border border-cream-border p-6" style="box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);">
+          <div class="flex items-center justify-between mb-3">
+            <span class="font-mono text-[10px] tracking-widest text-ink-4 uppercase">Emails to Send</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9B9890" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>
+          </div>
+          <div id="emails-to-send" class="font-serif text-3xl text-ink mb-1">15,000</div>
+          <div class="text-xs text-ink-4">Total monthly volume</div>
+        </div>
+        <div class="output-card bg-white rounded-xl border border-cream-border p-6" style="box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);">
+          <div class="flex items-center justify-between mb-3">
+            <span class="font-mono text-[10px] tracking-widest text-ink-4 uppercase">Daily Volume</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9B9890" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </div>
+          <div id="daily-volume" class="font-serif text-3xl text-ink mb-1">600</div>
+          <div class="text-xs text-ink-4">Emails per day</div>
+        </div>
+        <div class="output-card bg-white rounded-xl border border-cream-border p-6" style="box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);">
+          <div class="flex items-center justify-between mb-3">
+            <span class="font-mono text-[10px] tracking-widest text-ink-4 uppercase">Email Accounts</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9B9890" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 8h20"/><path d="M9 4v4"/></svg>
+          </div>
+          <div id="email-accounts" class="font-serif text-3xl text-ink mb-1">30</div>
+          <div class="text-xs text-ink-4">Sending accounts</div>
+        </div>
+        <div class="output-card bg-white rounded-xl border border-cream-border p-6" style="box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);">
+          <div class="flex items-center justify-between mb-3">
+            <span class="font-mono text-[10px] tracking-widest text-ink-4 uppercase">Domains Needed</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9B9890" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <div id="domains-needed" class="font-serif text-3xl text-ink mb-1">15</div>
+          <div class="text-xs text-ink-4">Separate domains</div>
+        </div>
+        <div class="output-card bg-white rounded-xl border border-cream-border p-6" style="box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);">
+          <div class="flex items-center justify-between mb-3">
+            <span class="font-mono text-[10px] tracking-widest text-ink-4 uppercase">Monthly Cost</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9B9890" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+          </div>
+          <div id="monthly-cost" class="font-serif text-3xl text-ink mb-1">$240</div>
+          <div class="text-xs text-ink-4">Infrastructure only</div>
+        </div>
+      </div>
+
+      <!-- Calculation Breakdown -->
+      <div class="bg-white rounded-2xl border border-cream-border p-8" style="box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);">
+        <h3 class="font-mono text-[11px] tracking-widest text-ink-4 uppercase mb-6">Calculation Breakdown</h3>
+        <div class="space-y-3 font-mono text-sm">
+          <div class="flex justify-between items-center py-2">
+            <span class="text-ink-3">Desired meetings:</span>
+            <span id="bd-meetings" class="font-semibold text-ink">10</span>
+          </div>
+          <div class="flex justify-between items-center py-2">
+            <span class="text-ink-3"><span class="text-ink-4 mr-2">&times;</span> Emails per meeting:</span>
+            <span id="bd-emails-per-meeting" class="font-semibold text-ink">1,500</span>
+          </div>
+          <div class="flex justify-between items-center py-2 border-t border-cream-border">
+            <span class="text-ink-3"><span class="text-ink-4 mr-2">=</span> Total emails needed:</span>
+            <span id="bd-total-emails" class="font-semibold text-ink">15,000</span>
+          </div>
+          <div class="flex justify-between items-center py-2">
+            <span class="text-ink-3"><span class="text-ink-4 mr-2">&divide;</span> Follow-ups per lead:</span>
+            <span id="bd-followups" class="font-semibold text-ink">2</span>
+          </div>
+          <div class="flex justify-between items-center py-2 border-t border-cream-border">
+            <span class="text-ink-3"><span class="text-ink-4 mr-2">=</span> Leads required:</span>
+            <span id="bd-leads" class="font-semibold text-teal text-base">7,500</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════ TAB 2: ROI EXPECTED ══════ -->
+    <div id="tab-roi" class="hidden">
+      <div class="text-center mb-6 reveal">
+        <h2 class="font-serif text-2xl md:text-3xl mb-2" style="letter-spacing:-0.02em;">What's the expected return?</h2>
+        <p class="text-ink-4 text-sm">See how cold email investment translates into revenue</p>
+      </div>
+
+      <!-- ROI Inputs -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <div class="bg-white rounded-2xl border border-cream-border p-8" style="box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);">
+          <div class="flex items-center gap-2 mb-4">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            <span class="font-medium text-ink-2 text-sm">Average Deal Value</span>
+            <span class="tooltip-trigger">?<span class="tooltip-box">The average revenue from a single closed deal. This determines your expected ROI.</span></span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-ink-3 font-mono text-lg" id="deal-currency-symbol">$</span>
+            <input type="number" id="deal-value-input" value="5000" min="100" max="1000000" class="currency-input w-full text-3xl font-serif text-ink bg-transparent border-b-2 border-cream-border focus:border-teal outline-none pb-1 transition-colors duration-200" oninput="updateState('avgDealValue', this.value)">
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl border border-cream-border p-8" style="box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-2">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              <span class="font-medium text-ink-2 text-sm">Expected Close Rate</span>
+              <span class="tooltip-trigger">?<span class="tooltip-box">What percentage of booked meetings convert into paying customers. B2B average is 20-30%.</span></span>
+            </div>
+            <span id="close-rate-value" class="font-mono text-xl font-semibold text-teal">25%</span>
+          </div>
+          <input type="range" id="close-rate-slider" min="5" max="50" value="25" class="w-full" oninput="updateState('closeRate', this.value / 100)">
+          <div class="flex justify-between mt-2 text-xs text-ink-4 font-mono">
+            <span>5%</span>
+            <span>50%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ROI Output Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        <div class="output-card highlight bg-white rounded-xl border border-cream-border p-6" style="box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);">
+          <div class="flex items-center justify-between mb-3">
+            <span class="font-mono text-[10px] tracking-widest text-ink-4 uppercase">Meetings Booked</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </div>
+          <div id="roi-meetings" class="font-serif text-3xl text-teal mb-1">10</div>
+          <div class="text-xs text-ink-4">Per month</div>
+        </div>
+        <div class="output-card bg-white rounded-xl border border-cream-border p-6" style="box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);">
+          <div class="flex items-center justify-between mb-3">
+            <span class="font-mono text-[10px] tracking-widest text-ink-4 uppercase">Deals Closed</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9B9890" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <div id="roi-deals" class="font-serif text-3xl text-ink mb-1">2.5</div>
+          <div class="text-xs text-ink-4">Per month</div>
+        </div>
+        <div class="output-card bg-white rounded-xl border border-cream-border p-6" style="box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);">
+          <div class="flex items-center justify-between mb-3">
+            <span class="font-mono text-[10px] tracking-widest text-ink-4 uppercase">Expected Revenue</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9B9890" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <div id="roi-revenue" class="font-serif text-3xl text-ink mb-1">$12,500</div>
+          <div class="text-xs text-ink-4">Monthly revenue</div>
+        </div>
+      </div>
+
+      <!-- ROI Summary Card -->
+      <div class="bg-white rounded-2xl border-2 border-gold/30 p-8 mb-8" style="box-shadow: 0 2px 12px rgba(212,167,69,0.08);">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+          <div class="text-center">
+            <div class="font-mono text-[10px] tracking-widest text-ink-4 uppercase mb-2">Infrastructure Cost</div>
+            <div id="roi-cost" class="font-serif text-2xl text-ink">$240</div>
+            <div class="text-xs text-ink-4 mt-1">per month</div>
+          </div>
+          <div class="text-center">
+            <div class="font-mono text-[10px] tracking-widest text-gold uppercase mb-2">ROI Multiple</div>
+            <div id="roi-multiple" class="font-serif text-4xl text-gold font-bold">52x</div>
+            <div class="text-xs text-ink-4 mt-1">return on investment</div>
+          </div>
+          <div class="text-center">
+            <div class="font-mono text-[10px] tracking-widest text-ink-4 uppercase mb-2">Net Profit</div>
+            <div id="roi-profit" class="font-serif text-2xl text-teal">$12,260</div>
+            <div class="text-xs text-ink-4 mt-1">per month</div>
+          </div>
+        </div>
+
+        <!-- Cost vs Revenue Bar -->
+        <div class="mt-8 pt-6 border-t border-cream-border">
+          <div class="flex items-center gap-4 mb-3">
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 rounded-sm bg-cream-dark border border-cream-border"></span>
+              <span class="text-xs text-ink-4">Cost</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 rounded-sm bg-teal"></span>
+              <span class="text-xs text-ink-4">Revenue</span>
+            </div>
+          </div>
+          <div class="w-full bg-cream-dark rounded-full h-4 overflow-hidden">
+            <div id="roi-bar" class="h-full rounded-full" style="width: 98%; background: linear-gradient(90deg, #0D9488, #0FB9AD); transition: width 0.5s ease;"></div>
+          </div>
+          <div class="flex justify-between mt-2 text-xs font-mono text-ink-4">
+            <span id="roi-bar-cost">$240</span>
+            <span id="roi-bar-revenue">$12,500</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ROI Callout -->
+      <div class="bg-gradient-to-br from-teal-light to-white rounded-2xl border border-teal/15 p-8 text-center">
+        <p class="text-ink-2 text-lg leading-relaxed">
+          For every <span class="font-semibold text-ink" id="roi-callout-cost">$1</span> spent on infrastructure, you can expect to generate <span class="font-semibold text-teal text-xl" id="roi-callout-return">$52</span> in revenue.
+        </p>
+      </div>
+    </div>
+
+    <!-- ══════ ADVANCED SETTINGS ══════ -->
+    <div class="mt-10 reveal">
+      <div class="bg-white rounded-2xl border border-cream-border overflow-hidden" style="box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);">
+        <!-- Toggle Header -->
+        <button id="advanced-toggle" onclick="toggleAdvanced()" class="w-full flex items-center justify-between px-8 py-6 cursor-pointer hover:bg-cream/50 transition-colors duration-200">
+          <div class="flex items-center gap-3">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6B6860" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            <span class="font-semibold text-ink-2 text-sm">Advanced Settings</span>
+          </div>
+          <svg id="advanced-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9B9890" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.3s ease;"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+
+        <!-- Collapsible Content -->
+        <div id="advanced-content" style="max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1);">
+          <div class="px-8 pb-8 border-t border-cream-border pt-6">
+            <p class="text-ink-4 text-sm mb-8">Customize conversion rates, infrastructure ratios, and cost assumptions</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-2">
+              <!-- Infrastructure Column -->
+              <div>
+                <h4 class="font-mono text-[10px] tracking-widest text-ink-4 uppercase mb-6">Infrastructure</h4>
+
+                <!-- Emails per Account/Day -->
+                <div class="mb-6">
+                  <div class="flex items-center justify-between mb-2">
+                    <div class="flex items-center gap-2">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6B6860" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>
+                      <span class="text-sm text-ink-2 font-medium">Emails per Account/Day</span>
+                      <span class="tooltip-trigger">?<span class="tooltip-box">Safe sending limit per email account per day (15-25 recommended)</span></span>
+                    </div>
+                    <span id="epd-value" class="font-mono text-sm font-semibold text-teal">20</span>
+                  </div>
+                  <input type="range" id="epd-slider" min="10" max="30" value="20" class="w-full" oninput="updateState('emailsPerAccountPerDay', this.value)">
+                  <div class="flex justify-between mt-1 text-[10px] text-ink-4 font-mono"><span>10</span><span>30</span></div>
+                </div>
+
+                <!-- Accounts per Domain -->
+                <div class="mb-6">
+                  <div class="flex items-center justify-between mb-2">
+                    <div class="flex items-center gap-2">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6B6860" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                      <span class="text-sm text-ink-2 font-medium">Accounts per Domain</span>
+                      <span class="tooltip-trigger">?<span class="tooltip-box">Number of email accounts per domain (2-3 recommended to maintain deliverability)</span></span>
+                    </div>
+                    <span id="apd-value" class="font-mono text-sm font-semibold text-teal">2</span>
+                  </div>
+                  <input type="range" id="apd-slider" min="1" max="5" value="2" class="w-full" oninput="updateState('accountsPerDomain', this.value)">
+                  <div class="flex justify-between mt-1 text-[10px] text-ink-4 font-mono"><span>1</span><span>5</span></div>
+                </div>
+
+                <!-- Follow-ups per Sequence -->
+                <div class="mb-6">
+                  <div class="flex items-center justify-between mb-2">
+                    <div class="flex items-center gap-2">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6B6860" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                      <span class="text-sm text-ink-2 font-medium">Follow-ups per Sequence</span>
+                      <span class="tooltip-trigger">?<span class="tooltip-box">Number of follow-up emails sent to each lead in a sequence (2-3 is optimal)</span></span>
+                    </div>
+                    <span id="fps-value" class="font-mono text-sm font-semibold text-teal">2</span>
+                  </div>
+                  <input type="range" id="fps-slider" min="1" max="4" value="2" class="w-full" oninput="updateState('followUpsPerLead', this.value)">
+                  <div class="flex justify-between mt-1 text-[10px] text-ink-4 font-mono"><span>1</span><span>4</span></div>
+                </div>
+
+                <!-- Sending Days per Month -->
+                <div class="mb-6">
+                  <div class="flex items-center justify-between mb-2">
+                    <div class="flex items-center gap-2">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6B6860" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                      <span class="text-sm text-ink-2 font-medium">Sending Days per Month</span>
+                      <span class="tooltip-trigger">?<span class="tooltip-box">Number of business days you send emails per month (weekdays only recommended)</span></span>
+                    </div>
+                    <span id="sdm-value" class="font-mono text-sm font-semibold text-teal">25</span>
+                  </div>
+                  <input type="range" id="sdm-slider" min="15" max="25" value="25" class="w-full" oninput="updateState('sendingDaysPerMonth', this.value)">
+                  <div class="flex justify-between mt-1 text-[10px] text-ink-4 font-mono"><span>15</span><span>25</span></div>
+                </div>
+
+                <!-- Cost per Account -->
+                <div class="mb-6">
+                  <div class="flex items-center justify-between mb-2">
+                    <div class="flex items-center gap-2">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6B6860" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+                      <span class="text-sm text-ink-2 font-medium">Cost per Account</span>
+                      <span class="tooltip-trigger">?<span class="tooltip-box">Monthly cost per email sending account (includes email hosting and warm-up tools)</span></span>
+                    </div>
+                    <span id="cpa-value" class="font-mono text-sm font-semibold text-teal">$8</span>
+                  </div>
+                  <input type="range" id="cpa-slider" min="5" max="20" value="8" class="w-full" oninput="updateState('costPerAccount', this.value)">
+                  <div class="flex justify-between mt-1 text-[10px] text-ink-4 font-mono"><span>$5</span><span>$20</span></div>
+                </div>
+              </div>
+
+              <!-- Performance Column -->
+              <div>
+                <h4 class="font-mono text-[10px] tracking-widest text-ink-4 uppercase mb-6">Performance</h4>
+
+                <!-- Emails per Meeting -->
+                <div class="mb-6">
+                  <div class="flex items-center justify-between mb-2">
+                    <div class="flex items-center gap-2">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6B6860" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                      <span class="text-sm text-ink-2 font-medium">Emails per Meeting</span>
+                      <span class="tooltip-trigger">?<span class="tooltip-box">Average number of emails needed to book one meeting. Depends on your ICP, copy quality, and offer.</span></span>
+                    </div>
+                    <span id="epm-value" class="font-mono text-sm font-semibold text-teal">1,500</span>
+                  </div>
+                  <input type="range" id="epm-slider" min="500" max="5000" value="1500" step="100" class="w-full" oninput="updateState('emailsPerMeeting', this.value)">
+                  <div class="flex justify-between mt-1 text-[10px] text-ink-4 font-mono"><span>500</span><span>5,000</span></div>
+                </div>
+
+                <!-- Response Rate -->
+                <div class="mb-6">
+                  <div class="flex items-center justify-between mb-2">
+                    <div class="flex items-center gap-2">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6B6860" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                      <span class="text-sm text-ink-2 font-medium">Response Rate</span>
+                      <span class="tooltip-trigger">?<span class="tooltip-box">Percentage of emails that get any reply. Industry average for cold email is 1-3%.</span></span>
+                    </div>
+                    <span id="rr-value" class="font-mono text-sm font-semibold text-teal">1.5%</span>
+                  </div>
+                  <input type="range" id="rr-slider" min="5" max="50" value="15" class="w-full" oninput="updateState('responseRate', this.value / 1000)">
+                  <div class="flex justify-between mt-1 text-[10px] text-ink-4 font-mono"><span>0.5%</span><span>5%</span></div>
+                </div>
+
+                <!-- Interested Rate -->
+                <div class="mb-6">
+                  <div class="flex items-center justify-between mb-2">
+                    <div class="flex items-center gap-2">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6B6860" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                      <span class="text-sm text-ink-2 font-medium">Interested Rate</span>
+                      <span class="tooltip-trigger">?<span class="tooltip-box">Percentage of responses that express positive interest. Typically 15-30% of all replies.</span></span>
+                    </div>
+                    <span id="ir-value" class="font-mono text-sm font-semibold text-teal">20%</span>
+                  </div>
+                  <input type="range" id="ir-slider" min="10" max="40" value="20" class="w-full" oninput="updateState('interestedRate', this.value / 100)">
+                  <div class="flex justify-between mt-1 text-[10px] text-ink-4 font-mono"><span>10%</span><span>40%</span></div>
+                </div>
+
+                <!-- Booking Rate -->
+                <div class="mb-6">
+                  <div class="flex items-center justify-between mb-2">
+                    <div class="flex items-center gap-2">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6B6860" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                      <span class="text-sm text-ink-2 font-medium">Booking Rate</span>
+                      <span class="tooltip-trigger">?<span class="tooltip-box">Percentage of interested leads that actually book a meeting. 25-40% is typical.</span></span>
+                    </div>
+                    <span id="br-value" class="font-mono text-sm font-semibold text-teal">30%</span>
+                  </div>
+                  <input type="range" id="br-slider" min="20" max="60" value="30" class="w-full" oninput="updateState('bookingRate', this.value / 100)">
+                  <div class="flex justify-between mt-1 text-[10px] text-ink-4 font-mono"><span>20%</span><span>60%</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════ FUNNEL VISUALIZATION ═══════════════════════════ -->
+<section class="py-16 md:py-24 border-t border-cream-border">
+  <div class="max-w-5xl mx-auto px-6 md:px-12">
+    <div class="text-center mb-12 reveal">
+      <span class="inline-flex items-center gap-1.5 font-mono text-[10px] tracking-widest uppercase text-teal bg-teal-light border border-teal/20 rounded-full px-4 py-1.5 mb-6">INTERACTIVE</span>
+      <h2 class="font-serif text-3xl md:text-4xl mb-3" style="letter-spacing:-0.02em;">Conversion Funnel Simulator</h2>
+      <p class="text-ink-4 text-sm max-w-xl mx-auto">See exactly how leads flow through your cold email funnel. Adjust the conversion rates at each stage to match your business.</p>
+    </div>
+
+    <div class="reveal">
+      <div class="bg-white rounded-2xl border border-cream-border p-8 md:p-10" style="box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);">
+
+        <!-- Funnel Input: Leads Contacted -->
+        <div class="flex items-center justify-center gap-4 mb-12">
+          <div class="flex items-center gap-2">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <span class="text-sm font-medium text-ink-2">Leads Contacted</span>
+          </div>
+          <input type="number" id="funnel-leads" value="10000" min="1" max="100000" class="currency-input bg-cream border border-cream-border rounded-lg px-4 py-2 text-lg font-mono font-semibold text-teal w-32 text-center focus:outline-none focus:border-teal transition-colors duration-200" oninput="updateFunnel()">
+        </div>
+
+        <!-- SVG Funnel -->
+        <div class="flex flex-col md:flex-row md:items-stretch gap-8 md:gap-0">
+          <!-- Funnel graphic -->
+          <div class="w-full md:w-3/5 flex justify-center md:items-start">
+            <svg id="funnel-svg" viewBox="0 0 500 420" class="w-full max-w-lg" style="filter: drop-shadow(0 4px 12px rgba(0,0,0,0.06));">
+              <defs>
+                <linearGradient id="fg0" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#0D9488"/><stop offset="100%" stop-color="#10B981"/></linearGradient>
+                <linearGradient id="fg1" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#14B8A6"/><stop offset="100%" stop-color="#34D399"/></linearGradient>
+                <linearGradient id="fg2" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#34D399"/><stop offset="100%" stop-color="#6EE7B7"/></linearGradient>
+                <linearGradient id="fg3" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#6EE7B7"/><stop offset="100%" stop-color="#A7F3D0"/></linearGradient>
+                <linearGradient id="fg4" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#D4A745"/><stop offset="100%" stop-color="#E8C96A"/></linearGradient>
+              </defs>
+              <!-- Stage 0: Leads - trapezoid -->
+              <path id="funnel-shape-0" d="M10,5 L490,5 L460,72 L40,72 Z" fill="url(#fg0)" rx="6" style="transition: d 0.5s ease;"/>
+              <text x="250" y="32" text-anchor="middle" fill="white" font-family="DM Sans" font-size="13" font-weight="600">Leads Contacted</text>
+              <text x="250" y="56" text-anchor="middle" fill="white" font-family="DM Mono" font-size="18" font-weight="700" id="funnel-count-0">10,000</text>
+
+              <!-- Stage 1: Replies - trapezoid -->
+              <path id="funnel-shape-1" d="M55,82 L445,82 L415,149 L85,149 Z" fill="url(#fg1)" style="transition: d 0.5s ease;"/>
+              <text x="250" y="109" text-anchor="middle" fill="white" font-family="DM Sans" font-size="13" font-weight="600">Replies</text>
+              <text x="250" y="135" text-anchor="middle" fill="white" font-family="DM Mono" font-size="18" font-weight="700" id="funnel-count-1">30</text>
+
+              <!-- Stage 2: Positive Replies - trapezoid -->
+              <path id="funnel-shape-2" d="M100,159 L400,159 L370,226 L130,226 Z" fill="url(#fg2)" style="transition: d 0.5s ease;"/>
+              <text x="250" y="186" text-anchor="middle" fill="#0F766E" font-family="DM Sans" font-size="13" font-weight="600">Positive Replies</text>
+              <text x="250" y="212" text-anchor="middle" fill="#0F766E" font-family="DM Mono" font-size="18" font-weight="700" id="funnel-count-2">15</text>
+
+              <!-- Stage 3: Meetings - trapezoid -->
+              <path id="funnel-shape-3" d="M145,236 L355,236 L330,303 L170,303 Z" fill="url(#fg3)" style="transition: d 0.5s ease;"/>
+              <text x="250" y="263" text-anchor="middle" fill="#115E59" font-family="DM Sans" font-size="13" font-weight="600">Meetings Booked</text>
+              <text x="250" y="289" text-anchor="middle" fill="#115E59" font-family="DM Mono" font-size="18" font-weight="700" id="funnel-count-3">5</text>
+
+              <!-- Stage 4: Closed - trapezoid (bottom, narrowest) -->
+              <path id="funnel-shape-4" d="M185,313 L315,313 L295,380 L205,380 Z" fill="url(#fg4)" style="transition: d 0.5s ease;"/>
+              <text x="250" y="340" text-anchor="middle" fill="#78350F" font-family="DM Sans" font-size="13" font-weight="600">Closed Deals</text>
+              <text x="250" y="366" text-anchor="middle" fill="#78350F" font-family="DM Mono" font-size="18" font-weight="700" id="funnel-count-4">1</text>
+
+              <!-- Connecting lines on right side with dots -->
+              <line x1="475" y1="38" x2="500" y2="38" stroke="#DDD8CF" stroke-width="1.5"/>
+              <circle cx="500" cy="38" r="3" fill="#DDD8CF"/>
+              <line x1="430" y1="115" x2="500" y2="115" stroke="#DDD8CF" stroke-width="1.5"/>
+              <circle cx="500" cy="115" r="3" fill="#DDD8CF"/>
+              <line x1="385" y1="192" x2="500" y2="192" stroke="#DDD8CF" stroke-width="1.5"/>
+              <circle cx="500" cy="192" r="3" fill="#DDD8CF"/>
+              <line x1="342" y1="269" x2="500" y2="269" stroke="#DDD8CF" stroke-width="1.5"/>
+              <circle cx="500" cy="269" r="3" fill="#DDD8CF"/>
+              <line x1="305" y1="346" x2="500" y2="346" stroke="#DDD8CF" stroke-width="1.5"/>
+              <circle cx="500" cy="346" r="3" fill="#DDD8CF"/>
+            </svg>
+          </div>
+
+          <!-- Conversion rate controls (stacked vertically on right) -->
+          <div id="funnel-right-panel" class="w-full md:w-2/5 flex flex-col gap-3 md:pl-4 md:relative">
+            <!-- Stage labels with rate inputs -->
+            <div class="funnel-card flex items-center gap-3 bg-cream/80 rounded-xl px-5 py-4 border border-cream-border">
+              <div class="w-3 h-3 rounded-full flex-shrink-0" style="background: #0D9488;"></div>
+              <div class="flex-1 min-w-0">
+                <div class="font-mono text-[10px] tracking-widest text-ink-4 uppercase">Leads</div>
+                <div class="font-serif text-lg text-ink" id="funnel-label-0">10,000</div>
+              </div>
+              <span class="text-xs text-ink-4 font-mono">100%</span>
+            </div>
+
+            <div class="funnel-card flex items-center gap-3 bg-cream/80 rounded-xl px-5 py-4 border border-cream-border">
+              <div class="w-3 h-3 rounded-full flex-shrink-0" style="background: #14B8A6;"></div>
+              <div class="flex-1 min-w-0">
+                <div class="font-mono text-[10px] tracking-widest text-ink-4 uppercase">Reply Rate</div>
+                <div class="font-serif text-lg text-ink" id="funnel-label-1">30</div>
+              </div>
+              <div class="flex items-center gap-1 flex-shrink-0">
+                <input type="number" id="funnel-rate-1" value="3" min="0.1" max="100" step="0.1" class="currency-input bg-white border border-cream-border rounded-lg px-2 py-1.5 text-sm font-mono font-semibold text-teal w-16 text-center focus:outline-none focus:border-teal" oninput="updateFunnel()">
+                <span class="text-xs text-ink-4 font-mono">%</span>
+              </div>
+            </div>
+
+            <div class="funnel-card flex items-center gap-3 bg-cream/80 rounded-xl px-5 py-4 border border-cream-border">
+              <div class="w-3 h-3 rounded-full flex-shrink-0" style="background: #34D399;"></div>
+              <div class="flex-1 min-w-0">
+                <div class="font-mono text-[10px] tracking-widest text-ink-4 uppercase">Positive Reply</div>
+                <div class="font-serif text-lg text-ink" id="funnel-label-2">15</div>
+              </div>
+              <div class="flex items-center gap-1 flex-shrink-0">
+                <input type="number" id="funnel-rate-2" value="50" min="1" max="100" step="1" class="currency-input bg-white border border-cream-border rounded-lg px-2 py-1.5 text-sm font-mono font-semibold text-teal w-16 text-center focus:outline-none focus:border-teal" oninput="updateFunnel()">
+                <span class="text-xs text-ink-4 font-mono">%</span>
+              </div>
+            </div>
+
+            <div class="funnel-card flex items-center gap-3 bg-cream/80 rounded-xl px-5 py-4 border border-cream-border">
+              <div class="w-3 h-3 rounded-full flex-shrink-0" style="background: #6EE7B7;"></div>
+              <div class="flex-1 min-w-0">
+                <div class="font-mono text-[10px] tracking-widest text-ink-4 uppercase">Meeting Booked</div>
+                <div class="font-serif text-lg text-ink" id="funnel-label-3">5</div>
+              </div>
+              <div class="flex items-center gap-1 flex-shrink-0">
+                <input type="number" id="funnel-rate-3" value="33" min="1" max="100" step="1" class="currency-input bg-white border border-cream-border rounded-lg px-2 py-1.5 text-sm font-mono font-semibold text-teal w-16 text-center focus:outline-none focus:border-teal" oninput="updateFunnel()">
+                <span class="text-xs text-ink-4 font-mono">%</span>
+              </div>
+            </div>
+
+            <div class="funnel-card flex items-center gap-3 bg-gradient-to-r from-gold/5 to-gold/10 rounded-xl px-5 py-4 border border-gold/25">
+              <div class="w-3 h-3 rounded-full flex-shrink-0" style="background: #D4A745;"></div>
+              <div class="flex-1 min-w-0">
+                <div class="font-mono text-[10px] tracking-widest text-gold-dark uppercase">Closed Deals</div>
+                <div class="font-serif text-lg text-gold-dark font-bold" id="funnel-label-4">1</div>
+              </div>
+              <div class="flex items-center gap-1 flex-shrink-0">
+                <input type="number" id="funnel-rate-4" value="25" min="1" max="100" step="1" class="currency-input bg-white border border-gold/30 rounded-lg px-2 py-1.5 text-sm font-mono font-semibold text-gold-dark w-16 text-center focus:outline-none focus:border-gold" oninput="updateFunnel()">
+                <span class="text-xs text-ink-4 font-mono">%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Funnel Summary -->
+        <div class="mt-10 pt-6 border-t border-cream-border">
+          <div class="flex flex-col md:flex-row items-center justify-center gap-2 text-sm text-ink-3">
+            <span>Out of</span>
+            <span class="font-semibold text-ink font-mono" id="funnel-summary-leads">10,000</span>
+            <span>leads contacted, you can expect</span>
+            <span class="font-semibold text-teal font-mono text-xl" id="funnel-summary-closed">1</span>
+            <span>closed deal(s)</span>
+          </div>
+          <div class="flex flex-col md:flex-row items-center justify-center gap-2 text-sm text-ink-3 mt-3 pt-3 border-t border-cream-border/60">
+            <span>With an average client LTV of</span>
+            <div class="flex items-center gap-0.5">
+              <span id="funnel-deal-currency" class="font-mono text-sm text-ink-3">$</span>
+              <input type="number" id="funnel-avg-deal" value="5000" min="0" max="10000000" class="currency-input bg-cream border border-cream-border rounded-lg px-2 py-1 text-sm font-mono font-semibold text-teal w-28 text-center focus:outline-none focus:border-teal transition-colors duration-200" oninput="updateState('avgDealValue', this.value); updateFunnel();">
+            </div>
+            <span>you can expect</span>
+            <span class="font-semibold text-teal font-mono text-xl" id="funnel-summary-revenue">$5,000</span>
+            <span>in new revenue</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ BEST PRACTICES ═══════════════════════════ -->
+<section class="py-16 md:py-20 border-t border-cream-border">
+  <div class="max-w-5xl mx-auto px-6 md:px-12">
+    <div class="reveal">
+      <div class="bg-gradient-to-br from-teal-light to-cream rounded-2xl border border-teal/15 p-8 md:p-10">
+        <div class="flex items-start gap-4 mb-6">
+          <div class="w-10 h-10 rounded-xl bg-teal/10 flex items-center justify-center flex-shrink-0">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          </div>
+          <h3 class="font-serif text-xl md:text-2xl mt-0.5">Cold Email Best Practices</h3>
+        </div>
+        <div class="space-y-4 ml-14">
+          <div class="flex items-start gap-3">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="mt-1 flex-shrink-0"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            <span class="text-ink-3 text-sm leading-relaxed">Warm up new domains for 2-3 weeks before sending cold emails</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="mt-1 flex-shrink-0"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            <span class="text-ink-3 text-sm leading-relaxed">Never exceed 4 emails per sequence to the same prospect</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="mt-1 flex-shrink-0"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            <span class="text-ink-3 text-sm leading-relaxed">Use separate domains from your main business domain to protect deliverability</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="mt-1 flex-shrink-0"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            <span class="text-ink-3 text-sm leading-relaxed">Multi-channel outreach (email + LinkedIn) can increase booking rates to ~50%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ FINAL CTA ═══════════════════════════ -->
+<section class="py-24 md:py-32 border-t border-cream-border">
+  <div class="max-w-3xl mx-auto px-6 md:px-12 text-center reveal">
+    <h2 class="font-serif text-4xl md:text-5xl lg:text-[3.5rem] leading-tight mb-6" style="letter-spacing:-0.03em;">Ready to build your outbound machine?</h2>
+    <p class="text-ink-3 text-base md:text-lg leading-relaxed mb-10 max-w-xl mx-auto">Book a 30-minute strategy call and we'll map out the exact cold email infrastructure for your business.</p>
+    <a href="javascript:void(0)" data-cal-link="hsienjun.ong/digital-coffee" data-cal-config='{"layout":"month_view"}' class="liquid-btn">
+      <span class="liquid-btn-glass"></span>
+      <span class="liquid-btn-inner text-lg px-12 py-5">Book Your Strategy Call</span>
+    </a>
+    <p class="italic text-ink-4 text-sm mt-5">30 minutes. No pitch deck. No pressure.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ FOOTER ═══════════════════════════ -->
+<footer class="border-t border-cream-border py-12">
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+      <a href="index.html" class="flex items-center gap-2.5 font-semibold text-sm tracking-tight">
+        <img src="brand_assets/qwickstep.ai iconic mark (white).png" alt="QwickStep AI" class="w-6 h-6" style="filter: brightness(0) saturate(100%);">
+        QwickStep AI
+      </a>
+      <div class="flex items-center gap-6 text-sm text-ink-4">
+        <a href="index.html#reviews" class="hover:text-ink transition-colors duration-200">Reviews and Case Studies</a>
+        <a href="index.html#faq" class="hover:text-ink transition-colors duration-200">FAQ</a>
+        <a href="javascript:void(0)" data-cal-link="hsienjun.ong/digital-coffee" data-cal-config='{"layout":"month_view"}' class="hover:text-gold transition-colors duration-200">Book Your Strategy Call</a>
+      </div>
+    </div>
+    <div class="mt-8 pt-6 border-t border-cream-border flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-ink-4">
+      <p>Calculations based on industry benchmarks. Actual results may vary based on your market, copy quality, and targeting accuracy.</p>
+      <div class="flex items-center gap-4 flex-shrink-0">
+        <a href="#" class="hover:text-ink transition-colors duration-200">Privacy Policy</a>
+        <a href="#" class="hover:text-ink transition-colors duration-200">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ═══════════════════════════ STATE & CALCULATIONS ═══════════════════════════
+const state = {
+  desiredMeetings: 10,
+  emailsPerAccountPerDay: 20,
+  accountsPerDomain: 2,
+  followUpsPerLead: 2,
+  sendingDaysPerMonth: 25,
+  costPerAccount: 8,
+  emailsPerMeeting: 1500,
+  responseRate: 0.015,
+  interestedRate: 0.20,
+  bookingRate: 0.30,
+  avgDealValue: 5000,
+  closeRate: 0.25,
+};
+
+const currencySymbols = { USD: '$', EUR: '\u20AC', GBP: '\u00A3', AUD: 'A$' };
+let currentCurrency = 'USD';
+
+function getCurrencySymbol() {
+  return currencySymbols[currentCurrency] || '$';
+}
+
+function fmt(n) {
+  return Math.round(n).toLocaleString('en-US');
+}
+
+function fmtCurrency(n) {
+  return getCurrencySymbol() + fmt(n);
+}
+
+function fmtDecimal(n, decimals) {
+  if (Number.isInteger(n) || Math.abs(n - Math.round(n)) < 0.001) return fmt(n);
+  return n.toLocaleString('en-US', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+}
+
+function pulseElement(el) {
+  el.classList.remove('value-pulse');
+  void el.offsetWidth;
+  el.classList.add('value-pulse');
+}
+
+function updateSliderFill(slider) {
+  const min = parseFloat(slider.min);
+  const max = parseFloat(slider.max);
+  const val = parseFloat(slider.value);
+  const pct = ((val - min) / (max - min)) * 100;
+  slider.style.background = 'linear-gradient(to right, #0D9488 0%, #0D9488 ' + pct + '%, #DDD8CF ' + pct + '%, #DDD8CF 100%)';
+}
+
+function updateState(key, value) {
+  state[key] = parseFloat(value);
+  recalculate();
+}
+
+function recalculate() {
+  // Leads Needed calculations
+  const totalEmails = state.desiredMeetings * state.emailsPerMeeting;
+  const leadsRequired = totalEmails / state.followUpsPerLead;
+  const dailyVolume = Math.round(totalEmails / state.sendingDaysPerMonth);
+  const emailAccounts = Math.ceil(dailyVolume / state.emailsPerAccountPerDay);
+  const domainsNeeded = Math.ceil(emailAccounts / state.accountsPerDomain);
+  const monthlyCost = emailAccounts * state.costPerAccount;
+
+  // ROI calculations
+  const meetingsBooked = state.desiredMeetings;
+  const dealsClosed = meetingsBooked * state.closeRate;
+  const expectedRevenue = dealsClosed * state.avgDealValue;
+  const roiMultiple = monthlyCost > 0 ? Math.round(expectedRevenue / monthlyCost) : 0;
+  const netProfit = expectedRevenue - monthlyCost;
+
+  // Update Tab 1 outputs
+  updateOutput('leads-required', fmt(leadsRequired));
+  updateOutput('emails-to-send', fmt(totalEmails));
+  updateOutput('daily-volume', fmt(dailyVolume));
+  updateOutput('email-accounts', fmt(emailAccounts));
+  updateOutput('domains-needed', fmt(domainsNeeded));
+  updateOutput('monthly-cost', fmtCurrency(monthlyCost));
+
+  // Update breakdown
+  setText('bd-meetings', fmt(state.desiredMeetings));
+  setText('bd-emails-per-meeting', fmt(state.emailsPerMeeting));
+  setText('bd-total-emails', fmt(totalEmails));
+  setText('bd-followups', fmt(state.followUpsPerLead));
+  setText('bd-leads', fmt(leadsRequired));
+
+  // Update slider displays
+  setText('meetings-value', fmt(state.desiredMeetings));
+  setText('epd-value', fmt(state.emailsPerAccountPerDay));
+  setText('apd-value', fmt(state.accountsPerDomain));
+  setText('fps-value', fmt(state.followUpsPerLead));
+  setText('sdm-value', fmt(state.sendingDaysPerMonth));
+  setText('cpa-value', getCurrencySymbol() + fmt(state.costPerAccount));
+  setText('epm-value', fmt(state.emailsPerMeeting));
+  setText('rr-value', (state.responseRate * 100).toFixed(1) + '%');
+  setText('ir-value', Math.round(state.interestedRate * 100) + '%');
+  setText('br-value', Math.round(state.bookingRate * 100) + '%');
+  setText('close-rate-value', Math.round(state.closeRate * 100) + '%');
+
+  // Update Tab 2 outputs
+  updateOutput('roi-meetings', fmt(meetingsBooked));
+  updateOutput('roi-deals', fmtDecimal(dealsClosed, 1));
+  updateOutput('roi-revenue', fmtCurrency(expectedRevenue));
+  setText('roi-cost', fmtCurrency(monthlyCost));
+  setText('roi-multiple', roiMultiple + 'x');
+  setText('roi-profit', fmtCurrency(netProfit));
+  setText('roi-bar-cost', fmtCurrency(monthlyCost));
+  setText('roi-bar-revenue', fmtCurrency(expectedRevenue));
+
+  // Update ROI bar width (cost proportion)
+  const barEl = document.getElementById('roi-bar');
+  if (barEl && expectedRevenue > 0) {
+    const pct = Math.min(98, Math.max(2, (1 - monthlyCost / expectedRevenue) * 100));
+    barEl.style.width = pct + '%';
+  }
+
+  // Update ROI callout
+  setText('roi-callout-cost', getCurrencySymbol() + '1');
+  setText('roi-callout-return', getCurrencySymbol() + roiMultiple);
+
+  // Update currency symbol on deal value input
+  setText('deal-currency-symbol', getCurrencySymbol());
+
+  // Sync funnel revenue display
+  updateFunnel();
+
+  // Update all slider fills
+  document.querySelectorAll('input[type="range"]').forEach(updateSliderFill);
+}
+
+function updateOutput(id, value) {
+  const el = document.getElementById(id);
+  if (el && el.textContent !== value) {
+    el.textContent = value;
+    pulseElement(el);
+  }
+}
+
+function setText(id, value) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = value;
+}
+
+// ═══════════════════════════ TAB SWITCHING ═══════════════════════════
+function switchTab(tab) {
+  document.querySelectorAll('.tab-btn').forEach(function(btn) {
+    btn.classList.toggle('active', btn.dataset.tab === tab);
+    if (btn.dataset.tab !== tab) btn.classList.add('text-ink-4');
+    else btn.classList.remove('text-ink-4');
+  });
+  document.getElementById('tab-leads').classList.toggle('hidden', tab !== 'leads');
+  document.getElementById('tab-roi').classList.toggle('hidden', tab !== 'roi');
+}
+
+// ═══════════════════════════ ADVANCED SETTINGS ═══════════════════════════
+let advancedOpen = false;
+function toggleAdvanced() {
+  advancedOpen = !advancedOpen;
+  const content = document.getElementById('advanced-content');
+  const chevron = document.getElementById('advanced-chevron');
+  if (advancedOpen) {
+    content.style.maxHeight = content.scrollHeight + 'px';
+    chevron.style.transform = 'rotate(180deg)';
+  } else {
+    content.style.maxHeight = '0';
+    chevron.style.transform = 'rotate(0)';
+  }
+}
+
+// ═══════════════════════════ FUNNEL ═══════════════════════════
+function updateFunnel() {
+  const leads = parseFloat(document.getElementById('funnel-leads').value) || 0;
+  const replyRate = (parseFloat(document.getElementById('funnel-rate-1').value) || 0) / 100;
+  const positiveRate = (parseFloat(document.getElementById('funnel-rate-2').value) || 0) / 100;
+  const bookRate = (parseFloat(document.getElementById('funnel-rate-3').value) || 0) / 100;
+  const closeRate = (parseFloat(document.getElementById('funnel-rate-4').value) || 0) / 100;
+
+  const replies = leads * replyRate;
+  const positive = replies * positiveRate;
+  const meetings = positive * bookRate;
+  const closed = meetings * closeRate;
+
+  const stages = [leads, replies, positive, meetings, closed];
+
+  // Format value for display
+  function fmtVal(v) {
+    return v < 1 && v > 0 ? v.toFixed(1) : fmt(Math.round(v));
+  }
+
+  // Update SVG text counts + side label counts
+  for (var i = 0; i < 5; i++) {
+    var val = fmtVal(stages[i]);
+    var countEl = document.getElementById('funnel-count-' + i);
+    if (countEl) countEl.textContent = val;
+    var labelEl = document.getElementById('funnel-label-' + i);
+    if (labelEl) labelEl.textContent = val;
+  }
+
+  // Update summary
+  setText('funnel-summary-leads', fmt(Math.round(leads)));
+  setText('funnel-summary-closed', fmtVal(closed));
+
+  // Update revenue summary
+  const funnelDealInput = document.getElementById('funnel-avg-deal');
+  if (funnelDealInput && document.activeElement !== funnelDealInput) {
+    funnelDealInput.value = state.avgDealValue;
+  }
+  setText('funnel-deal-currency', getCurrencySymbol());
+  setText('funnel-summary-revenue', fmtCurrency(Math.round(closed) * state.avgDealValue));
+}
+
+// ═══════════════════════════ CURRENCY ═══════════════════════════
+document.getElementById('currency-select').addEventListener('change', function() {
+  currentCurrency = this.value;
+  recalculate();
+});
+
+// ═══════════════════════════ INIT ═══════════════════════════
+recalculate();
+updateFunnel();
+
+// Reveal animation
+const observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
+
+// ═══════════════════════════ MOBILE MENU ═══════════════════════════
+(function() {
+  var btn = document.getElementById('mobile-menu-btn');
+  var menu = document.getElementById('mobile-menu');
+  var panel = document.getElementById('mobile-menu-panel');
+  var backdrop = document.getElementById('mobile-menu-backdrop');
+  if (!btn || !menu || !panel) return;
+
+  var isOpen = false;
+  var bars = btn.querySelectorAll('.mobile-bar');
+
+  function openMenu() {
+    isOpen = true;
+    menu.style.opacity = '1';
+    menu.style.pointerEvents = 'auto';
+    panel.style.transform = 'translateX(0)';
+    document.body.style.overflow = 'hidden';
+    if (bars[0]) { bars[0].style.transform = 'translateY(4.5px) rotate(45deg)'; }
+    if (bars[1]) { bars[1].style.opacity = '0'; }
+    if (bars[2]) { bars[2].style.transform = 'translateY(-4.5px) rotate(-45deg)'; }
+  }
+
+  function closeMenu() {
+    isOpen = false;
+    menu.style.opacity = '0';
+    menu.style.pointerEvents = 'none';
+    panel.style.transform = 'translateX(100%)';
+    document.body.style.overflow = '';
+    if (bars[0]) { bars[0].style.transform = ''; }
+    if (bars[1]) { bars[1].style.opacity = '1'; }
+    if (bars[2]) { bars[2].style.transform = ''; }
+  }
+
+  btn.addEventListener('click', function() { isOpen ? closeMenu() : openMenu(); });
+  if (backdrop) backdrop.addEventListener('click', closeMenu);
+  menu.querySelectorAll('.mobile-nav-link').forEach(function(link) {
+    link.addEventListener('click', closeMenu);
+  });
+})();
+</script>
+</body>
+</html>
