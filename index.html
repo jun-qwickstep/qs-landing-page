@@ -526,6 +526,24 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
 .review-scroll::-webkit-scrollbar-thumb { background: #DDD8CF; border-radius: 3px; }
 .review-card, .case-card { scroll-snap-align: start; flex-shrink: 0; }
 
+/* Case study 2-row grid scroll */
+.case-scroll {
+  display: grid;
+  grid-template-rows: repeat(2, auto);
+  grid-auto-flow: column;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 16px;
+  scrollbar-width: thin;
+  scrollbar-color: #DDD8CF transparent;
+}
+.case-scroll::-webkit-scrollbar { height: 6px; }
+.case-scroll::-webkit-scrollbar-track { background: transparent; }
+.case-scroll::-webkit-scrollbar-thumb { background: #DDD8CF; border-radius: 3px; }
+.case-scroll .case-card { scroll-snap-align: start; }
+
 /* Comparison row hover */
 .compare-row { transition: background-color 0.2s ease; }
 .compare-row:hover { background-color: rgba(212,167,69,0.03); }
@@ -1319,7 +1337,7 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
     <div class="mb-4 reveal"><span class="font-mono text-[11px] tracking-widest text-ink-4 uppercase">PROOF OF WORK</span></div>
     <h2 class="font-serif text-3xl md:text-4xl leading-tight mb-12 reveal" style="letter-spacing:-0.025em;">Results we're proud to put our name on.</h2>
 
-    <div class="review-scroll reveal">
+    <div class="case-scroll reveal">
       <!-- Case Study 0: The Mobile Tire Guys (AI Receptionist) -->
       <div class="case-card w-[85vw] sm:w-[540px] md:w-[580px] bg-white rounded-xl border border-cream-border overflow-hidden flex flex-col min-h-[480px]">
         <div class="p-8 pb-0">
@@ -1475,6 +1493,126 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
               <span class="font-semibold text-gold">1M+ Impressions</span><span class="text-cream-border">|</span>
               <span class="font-semibold text-ink">95% Cost Cut</span><span class="text-cream-border">|</span>
               <span class="font-semibold text-ink">4x Content Output</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case Study 5: Homicide Zero -->
+      <div class="case-card w-[85vw] sm:w-[540px] md:w-[580px] bg-white rounded-xl border border-cream-border overflow-hidden flex flex-col min-h-[480px]">
+        <div class="p-8 pb-0">
+          <div class="flex flex-wrap items-center gap-2 mb-4">
+            <span class="font-mono text-[10px] tracking-widest text-gold uppercase">PUBLIC SAFETY</span>
+            <span class="text-cream-border">|</span>
+            <span class="font-mono text-[10px] tracking-widest text-ink-4 uppercase">Homicide Zero</span>
+          </div>
+          <h3 class="font-serif text-xl leading-tight mb-6" style="letter-spacing:-0.02em;">Staff Freed from the Phones. AI Receptionist Handles Inbound Around the Clock so the Team Can Focus on Preventing Youth Violence.</h3>
+        </div>
+        <div class="px-8 pb-8 flex-1 flex flex-col gap-5">
+          <div>
+            <p class="font-mono text-[10px] tracking-widest text-ink-4 uppercase mb-2">THE PROBLEM</p>
+            <p class="text-ink-3 text-sm leading-relaxed">Manual call handling was pulling staff away from mission-critical work: refining threat assessments and supporting counselors, law enforcement, and community members. After-hours inquiries went unanswered, there was no emergency protocol for urgent callers, and no call data was being captured in their CRM.</p>
+          </div>
+          <div>
+            <p class="font-mono text-[10px] tracking-widest text-ink-4 uppercase mb-2">THE SOLUTION</p>
+            <p class="text-ink-3 text-sm leading-relaxed">QwickStep AI deployed a 24/7 AI Receptionist ("Ella") on VAPI with a RAG-enabled knowledge base covering Homicide Zero's platform, tools, and intervention guidance. The agent qualifies callers by role and organization type, detects emergency language and redirects to 911, offers live agent handoff for sensitive inquiries, and auto-logs every call into Monday.com via n8n.</p>
+          </div>
+          <div class="pt-3 border-t border-cream-border mt-auto">
+            <p class="font-mono text-[10px] tracking-widest text-ink-4 uppercase mb-3">RESULTS</p>
+            <div class="flex flex-nowrap items-center gap-2 text-sm whitespace-nowrap">
+              <span class="font-semibold text-gold">24/7 Inbound Coverage</span><span class="text-cream-border">|</span>
+              <span class="font-semibold text-ink">Emergency Protocol Built-In</span><span class="text-cream-border">|</span>
+              <span class="font-semibold text-ink">CRM Auto-Logged</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case Study 6: Alpha Touch -->
+      <div class="case-card w-[85vw] sm:w-[540px] md:w-[580px] bg-white rounded-xl border border-cream-border overflow-hidden flex flex-col min-h-[480px]">
+        <div class="p-8 pb-0">
+          <div class="flex flex-wrap items-center gap-2 mb-4">
+            <span class="font-mono text-[10px] tracking-widest text-gold uppercase">E-COMMERCE</span>
+            <span class="text-cream-border">|</span>
+            <span class="font-mono text-[10px] tracking-widest text-ink-4 uppercase">Alpha Touch</span>
+          </div>
+          <h3 class="font-serif text-xl leading-tight mb-6" style="letter-spacing:-0.02em;">Every Abandoned Cart Gets a Call Within 2 Hours. AI Handles Objections and Sends Discounts Automatically.</h3>
+        </div>
+        <div class="px-8 pb-8 flex-1 flex flex-col gap-5">
+          <div>
+            <p class="font-mono text-[10px] tracking-widest text-ink-4 uppercase mb-2">THE PROBLEM</p>
+            <p class="text-ink-3 text-sm leading-relaxed">Alpha Touch's Shopify store was losing revenue to abandoned checkouts with no automated recovery in place. Customers who left for price, shipping questions, or product doubts were never followed up on, and there was no system to re-engage them at scale or in time.</p>
+          </div>
+          <div>
+            <p class="font-mono text-[10px] tracking-widest text-ink-4 uppercase mb-2">THE SOLUTION</p>
+            <p class="text-ink-3 text-sm leading-relaxed">QwickStep AI built an AI Voice Agent that calls every abandoned cart within 2 hours. The agent handles objections live: price hesitation triggers a personalized discount code via SMS, while forgotten checkouts receive just the cart link. If unanswered, it retries after 30 minutes then sends an SMS fallback. US and UK customers are reached from local numbers within their time zone, and every call transcript is logged in Airtable for objection analytics.</p>
+          </div>
+          <div class="pt-3 border-t border-cream-border mt-auto">
+            <p class="font-mono text-[10px] tracking-widest text-ink-4 uppercase mb-3">RESULTS</p>
+            <div class="flex flex-nowrap items-center gap-2 text-sm whitespace-nowrap">
+              <span class="font-semibold text-gold">Calls Within 2 Hrs</span><span class="text-cream-border">|</span>
+              <span class="font-semibold text-ink">Smart Discount Logic</span><span class="text-cream-border">|</span>
+              <span class="font-semibold text-ink">SMS Fallback on No Answer</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case Study 7: Reliant AI Systems -->
+      <div class="case-card w-[85vw] sm:w-[540px] md:w-[580px] bg-white rounded-xl border border-cream-border overflow-hidden flex flex-col min-h-[480px]">
+        <div class="p-8 pb-0">
+          <div class="flex flex-wrap items-center gap-2 mb-4">
+            <span class="font-mono text-[10px] tracking-widest text-gold uppercase">AI / SAAS</span>
+            <span class="text-cream-border">|</span>
+            <span class="font-mono text-[10px] tracking-widest text-ink-4 uppercase">Reliant AI Systems</span>
+          </div>
+          <h3 class="font-serif text-xl leading-tight mb-6" style="letter-spacing:-0.02em;">Built a Live Demo That Sells Itself. Prospects Call a Number and Experience the Full HVAC AI Agent Firsthand.</h3>
+        </div>
+        <div class="px-8 pb-8 flex-1 flex flex-col gap-5">
+          <div>
+            <p class="font-mono text-[10px] tracking-widest text-ink-4 uppercase mb-2">THE PROBLEM</p>
+            <p class="text-ink-3 text-sm leading-relaxed">Reliant AI Systems was selling AI voice agents to HVAC businesses but had no interactive way to demonstrate them. Manual demos were inconsistent, time-consuming, and impossible to scale. Without a realistic proof-of-concept, prospects struggled to visualize the product, slowing down the sales cycle and stalling early growth.</p>
+          </div>
+          <div>
+            <p class="font-mono text-[10px] tracking-widest text-ink-4 uppercase mb-2">THE SOLUTION</p>
+            <p class="text-ink-3 text-sm leading-relaxed">QwickStep AI built a fully functional bilingual (English/Spanish) inbound demo agent on Retell AI, simulating a real HVAC company. Prospects call a dedicated number and experience the full flow live: language detection, lead qualification, appointment booking simulation, and call transfer. The team sends a phone number instead of scheduling a manual demo, and the agent handles the rest.</p>
+          </div>
+          <div class="pt-3 border-t border-cream-border mt-auto">
+            <p class="font-mono text-[10px] tracking-widest text-ink-4 uppercase mb-3">RESULTS</p>
+            <div class="flex flex-nowrap items-center gap-2 text-sm whitespace-nowrap">
+              <span class="font-semibold text-gold">EN + ES Bilingual</span><span class="text-cream-border">|</span>
+              <span class="font-semibold text-ink">Live Self-Qualification</span><span class="text-cream-border">|</span>
+              <span class="font-semibold text-ink">No Manual Demos</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case Study 8: Good Eye Home Inspections -->
+      <div class="case-card w-[85vw] sm:w-[540px] md:w-[580px] bg-white rounded-xl border border-cream-border overflow-hidden flex flex-col min-h-[480px]">
+        <div class="p-8 pb-0">
+          <div class="flex flex-wrap items-center gap-2 mb-4">
+            <span class="font-mono text-[10px] tracking-widest text-gold uppercase">HOME INSPECTION</span>
+            <span class="text-cream-border">|</span>
+            <span class="font-mono text-[10px] tracking-widest text-ink-4 uppercase">Good Eye Home Inspections</span>
+          </div>
+          <h3 class="font-serif text-xl leading-tight mb-6" style="letter-spacing:-0.02em;">Human Answering Service Retired. AI Receptionist Books $425+ Inspections Around the Clock.</h3>
+        </div>
+        <div class="px-8 pb-8 flex-1 flex flex-col gap-5">
+          <div>
+            <p class="font-mono text-[10px] tracking-widest text-ink-4 uppercase mb-2">THE PROBLEM</p>
+            <p class="text-ink-3 text-sm leading-relaxed">Good Eye relied on a live human answering service to handle inbound calls. Agents manually checked a shared Google Spreadsheet to book slots, a fragile, time-consuming process with no after-hours automation and no call data captured.</p>
+          </div>
+          <div>
+            <p class="font-mono text-[10px] tracking-widest text-ink-4 uppercase mb-2">THE SOLUTION</p>
+            <p class="text-ink-3 text-sm leading-relaxed">QwickStep AI deployed a 24/7 AI Receptionist that answers every inbound call, walks callers through 6 service types, quotes pricing, and books 3-hour inspection slots directly onto Cal.com, synced to Google Calendar with zero human touch. Every call is automatically logged with name, address, intent, and a full transcript in Google Sheets.</p>
+          </div>
+          <div class="pt-3 border-t border-cream-border mt-auto">
+            <p class="font-mono text-[10px] tracking-widest text-ink-4 uppercase mb-3">RESULTS</p>
+            <div class="flex flex-nowrap items-center gap-2 text-sm whitespace-nowrap">
+              <span class="font-semibold text-gold">24/7 Coverage</span><span class="text-cream-border">|</span>
+              <span class="font-semibold text-ink">Live Service Replaced</span><span class="text-cream-border">|</span>
+              <span class="font-semibold text-ink">Auto-Books Calendar</span>
             </div>
           </div>
         </div>
