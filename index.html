@@ -509,40 +509,89 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
   transition: opacity 0.4s cubic-bezier(0.4,0,0.2,1);
 }
 
-/* Review scroll */
+/* Review carousel */
+.review-carousel { position: relative; }
+.review-viewport { overflow: hidden; }
 .review-scroll {
   display: flex;
   align-items: stretch;
   gap: 24px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  padding-bottom: 16px;
-  scrollbar-width: thin;
-  scrollbar-color: #DDD8CF transparent;
+  padding-bottom: 4px;
+  transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
 }
-.review-scroll::-webkit-scrollbar { height: 6px; }
-.review-scroll::-webkit-scrollbar-track { background: transparent; }
-.review-scroll::-webkit-scrollbar-thumb { background: #DDD8CF; border-radius: 3px; }
-.review-card, .case-card { scroll-snap-align: start; flex-shrink: 0; }
+.review-card, .case-card { flex-shrink: 0; }
 
-/* Case study 2-row grid scroll */
+/* Case study 2-row grid carousel */
+.case-carousel { position: relative; }
+.case-viewport { overflow: hidden; }
 .case-scroll {
   display: grid;
-  grid-template-rows: repeat(2, auto);
+  grid-template-rows: auto;
   grid-auto-flow: column;
   gap: 24px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  padding-bottom: 16px;
-  scrollbar-width: thin;
-  scrollbar-color: #DDD8CF transparent;
+  padding-bottom: 4px;
+  transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
 }
-.case-scroll::-webkit-scrollbar { height: 6px; }
-.case-scroll::-webkit-scrollbar-track { background: transparent; }
-.case-scroll::-webkit-scrollbar-thumb { background: #DDD8CF; border-radius: 3px; }
-.case-scroll .case-card { scroll-snap-align: start; }
+.case-scroll .case-card { scroll-snap-align: none; }
+
+/* Carousel controls */
+.case-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 28px;
+  gap: 20px;
+}
+.case-dots {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex: 1;
+  justify-content: center;
+}
+.case-dot {
+  width: 28px;
+  height: 3px;
+  border-radius: 999px;
+  background: #DDD8CF;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background 250ms ease, width 250ms ease;
+}
+.case-dot:hover { background: #C4BEB3; }
+.case-dot.active { background: linear-gradient(90deg, #D4A745, #B8922E); width: 44px; }
+.case-nav-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid rgba(17,17,16,0.12);
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #2A2925;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+  flex-shrink: 0;
+}
+.case-nav-btn:hover:not(:disabled) {
+  background: rgba(255,255,255,0.9);
+  border-color: rgba(212,167,69,0.5);
+  box-shadow: 0 4px 14px rgba(212,167,69,0.12);
+  transform: scale(1.06);
+}
+.case-nav-btn:active:not(:disabled) { transform: scale(0.96); }
+.case-nav-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+.case-nav-btn:focus-visible { outline: 2px solid #D4A745; outline-offset: 3px; }
+.case-nav-btn svg { width: 18px; height: 18px; }
 
 /* Comparison row hover */
 .compare-row { transition: background-color 0.2s ease; }
@@ -585,9 +634,9 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="10" y2="10"/><line x1="14" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="10" y2="14"/><line x1="14" y1="14" x2="16" y2="14"/><line x1="8" y1="18" x2="10" y2="18"/><line x1="14" y1="18" x2="16" y2="18"/></svg>
       ROI CALCULATOR
     </a>
-    <a href="javascript:void(0)" data-cal-link="hsienjun.ong/digital-coffee" data-cal-config='{"layout":"month_view"}' class="metal-btn">
-      <span class="metal-btn-inner-ring"></span>
-      <span class="metal-btn-face text-xs px-5 py-2.5">Book Your Strategy Call</span>
+    <a href="javascript:void(0)" data-cal-link="hsienjun.ong/digital-coffee" data-cal-config='{"layout":"month_view"}' class="liquid-btn liquid-btn-square">
+      <span class="liquid-btn-glass"></span>
+      <span class="liquid-btn-inner text-xs px-5 py-2.5">Book Your Strategy Call</span>
     </a>
   </div>
   <!-- Mobile hamburger -->
@@ -611,9 +660,9 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
       ROI CALCULATOR
     </a>
     <div class="mt-4">
-      <a href="javascript:void(0)" data-cal-link="hsienjun.ong/digital-coffee" data-cal-config='{"layout":"month_view"}' class="metal-btn w-full">
-        <span class="metal-btn-inner-ring"></span>
-        <span class="metal-btn-face text-sm px-5 py-3 w-full">Book Your Strategy Call</span>
+      <a href="javascript:void(0)" data-cal-link="hsienjun.ong/digital-coffee" data-cal-config='{"layout":"month_view"}' class="liquid-btn w-full">
+        <span class="liquid-btn-glass"></span>
+        <span class="liquid-btn-inner text-sm px-5 py-3 w-full">Book Your Strategy Call</span>
       </a>
     </div>
   </div>
@@ -758,7 +807,7 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
   <div class="relative max-w-5xl mx-auto px-6 md:px-12 py-16 md:py-20">
     <div class="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-12 stats-grid reveal text-center">
       <div class="stats-item">
-        <div class="font-serif stats-number text-gold mb-1" style="letter-spacing:-0.03em;" data-target="480" data-prefix="$" data-suffix="k">$0k</div>
+        <div class="font-serif stats-number text-gold mb-1" style="letter-spacing:-0.03em;" data-target="514" data-prefix="$" data-suffix="k">$0k</div>
         <p class="font-mono text-[10px] tracking-widest uppercase text-ink-4">Revenue Added</p>
       </div>
       <div class="stats-item">
@@ -790,9 +839,9 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
       <div>
         <h2 class="font-serif text-3xl md:text-4xl lg:text-[2.8rem] leading-tight mb-6" style="letter-spacing:-0.025em;">Custom AI Growth Systems for All Businesses</h2>
         <p class="text-ink-3 leading-[1.75] text-base md:text-[17px] mb-8">QwickStep AI is an AI growth company focused on building reliable inbound and outbound growth systems using cold email infrastructure, AI voice agents, and LinkedIn content automation. We find the gaps in your pipeline and build solutions that fit your business and fix real, practical problems. Our systems don't just look good on paper. They actually put qualified leads in your inbox.</p>
-        <a href="javascript:void(0)" data-cal-link="hsienjun.ong/digital-coffee" data-cal-config='{"layout":"month_view"}' class="metal-btn">
-          <span class="metal-btn-inner-ring"></span>
-          <span class="metal-btn-face">Book Your Strategy Call</span>
+        <a href="javascript:void(0)" data-cal-link="hsienjun.ong/digital-coffee" data-cal-config='{"layout":"month_view"}' class="liquid-btn">
+          <span class="liquid-btn-glass"></span>
+          <span class="liquid-btn-inner">Book Your Strategy Call</span>
         </a>
       </div>
       <div class="founder-img-wrap relative rounded-xl overflow-hidden">
@@ -816,40 +865,40 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
 
     <div class="grid md:grid-cols-[1fr_1.15fr_1fr] gap-6 items-center reveal">
 
-      <!-- Service Card 1: Cold Email System -->
+      <!-- Service Card 1: LinkedIn Growth System -->
       <div class="group rounded-2xl bg-white border border-cream-border p-8 md:p-9 flex flex-col justify-between service-card" style="min-height:340px;box-shadow:0 1px 3px rgba(17,17,16,0.04),0 8px 24px rgba(17,17,16,0.03);">
         <div>
           <div class="flex items-center gap-2 mb-5">
             <span class="w-2 h-2 rounded-full bg-gold"></span>
-            <span class="font-mono text-[10px] tracking-widest text-ink-4 uppercase">Outbound</span>
+            <span class="font-mono text-[10px] tracking-widest text-ink-4 uppercase">Inbound</span>
           </div>
-          <h3 class="font-serif text-2xl md:text-[1.65rem] text-ink mb-4" style="letter-spacing:-0.02em;">Cold Email System</h3>
-          <p class="text-sm text-ink-3 leading-relaxed">Precision-targeted outbound that fills your calendar with qualified decision-makers. You only pay for qualified leads.</p>
+          <h3 class="font-serif text-2xl md:text-[1.65rem] text-ink mb-4" style="letter-spacing:-0.02em;">LinkedIn Growth System</h3>
+          <p class="text-sm text-ink-3 leading-relaxed">Authority-building LinkedIn content, fully managed. Your brand attracts inbound leads on autopilot while you close deals.</p>
         </div>
         <div class="flex flex-wrap gap-2 mt-6">
-          <span class="service-tag-light">ICP Targeting</span>
-          <span class="service-tag-light">Pay-Per-Lead</span>
-          <span class="service-tag-light">Done-For-You</span>
+          <span class="service-tag-light">LinkedIn Automation</span>
+          <span class="service-tag-light">100 Leads/Mo</span>
+          <span class="service-tag-light">Brand Authority</span>
         </div>
       </div>
 
-      <!-- Service Card 2: LinkedIn Growth System (FEATURED) -->
+      <!-- Service Card 2: Cold Email System (FEATURED) -->
       <div class="group rounded-2xl flex flex-col justify-between service-card relative" style="min-height:390px; padding: 2px; background: linear-gradient(160deg, rgba(212,167,69,0.4) 0%, rgba(212,167,69,0.12) 40%, rgba(212,167,69,0.3) 100%); box-shadow: 0 2px 6px rgba(17,17,16,0.05), 0 12px 32px rgba(212,167,69,0.1), 0 0 0 1px rgba(212,167,69,0.08);">
-        <div class="bg-white rounded-[14px] p-8 md:p-10 flex flex-col justify-between h-full">
+        <div class="bg-white rounded-[14px] p-8 md:p-10 flex flex-col justify-between flex-1 w-full">
           <div>
             <div class="flex items-center justify-between mb-5">
               <div class="flex items-center gap-2">
                 <span class="w-2 h-2 rounded-full bg-gold" style="box-shadow: 0 0 6px rgba(212,167,69,0.5);"></span>
-                <span class="font-mono text-[10px] tracking-widest text-ink-4 uppercase">Inbound</span>
+                <span class="font-mono text-[10px] tracking-widest text-ink-4 uppercase">Outbound</span>
               </div>
             </div>
-            <h3 class="font-serif text-[1.75rem] md:text-[2rem] text-ink mb-4" style="letter-spacing:-0.025em;">LinkedIn Growth System</h3>
-            <p class="text-[15px] text-ink-3 leading-relaxed">Authority-building LinkedIn content, fully managed. Your brand attracts inbound leads on autopilot while you close deals.</p>
+            <h3 class="font-serif text-[1.75rem] md:text-[2rem] text-ink mb-4" style="letter-spacing:-0.025em;">Cold Email System</h3>
+            <p class="text-[15px] text-ink-3 leading-relaxed">Precision-targeted outbound that fills your calendar with qualified decision-makers. You only pay for qualified leads.</p>
           </div>
           <div class="flex flex-wrap gap-2 mt-7">
-            <span class="service-tag-light">LinkedIn Automation</span>
-            <span class="service-tag-light">100 Leads/Mo</span>
-            <span class="service-tag-light">Brand Authority</span>
+            <span class="service-tag-light">ICP Targeting</span>
+            <span class="service-tag-light">Pay-Per-Lead</span>
+            <span class="service-tag-light">Done-For-You</span>
           </div>
         </div>
       </div>
@@ -1175,9 +1224,9 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
 
     <div class="text-center mt-16 reveal">
       <p class="italic text-ink-4 text-sm mb-5">Ready to see it in action?</p>
-      <a href="javascript:void(0)" data-cal-link="hsienjun.ong/digital-coffee" data-cal-config='{"layout":"month_view"}' class="metal-btn">
-        <span class="metal-btn-inner-ring"></span>
-        <span class="metal-btn-face">Book Your Strategy Call</span>
+      <a href="javascript:void(0)" data-cal-link="hsienjun.ong/digital-coffee" data-cal-config='{"layout":"month_view"}' class="liquid-btn">
+        <span class="liquid-btn-glass"></span>
+        <span class="liquid-btn-inner">Book Your Strategy Call</span>
       </a>
     </div>
   </div>
@@ -1202,7 +1251,9 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
       <span class="text-sm text-ink-4">Based on verified client feedback</span>
     </div>
 
-    <div class="review-scroll reveal">
+    <div class="review-carousel reveal">
+    <div class="review-viewport">
+    <div class="review-scroll" id="reviewTrack">
 
       <!-- Review 1: Voice AI -->
       <div class="review-card w-[85vw] sm:w-[440px] md:w-[460px] bg-white rounded-xl border border-cream-border p-8 flex flex-col">
@@ -1326,6 +1377,17 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
       </div>
 
     </div>
+    </div>
+      <div class="case-controls">
+        <button class="case-nav-btn" id="reviewPrev" aria-label="Previous reviews">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div class="case-dots" id="reviewDots"></div>
+        <button class="case-nav-btn" id="reviewNext" aria-label="Next reviews">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </div>
 
     <p class="text-ink-4 text-xs leading-relaxed mt-10 max-w-2xl reveal" style="opacity:0.6;">Some partners prefer anonymity because they've taken our bespoke systems to enhance their own offerings. We respect their privacy, while celebrating mutual success. Results shown reflect work delivered under QwickStep AI strategy and quality control, including implementations executed by trusted delivery partners.</p>
   </div>
@@ -1337,7 +1399,9 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
     <div class="mb-4 reveal"><span class="font-mono text-[11px] tracking-widest text-ink-4 uppercase">PROOF OF WORK</span></div>
     <h2 class="font-serif text-3xl md:text-4xl leading-tight mb-12 reveal" style="letter-spacing:-0.025em;">Results we're proud to put our name on.</h2>
 
-    <div class="case-scroll reveal">
+    <div class="case-carousel reveal">
+    <div class="case-viewport">
+    <div class="case-scroll" id="caseTrack">
       <!-- Case Study 0: The Mobile Tire Guys (AI Receptionist) -->
       <div class="case-card w-[85vw] sm:w-[540px] md:w-[580px] bg-white rounded-xl border border-cream-border overflow-hidden flex flex-col min-h-[480px]">
         <div class="p-8 pb-0">
@@ -1619,6 +1683,17 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
       </div>
 
     </div>
+    </div>
+      <div class="case-controls">
+        <button class="case-nav-btn" id="casePrev" aria-label="Previous case studies">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div class="case-dots" id="caseDots"></div>
+        <button class="case-nav-btn" id="caseNext" aria-label="Next case studies">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </div>
 
     <p class="text-ink-4 text-xs leading-relaxed mt-10 max-w-2xl reveal" style="opacity:0.6;">Some clients prefer anonymity because they've taken our bespoke systems to enhance their own offerings. We respect their privacy, while celebrating mutual success. Results shown reflect work delivered under QwickStep AI strategy and quality control, including implementations executed by trusted delivery partners.</p>
   </div>
@@ -1701,6 +1776,100 @@ function toggleFaq(btn) {
   document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
   if (!wasOpen) item.classList.add('open');
 }
+
+/* Card carousel (case studies + reviews) */
+function initCardCarousel(trackId, prevId, nextId, dotsId, cardSelector, perPage) {
+  perPage = perPage || { lg: 3, md: 2, sm: 1 };
+  const track = document.getElementById(trackId);
+  const viewport = track && track.parentElement;
+  const prev = document.getElementById(prevId);
+  const next = document.getElementById(nextId);
+  const dotsEl = document.getElementById(dotsId);
+  if (!track || !viewport || !prev || !next || !dotsEl) return;
+
+  let page = 0;
+  let pageCount = 1;
+  let pageWidth = 0;
+
+  function getColumnWidth() {
+    const firstCard = track.querySelector(cardSelector);
+    if (!firstCard) return 0;
+    const style = getComputedStyle(track);
+    const gap = parseFloat(style.columnGap || style.gap) || 24;
+    return firstCard.getBoundingClientRect().width + gap;
+  }
+
+  function measure() {
+    const cards = track.querySelectorAll(cardSelector);
+    if (!cards.length) return;
+    viewport.style.maxWidth = '';
+    const style = getComputedStyle(track);
+    const gap = parseFloat(style.columnGap || style.gap) || 24;
+    const viewW = viewport.getBoundingClientRect().width;
+    let cardsPerPage;
+    if (viewW >= 1024) cardsPerPage = perPage.lg;
+    else if (viewW >= 640) cardsPerPage = perPage.md;
+    else cardsPerPage = perPage.sm;
+    const cardW = (viewW - gap * (cardsPerPage - 1)) / cardsPerPage;
+    cards.forEach(c => { c.style.width = cardW + 'px'; });
+    pageCount = Math.max(1, Math.ceil(cards.length / cardsPerPage));
+    pageWidth = cardsPerPage * (cardW + gap);
+    renderDots();
+    goTo(Math.min(page, pageCount - 1), false);
+  }
+
+  function renderDots() {
+    dotsEl.innerHTML = '';
+    for (let i = 0; i < pageCount; i++) {
+      const b = document.createElement('button');
+      b.className = 'case-dot' + (i === page ? ' active' : '');
+      b.setAttribute('aria-label', 'Go to page ' + (i + 1));
+      b.addEventListener('click', () => goTo(i));
+      dotsEl.appendChild(b);
+    }
+  }
+
+  function updateDots() {
+    const dots = dotsEl.querySelectorAll('.case-dot');
+    dots.forEach((d, i) => d.classList.toggle('active', i === page));
+  }
+
+  function updateArrows() {
+    prev.disabled = page <= 0;
+    next.disabled = page >= pageCount - 1;
+  }
+
+  function goTo(i, animate = true) {
+    page = Math.max(0, Math.min(i, pageCount - 1));
+    if (!animate) track.style.transition = 'none';
+    track.style.transform = 'translateX(' + (-page * pageWidth) + 'px)';
+    if (!animate) {
+      void track.offsetWidth;
+      track.style.transition = '';
+    }
+    updateDots();
+    updateArrows();
+  }
+
+  prev.addEventListener('click', () => goTo(page - 1));
+  next.addEventListener('click', () => goTo(page + 1));
+
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(measure, 120);
+  });
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', measure);
+  } else {
+    measure();
+  }
+  window.addEventListener('load', measure);
+}
+
+initCardCarousel('caseTrack', 'casePrev', 'caseNext', 'caseDots', '.case-card', { lg: 2, md: 2, sm: 1 });
+initCardCarousel('reviewTrack', 'reviewPrev', 'reviewNext', 'reviewDots', '.review-card', { lg: 3, md: 2, sm: 1 });
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
