@@ -1,0 +1,1347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cold Email Pricing · QwickStep AI</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="brand_assets/qwickstep.ai iconic mark (white).png">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        cream: '#F7F4EF',
+        'cream-dark': '#EDE9E1',
+        'cream-border': '#DDD8CF',
+        ink: '#111110',
+        'ink-2': '#2A2925',
+        'ink-3': '#6B6860',
+        'ink-4': '#9B9890',
+        gold: '#D4A745',
+        'gold-light': '#F5EEDC',
+        'gold-dark': '#B8912E',
+        navy: '#141928',
+        'navy-light': '#1E2640',
+        sage: '#3F5749',
+        'sage-light': '#E6ECE7',
+        'sage-dark': '#2A3D32',
+      },
+      fontFamily: {
+        serif: ['"DM Serif Display"', 'Georgia', 'serif'],
+        sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
+        mono: ['"DM Mono"', 'monospace'],
+      },
+    },
+  },
+}
+</script>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; background: #F7F4EF; }
+
+/* ── Metal CTA Button ── */
+.metal-btn {
+  position: relative;
+  display: inline-flex;
+  border-radius: 8px;
+  padding: 1.25px;
+  background: linear-gradient(to bottom, #917100, #EAD98F);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+  transition: transform 250ms cubic-bezier(0.1,0.4,0.2,1), box-shadow 250ms cubic-bezier(0.1,0.4,0.2,1);
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  text-decoration: none;
+}
+.metal-btn:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.14); }
+.metal-btn:active { transform: translateY(2px) scale(0.99); box-shadow: 0 1px 2px rgba(0,0,0,0.15); }
+.metal-btn-inner-ring {
+  position: absolute;
+  inset: 1px;
+  border-radius: 7px;
+  background: linear-gradient(to bottom, #FFFDDD, #856807, #FFF1B3);
+  pointer-events: none;
+}
+.metal-btn-face {
+  position: relative;
+  z-index: 1;
+  margin: 1px;
+  border-radius: 6px;
+  padding: 13px 28px;
+  background: linear-gradient(to bottom, #FFEBA1, #9B873F);
+  color: #FFFDE5;
+  font-weight: 600;
+  font-size: 15px;
+  text-shadow: 0 -1px 0 rgba(178,140,2,1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: filter 250ms;
+  white-space: nowrap;
+}
+.metal-btn:hover .metal-btn-face { filter: brightness(1.03); }
+.metal-btn:focus-visible { outline: 2px solid #D4A745; outline-offset: 3px; }
+
+.metal-btn-sm .metal-btn-face { padding: 11px 22px; font-size: 14px; }
+
+/* ── Card CTA (in-card secondary, light surface) ── */
+.card-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 13px 18px;
+  border-radius: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14.5px;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  color: #111110;
+  border: 1.5px solid rgba(17,17,16,0.16);
+  background: rgba(255,255,255,0.6);
+  text-decoration: none;
+  transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease;
+  cursor: pointer;
+}
+.card-cta:hover {
+  border-color: #111110;
+  background: #111110;
+  color: #F7F4EF;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(17,17,16,0.18);
+}
+.card-cta:focus-visible { outline: 2px solid #111110; outline-offset: 3px; }
+.card-cta .arr { transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1); }
+.card-cta:hover .arr { transform: translateX(3px); }
+
+/* ── Card CTA on dark featured surface ── */
+.card-cta-dark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 13px 18px;
+  border-radius: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14.5px;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  color: #111110;
+  background: linear-gradient(to bottom, #FFEBA1, #C99F45);
+  border: 1px solid rgba(212,167,69,0.4);
+  text-decoration: none;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.2);
+  transition: filter 0.25s ease, transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(212,167,69,0.18), inset 0 1px 0 rgba(255,255,255,0.4);
+}
+.card-cta-dark:hover { filter: brightness(1.04); transform: translateY(-1px); box-shadow: 0 8px 22px rgba(212,167,69,0.28), inset 0 1px 0 rgba(255,255,255,0.5); }
+.card-cta-dark:focus-visible { outline: 2px solid #D4A745; outline-offset: 3px; }
+.card-cta-dark .arr { transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1); }
+.card-cta-dark:hover .arr { transform: translateX(3px); }
+
+/* ── Pricing card base ── */
+.offer-card {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid #DDD8CF;
+  border-radius: 18px;
+  padding: 36px 32px 32px;
+  transition: transform 0.45s cubic-bezier(0.22,1,0.36,1), box-shadow 0.45s cubic-bezier(0.22,1,0.36,1), border-color 0.35s ease;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.offer-card:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 2px 4px rgba(0,0,0,0.03),
+    0 12px 32px rgba(0,0,0,0.08),
+    0 28px 56px rgba(0,0,0,0.05),
+    0 0 0 1px rgba(200,195,185,0.6);
+  border-color: #B8B2A8;
+}
+
+/* Featured (investment) variant — softer warm slate, gold accent */
+.offer-card.featured {
+  background:
+    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(212,167,69,0.26) 0%, transparent 60%),
+    linear-gradient(180deg, #3A4258 0%, #2D3447 100%);
+  border: 1px solid rgba(212,167,69,0.38);
+  color: #F8F1DC;
+  box-shadow:
+    0 0 0 1px rgba(212,167,69,0.14),
+    0 10px 32px rgba(45,52,71,0.28),
+    0 2px 8px rgba(45,52,71,0.18);
+}
+.offer-card.featured:hover {
+  transform: translateY(-6px);
+  border-color: rgba(212,167,69,0.6);
+  box-shadow:
+    0 0 0 1px rgba(212,167,69,0.4),
+    0 0 36px rgba(212,167,69,0.22),
+    0 0 80px rgba(212,167,69,0.1),
+    0 18px 56px rgba(45,52,71,0.36);
+}
+
+/* Shine on hover */
+.offer-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+.offer-card:hover::after { opacity: 1; }
+.offer-card.featured::after {
+  background: linear-gradient(135deg, rgba(212,167,69,0.08) 0%, transparent 55%);
+}
+
+/* Top accent line — color-coded per row */
+.offer-card .top-stripe {
+  position: absolute;
+  top: 0; left: 24px; right: 24px;
+  height: 2px;
+  border-radius: 0 0 4px 4px;
+  opacity: 0.85;
+}
+.stripe-lead { background: linear-gradient(to right, transparent, #3F5749 30%, #3F5749 70%, transparent); }
+.stripe-appt { background: linear-gradient(to right, transparent, #B8912E 30%, #B8912E 70%, transparent); }
+.offer-card.featured .top-stripe { opacity: 0.55; }
+
+/* ── Tags / labels ── */
+.offer-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.offer-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'DM Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+.pill-lead {
+  color: #2A3D32;
+  background: #E6ECE7;
+  border: 1px solid rgba(63,87,73,0.22);
+}
+.pill-appt {
+  color: #7A5C10;
+  background: #F5EEDC;
+  border: 1px solid rgba(212,167,69,0.32);
+}
+.pill-variable {
+  color: #6B6860;
+  background: rgba(247,244,239,0.7);
+  border: 1px solid #DDD8CF;
+}
+.pill-rec {
+  color: #FFFDE5;
+  background: linear-gradient(to bottom, #C99F45, #8C6B1F);
+  border: 1px solid rgba(212,167,69,0.5);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18), inset 0 1px 0 rgba(255,255,255,0.18);
+  text-shadow: 0 -1px 0 rgba(0,0,0,0.18);
+}
+.dot { width: 5px; height: 5px; border-radius: 50%; }
+.dot-lead { background: #3F5749; }
+.dot-appt { background: #B8912E; }
+
+.offer-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.85rem;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  color: #111110;
+  margin-bottom: 8px;
+}
+.offer-card.featured .offer-name { color: #F5EEDC; }
+.offer-tagline {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14.5px;
+  color: #6B6860;
+  line-height: 1.55;
+  margin-bottom: 22px;
+}
+.offer-card.featured .offer-tagline { color: rgba(245,238,220,0.65); }
+
+/* ── Price block ── */
+.price-block {
+  border-top: 1px solid #EDE9E1;
+  border-bottom: 1px solid #EDE9E1;
+  padding: 18px 0;
+  margin-bottom: 22px;
+}
+.offer-card.featured .price-block { border-color: rgba(212,167,69,0.18); }
+
+.price-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #9B9890;
+  margin-bottom: 6px;
+}
+.offer-card.featured .price-label { color: rgba(212,167,69,0.7); }
+
+.price-headline {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+.price-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2.6rem;
+  line-height: 1;
+  letter-spacing: -0.025em;
+  color: #111110;
+}
+.offer-card.featured .price-num { color: #F5EEDC; }
+.price-unit {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: #6B6860;
+}
+.offer-card.featured .price-unit { color: rgba(245,238,220,0.5); }
+
+.price-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  color: #6B6860;
+  line-height: 1.5;
+}
+.offer-card.featured .price-sub { color: rgba(245,238,220,0.55); }
+
+.price-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 10px;
+}
+.price-cell {
+  background: rgba(247,244,239,0.65);
+  border: 1px solid #EDE9E1;
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+.offer-card.featured .price-cell {
+  background: rgba(255,255,255,0.04);
+  border-color: rgba(255,255,255,0.07);
+}
+.price-cell .lbl {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #9B9890;
+  margin-bottom: 4px;
+}
+.offer-card.featured .price-cell .lbl { color: rgba(212,167,69,0.5); }
+.price-cell .val {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: #111110;
+}
+.offer-card.featured .price-cell .val { color: #F5EEDC; }
+
+.effective-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px dashed rgba(17,17,16,0.08);
+}
+.offer-card.featured .effective-row { border-top-color: rgba(212,167,69,0.18); }
+.effective-row .lbl {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #9B9890;
+}
+.offer-card.featured .effective-row .lbl { color: rgba(212,167,69,0.6); }
+.effective-row .val {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #B8912E;
+}
+.discount-tag {
+  display: inline-flex;
+  align-items: center;
+  font-family: 'DM Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #2A3D32;
+  background: #E6ECE7;
+  border: 1px solid rgba(63,87,73,0.25);
+  border-radius: 999px;
+  padding: 3px 8px;
+  margin-left: 8px;
+  font-weight: 500;
+}
+
+/* ── Guarantee chip ── */
+.guarantee {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: rgba(63,87,73,0.06);
+  border: 1px solid rgba(63,87,73,0.16);
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-bottom: 18px;
+}
+.guarantee.gold {
+  background: rgba(212,167,69,0.08);
+  border-color: rgba(212,167,69,0.32);
+}
+.offer-card.featured .guarantee {
+  background: rgba(212,167,69,0.1);
+  border-color: rgba(212,167,69,0.32);
+}
+.guarantee.none {
+  background: rgba(247,244,239,0.7);
+  border-color: #DDD8CF;
+}
+.guarantee-icon {
+  flex-shrink: 0;
+  width: 22px; height: 22px;
+  border-radius: 6px;
+  background: #FFFFFF;
+  border: 1px solid #DDD8CF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.guarantee.gold .guarantee-icon { background: #FFFDE5; border-color: rgba(212,167,69,0.35); }
+.guarantee.none .guarantee-icon { background: #FFFFFF; border-color: #DDD8CF; }
+.offer-card.featured .guarantee-icon { background: rgba(255,253,229,0.08); border-color: rgba(212,167,69,0.35); }
+
+.guarantee-head {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #111110;
+  line-height: 1.35;
+}
+.offer-card.featured .guarantee-head { color: #F5EEDC; }
+.guarantee-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12.5px;
+  color: #6B6860;
+  line-height: 1.5;
+  margin-top: 2px;
+}
+.offer-card.featured .guarantee-sub { color: rgba(245,238,220,0.6); }
+
+/* ── Feature list ── */
+.feat-list { flex: 1; margin-bottom: 22px; }
+.feat-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 9px 0;
+  border-bottom: 1px solid #F0EDE7;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: #2A2925;
+  line-height: 1.5;
+}
+.feat-row:last-child { border-bottom: none; }
+.offer-card.featured .feat-row {
+  border-bottom-color: rgba(255,255,255,0.07);
+  color: rgba(245,238,220,0.82);
+}
+.feat-icon { flex-shrink: 0; margin-top: 2px; }
+
+/* ── Comparison table ── */
+.compare-wrap {
+  background: #ffffff;
+  border: 1px solid #DDD8CF;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.04);
+}
+.compare-scroll { overflow-x: auto; }
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 760px;
+}
+.compare-table thead th {
+  font-family: 'DM Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #9B9890;
+  font-weight: 500;
+  padding: 18px 14px 14px;
+  text-align: center;
+  border-bottom: 1px solid #DDD8CF;
+  background: #FBF9F4;
+}
+.compare-table thead th:first-child { text-align: left; padding-left: 22px; background: transparent; }
+.compare-table thead th .colname {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  letter-spacing: -0.005em;
+  text-transform: none;
+  font-weight: 600;
+  color: #111110;
+  margin-bottom: 2px;
+}
+.compare-table thead th.col-rec .colname { color: #B8912E; }
+.compare-table thead th.col-rec { background: rgba(212,167,69,0.06); }
+
+.compare-table td {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: #2A2925;
+  padding: 13px 14px;
+  border-bottom: 1px solid #F0EDE7;
+  vertical-align: middle;
+  text-align: center;
+  line-height: 1.45;
+}
+.compare-table td:first-child {
+  text-align: left;
+  padding-left: 22px;
+  font-weight: 500;
+  color: #111110;
+}
+.compare-table td.col-rec { background: rgba(212,167,69,0.04); }
+.compare-table tr:last-child td { border-bottom: none; }
+.compare-table tr.section-row td {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #9B9890;
+  background: #FBF9F4;
+  padding: 9px 14px 9px 22px;
+  text-align: left;
+  font-weight: 500;
+  border-bottom: 1px solid #EDE9E1;
+}
+.compare-table tr.section-row td.col-rec { background: rgba(212,167,69,0.05); }
+.compare-table tbody tr:not(.section-row):hover td { background: rgba(247,244,239,0.55); }
+.compare-table tbody tr:not(.section-row):hover td.col-rec { background: rgba(212,167,69,0.07); }
+
+.compare-table .small { font-size: 12.5px; color: #6B6860; }
+.compare-table .accent { color: #B8912E; font-weight: 600; }
+.compare-table .sage { color: #2A3D32; font-weight: 600; }
+
+/* ── Universal terms accordion ── */
+.term-item {
+  border-bottom: 1px solid #DDD8CF;
+}
+.term-item:first-child { border-top: 1px solid #DDD8CF; }
+.term-q {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 4px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 15.5px;
+  color: #111110;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  font-family: 'DM Sans', sans-serif;
+  transition: color 0.2s;
+  gap: 16px;
+}
+.term-q:hover { color: #B8912E; }
+.term-q:focus-visible { outline: 2px solid #111110; outline-offset: 3px; border-radius: 4px; }
+.term-q .lhs { display: flex; align-items: center; gap: 14px; }
+.term-q .num {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: #9B9890;
+  letter-spacing: 0.06em;
+  min-width: 24px;
+}
+.term-icon { width: 20px; height: 20px; flex-shrink: 0; transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1); }
+.term-item.open .term-icon { transform: rotate(45deg); }
+.term-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+.term-a-inner {
+  padding: 0 4px 22px 42px;
+  color: #4A4843;
+  font-size: 14.5px;
+  line-height: 1.75;
+}
+.term-a-inner p + p { margin-top: 10px; }
+.term-a-inner ul { margin-top: 8px; padding-left: 18px; }
+.term-a-inner li { margin-top: 4px; color: #6B6860; }
+.term-a-inner em { font-style: italic; color: #6B6860; }
+.term-a-inner strong { color: #111110; font-weight: 600; }
+
+/* ── Divider ── */
+.divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, #DDD8CF, transparent);
+  margin: 48px 0;
+}
+
+/* ── Page load animation ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.anim-1 { animation: fadeUp 0.55s cubic-bezier(0.2,0,0.2,1) both; }
+.anim-2 { animation: fadeUp 0.55s cubic-bezier(0.2,0,0.2,1) 0.08s both; }
+.anim-3 { animation: fadeUp 0.55s cubic-bezier(0.2,0,0.2,1) 0.16s both; }
+.anim-4 { animation: fadeUp 0.55s cubic-bezier(0.2,0,0.2,1) 0.24s both; }
+.anim-5 { animation: fadeUp 0.55s cubic-bezier(0.2,0,0.2,1) 0.32s both; }
+
+/* ── Decision rail (intro 2x2 axis explainer) ── */
+.axis {
+  background: #FFFFFF;
+  border: 1px solid #DDD8CF;
+  border-radius: 16px;
+  padding: 22px 24px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+}
+.axis-mark {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: #F5EEDC;
+  color: #B8912E;
+}
+.axis-q {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.2rem;
+  letter-spacing: -0.01em;
+  color: #111110;
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+.axis-a {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13.5px;
+  color: #6B6860;
+  line-height: 1.5;
+}
+
+/* ── Noise texture overlay ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.02;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 200px;
+}
+
+/* ── Mobile tweaks ── */
+@media (max-width: 768px) {
+  .offer-card { padding: 28px 22px 24px; }
+  .price-num { font-size: 2.1rem; }
+  .axis { padding: 18px 18px; gap: 14px; }
+}
+</style>
+</head>
+<body class="font-sans">
+
+<!-- ── Nav ── -->
+<nav class="fixed top-0 left-0 right-0 z-50 h-16 flex items-center justify-between px-6 md:px-12 bg-cream/82 backdrop-blur-xl border-b border-cream-border">
+  <a href="/" class="flex items-center gap-2.5" style="text-decoration:none;">
+    <img src="brand_assets/qwickstep.ai iconic mark (white).png" alt="QwickStep AI" class="h-7 w-7 rounded" style="filter: invert(1) brightness(0);">
+    <span class="font-sans font-semibold text-ink text-[15px] tracking-tight">QwickStep AI</span>
+  </a>
+  <div class="flex items-center gap-3">
+    <a href="/" class="font-mono text-[11px] tracking-widest text-ink-3 uppercase hover:text-ink transition-colors duration-200">← Home</a>
+  </div>
+</nav>
+
+<!-- ── Hero ── -->
+<section class="relative pt-36 pb-12 px-6 md:px-12 text-center overflow-hidden">
+  <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 70% 50% at 50% -10%, rgba(212,167,69,0.09) 0%, transparent 70%);"></div>
+  <div class="relative z-10 max-w-3xl mx-auto">
+    <div class="anim-1 inline-flex items-center gap-2 mb-5">
+      <span class="font-mono text-[11px] tracking-[0.1em] uppercase text-gold-dark font-medium">Cold Email Offers</span>
+    </div>
+    <h1 class="anim-2 font-serif text-[2.6rem] md:text-[3.5rem] text-ink leading-[1.08] tracking-[-0.03em] mb-5">
+      Four ways to run<br>
+      <em>cold email together.</em>
+    </h1>
+    <p class="anim-3 text-ink-3 text-[17px] leading-[1.75] max-w-xl mx-auto mb-8">
+      Pick what you want delivered: replies or booked meetings. Then pick your commitment level. Same infrastructure underneath, four different ways in.
+    </p>
+    <div class="anim-4 flex items-center justify-center gap-3 flex-wrap">
+      <span class="font-mono text-[11px] tracking-widest uppercase text-ink-4">All figures in USD</span>
+      <span class="text-cream-border">·</span>
+      <span class="font-mono text-[11px] tracking-widest uppercase text-ink-4">Month-to-month</span>
+      <span class="text-cream-border">·</span>
+      <span class="font-mono text-[11px] tracking-widest uppercase text-ink-4">3-week warmup before launch</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── Two-axis decision rail ── -->
+<section class="px-6 md:px-12 pb-12 relative z-10">
+  <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 anim-5">
+    <div class="axis">
+      <div class="axis-mark">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 4h14M2 9h14M2 14h9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </div>
+      <div>
+        <p class="axis-q">Leads or appointments?</p>
+        <p class="axis-a">Get notified of positive replies, or have a dedicated SDR book meetings on your calendar.</p>
+      </div>
+    </div>
+    <div class="axis">
+      <div class="axis-mark">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 9h6m2 0h6M5 6l-3 3 3 3m8-6l3 3-3 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div>
+        <p class="axis-q">Predictable or variable?</p>
+        <p class="axis-a">Commit to a monthly investment with a guaranteed minimum, or pay only for what's delivered.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Offer cards (2x2) ── -->
+<section class="px-6 md:px-12 pb-16 relative z-10">
+  <div class="max-w-6xl mx-auto">
+
+    <!-- Row label: Monthly Investment -->
+    <div class="flex items-center gap-3 mb-5">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1l1.18 2.78 2.97.41-2.15 2.13.51 3-2.51-1.41-2.51 1.41.51-3L2.85 4.19l2.97-.41z" fill="#B8912E"/></svg>
+      <span class="font-mono text-[11px] tracking-[0.12em] uppercase text-gold-dark font-medium">Monthly Investment · Recommended</span>
+      <span class="flex-1 h-px bg-cream-border"></span>
+      <span class="font-mono text-[11px] tracking-[0.06em] uppercase text-ink-4">Predictable spend, guaranteed minimum results</span>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 mb-12 items-stretch">
+
+      <!-- Lead Investment (featured) -->
+      <div class="offer-card featured anim-2">
+        <span class="top-stripe stripe-lead"></span>
+        <div class="offer-label">
+          <span class="offer-pill pill-lead"><span class="dot dot-lead"></span>Lead</span>
+          <span class="offer-pill pill-rec">
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M5 1l1.18 2.39 2.64.38-1.91 1.86.45 2.63L5 7l-2.36 1.26.45-2.63L1.18 3.77l2.64-.38z" fill="#FFFDE5"/></svg>
+            Recommended
+          </span>
+        </div>
+        <h3 class="offer-name">Lead Investment</h3>
+        <p class="offer-tagline">Predictable monthly investment. Guaranteed minimum lead volume every cycle.</p>
+
+        <div class="price-block">
+          <p class="price-label">Monthly investment</p>
+          <div class="price-headline">
+            <span class="price-num">$2,088</span>
+            <span class="price-unit">/ month</span>
+          </div>
+          <p class="price-sub">Flat. No separate setup fee. The 3-week warmup is included.</p>
+
+          <div class="price-grid">
+            <div class="price-cell">
+              <p class="lbl">Guaranteed</p>
+              <p class="val">50 leads / cycle</p>
+            </div>
+            <div class="price-cell">
+              <p class="lbl">Setup fee</p>
+              <p class="val">None</p>
+            </div>
+          </div>
+
+          <div class="effective-row">
+            <span class="lbl">Effective cost</span>
+            <span>
+              <span class="val">$42 / lead</span>
+              <span class="discount-tag">17% off</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="guarantee gold">
+          <div class="guarantee-icon">
+            <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M3 5.5l2 2 4-4" stroke="#B8912E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div>
+            <p class="guarantee-head">50 leads per cycle, guaranteed</p>
+            <p class="guarantee-sub">If we don't hit 50 in 30 days, work continues at no extra cost until we do.</p>
+          </div>
+        </div>
+
+        <div class="feat-list">
+          <div class="feat-row">
+            <svg class="feat-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="rgba(212,167,69,0.4)"/><path d="M5 8l2 2 4-4" stroke="#D4A745" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Full infrastructure (domains, mailboxes, scraping, enrichment, verification)</span>
+          </div>
+          <div class="feat-row">
+            <svg class="feat-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="rgba(212,167,69,0.4)"/><path d="M5 8l2 2 4-4" stroke="#D4A745" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span style="font-weight:600;">No separate setup fee</span>
+          </div>
+          <div class="feat-row">
+            <svg class="feat-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="rgba(212,167,69,0.4)"/><path d="M5 8l2 2 4-4" stroke="#D4A745" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Ongoing campaign optimization & A/B testing</span>
+          </div>
+          <div class="feat-row">
+            <svg class="feat-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="rgba(212,167,69,0.4)"/><path d="M5 8l2 2 4-4" stroke="#D4A745" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Real-time positive reply alerts routed to your inbox</span>
+          </div>
+          <div class="feat-row">
+            <svg class="feat-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="rgba(212,167,69,0.4)"/><path d="M5 8l2 2 4-4" stroke="#D4A745" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Overdelivery within the cycle is included free</span>
+          </div>
+          <div class="feat-row">
+            <svg class="feat-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="rgba(212,167,69,0.4)"/><path d="M5 8l2 2 4-4" stroke="#D4A745" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>You handle: reply, qualify, book, nurture, close</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Appointment Investment (featured) -->
+      <div class="offer-card featured anim-3">
+        <span class="top-stripe stripe-appt"></span>
+        <div class="offer-label">
+          <span class="offer-pill pill-appt"><span class="dot dot-appt"></span>Appointment</span>
+          <span class="offer-pill pill-rec">
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M5 1l1.18 2.39 2.64.38-1.91 1.86.45 2.63L5 7l-2.36 1.26.45-2.63L1.18 3.77l2.64-.38z" fill="#FFFDE5"/></svg>
+            Recommended
+          </span>
+        </div>
+        <h3 class="offer-name">Appointment Investment</h3>
+        <p class="offer-tagline">Predictable monthly investment. Guaranteed booked meetings every cycle.</p>
+
+        <div class="price-block">
+          <p class="price-label">Monthly investment</p>
+          <div class="price-headline">
+            <span class="price-num">$3,088</span>
+            <span class="price-unit">/ month</span>
+          </div>
+          <p class="price-sub">Flat. No separate setup fee. The 3-week warmup is included.</p>
+
+          <div class="price-grid">
+            <div class="price-cell">
+              <p class="lbl">Guaranteed</p>
+              <p class="val">10 appts / cycle</p>
+            </div>
+            <div class="price-cell">
+              <p class="lbl">Setup fee</p>
+              <p class="val">None</p>
+            </div>
+          </div>
+
+          <div class="effective-row">
+            <span class="lbl">Effective cost</span>
+            <span>
+              <span class="val">$309 / appt</span>
+              <span class="discount-tag">11% off</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="guarantee gold">
+          <div class="guarantee-icon">
+            <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M3 5.5l2 2 4-4" stroke="#B8912E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div>
+            <p class="guarantee-head">10 appointments per cycle, guaranteed</p>
+            <p class="guarantee-sub">If we don't hit 10 in 30 days, work continues at no extra cost until we do.</p>
+          </div>
+        </div>
+
+        <div class="feat-list">
+          <div class="feat-row">
+            <svg class="feat-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="rgba(212,167,69,0.4)"/><path d="M5 8l2 2 4-4" stroke="#D4A745" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Everything in the lead offer, plus a dedicated SDR</span>
+          </div>
+          <div class="feat-row">
+            <svg class="feat-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="rgba(212,167,69,0.4)"/><path d="M5 8l2 2 4-4" stroke="#D4A745" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span style="font-weight:600;">No separate setup fee</span>
+          </div>
+          <div class="feat-row">
+            <svg class="feat-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="rgba(212,167,69,0.4)"/><path d="M5 8l2 2 4-4" stroke="#D4A745" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>SDR handles inbox: reply, qualify, schedule</span>
+          </div>
+          <div class="feat-row">
+            <svg class="feat-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="rgba(212,167,69,0.4)"/><path d="M5 8l2 2 4-4" stroke="#D4A745" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Meetings booked directly onto your calendar</span>
+          </div>
+          <div class="feat-row">
+            <svg class="feat-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="rgba(212,167,69,0.4)"/><path d="M5 8l2 2 4-4" stroke="#D4A745" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Overdelivery within the cycle is included free</span>
+          </div>
+          <div class="feat-row">
+            <svg class="feat-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="rgba(212,167,69,0.4)"/><path d="M5 8l2 2 4-4" stroke="#D4A745" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>You handle: pre-meeting nurture, show up, close</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Row label: Pay Per Result -->
+    <div class="flex items-center gap-3 mb-5 mt-4">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M5 4l-2 3 2 3m4-6l2 3-2 3" stroke="#6B6860" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="font-mono text-[11px] tracking-[0.12em] uppercase text-ink-3 font-medium">Pay Per Result</span>
+      <span class="flex-1 h-px bg-cream-border"></span>
+      <span class="font-mono text-[11px] tracking-[0.06em] uppercase text-ink-4">Variable spend, no volume commitment</span>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 items-stretch">
+
+      <!-- Pay-Per-Lead -->
+      <div class="offer-card anim-2">
+        <span class="top-stripe stripe-lead"></span>
+        <div class="offer-label">
+          <span class="offer-pill pill-lead"><span class="dot dot-lead"></span>Lead</span>
+          <span class="offer-pill pill-variable">Pay as you go</span>
+        </div>
+        <h3 class="offer-name">Pay-Per-Lead</h3>
+        <p class="offer-tagline">Pay only for the leads we deliver. No commitment, no volume guarantee.</p>
+
+        <div class="price-block">
+          <p class="price-label">One-time setup</p>
+          <div class="price-headline">
+            <span class="price-num">$2,088</span>
+            <span class="price-unit">setup</span>
+          </div>
+          <p class="price-sub">Covers infrastructure, copy, and deliverability. Plus your <strong class="text-ink font-semibold">first 25 leads</strong> at no extra cost.</p>
+
+          <div class="price-grid">
+            <div class="price-cell">
+              <p class="lbl">After 25 leads</p>
+              <p class="val">$48 / lead</p>
+            </div>
+            <div class="price-cell">
+              <p class="lbl">Monthly base</p>
+              <p class="val">$0</p>
+            </div>
+          </div>
+
+          <div class="effective-row">
+            <span class="lbl">Effective cost</span>
+            <span class="val">$48 / lead</span>
+          </div>
+        </div>
+
+        <div class="guarantee none">
+          <div class="guarantee-icon">
+            <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M2 5.5h7" stroke="#9B9890" stroke-width="1.4" stroke-linecap="round"/></svg>
+          </div>
+          <div>
+            <p class="guarantee-head">No volume guarantee</p>
+            <p class="guarantee-sub">You pay only for the high-intent leads we actually deliver.</p>
+          </div>
+        </div>
+
+        <div class="feat-list">
+          <div class="feat-row">
+            <svg class="feat-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="#DDD8CF"/><path d="M5 8l2 2 4-4" stroke="#3F5749" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Full infrastructure (domains, mailboxes, scraping, enrichment, verification)</span>
+          </div>
+          <div class="feat-row">
+            <svg class="feat-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="#DDD8CF"/><path d="M5 8l2 2 4-4" stroke="#3F5749" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Campaign strategy, copywriting & deliverability management</span>
+          </div>
+          <div class="feat-row">
+            <svg class="feat-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="#DDD8CF"/><path d="M5 8l2 2 4-4" stroke="#3F5749" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Real-time positive reply alerts routed to your inbox</span>
+          </div>
+          <div class="feat-row">
+            <svg class="feat-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="#DDD8CF"/><path d="M5 8l2 2 4-4" stroke="#3F5749" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>First 25 high-intent leads included in setup</span>
+          </div>
+          <div class="feat-row">
+            <svg class="feat-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="#DDD8CF"/><path d="M5 8l2 2 4-4" stroke="#3F5749" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>You handle: reply, qualify, book, nurture, close</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pay-Per-Appointment -->
+      <div class="offer-card anim-3">
+        <span class="top-stripe stripe-appt"></span>
+        <div class="offer-label">
+          <span class="offer-pill pill-appt"><span class="dot dot-appt"></span>Appointment</span>
+          <span class="offer-pill pill-variable">Pay as you go</span>
+        </div>
+        <h3 class="offer-name">Pay-Per-Appointment</h3>
+        <p class="offer-tagline">Skip the inbox work. Pay only for confirmed meetings on your calendar.</p>
+
+        <div class="price-block">
+          <p class="price-label">One-time setup</p>
+          <div class="price-headline">
+            <span class="price-num">$3,088</span>
+            <span class="price-unit">setup</span>
+          </div>
+          <p class="price-sub">Includes dedicated SDR, infrastructure, and your <strong class="text-ink font-semibold">first 10 booked appointments</strong>.</p>
+
+          <div class="price-grid">
+            <div class="price-cell">
+              <p class="lbl">After 10 appts</p>
+              <p class="val">$348 / appt</p>
+            </div>
+            <div class="price-cell">
+              <p class="lbl">Monthly base</p>
+              <p class="val">$0</p>
+            </div>
+          </div>
+
+          <div class="effective-row">
+            <span class="lbl">Effective cost</span>
+            <span class="val">$348 / appt</span>
+          </div>
+        </div>
+
+        <div class="guarantee none">
+          <div class="guarantee-icon">
+            <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M2 5.5h7" stroke="#9B9890" stroke-width="1.4" stroke-linecap="round"/></svg>
+          </div>
+          <div>
+            <p class="guarantee-head">No volume guarantee</p>
+            <p class="guarantee-sub">You pay only for the appointments we book on your calendar.</p>
+          </div>
+        </div>
+
+        <div class="feat-list">
+          <div class="feat-row">
+            <svg class="feat-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="#DDD8CF"/><path d="M5 8l2 2 4-4" stroke="#B8912E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Everything in the lead offer, plus a dedicated SDR</span>
+          </div>
+          <div class="feat-row">
+            <svg class="feat-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="#DDD8CF"/><path d="M5 8l2 2 4-4" stroke="#B8912E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>SDR handles inbox: reply, qualify, schedule</span>
+          </div>
+          <div class="feat-row">
+            <svg class="feat-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="#DDD8CF"/><path d="M5 8l2 2 4-4" stroke="#B8912E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Meetings booked directly onto your calendar</span>
+          </div>
+          <div class="feat-row">
+            <svg class="feat-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="#DDD8CF"/><path d="M5 8l2 2 4-4" stroke="#B8912E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>First 10 booked appointments included in setup</span>
+          </div>
+          <div class="feat-row">
+            <svg class="feat-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="#DDD8CF"/><path d="M5 8l2 2 4-4" stroke="#B8912E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>You handle: pre-meeting nurture, show up, close</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── Comparison Table ── -->
+<section class="px-6 md:px-12 pb-20 relative z-10">
+  <div class="max-w-6xl mx-auto">
+    <div class="divider"></div>
+    <div class="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
+      <div>
+        <p class="font-mono text-[11px] tracking-[0.1em] uppercase text-gold-dark mb-3">Compare</p>
+        <h2 class="font-serif text-[1.9rem] md:text-[2.4rem] text-ink tracking-[-0.02em] leading-[1.1]">All four offers,<br>side by side.</h2>
+      </div>
+      <p class="text-ink-3 text-[14.5px] leading-relaxed max-w-sm">
+        The monthly investments are the better deal per result and bring a guarantee with them. Pay-as-you-go is the fastest way to test the channel.
+      </p>
+    </div>
+
+    <div class="compare-wrap">
+      <div class="compare-scroll">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th class="col-rec">
+                <span class="colname">Lead Investment</span>
+                <span class="font-mono text-[10px] uppercase tracking-[0.08em] text-gold-dark">Recommended</span>
+              </th>
+              <th class="col-rec">
+                <span class="colname">Appt Investment</span>
+                <span class="font-mono text-[10px] uppercase tracking-[0.08em] text-gold-dark">Recommended</span>
+              </th>
+              <th>
+                <span class="colname">Pay-Per-Lead</span>
+                <span class="font-mono text-[10px] uppercase tracking-[0.08em] text-ink-4">Variable</span>
+              </th>
+              <th>
+                <span class="colname">Pay-Per-Appt</span>
+                <span class="font-mono text-[10px] uppercase tracking-[0.08em] text-ink-4">Variable</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <tr class="section-row"><td>Investment</td><td class="col-rec"></td><td class="col-rec"></td><td></td><td></td></tr>
+
+            <tr>
+              <td>Setup fee</td>
+              <td class="col-rec sage">None</td>
+              <td class="col-rec sage">None</td>
+              <td><span class="font-semibold text-ink">$2,088</span><br><span class="small">covers first 25 leads</span></td>
+              <td><span class="font-semibold text-ink">$3,088</span><br><span class="small">covers first 10 appts</span></td>
+            </tr>
+            <tr>
+              <td>Monthly</td>
+              <td class="col-rec"><span class="font-semibold text-ink">$2,088</span> flat</td>
+              <td class="col-rec"><span class="font-semibold text-ink">$3,088</span> flat</td>
+              <td><span class="small">$0 base</span><br>+ $48 / lead after 25</td>
+              <td><span class="small">$0 base</span><br>+ $348 / appt after 10</td>
+            </tr>
+            <tr>
+              <td>Effective cost per result</td>
+              <td class="col-rec accent">$42 / lead <span class="small sage">(17% off)</span></td>
+              <td class="col-rec accent">$309 / appt <span class="small sage">(11% off)</span></td>
+              <td class="accent">$48 / lead</td>
+              <td class="accent">$348 / appt</td>
+            </tr>
+
+            <tr class="section-row"><td>Guarantee & Cycle</td><td class="col-rec"></td><td class="col-rec"></td><td></td><td></td></tr>
+
+            <tr>
+              <td>Volume guarantee</td>
+              <td class="col-rec sage">50 leads / cycle</td>
+              <td class="col-rec sage">10 appts / cycle</td>
+              <td><span class="small">None</span></td>
+              <td><span class="small">None</span></td>
+            </tr>
+            <tr>
+              <td>Billing cycle</td>
+              <td class="col-rec"><span class="small">30 days OR guarantee hit, whichever later</span></td>
+              <td class="col-rec"><span class="small">30 days OR guarantee hit, whichever later</span></td>
+              <td><span class="small">Monthly invoice</span></td>
+              <td><span class="small">Monthly invoice</span></td>
+            </tr>
+
+            <tr class="section-row"><td>Deliverable</td><td class="col-rec"></td><td class="col-rec"></td><td></td><td></td></tr>
+
+            <tr>
+              <td>What you receive</td>
+              <td class="col-rec"><span class="small">Positive reply notification</span></td>
+              <td class="col-rec"><span class="small">Booked appointment on your calendar</span></td>
+              <td><span class="small">Positive reply notification</span></td>
+              <td><span class="small">Booked appointment on your calendar</span></td>
+            </tr>
+            <tr>
+              <td>QwickStep handles</td>
+              <td class="col-rec"><span class="small">Campaigns &rarr; positive reply alert</span></td>
+              <td class="col-rec"><span class="small">Campaigns + SDR + calendar booking</span></td>
+              <td><span class="small">Campaigns &rarr; positive reply alert</span></td>
+              <td><span class="small">Campaigns + SDR + calendar booking</span></td>
+            </tr>
+            <tr>
+              <td>You handle</td>
+              <td class="col-rec"><span class="small">Reply, qualify, book, nurture, close</span></td>
+              <td class="col-rec"><span class="small">Pre-meeting nurture, show up, close</span></td>
+              <td><span class="small">Reply, qualify, book, nurture, close</span></td>
+              <td><span class="small">Pre-meeting nurture, show up, close</span></td>
+            </tr>
+
+            <tr class="section-row"><td>Fit</td><td class="col-rec"></td><td class="col-rec"></td><td></td><td></td></tr>
+
+            <tr>
+              <td>Best for</td>
+              <td class="col-rec"><span class="small">Teams wanting predictable volume and the better per-lead rate</span></td>
+              <td class="col-rec"><span class="small">Teams wanting steady booked-meeting flow with a guarantee</span></td>
+              <td><span class="small">Testing the channel with variable spend, internal sales team handles replies</span></td>
+              <td><span class="small">Want appointments, not leads. No internal SDR. Comfortable with variable spend</span></td>
+            </tr>
+            <tr>
+              <td>Pause</td>
+              <td colspan="4" class="text-center"><span class="small">$500 / month baseline (all offers). Keeps domains warm and the system ready to resume</span></td>
+            </tr>
+            <tr>
+              <td>Cancellation</td>
+              <td colspan="4" class="text-center"><span class="small">Month-to-month on every offer. Setup fees and monthly payments are non-refundable</span></td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <p class="text-center text-ink-4 text-[12.5px] mt-4 font-mono uppercase tracking-[0.06em] md:hidden">&larr; Swipe to compare &rarr;</p>
+  </div>
+</section>
+
+<!-- ── Universal Terms ── -->
+<section class="px-6 md:px-12 pb-20 relative z-10">
+  <div class="max-w-4xl mx-auto">
+    <div class="divider"></div>
+    <div class="mb-8">
+      <p class="font-mono text-[11px] tracking-[0.1em] uppercase text-gold-dark mb-3">The fine print</p>
+      <h2 class="font-serif text-[1.9rem] md:text-[2.4rem] text-ink tracking-[-0.02em] leading-[1.1]">Terms that apply<br>to every offer.</h2>
+      <p class="text-ink-3 text-[15px] leading-relaxed mt-4 max-w-2xl">
+        We try to keep the surprises out of cold email. These six items cover how we define a result, what each party is responsible for, and how pause and cancellation work.
+      </p>
+    </div>
+
+    <div>
+
+      <div class="term-item">
+        <button class="term-q" onclick="toggleTerm(this)">
+          <span class="lhs"><span class="num">01</span>Lead definition</span>
+          <svg class="term-icon" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="#111110" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <div class="term-a">
+          <div class="term-a-inner">
+            <p>A <strong>high-intent lead</strong> is a prospect who replies to a campaign with explicit interest in your services.</p>
+            <p><em>Counts as a lead:</em></p>
+            <ul>
+              <li>"Yes, please send more info"</li>
+              <li>"Send me a calendar link"</li>
+              <li>"What's your pricing?"</li>
+              <li>"Do you work with companies like mine?"</li>
+            </ul>
+            <p><em>Does not count:</em> bot responses, out-of-office replies, unsubscribes, negative replies, contacts outside the agreed ICP. Each lead must be a real, unique individual matching the ICP.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="term-item">
+        <button class="term-q" onclick="toggleTerm(this)">
+          <span class="lhs"><span class="num">02</span>Appointment definition</span>
+          <svg class="term-icon" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="#111110" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <div class="term-a">
+          <div class="term-a-inner">
+            <p>A <strong>booked appointment</strong> is a confirmed calendar event with an ICP-matched prospect who has explicitly agreed to a meeting time.</p>
+            <p>The prospect must be a real and unique individual (not previously booked) and must confirm via calendar acceptance or written confirmation.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="term-item">
+        <button class="term-q" onclick="toggleTerm(this)">
+          <span class="lhs"><span class="num">03</span>Appointment show-up rules</span>
+          <svg class="term-icon" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="#111110" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <div class="term-a">
+          <div class="term-a-inner">
+            <p>Our deliverable ends at the confirmed booking. Show-up rate is not within our control. The pre-meeting nurture sequence (reminders, confirmations, rapport-building) is your responsibility.</p>
+            <p>How edge cases count:</p>
+            <ul>
+              <li><strong>Reschedules:</strong> count as one appointment, not two</li>
+              <li><strong>No-shows:</strong> still count</li>
+              <li><strong>Cancellations &gt;24h before</strong> without reschedule: do not count</li>
+              <li><strong>Cancellations within 24h:</strong> count</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="term-item">
+        <button class="term-q" onclick="toggleTerm(this)">
+          <span class="lhs"><span class="num">04</span>Pause policy</span>
+          <svg class="term-icon" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="#111110" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <div class="term-a">
+          <div class="term-a-inner">
+            <p>Active engagements can be paused at <strong>$500/month baseline</strong> (may be higher based on infrastructure footprint).</p>
+            <p>Paying the pause fee keeps your domains warm, mailboxes healthy, and the system ready to resume without re-warming. Re-warming a cold system takes ~3 weeks, so a short pause is almost always cheaper than a full restart.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="term-item">
+        <button class="term-q" onclick="toggleTerm(this)">
+          <span class="lhs"><span class="num">05</span>Cancellation</span>
+          <svg class="term-icon" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="#111110" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <div class="term-a">
+          <div class="term-a-inner">
+            <p>All offers are <strong>month-to-month</strong>. Either party can end the engagement at the close of any billing cycle. Setup fees and monthly payments are non-refundable.</p>
+            <p>For the monthly investment offers, if you cancel mid-cycle with the guarantee unmet, the rollover obligation expires on cancellation.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="term-item">
+        <button class="term-q" onclick="toggleTerm(this)">
+          <span class="lhs"><span class="num">06</span>Infrastructure ownership</span>
+          <svg class="term-icon" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="#111110" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <div class="term-a">
+          <div class="term-a-inner">
+            <p>All infrastructure (domains, mailboxes, scrapers, automations, campaign assets) remains the property of QwickStep AI.</p>
+            <p>On offboarding, we hand over the full lead list scraped during the engagement as a goodwill gesture. The infrastructure itself does not transfer.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="text-ink-4 text-[13px] leading-relaxed mt-8 italic">
+      Every engagement starts with a 3-week warmup before campaigns go live. The warmup covers domain warming, mailbox setup, list building, copy drafting, and campaign configuration. It's not counted against any guarantee.
+    </p>
+  </div>
+</section>
+
+<!-- ── Footer ── -->
+<footer class="border-t border-cream-border px-6 md:px-12 py-8 relative z-10">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-2.5">
+      <img src="brand_assets/qwickstep.ai iconic mark (white).png" alt="QwickStep AI" class="h-5 w-5 rounded" style="filter: invert(1) brightness(0); opacity:0.4;">
+      <span class="font-mono text-[11px] tracking-widest uppercase text-ink-4">QwickStep AI</span>
+    </div>
+    <p class="font-mono text-[11px] text-ink-4 tracking-wide">© 2026 QwickStep AI. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+function toggleTerm(btn) {
+  const item = btn.closest('.term-item');
+  const answer = item.querySelector('.term-a');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.term-item.open').forEach(other => {
+    if (other !== item) {
+      other.classList.remove('open');
+      other.querySelector('.term-a').style.maxHeight = '0';
+    }
+  });
+  if (isOpen) {
+    item.classList.remove('open');
+    answer.style.maxHeight = '0';
+  } else {
+    item.classList.add('open');
+    answer.style.maxHeight = answer.scrollHeight + 'px';
+  }
+}
+</script>
+</body>
+</html>
