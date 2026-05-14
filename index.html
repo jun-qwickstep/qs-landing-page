@@ -615,6 +615,195 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
 .process-arrow.active { opacity: 1 !important; }
 @keyframes arrowPulse { 0%,100%{ opacity:0.3; } 50%{ opacity:1; } }
 .process-arrow.pulse { animation: arrowPulse 0.8s cubic-bezier(0.4,0,0.2,1); }
+
+/* ── Cold Email Proof Callout Banner ── */
+.cold-proof-banner {
+  position: relative;
+  display: block;
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  text-decoration: none;
+  background:
+    radial-gradient(120% 220% at 0% 0%, rgba(212,167,69,0.18) 0%, rgba(212,167,69,0) 45%),
+    radial-gradient(80% 160% at 100% 100%, rgba(212,167,69,0.10) 0%, rgba(20,25,40,0) 50%),
+    linear-gradient(135deg, #141928 0%, #1E2640 55%, #141928 100%);
+  border: 1px solid rgba(212,167,69,0.22);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.04) inset,
+    0 24px 60px -28px rgba(20,25,40,0.55),
+    0 8px 22px -12px rgba(212,167,69,0.18);
+  transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.4s ease, border-color 0.4s ease;
+}
+.cold-proof-banner:hover {
+  transform: translateY(-2px);
+  border-color: rgba(212,167,69,0.4);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.06) inset,
+    0 32px 70px -28px rgba(20,25,40,0.65),
+    0 12px 28px -10px rgba(212,167,69,0.28);
+}
+.cold-proof-banner:focus-visible { outline: 2px solid #D4A745; outline-offset: 4px; }
+.cold-proof-grain {
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.06 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  opacity: 0.5;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+.cold-proof-glow {
+  position: absolute;
+  top: -40%; right: -10%;
+  width: 480px; height: 480px;
+  background: radial-gradient(closest-side, rgba(212,167,69,0.35), rgba(212,167,69,0) 70%);
+  filter: blur(40px);
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+  opacity: 0.7;
+}
+.cold-proof-banner:hover .cold-proof-glow { opacity: 1; }
+.cold-proof-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding: 36px 32px;
+  z-index: 1;
+}
+@media (min-width: 768px) {
+  .cold-proof-content {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 44px 48px;
+    gap: 40px;
+  }
+}
+.cold-proof-left { display: flex; flex-direction: column; gap: 14px; max-width: 640px; }
+.cold-proof-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 12px;
+  align-self: flex-start;
+  border-radius: 999px;
+  background: rgba(212,167,69,0.10);
+  border: 1px solid rgba(212,167,69,0.28);
+  font-family: 'DM Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  color: #EAD98F;
+  text-transform: uppercase;
+}
+.cold-proof-dot {
+  width: 6px; height: 6px; border-radius: 999px;
+  background: #D4A745;
+  box-shadow: 0 0 8px rgba(212,167,69,0.7);
+  animation: coldProofPulse 1.8s ease-in-out infinite;
+}
+@keyframes coldProofPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.6; }
+}
+.cold-proof-title {
+  font-family: '"DM Serif Display"', Georgia, serif;
+  font-size: 26px;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: #F7F4EF;
+}
+@media (min-width: 768px) {
+  .cold-proof-title { font-size: 32px; }
+}
+.cold-proof-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.55;
+  color: rgba(247,244,239,0.68);
+  max-width: 560px;
+}
+.cold-proof-stats {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 14px;
+  margin-top: 6px;
+}
+.cold-proof-stat {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  color: rgba(247,244,239,0.72);
+  letter-spacing: -0.005em;
+  white-space: nowrap;
+}
+.cold-proof-stat b {
+  font-weight: 600;
+  color: #EAD98F;
+  font-family: 'DM Mono', monospace;
+  font-size: 14px;
+  letter-spacing: 0;
+  margin-right: 2px;
+}
+.cold-proof-stat-divider {
+  width: 1px; height: 12px;
+  background: rgba(212,167,69,0.3);
+}
+.cold-proof-right { flex-shrink: 0; }
+.cold-proof-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  isolation: isolate;
+  transform: translateZ(0);
+  transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+}
+.cold-proof-btn-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #F5E0A0 0%, #E8C46E 45%, #D4A745 100%);
+  border: 1px solid rgba(255,239,180,0.7);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.55) inset,
+    0 -1px 0 rgba(120,80,0,0.18) inset,
+    0 10px 26px -10px rgba(212,167,69,0.65),
+    0 0 0 1px rgba(212,167,69,0.25),
+    0 0 40px -8px rgba(212,167,69,0.35);
+  transition: box-shadow 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+  z-index: 0;
+}
+.cold-proof-btn-face {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 30px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #1A1F30;
+  white-space: nowrap;
+}
+.cold-proof-btn-arrow {
+  transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+}
+.cold-proof-banner:hover .cold-proof-btn { transform: scale(1.03); }
+.cold-proof-banner:hover .cold-proof-btn-glow {
+  background: linear-gradient(135deg, #FFEEB0 0%, #F0CE7C 45%, #DAB14F 100%);
+  border-color: rgba(255,243,200,0.85);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.7) inset,
+    0 -1px 0 rgba(120,80,0,0.2) inset,
+    0 14px 30px -10px rgba(212,167,69,0.8),
+    0 0 0 1px rgba(212,167,69,0.4),
+    0 0 50px -6px rgba(212,167,69,0.5);
+}
+.cold-proof-banner:hover .cold-proof-btn-arrow { transform: translateX(3px); }
+.cold-proof-banner:active .cold-proof-btn { transform: scale(0.98); }
 </style>
 </head>
 <body class="bg-cream text-ink font-sans">
@@ -629,6 +818,7 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
     <a href="#services" class="font-mono text-[11px] tracking-wide text-ink-4 hover:text-ink transition-colors duration-200">SERVICES</a>
     <a href="#reviews" class="font-mono text-[11px] tracking-wide text-ink-4 hover:text-ink transition-colors duration-200">REVIEWS</a>
     <a href="#case-studies" class="font-mono text-[11px] tracking-wide text-ink-4 hover:text-ink transition-colors duration-200">CASE STUDIES</a>
+    <a href="/proof" class="font-mono text-[11px] tracking-wide text-gold-dark hover:text-ink transition-colors duration-200">COLD EMAIL PROOF</a>
     <a href="#faq" class="font-mono text-[11px] tracking-wide text-ink-4 hover:text-ink transition-colors duration-200">FAQ</a>
     <a href="/roi-calculator" class="nav-calc-pill">
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="10" y2="10"/><line x1="14" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="10" y2="14"/><line x1="14" y1="14" x2="16" y2="14"/><line x1="8" y1="18" x2="10" y2="18"/><line x1="14" y1="18" x2="16" y2="18"/></svg>
@@ -654,6 +844,7 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
     <a href="#services" class="mobile-nav-link font-mono text-[12px] tracking-widest text-ink-3 uppercase py-3 border-b border-cream-border/60 hover:text-ink" style="transition: color 0.2s;">SERVICES</a>
     <a href="#reviews" class="mobile-nav-link font-mono text-[12px] tracking-widest text-ink-3 uppercase py-3 border-b border-cream-border/60 hover:text-ink" style="transition: color 0.2s;">REVIEWS</a>
     <a href="#case-studies" class="mobile-nav-link font-mono text-[12px] tracking-widest text-ink-3 uppercase py-3 border-b border-cream-border/60 hover:text-ink" style="transition: color 0.2s;">CASE STUDIES</a>
+    <a href="/proof" class="mobile-nav-link font-mono text-[12px] tracking-widest text-gold-dark uppercase py-3 border-b border-cream-border/60 hover:text-ink" style="transition: color 0.2s;">COLD EMAIL PROOF</a>
     <a href="#faq" class="mobile-nav-link font-mono text-[12px] tracking-widest text-ink-3 uppercase py-3 border-b border-cream-border/60 hover:text-ink" style="transition: color 0.2s;">FAQ</a>
     <a href="/roi-calculator" class="nav-calc-pill mt-3 mb-1 justify-center py-3" style="font-size: 12px; letter-spacing: 0.1em;">
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="10" y2="10"/><line x1="14" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="10" y2="14"/><line x1="14" y1="14" x2="16" y2="14"/><line x1="8" y1="18" x2="10" y2="18"/><line x1="14" y1="18" x2="16" y2="18"/></svg>
@@ -845,7 +1036,7 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
         </a>
       </div>
       <div class="founder-img-wrap relative rounded-xl overflow-hidden">
-        <img src="london_skool_event.png" alt="London Skool Event" class="w-full object-cover aspect-[6/5]">
+        <img src="images/london_skool_event.png" alt="London Skool Event" class="w-full object-cover aspect-[6/5]">
         <div class="absolute inset-0 bg-gradient-to-t from-ink/20 to-transparent"></div>
         <div class="founder-glow absolute inset-0 rounded-xl pointer-events-none"></div>
       </div>
@@ -939,7 +1130,7 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
     </div>
     <div class="grid grid-cols-1 md:grid-cols-[320px_1fr] gap-12 md:gap-16 items-start reveal">
       <div class="founder-img-wrap relative rounded-2xl overflow-hidden mx-auto md:mx-0" style="aspect-ratio:1/1; cursor:default; max-width:320px;">
-        <img src="china candid upscaled.png" alt="Founder" class="w-full h-full object-cover" style="object-position: center 35%; transform: scale(1.15); transform-origin: center 35%;">
+        <img src="images/china candid upscaled.png" alt="Founder" class="w-full h-full object-cover" style="object-position: center 35%; transform: scale(1.15); transform-origin: center 35%;">
         <div class="absolute inset-0 bg-gradient-to-t from-ink/15 to-transparent"></div>
         <!-- hover glow overlay -->
         <div class="founder-glow absolute inset-0 rounded-2xl pointer-events-none" style="opacity:0; transition: opacity 0.4s cubic-bezier(0.4,0,0.2,1);"></div>
@@ -1431,9 +1622,43 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
 <section id="case-studies" class="py-20 md:py-28 border-t border-cream-border">
   <div class="max-w-7xl mx-auto px-6 md:px-12">
     <div class="mb-4 reveal"><span class="font-mono text-[11px] tracking-widest text-ink-4 uppercase">PROOF OF WORK</span></div>
-    <h2 class="font-serif text-3xl md:text-4xl leading-tight mb-12 reveal" style="letter-spacing:-0.025em;">Results we're proud to put our name on.</h2>
+    <h2 class="font-serif text-3xl md:text-4xl leading-tight mb-10 reveal" style="letter-spacing:-0.025em;">Results we're proud to put our name on.</h2>
 
-    <div class="case-carousel reveal">
+    <!-- Cold Email Proof Callout -->
+    <a href="/proof" class="cold-proof-banner reveal group" aria-label="See all our cold email campaign results">
+      <span class="cold-proof-grain" aria-hidden="true"></span>
+      <span class="cold-proof-glow" aria-hidden="true"></span>
+      <span class="cold-proof-content">
+        <span class="cold-proof-left">
+          <span class="cold-proof-eyebrow">
+            <span class="cold-proof-dot"></span>
+            <span>COLD EMAIL · LIVE PROOF</span>
+          </span>
+          <span class="cold-proof-title">See every campaign, every booked call, every dollar generated.</span>
+          <span class="cold-proof-sub">Real screenshots from real client inboxes, dashboards, and calendars. No mockups.</span>
+          <span class="cold-proof-stats">
+            <span class="cold-proof-stat"><b>$1.4M+</b> pipeline</span>
+            <span class="cold-proof-stat-divider"></span>
+            <span class="cold-proof-stat"><b>750+</b> calls</span>
+            <span class="cold-proof-stat-divider"></span>
+            <span class="cold-proof-stat"><b>3,300+</b> replies</span>
+            <span class="cold-proof-stat-divider"></span>
+            <span class="cold-proof-stat"><b>60+</b> campaigns</span>
+          </span>
+        </span>
+        <span class="cold-proof-right">
+          <span class="cold-proof-btn">
+            <span class="cold-proof-btn-glow"></span>
+            <span class="cold-proof-btn-face">
+              See Cold Email Results
+              <svg class="cold-proof-btn-arrow" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg>
+            </span>
+          </span>
+        </span>
+      </span>
+    </a>
+
+    <div class="case-carousel reveal mt-12">
     <div class="case-viewport">
     <div class="case-scroll" id="caseTrack">
       <!-- Case Study 0: The Mobile Tire Guys (AI Receptionist) -->

@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Standard Service Agreement · QwickStep AI</title>
+<meta name="description" content="QwickStep AI Standard Service Agreement governing all cold email, automation, and AI services.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="brand_assets/qwickstep.ai iconic mark (white).png">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        cream: '#F7F4EF',
+        'cream-dark': '#EDE9E1',
+        'cream-border': '#DDD8CF',
+        ink: '#111110',
+        'ink-2': '#2A2925',
+        'ink-3': '#6B6860',
+        'ink-4': '#9B9890',
+        gold: '#D4A745',
+        'gold-light': '#F5EEDC',
+        'gold-dark': '#B8912E',
+      },
+      fontFamily: {
+        serif: ['"DM Serif Display"', 'Georgia', 'serif'],
+        sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
+        mono: ['"DM Mono"', 'monospace'],
+      },
+    },
+  },
+}
+</script>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #F7F4EF;
+  color: #2A2925;
+}
+
+/* Noise texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.02;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 200px;
+}
+
+/* Section number tag */
+.sec-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #B8912E;
+  font-weight: 500;
+  margin-bottom: 8px;
+  display: block;
+}
+
+/* Legal document layout */
+.legal {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15.5px;
+  line-height: 1.75;
+  color: #2A2925;
+}
+.legal h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.7rem;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: #111110;
+  margin-top: 56px;
+  margin-bottom: 18px;
+  scroll-margin-top: 100px;
+}
+.legal h3 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  color: #111110;
+  margin-top: 28px;
+  margin-bottom: 10px;
+}
+.legal p {
+  margin-bottom: 14px;
+  color: #2A2925;
+}
+.legal p + p { margin-top: 0; }
+.legal ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 8px 0 16px 0;
+}
+.legal ul li {
+  position: relative;
+  padding-left: 22px;
+  margin-bottom: 8px;
+  color: #2A2925;
+}
+.legal ul li::before {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 13px;
+  width: 5px;
+  height: 5px;
+  background: #B8912E;
+  border-radius: 50%;
+}
+.legal ol {
+  padding-left: 0;
+  margin: 8px 0 16px 0;
+  list-style: none;
+  counter-reset: section-counter;
+}
+.legal ol > li {
+  position: relative;
+  padding-left: 32px;
+  margin-bottom: 10px;
+  counter-increment: section-counter;
+}
+.legal ol > li::before {
+  content: counter(section-counter, lower-roman) ".";
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  color: #B8912E;
+  font-weight: 500;
+}
+.legal strong { color: #111110; font-weight: 600; }
+.legal em { font-style: italic; color: #6B6860; }
+.legal .caps {
+  text-transform: uppercase;
+  letter-spacing: 0.005em;
+}
+
+/* Inline pill for subsection labels */
+.subsec {
+  font-family: 'DM Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #B8912E;
+  font-weight: 500;
+  margin-right: 6px;
+}
+
+/* Callout */
+.callout {
+  background: linear-gradient(180deg, #FFFFFF 0%, #FBF9F4 100%);
+  border: 1px solid #DDD8CF;
+  border-left: 3px solid #B8912E;
+  border-radius: 12px;
+  padding: 22px 26px;
+  margin: 24px 0 28px;
+}
+.callout p:last-child { margin-bottom: 0; }
+
+/* Divider */
+.divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, #DDD8CF, transparent);
+  margin: 64px 0 0 0;
+}
+
+/* Section anchor */
+section.legal-section { scroll-margin-top: 100px; }
+
+/* TOC */
+.toc {
+  background: #FFFFFF;
+  border: 1px solid #DDD8CF;
+  border-radius: 14px;
+  padding: 24px 28px;
+  margin: 32px 0 48px;
+}
+.toc-title {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #6B6860;
+  margin-bottom: 14px;
+  font-weight: 500;
+}
+.toc ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px 24px;
+}
+.toc ol li { padding: 0; margin: 0; }
+.toc ol li::before { display: none; }
+.toc a {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13.5px;
+  color: #2A2925;
+  text-decoration: none;
+  padding: 6px 0;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+  line-height: 1.4;
+}
+.toc a:hover { color: #B8912E; border-bottom-color: rgba(184,145,46,0.3); }
+.toc a .num {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: #9B9890;
+  flex-shrink: 0;
+  min-width: 22px;
+}
+
+@media (max-width: 768px) {
+  .toc ol { grid-template-columns: 1fr; }
+  .legal { font-size: 15px; }
+  .legal h2 { font-size: 1.5rem; margin-top: 44px; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.anim-1 { animation: fadeUp 0.55s cubic-bezier(0.2,0,0.2,1) both; }
+.anim-2 { animation: fadeUp 0.55s cubic-bezier(0.2,0,0.2,1) 0.08s both; }
+.anim-3 { animation: fadeUp 0.55s cubic-bezier(0.2,0,0.2,1) 0.16s both; }
+</style>
+</head>
+<body class="font-sans">
+
+<!-- Nav -->
+<nav class="fixed top-0 left-0 right-0 z-50 h-16 flex items-center justify-between px-6 md:px-12 bg-cream/82 backdrop-blur-xl border-b border-cream-border">
+  <a href="/" class="flex items-center gap-2.5" style="text-decoration:none;">
+    <img src="brand_assets/qwickstep.ai iconic mark (white).png" alt="QwickStep AI" class="h-7 w-7 rounded" style="filter: invert(1) brightness(0);">
+    <span class="font-sans font-semibold text-ink text-[15px] tracking-tight">QwickStep AI</span>
+  </a>
+  <div class="flex items-center gap-3">
+    <a href="/" class="font-mono text-[11px] tracking-widest text-ink-3 uppercase hover:text-ink transition-colors duration-200">&larr; Home</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="relative pt-36 pb-12 px-6 md:px-12 overflow-hidden">
+  <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 70% 50% at 50% -10%, rgba(212,167,69,0.09) 0%, transparent 70%);"></div>
+  <div class="relative z-10 max-w-3xl mx-auto">
+    <div class="anim-1 inline-flex items-center gap-2 mb-5">
+      <span class="font-mono text-[11px] tracking-[0.1em] uppercase text-gold-dark font-medium">Legal</span>
+    </div>
+    <h1 class="anim-2 font-serif text-[2.2rem] md:text-[3rem] text-ink leading-[1.08] tracking-[-0.03em] mb-5">
+      Standard Service Agreement
+    </h1>
+    <p class="anim-2 text-ink-3 text-[16px] leading-[1.7] mb-6">
+      Cold email, automation, and related services.
+    </p>
+    <div class="anim-3 flex items-center gap-3 flex-wrap">
+      <span class="font-mono text-[11px] tracking-widest uppercase text-ink-4">Effective Date: May 14, 2026</span>
+      <span class="text-cream-border">·</span>
+      <span class="font-mono text-[11px] tracking-widest uppercase text-ink-4">Version 1.0</span>
+    </div>
+  </div>
+</section>
+
+<!-- Body -->
+<main class="relative z-10 px-6 md:px-12 pb-24">
+  <article class="legal max-w-3xl mx-auto">
+
+    <p>
+      This Standard Service Agreement ("Agreement") governs all cold email, automation, systems, and related services provided by QwickStep AI, a sole proprietorship registered in Malaysia under the Registration of Businesses Act 1956 (Act 197) and administered by the Companies Commission of Malaysia (Suruhanjaya Syarikat Malaysia, "SSM") ("Provider"), to the business entity identified in an approved proposal, statement of work, or order form ("Client").
+    </p>
+    <p>
+      Each written proposal approved by Client (each, a "Proposal") is incorporated into and governed by this Agreement. In the event of conflict, the Proposal controls with respect to scope, pricing, timelines, and expressly stated benchmarks, subject to the limitations and conditions set forth herein.
+    </p>
+
+    <!-- Table of contents -->
+    <div class="toc">
+      <p class="toc-title">Contents</p>
+      <ol>
+        <li><a href="#s1"><span class="num">01</span>Services &amp; Scope</a></li>
+        <li><a href="#s2"><span class="num">02</span>Client Responsibilities</a></li>
+        <li><a href="#s3"><span class="num">03</span>Fees &amp; Payment</a></li>
+        <li><a href="#s4"><span class="num">04</span>Change Requests</a></li>
+        <li><a href="#s5"><span class="num">05</span>Build Completion</a></li>
+        <li><a href="#s6"><span class="num">06</span>Ongoing Services</a></li>
+        <li><a href="#s7"><span class="num">07</span>Performance Guarantees</a></li>
+        <li><a href="#s8"><span class="num">08</span>Warranty &amp; Disclaimers</a></li>
+        <li><a href="#s9"><span class="num">09</span>Service Categories</a></li>
+        <li><a href="#s10"><span class="num">10</span>Third-Party Platforms</a></li>
+        <li><a href="#s11"><span class="num">11</span>Intellectual Property</a></li>
+        <li><a href="#s12"><span class="num">12</span>Confidentiality</a></li>
+        <li><a href="#s13"><span class="num">13</span>Data &amp; Compliance</a></li>
+        <li><a href="#s14"><span class="num">14</span>Subcontractors</a></li>
+        <li><a href="#s15"><span class="num">15</span>Suspension &amp; Termination</a></li>
+        <li><a href="#s16"><span class="num">16</span>General Termination</a></li>
+        <li><a href="#s17"><span class="num">17</span>Limitation of Liability</a></li>
+        <li><a href="#s18"><span class="num">18</span>Indemnification</a></li>
+        <li><a href="#s19"><span class="num">19</span>Billing Disputes</a></li>
+        <li><a href="#s20"><span class="num">20</span>Governing Law &amp; Arbitration</a></li>
+        <li><a href="#s21"><span class="num">21</span>Entire Agreement</a></li>
+        <li><a href="#s22"><span class="num">22</span>Hourly Support</a></li>
+        <li><a href="#s23"><span class="num">23</span>Notices</a></li>
+        <li><a href="#s24"><span class="num">24</span>Insurance</a></li>
+        <li><a href="#s25"><span class="num">25</span>Assignment</a></li>
+        <li><a href="#s26"><span class="num">26</span>Non-Disparagement</a></li>
+        <li><a href="#s27"><span class="num">27</span>Survival</a></li>
+      </ol>
+    </div>
+
+    <!-- 1. Services & Scope -->
+    <section id="s1" class="legal-section">
+      <h2>1. Services &amp; Scope</h2>
+      <p>Provider will design, configure, implement, and/or maintain cold email campaigns, automation systems, integrations, AI-assisted workflows, and related operational infrastructure as described in the applicable Proposal ("Services").</p>
+      <p>Only Services expressly described in the Proposal are included. Any additional work requires written approval and may result in additional fees or adjusted timelines.</p>
+      <p>Provider is not obligated to perform work outside the agreed scope without such approval.</p>
+
+      <h3><span class="subsec">1A</span>White-Label Engagements</h3>
+      <p>If Services are delivered pursuant to a White-Label Partner Agreement between Provider and a third-party distribution partner, the White-Label Partner Agreement and any applicable Fulfillment Addendum shall control with respect to revenue allocation, channel ownership, and partner responsibilities.</p>
+      <p>Client acknowledges that Provider may fulfill Services through a white-label structure and that certain communications or payment processing may be managed by an authorized distribution partner.</p>
+
+      <h3><span class="subsec">1B</span>Execution Autonomy</h3>
+      <p>Provider retains discretion over technical implementation, automation sequencing, campaign logic, distribution methodology, subcontractor utilization, and operational execution necessary to achieve the objectives stated in the applicable Proposal.</p>
+      <p>Client approval applies to strategic positioning, messaging direction, and brand representation, but does not extend to micro-management of system architecture or execution methodology.</p>
+    </section>
+
+    <!-- 2. Client Responsibilities -->
+    <section id="s2" class="legal-section">
+      <h2>2. Client Responsibilities</h2>
+      <p>Client agrees to provide timely:</p>
+      <ul>
+        <li>System access and credentials</li>
+        <li>Required data and approvals</li>
+        <li>Messaging content and positioning approvals</li>
+        <li>Cooperation necessary for execution</li>
+      </ul>
+      <p>Delays, inaccuracies, or performance limitations caused by Client inaction, incomplete inputs, deliverability issues, or third-party dependencies are not the responsibility of Provider.</p>
+      <p>If Client is unresponsive for seven (7) consecutive days, Provider may pause Services, extend timelines, or deem affected deliverables complete based on work performed.</p>
+    </section>
+
+    <!-- 3. Fees & Payment -->
+    <section id="s3" class="legal-section">
+      <h2>3. Fees &amp; Payment</h2>
+      <p>Fees, billing structure, and payment schedules are defined in the applicable Proposal.</p>
+      <p>Unless otherwise stated, implementation fees are due prior to commencement of work. Ongoing retainers renew monthly unless otherwise specified.</p>
+      <p>Fees are earned upon commencement of Services, including allocation of personnel and system resources.</p>
+      <p>Client remains responsible for all third-party software, platform, API, hosting, and usage fees required for operation, including but not limited to sequencing platforms, sending domains, mailboxes, email verification, and scraping or enrichment tools. Third-party costs are non-refundable and are paid directly by Client to the applicable vendor.</p>
+      <p>Late or unpaid invoices may result in suspension of Services.</p>
+      <p>Provider reserves the right to modify pricing structures, packaging, and service offerings for future engagements. No prior proposal, conversation, or negotiation establishes precedent for subsequent agreements.</p>
+      <p><strong>Software Cost Estimates.</strong> Any software, platform, API, or third-party usage cost estimates provided in a Proposal are non-binding good-faith projections. Client pays all third-party fees directly to the applicable vendor unless otherwise specified in writing. Provider is not liable for third-party price changes, billing errors, or vendor policy changes affecting Client's costs.</p>
+    </section>
+
+    <!-- 4. Change Requests -->
+    <section id="s4" class="legal-section">
+      <h2>4. Change Requests</h2>
+      <p>Material changes to scope, integrations, messaging logic, or platform requirements may require additional configuration and fees. Provider is not responsible for rework resulting from Client-requested changes.</p>
+    </section>
+
+    <!-- 5. Build Completion -->
+    <section id="s5" class="legal-section">
+      <h2>5. Build Completion</h2>
+      <p>Build Completion occurs when the system materially performs in accordance with the specifications stated in the Proposal at time of delivery.</p>
+      <p><strong>Acceptance Period.</strong> Upon delivery or handover, Client has ten (10) business days to identify, in writing, any material non-conformance with the Proposal specifications. If Client does not provide written notice of non-conformance within this period, the build is deemed accepted and Provider's build obligations are complete. Subsequent platform updates, third-party changes, or Client-side modifications do not constitute non-performance.</p>
+    </section>
+
+    <!-- 6. Ongoing Services -->
+    <section id="s6" class="legal-section">
+      <h2>6. Ongoing Services</h2>
+      <p>If applicable, ongoing services renew on a month-to-month basis unless otherwise defined in the Proposal. Cancellation requires written notice and takes effect at the end of the current billing period.</p>
+      <p>Retainer fees are non-refundable once services for that billing period have commenced, except as expressly provided under the volume-guarantee refund mechanism described in Section 7A.</p>
+      <p>If a Proposal specifies an Initial Commitment Period, Client may not terminate for convenience during that Initial Commitment Period. Fees for that period remain due and non-refundable once Services commence.</p>
+    </section>
+
+    <!-- 7. Performance Guarantees & Limited Remedy -->
+    <section id="s7" class="legal-section">
+      <h2>7. Performance Guarantees &amp; Limited Remedy</h2>
+      <p>Provider does not guarantee revenue, profit, ROI, sales conversions, or business outcomes. Where the applicable Proposal includes a volume guarantee or pay-per-result pricing, the definitions and remedies in this Section apply.</p>
+
+      <h3><span class="subsec">7A</span>Benchmark-Based Guarantees and Refund Remedy</h3>
+      <p>Where a Proposal specifies a monthly retainer with a volume guarantee (for example, the "Leads Guaranteed" or "Appointments Guaranteed" offers), the following applies:</p>
+      <ul>
+        <li>The volume commitment is measured over a calendar month beginning on the day campaigns go fully live following the warmup period described in the applicable Proposal.</li>
+        <li>If Provider delivers fewer than the guaranteed number of qualifying Leads or Appointments (as defined below) within the applicable month, Client's sole and exclusive remedy is a full refund of the retainer fees paid for that month.</li>
+        <li>The guarantee is conditioned upon Client maintaining required access, providing approved messaging, complying with applicable laws and platform terms of service, and not pausing or interrupting Services during the measurement period.</li>
+        <li>Overdelivery within a month is included at no additional cost; Provider's compensation for that month is the flat retainer fee.</li>
+        <li>Disputes regarding result validity or month-end totals must be submitted in writing within five (5) business days of the close of the applicable month.</li>
+      </ul>
+      <p>Where a Proposal specifies pay-per-performance pricing (for example, the "Pay-Per-Lead" or "Pay-Per-Appointment" offers), Client pays only for qualifying Leads or Appointments actually delivered, invoiced as results land. No volume guarantee applies and no monthly retainer is charged. Provider's compensation is contingent entirely on delivery.</p>
+
+      <h3><span class="subsec">7B</span>Lead Definition</h3>
+      <p>A "Lead" is a unique individual who matches Client's agreed Ideal Customer Profile and gives a clear, positive response indicating interest in Client's product or service as a direct result of campaign outreach. To qualify, a Lead must satisfy all three:</p>
+      <ol>
+        <li><strong>ICP match.</strong> Matches the agreed criteria including job title, company size, industry, and geography stated in the applicable Proposal.</li>
+        <li><strong>Demonstrated intent.</strong> Requests pricing, asks for more information or a link, asks relevant qualification questions, or expresses interest in discussing services.</li>
+        <li><strong>Real and unique.</strong> A real individual, not a generic inbox or role-based email; not duplicated or previously counted.</li>
+      </ol>
+      <p>The following do not qualify and are not counted toward any guarantee or invoice: contacts outside the agreed ICP; students, freelancers, or vendors (unless expressly included in the ICP); spam or bot responses; automated replies or out-of-office messages; duplicate contacts; responses unrelated to the offer; and negative or non-committal responses. Disputes regarding lead validity must be submitted in writing within five (5) business days of delivery.</p>
+
+      <h3><span class="subsec">7C</span>Appointment Definition and Show-Up Rule</h3>
+      <p>An "Appointment" is a confirmed calendar event with an ICP-matched prospect, scheduled on a calendar system to which Provider has access, where the prospect has explicitly agreed to a meeting time. To qualify, an Appointment must satisfy both:</p>
+      <ol>
+        <li><strong>Scheduled on Client's calendar.</strong> The meeting is confirmed and visible on the calendar system Provider has access to, serving as the shared source of truth.</li>
+        <li><strong>ICP match.</strong> Matches the criteria stated in the applicable Proposal. If a prospect outside the agreed ICP slips through, that Appointment does not count toward any guarantee or invoice.</li>
+      </ol>
+      <p><strong>Show-Up.</strong> Once an Appointment is confirmed on Client's calendar, Provider's deliverable is complete. Whether the prospect attends is determined by pre-meeting nurture activities (reminders, confirmations, follow-ups), which are Client's responsibility. Confirmed Appointments count toward Client's billable total regardless of attendance.</p>
+      <p><strong>Reschedules.</strong> If the same prospect reschedules one or more times, it still counts as a single Appointment for purposes of guarantee and invoicing.</p>
+      <p><strong>Cancellations.</strong> If a prospect cancels with at least forty-eight (48) hours' notice prior to the scheduled time, the Appointment does not count toward Client's billable total. If the cancellation occurs within forty-eight (48) hours of the scheduled time, the Appointment counts as if attended.</p>
+      <p>Disputes regarding Appointment validity must be submitted in writing within five (5) business days of invoice issuance.</p>
+    </section>
+
+    <!-- 8. System Functionality Warranty and Disclaimers -->
+    <section id="s8" class="legal-section">
+      <h2>8. System Functionality Warranty and Disclaimers</h2>
+      <p>Provider warrants only that the system will materially perform as described in the Proposal at time of delivery. Provider does not warrant ongoing performance affected by third-party changes, Client modifications, or improper usage.</p>
+      <p><strong>No Implied Warranties.</strong> <span class="caps">Except as expressly stated in this Agreement, all Services and deliverables are provided "as is" and "as available." Provider disclaims all other warranties, express or implied, including without limitation implied warranties of merchantability, fitness for a particular purpose, non-infringement, accuracy, and uninterrupted operation.</span></p>
+      <p><strong>Post-Handover Operation.</strong> For engagements involving transfer of system operation to Client, Provider has no obligation to monitor, maintain, troubleshoot, or remediate Client-operated systems following handover, absent a separate paid engagement. Issues arising from Client configuration changes, usage patterns, personnel actions, or operational decisions post-handover are Client's responsibility.</p>
+    </section>
+
+    <!-- 9. Service Categories and Risk Allocation -->
+    <section id="s9" class="legal-section">
+      <h2>9. Service Categories and Risk Allocation</h2>
+      <p>The following provisions apply to specific categories of Services regardless of whether such Services are explicitly labeled as such in the applicable Proposal. Provisions apply to any system, workflow, or deliverable that functions within the described category. Where a Service spans multiple categories, all applicable provisions apply concurrently.</p>
+
+      <h3><span class="subsec">9A</span>AI-Assisted Outputs</h3>
+      <p>AI systems including but not limited to chatbots, voice agents, AI SDRs, AI receptionists, custom GPTs, RAG systems, embeddings, content generation tools, and any system using machine learning or generative models may produce inaccurate, incomplete, biased, defamatory, infringing, or otherwise erroneous outputs. Client is solely responsible for reviewing, supervising, validating, and approving all AI-generated outputs prior to use, publication, transmission, or deployment to end users. Client acknowledges that AI outputs are probabilistic and not deterministic, and Provider does not warrant the accuracy, completeness, safety, or fitness for purpose of any AI output. Provider is not liable for damages arising from AI outputs, including but not limited to misrepresentations made to Client's customers, hallucinated commitments, biased decisions, defamation, intellectual property infringement, or harm to end users.</p>
+
+      <h3><span class="subsec">9B</span>Voice, Conversational, and Recorded Communications Systems</h3>
+      <p>For Services involving voice agents, call automation, conversational AI, chatbots, SMS systems, or any system that records, transmits, or processes communications, Client is solely responsible for compliance with all applicable consent, recording, disclosure, and wiretap laws, including but not limited to: the Telephone Consumer Protection Act (TCPA), the Electronic Communications Privacy Act (ECPA), the California Invasion of Privacy Act (CIPA), Florida Statutes Section 934.03, and all other federal, state, and local two-party consent or wiretap statutes. Client is responsible for: (i) obtaining all necessary consents from end users prior to system interaction; (ii) implementing AI disclosure language at the beginning of any call or conversation indicating that the user is interacting with artificial intelligence; (iii) updating disclosure language as laws change; (iv) maintaining records of consent; and (v) honoring revocation requests within required timeframes.</p>
+
+      <h3><span class="subsec">9C</span>Outbound Communications and Marketing Systems</h3>
+      <p>For Services involving cold email, SMS outreach, automated outbound messaging, AI-driven prospecting, telemarketing, or any unsolicited contact systems, Client is solely responsible for compliance with CAN-SPAM, TCPA, GDPR, CASL, the FCC's consent rules (including any one-to-one consent requirements applicable at the time of contact), state-level telemarketing and privacy laws, and Do-Not-Call registry obligations. Client is responsible for: (i) sender domain reputation and authentication; (ii) list hygiene, suppression lists, and opt-out processing; (iii) A2P 10DLC registration where applicable for SMS; (iv) lawful basis for outreach in all applicable jurisdictions; (v) honoring opt-out and revocation requests within required timeframes; and (vi) maintaining documentary evidence of consent. Provider's role is limited to system implementation; regulatory compliance is exclusively the Client's obligation.</p>
+
+      <h3><span class="subsec">9D</span>Recruiting, Hiring, and HR Systems</h3>
+      <p>For Services involving recruiting automation, candidate screening, AI-assisted hiring, onboarding workflows, or any system that influences employment decisions, Client acknowledges that Client is the employer of record and retains sole authority over all hiring, screening, and employment decisions. Client is solely responsible for compliance with the Equal Employment Opportunity Commission (EEOC), the Americans with Disabilities Act (ADA), Title VII, the Age Discrimination in Employment Act (ADEA), state and local AI hiring laws (including but not limited to NYC Local Law 144, the Illinois AI Video Interview Act, and the Colorado AI Act), and all other applicable employment laws. Provider does not provide legal, HR, or employment law advice and is not liable for employment-related claims arising from Client's use of any system, including disparate impact, discrimination, or wrongful termination claims.</p>
+
+      <h3><span class="subsec">9E</span>Financial and Back-Office Systems</h3>
+      <p>For Services involving invoice automation, payment routing, financial reporting, accounting integrations, or back-office workflows handling financial data, Client is solely responsible for reviewing all financial outputs, transactions, and reports prior to action or reliance. Provider is not liable for financial errors, mis-routed payments, accounting discrepancies, tax errors, or losses arising from automated financial processes. Client agrees to maintain appropriate human review and reconciliation procedures and acknowledges that financial automation does not replace professional accounting, tax, or financial advisory services.</p>
+
+      <h3><span class="subsec">9F</span>Data Processing and Personally Identifiable Information</h3>
+      <p>For Services that process, store, or transmit personally identifiable information (PII), customer records, conversation logs, health information, financial information, or other sensitive data, Client is the data controller and Provider acts as a data processor solely as directed by Client. Client is responsible for: (i) obtaining all necessary consents and providing required privacy disclosures; (ii) executing data processing agreements where required; (iii) compliance with applicable data protection laws including the Personal Data Protection Act 2010 (Malaysia), GDPR, CCPA, HIPAA where applicable, COPPA where applicable, and state-level privacy regulations; and (iv) determining the lawful basis for processing. Provider does not use Client data to train third-party AI models. Provider may use anonymized, aggregated data for service improvement, analytics, and benchmarking purposes.</p>
+
+      <h3><span class="subsec">9G</span>Integrations and Third-Party Dependencies</h3>
+      <p>Services involving integrations between platforms, APIs, webhooks, or third-party services depend on those third parties maintaining stable functionality. Provider is not liable for service disruptions, data loss, or system failures caused by third-party API changes, deprecations, outages, rate limit changes, model deprecations, platform policy changes, or vendor account suspensions. Remediation of post-handover integration breakage is available under hourly support terms or a separate paid engagement.</p>
+
+      <h3><span class="subsec">9H</span>No Professional Advice</h3>
+      <p>Provider does not provide legal, accounting, tax, medical, financial, employment, regulatory, or investment advice. All Services are operational and technical in nature. Client should consult qualified licensed professionals for guidance specific to Client's circumstances and jurisdiction.</p>
+    </section>
+
+    <!-- 10. Third-Party Platforms -->
+    <section id="s10" class="legal-section">
+      <h2>10. Third-Party Platforms and Compliance</h2>
+      <p>Provider is not responsible for third-party outages, suspensions, pricing changes, deprecations, or policy enforcement actions. Client acknowledges that platforms including but not limited to LinkedIn, Google, Meta, OpenAI, Anthropic, Twilio, Instantly, Smartlead, email service providers, CRM platforms, and communication services govern usage through their own terms of service. Provider implements Services using compliant tooling at time of delivery based on then-current platform policies. Provider is not liable for platform policy changes, enforcement actions, account restrictions, suspensions, or bans arising from platform decisions, Client usage patterns, or post-handover operation. Client is responsible for ongoing review of and compliance with applicable platform terms of service.</p>
+    </section>
+
+    <!-- 11. Intellectual Property -->
+    <section id="s11" class="legal-section">
+      <h2>11. Intellectual Property</h2>
+      <p>Upon full payment, Client owns custom deliverables created specifically under the applicable Proposal.</p>
+      <p>Provider retains ownership of pre-existing materials, frameworks, automation methodologies, templates, processes, and general know-how.</p>
+
+      <h3><span class="subsec">11A</span>License Election &amp; Buyout</h3>
+      <p>Where a Proposal includes a buyout provision, such option is governed exclusively by the Proposal terms. All buyout elections must be documented in writing as an amendment.</p>
+      <p>Where a Proposal grants Client a "lifetime lease," "perpetual license," or similar grant, such grant means a perpetual, non-exclusive, non-transferable license to operate the delivered system for Client's internal business use only. Such grant does not include the right to resell, sublicense, white-label, distribute, replicate, or reverse-engineer the underlying methodology, frameworks, or system architecture. The grant terminates if Client materially breaches this Agreement and fails to cure within thirty (30) days of written notice.</p>
+
+      <h3><span class="subsec">11B</span>Non-Circumvention</h3>
+      <p>Client shall not solicit or engage any subcontractor introduced through Provider for twenty-four (24) months after termination without Provider's prior written consent.</p>
+
+      <h3><span class="subsec">11C</span>No Exclusivity</h3>
+      <p>Nothing in this Agreement grants Client exclusivity unless expressly stated in the applicable Proposal.</p>
+
+      <h3><span class="subsec">11D</span>Non-Resale and Non-Replication</h3>
+      <p>Client shall not resell, sublicense, white-label, repackage, or offer to third parties any service, system, or methodology substantially derived from Provider's deliverables, frameworks, or methodologies for twenty-four (24) months following termination or completion of the engagement. This restriction does not limit Client's internal use of delivered systems.</p>
+    </section>
+
+    <!-- 12. Confidentiality -->
+    <section id="s12" class="legal-section">
+      <h2>12. Confidentiality</h2>
+      <p>Each party will protect the other's confidential information and use it solely for performance of Services. These obligations survive termination.</p>
+    </section>
+
+    <!-- 13. Data & Compliance -->
+    <section id="s13" class="legal-section">
+      <h2>13. Data &amp; Compliance</h2>
+      <p>Client is responsible for compliance with applicable data protection and marketing regulations. All aggregated analytics and derivative reporting remain Provider's exclusive property.</p>
+      <p><strong>Client Representations and Warranties.</strong> Client represents and warrants that: (i) Client has the right and authority to enter into this Agreement; (ii) all data, content, contact lists, and materials provided to Provider are owned by Client or licensed to Client with rights sufficient to authorize Provider's use; (iii) Client has obtained all necessary consents from end users for any communication, data processing, or AI interaction contemplated by the Services; (iv) Client's use of the Services and any deliverables will comply with all applicable laws and regulations; and (v) Client will not use the Services for unlawful, fraudulent, harassing, or harmful purposes.</p>
+    </section>
+
+    <!-- 14. Subcontractors -->
+    <section id="s14" class="legal-section">
+      <h2>14. Subcontractors</h2>
+      <p>Provider may use subcontractors. Provider remains responsible for Services delivered under this Agreement.</p>
+    </section>
+
+    <!-- 15. Suspension & Termination for Cause -->
+    <section id="s15" class="legal-section">
+      <h2>15. Suspension &amp; Termination for Cause</h2>
+      <p>Provider may suspend or terminate immediately if Client fails to provide access, requests illegal actions, interferes with performance, engages in abusive conduct, or fails to cure payment default within five (5) days.</p>
+    </section>
+
+    <!-- 16. General Termination -->
+    <section id="s16" class="legal-section">
+      <h2>16. General Termination</h2>
+      <p>Either party may terminate with thirty (30) days' written notice. Fees paid after commencement are non-refundable, except as expressly provided under the volume-guarantee refund mechanism in Section 7A.</p>
+    </section>
+
+    <!-- 17. Limitation of Liability -->
+    <section id="s17" class="legal-section">
+      <h2>17. Limitation of Liability</h2>
+      <p class="caps">Except for (i) Client's indemnification obligations under Section 18, (ii) breach of confidentiality under Section 12, (iii) breach of intellectual property obligations under Section 11, or (iv) willful misconduct or fraud adjudicated by final, non-appealable order, in no event shall either party be liable for any indirect, incidental, consequential, special, punitive, or exemplary damages, including without limitation lost profits, lost revenue, loss of goodwill, or loss of business opportunity, regardless of the theory of liability and even if advised of the possibility of such damages.</p>
+      <p class="caps">Except for the carve-outs listed above, Provider's total cumulative liability under this Agreement shall not exceed the greater of (a) the fees actually paid by Client to Provider under the applicable Proposal in the twelve (12) months preceding the event giving rise to the claim, or (b) five thousand United States dollars (US$5,000).</p>
+    </section>
+
+    <!-- 18. Indemnification -->
+    <section id="s18" class="legal-section">
+      <h2>18. Indemnification</h2>
+
+      <h3><span class="subsec">18A</span>Client Indemnification of Provider</h3>
+      <p>Client agrees to defend, indemnify, and hold harmless Provider, its officers, employees, contractors, and affiliates from and against any and all claims, damages, losses, liabilities, judgments, settlements, fines, penalties, and expenses (including reasonable attorneys' fees and defense costs) arising out of or relating to: (i) Client-provided content, data, contact lists, or materials; (ii) Client's failure to obtain required consents, authorizations, or permissions from end users; (iii) any claim under TCPA, CAN-SPAM, GDPR, CCPA, CIPA, ECPA, state wiretap statutes, the Malaysian Personal Data Protection Act 2010, or any other communications, marketing, or privacy law arising from communications sent through, generated by, or facilitated by the Services, regardless of which party is alleged to have committed the violation, except where such claim arises from Provider's willful misconduct or fraud adjudicated by final, non-appealable order; (iv) Client's violation of third-party platform terms of service; (v) Client's misuse, modification, or unauthorized operation of any system or deliverable; (vi) Client's regulatory non-compliance, including in employment, financial, healthcare, or other regulated domains; (vii) Client's breach of representations and warranties under this Agreement; and (viii) any third-party claim arising from Client's use of the Services or deliverables.</p>
+
+      <h3><span class="subsec">18B</span>Provider Indemnification of Client</h3>
+      <p>Provider agrees to defend, indemnify, and hold harmless Client from and against third-party claims arising solely from Provider's willful misconduct or fraud in performance of the Services, subject to the limitations of liability in Section 17.</p>
+
+      <h3><span class="subsec">18C</span>Indemnification Procedures</h3>
+      <p>The indemnified party shall promptly notify the indemnifying party of any claim, allow the indemnifying party to control the defense, and provide reasonable cooperation. The indemnifying party shall not settle any claim that imposes obligations on the indemnified party without the indemnified party's prior written consent.</p>
+
+      <h3><span class="subsec">18D</span>Joint Defense and Cooperation</h3>
+      <p>In the event a third party files a claim against both Provider and Client arising from or related to the Services, the parties shall reasonably cooperate in defense of such claims, including sharing of relevant documentation, joint defense agreements where appropriate, and coordination of litigation strategy. Client's indemnification obligations under 18A apply to all third-party claims arising from communications, marketing, privacy, or platform-related violations, including claims naming Provider as co-defendant. Provider retains the right to select its own counsel at Client's expense for matters subject to Client indemnification, subject to reasonable cost approval.</p>
+    </section>
+
+    <!-- 19. Billing Disputes & Chargebacks -->
+    <section id="s19" class="legal-section">
+      <h2>19. Billing Disputes &amp; Chargebacks</h2>
+      <p>Client must notify Provider in writing and allow fifteen (15) days for resolution prior to initiating any chargeback. Initiating a chargeback without this process constitutes material breach.</p>
+    </section>
+
+    <!-- 20. Governing Law, Dispute Resolution, and Class Action Waiver -->
+    <section id="s20" class="legal-section">
+      <h2>20. Governing Law, Dispute Resolution, and Class Action Waiver</h2>
+      <p>This Agreement is governed by and construed in accordance with the laws of Malaysia, including the Contracts Act 1950 and the Arbitration Act 2005 (as amended), without regard to conflict of laws principles.</p>
+      <p><strong>Mandatory Arbitration.</strong> Any dispute, claim, or controversy arising out of or relating to this Agreement, including its formation, interpretation, breach, or termination, shall be resolved exclusively by binding arbitration administered by the Asian International Arbitration Centre (AIAC) under the AIAC Arbitration Rules 2023 (or the latest version in force at the time of arbitration), in accordance with the Arbitration Act 2005. The seat of arbitration shall be Kuala Lumpur, Malaysia, before a single arbitrator, with proceedings conducted in the English language. The arbitrator's decision shall be final and binding, and judgment on the award may be entered in any court of competent jurisdiction.</p>
+      <p><strong>Class Action and Jury Trial Waiver.</strong> <span class="caps">Each party expressly waives any right to participate in a class action, collective action, or representative proceeding against the other. Each party expressly waives any right to trial by jury where such right would otherwise apply. Disputes shall be resolved on an individual basis only.</span></p>
+      <p><strong>Injunctive Relief Carve-Out.</strong> Notwithstanding the foregoing, either party may seek injunctive or other equitable relief from the High Court of Malaya at Kuala Lumpur, or any other court of competent jurisdiction in Malaysia, to protect intellectual property, confidential information, or to enforce non-circumvention obligations pending the outcome of arbitration.</p>
+      <p><strong>Limitation Period.</strong> Any claim arising out of or relating to this Agreement must be commenced within the limitation period prescribed by the Limitation Act 1953 of Malaysia, and no later than six (6) years from the date the cause of action accrued.</p>
+    </section>
+
+    <!-- 21. Entire Agreement; Force Majeure -->
+    <section id="s21" class="legal-section">
+      <h2>21. Entire Agreement; Force Majeure</h2>
+      <p>This Agreement and each Proposal constitute the entire agreement between the parties and supersede all prior agreements, understandings, and communications.</p>
+      <p><strong>Force Majeure.</strong> Neither party shall be liable for delays or failures in performance caused by events beyond reasonable control, including without limitation: acts of God, war, terrorism, civil unrest, pandemic, government action, regulatory changes affecting the legality of Services, third-party AI model deprecations or restrictions, third-party platform bans or suspensions, internet or telecommunications outages, cyberattacks, and supply chain disruptions.</p>
+    </section>
+
+    <!-- 22. Hourly Support and Tune-Up Services -->
+    <section id="s22" class="legal-section">
+      <h2>22. Hourly Support and Tune-Up Services</h2>
+      <p>Hourly support, tune-up, and maintenance services are billed in thirty (30) minute increments at the rate stated in the applicable Proposal. Sessions are scheduled in advance during standard business hours (Monday through Friday, 9:00 AM to 5:00 PM Eastern Time (ET), excluding U.S. federal holidays), aligned with Provider's primarily US-based client base. Hourly support does not include guaranteed response times, emergency availability, or service level commitments unless expressly stated in writing as part of a separate support agreement. Hourly fees are due upon invoice unless prepaid.</p>
+    </section>
+
+    <!-- 23. Notices -->
+    <section id="s23" class="legal-section">
+      <h2>23. Notices</h2>
+      <p>All legal notices required under this Agreement shall be in writing and delivered by: (i) email to the addresses on file for each party, with confirmation of receipt; or (ii) registered post or nationally recognized overnight courier to the parties' principal business addresses. Notices are effective upon receipt or, for email, upon confirmation of delivery. Routine communications regarding Services may be conducted via email, Slack, project management platforms, or other agreed channels.</p>
+    </section>
+
+    <!-- 24. Insurance -->
+    <section id="s24" class="legal-section">
+      <h2>24. Insurance</h2>
+      <p>Each party shall maintain reasonable commercial insurance appropriate to its business operations, including general liability coverage. For Proposals with total fees exceeding twenty-five thousand United States dollars (US$25,000), Client shall maintain general liability insurance with minimum limits of one million United States dollars (US$1,000,000) per occurrence and shall provide a certificate of insurance upon Provider's request. Provider shall maintain professional liability (errors and omissions) coverage appropriate to the Services rendered.</p>
+    </section>
+
+    <!-- 25. Assignment -->
+    <section id="s25" class="legal-section">
+      <h2>25. Assignment</h2>
+      <p>Neither party may assign this Agreement or any rights or obligations hereunder without the prior written consent of the other party, except that either party may assign this Agreement without consent in connection with a merger, acquisition, reorganization, or sale of substantially all assets, provided the successor agrees in writing to be bound by all terms.</p>
+    </section>
+
+    <!-- 26. Non-Disparagement -->
+    <section id="s26" class="legal-section">
+      <h2>26. Non-Disparagement</h2>
+      <p>During the term of this Agreement and for two (2) years following its termination, neither party shall make, publish, or communicate any statement, post, review, or comment in any medium (including online platforms, social media, review sites, and public forums) that is disparaging, defamatory, or harmful to the reputation of the other party, its officers, employees, services, or business operations. This provision does not prohibit truthful statements required by law, regulatory authority, or legal process.</p>
+    </section>
+
+    <!-- 27. Survival -->
+    <section id="s27" class="legal-section">
+      <h2>27. Survival</h2>
+      <p>The following provisions survive termination or expiration of this Agreement: Section 3 (Fees &amp; Payment, with respect to amounts owed), Section 9 (Service Categories and Risk Allocation), Section 11 (Intellectual Property), Section 12 (Confidentiality), Section 13 (Data &amp; Compliance, including Client representations), Section 17 (Limitation of Liability), Section 18 (Indemnification), Section 20 (Governing Law, Dispute Resolution, and Class Action Waiver), Section 23 (Notices), Section 26 (Non-Disparagement), and this Section 27.</p>
+    </section>
+
+    <div class="divider"></div>
+
+    <p class="text-ink-4 text-[13px] mt-10 mb-2 font-mono uppercase tracking-[0.08em]">End of Agreement</p>
+    <p class="text-ink-3 text-[14px] leading-relaxed">
+      Questions about this Agreement? Email <a href="mailto:jun@qwickstep.ai" class="text-gold-dark underline decoration-gold-dark/30 hover:decoration-gold-dark transition-colors">jun@qwickstep.ai</a>.
+    </p>
+
+  </article>
+</main>
+
+<!-- Footer -->
+<footer class="border-t border-cream-border px-6 md:px-12 py-8 relative z-10">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-2.5">
+      <img src="brand_assets/qwickstep.ai iconic mark (white).png" alt="QwickStep AI" class="h-5 w-5 rounded" style="filter: invert(1) brightness(0); opacity:0.4;">
+      <span class="font-mono text-[11px] tracking-widest uppercase text-ink-4">QwickStep AI · Kuala Lumpur, Malaysia</span>
+    </div>
+    <p class="font-mono text-[11px] text-ink-4 tracking-wide">&copy; 2026 QwickStep AI. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>

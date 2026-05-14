@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cold Email Proof · QwickStep AI</title>
+<meta name="description" content="Real screenshots from real campaigns. Pipeline generated, calls booked, calendars filled.">
+<link rel="icon" type="image/png" href="brand_assets/qwickstep.ai iconic mark (white).png">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        cream: '#F7F4EF',
+        'cream-dark': '#EDE9E1',
+        'cream-border': '#DDD8CF',
+        ink: '#111110',
+        'ink-2': '#2A2925',
+        'ink-3': '#6B6860',
+        'ink-4': '#9B9890',
+        gold: '#D4A745',
+        'gold-light': '#F5EEDC',
+        'gold-dark': '#B8912E',
+        navy: '#141928',
+        'navy-light': '#1E2640',
+      },
+      fontFamily: {
+        serif: ['"DM Serif Display"', 'Georgia', 'serif'],
+        sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
+        mono: ['"DM Mono"', 'monospace'],
+      },
+    },
+  },
+}
+</script>
+<!-- Cal.com embed -->
+<script type="text/javascript">
+(function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+Cal("init", {origin:"https://cal.com"});
+Cal("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+</script>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; background: #F7F4EF; color: #111110; font-family: 'DM Sans', system-ui, sans-serif; }
+
+/* ── Liquid Glass Button (matches index) ── */
+.liquid-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  padding: 0;
+  text-decoration: none;
+  font-family: inherit;
+}
+.liquid-btn-inner {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 40px;
+  border-radius: 999px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #111110;
+  letter-spacing: -0.01em;
+  z-index: 1;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.liquid-btn:hover .liquid-btn-inner { transform: scale(1.04); }
+.liquid-btn:active .liquid-btn-inner { transform: scale(0.97); }
+.liquid-btn-glass {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(212,167,69,0.25) 0%, rgba(212,167,69,0.12) 50%, rgba(212,167,69,0.2) 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(212,167,69,0.35);
+  box-shadow: 0 0 6px rgba(0,0,0,0.03), 0 2px 8px rgba(212,167,69,0.12), inset 0 1px 1px rgba(255,255,255,0.4), inset 0 -1px 1px rgba(0,0,0,0.05), 0 0 20px rgba(212,167,69,0.08);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.liquid-btn:hover .liquid-btn-glass {
+  box-shadow: 0 0 8px rgba(0,0,0,0.04), 0 4px 16px rgba(212,167,69,0.18), inset 0 1px 1px rgba(255,255,255,0.5), inset 0 -1px 1px rgba(0,0,0,0.05), 0 0 30px rgba(212,167,69,0.12);
+  border-color: rgba(212,167,69,0.5);
+}
+.liquid-btn-square { border-radius: 8px; }
+.liquid-btn-square .liquid-btn-glass { border-radius: 8px; }
+.liquid-btn-square .liquid-btn-inner { border-radius: 8px; }
+.liquid-btn:focus-visible .liquid-btn-glass { outline: 2px solid #D4A745; outline-offset: 3px; }
+
+/* ── Secondary Button ── */
+.ghost-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 14px 28px;
+  border-radius: 999px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #2A2925;
+  letter-spacing: -0.01em;
+  border: 1.5px solid rgba(17,17,16,0.15);
+  background: rgba(255,255,255,0.5);
+  text-decoration: none;
+  transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), border-color 0.3s ease, background 0.3s ease;
+}
+.ghost-btn:hover { transform: scale(1.04); border-color: rgba(17,17,16,0.25); background: rgba(255,255,255,0.7); }
+.ghost-btn:active { transform: scale(0.97); }
+
+/* ── ROI Pill (nav, matches index) ── */
+.nav-calc-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #0D9488;
+  border: 1px solid rgba(13,148,136,0.35);
+  border-radius: 999px;
+  padding: 5px 14px;
+  text-decoration: none;
+  transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.nav-calc-pill:hover {
+  background: rgba(13,148,136,0.07);
+  border-color: rgba(13,148,136,0.55);
+  box-shadow: 0 0 12px rgba(13,148,136,0.1);
+}
+.nav-calc-pill:focus-visible {
+  outline: 2px solid #0D9488;
+  outline-offset: 2px;
+}
+
+/* ── Reveal animation ── */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.8s cubic-bezier(0.4,0,0.2,1), transform 0.8s cubic-bezier(0.4,0,0.2,1); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── Frame for screenshot images ── */
+.shot-frame {
+  position: relative;
+  display: block;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid #DDD8CF;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.6) inset, 0 1px 3px rgba(0,0,0,0.04), 0 18px 38px -22px rgba(20,25,40,0.22);
+  transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.4s ease;
+}
+.shot-frame:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.7) inset, 0 2px 6px rgba(0,0,0,0.05), 0 24px 50px -22px rgba(20,25,40,0.28);
+}
+.shot-frame-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  background: linear-gradient(to bottom, #FBF8F2, #F2EEE5);
+  border-bottom: 1px solid #DDD8CF;
+}
+.shot-frame-dot { width: 9px; height: 9px; border-radius: 999px; background: #DDD8CF; }
+.shot-frame-dot:nth-child(1) { background: #E8B4A6; }
+.shot-frame-dot:nth-child(2) { background: #E8D08F; }
+.shot-frame-dot:nth-child(3) { background: #B8D4A8; }
+.shot-frame-url {
+  margin-left: 12px;
+  font-family: 'DM Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.04em;
+  color: #9B9890;
+  text-transform: lowercase;
+}
+.shot-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.shot-caption {
+  padding: 14px 16px 16px;
+  border-top: 1px solid #DDD8CF;
+  background: #FBF8F2;
+}
+.shot-caption-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  color: #B8912E;
+  text-transform: uppercase;
+}
+.shot-caption-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #111110;
+  letter-spacing: -0.01em;
+  margin-top: 4px;
+  line-height: 1.35;
+}
+.shot-caption-meta {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12.5px;
+  color: #6B6860;
+  margin-top: 4px;
+  line-height: 1.4;
+}
+
+/* ── Big metric card ── */
+.metric-card {
+  position: relative;
+  padding: 28px 24px;
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid #DDD8CF;
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.4s ease, border-color 0.4s ease;
+}
+.metric-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(212,167,69,0.45);
+  box-shadow: 0 18px 38px -22px rgba(212,167,69,0.25);
+}
+.metric-card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  background: radial-gradient(180% 80% at 0% 0%, rgba(212,167,69,0.10) 0%, rgba(212,167,69,0) 60%);
+  pointer-events: none;
+}
+.metric-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  color: #9B9890;
+  text-transform: uppercase;
+}
+.metric-value {
+  font-family: '"DM Serif Display"', Georgia, serif;
+  font-size: 44px;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: #111110;
+  margin-top: 10px;
+}
+.metric-value-accent { color: #B8912E; }
+.metric-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13.5px;
+  color: #6B6860;
+  margin-top: 8px;
+}
+
+/* ── Section heading ── */
+.eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: #9B9890;
+  text-transform: uppercase;
+}
+
+/* ── Hero grid background ── */
+.proof-hero-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(60% 50% at 85% 15%, rgba(212,167,69,0.16) 0%, rgba(212,167,69,0) 60%),
+    radial-gradient(50% 50% at 10% 90%, rgba(20,25,40,0.06) 0%, rgba(20,25,40,0) 60%),
+    linear-gradient(180deg, #F7F4EF 0%, #F2EEE5 100%);
+}
+.proof-hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(17,17,16,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(17,17,16,0.05) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(60% 80% at 50% 30%, black 0%, transparent 75%);
+  -webkit-mask-image: radial-gradient(60% 80% at 50% 30%, black 0%, transparent 75%);
+  pointer-events: none;
+}
+
+/* ── Mobile menu (replicated minimal) ── */
+.mobile-bar { display: block; width: 20px; height: 1.5px; background: #111110; border-radius: 999px; transition: transform 0.3s, opacity 0.2s; }
+
+/* ── Mosaic helpers ── */
+.mosaic { display: grid; gap: 20px; grid-template-columns: 1fr; align-items: start; }
+@media (min-width: 768px) { .mosaic-2 { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1024px) { .mosaic-3 { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 1024px) { .mosaic-wide { grid-template-columns: 1.6fr 1fr; } }
+@media (min-width: 1024px) { .mosaic-wide-reverse { grid-template-columns: 1fr 1.6fr; } }
+
+/* ── Featured card (the killer campaign) ── */
+.shot-featured {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #fff;
+  border: 1.5px solid rgba(212,167,69,0.4);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.6) inset, 0 2px 6px rgba(0,0,0,0.04), 0 24px 50px -22px rgba(212,167,69,0.30);
+  transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.4s ease, border-color 0.4s ease;
+}
+.shot-featured:hover {
+  transform: translateY(-3px);
+  border-color: rgba(212,167,69,0.65);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.7) inset, 0 2px 8px rgba(0,0,0,0.05), 0 30px 60px -22px rgba(212,167,69,0.40);
+}
+.shot-featured-badge {
+  position: absolute;
+  top: 18px; left: 18px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #F5E0A0 0%, #D4A745 60%, #B8912E 100%);
+  font-family: 'DM Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #1A1F30;
+  font-weight: 700;
+  box-shadow: 0 6px 20px -6px rgba(212,167,69,0.6), 0 1px 0 rgba(255,255,255,0.6) inset;
+}
+.shot-featured-badge .dot {
+  width: 6px; height: 6px; border-radius: 999px;
+  background: #1A1F30;
+  box-shadow: 0 0 0 2px rgba(26,31,48,0.15);
+}
+.shot-featured img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.shot-featured-caption {
+  padding: 22px 26px 24px;
+  border-top: 1px solid #DDD8CF;
+  background: #FBF8F2;
+}
+.shot-featured-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  color: #B8912E;
+  text-transform: uppercase;
+}
+.shot-featured-title {
+  font-family: '"DM Serif Display"', Georgia, serif;
+  font-size: 22px;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  color: #111110;
+  margin-top: 6px;
+}
+@media (min-width: 768px) {
+  .shot-featured-title { font-size: 26px; }
+}
+.shot-featured-meta {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: #6B6860;
+  margin-top: 8px;
+  line-height: 1.5;
+  max-width: 720px;
+}
+
+/* ── Phone card (portrait screenshots) ── */
+.shot-phone {
+  background: #0B0D14;
+  border-color: rgba(255,255,255,0.06);
+}
+.shot-phone .shot-frame-bar {
+  background: linear-gradient(to bottom, #1C1F2A, #14161E);
+  border-bottom-color: rgba(255,255,255,0.06);
+}
+.shot-phone .shot-frame-url { color: rgba(247,244,239,0.45); }
+.shot-phone-stage {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 26px 0;
+  background:
+    radial-gradient(60% 60% at 50% 30%, rgba(212,167,69,0.10) 0%, rgba(212,167,69,0) 60%),
+    radial-gradient(closest-side, #1C1F2A 0%, #0A0B11 100%);
+  min-height: 520px;
+}
+.shot-phone-stage img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-height: 520px;
+  max-width: 78%;
+  border-radius: 28px;
+  box-shadow:
+    0 0 0 2px rgba(255,255,255,0.04),
+    0 0 0 4px rgba(0,0,0,0.6),
+    0 24px 48px -16px rgba(0,0,0,0.6),
+    0 12px 28px -8px rgba(212,167,69,0.18);
+}
+.shot-phone .shot-caption {
+  background: #14161E;
+  border-top-color: rgba(255,255,255,0.06);
+}
+.shot-phone .shot-caption-eyebrow { color: #EAD98F; }
+.shot-phone .shot-caption-title { color: #F7F4EF; }
+.shot-phone .shot-caption-meta { color: rgba(247,244,239,0.60); }
+@media (min-width: 768px) {
+  .shot-phone-stage { min-height: 620px; padding: 32px 0; }
+  .shot-phone-stage img { max-height: 620px; }
+}
+
+/* ── Square calendar card (cap the image height to balance row) ── */
+.shot-square img {
+  max-height: 540px;
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* ── Letter card (email-screenshot quote, uniform height across 3-up) ── */
+.shot-letter-image {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background: #fff;
+  height: 170px;
+  padding: 18px 22px;
+  overflow: hidden;
+  border-bottom: 1px solid #DDD8CF;
+}
+.shot-letter-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: left center;
+}
+
+/* ── CTA strip ── */
+.cta-strip {
+  position: relative;
+  border-radius: 22px;
+  padding: 48px 32px;
+  background:
+    radial-gradient(120% 220% at 0% 0%, rgba(212,167,69,0.22) 0%, rgba(212,167,69,0) 50%),
+    linear-gradient(135deg, #141928 0%, #1E2640 100%);
+  border: 1px solid rgba(212,167,69,0.22);
+  overflow: hidden;
+  color: #F7F4EF;
+}
+@media (min-width: 768px) { .cta-strip { padding: 64px 56px; } }
+.cta-strip::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.06 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  opacity: 0.5;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+/* ── Tag pill ── */
+.tag-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: rgba(212,167,69,0.10);
+  border: 1px solid rgba(212,167,69,0.28);
+  color: #B8912E;
+}
+
+/* ── Inbox screenshot variant ── */
+.inbox-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-top: 1px solid #EDE9E1;
+  background: #fff;
+  font-size: 13px;
+}
+.inbox-row:first-of-type { border-top: 0; }
+.inbox-avatar {
+  width: 30px; height: 30px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #D4A745, #B8912E);
+  color: #FFFDE5;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  display: inline-flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.inbox-name { font-weight: 600; color: #111110; min-width: 0; }
+.inbox-snippet { color: #6B6860; flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.inbox-time { font-family: 'DM Mono', monospace; font-size: 11px; color: #9B9890; flex-shrink: 0; }
+.inbox-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: #F5EEDC;
+  color: #B8912E;
+  flex-shrink: 0;
+}
+.inbox-tag-green { background: #E6F0E0; color: #5C7A3F; }
+
+/* ── Anchor ribbon ── */
+.section-rule { border-top: 1px solid #DDD8CF; }
+
+/* ── CTA-strip button overrides (high-contrast on dark) ── */
+.cta-strip .liquid-btn-inner {
+  color: #1A1F30;
+  padding: 17px 36px;
+  font-weight: 700;
+  font-size: 16px;
+}
+.cta-strip .liquid-btn-glass {
+  background: linear-gradient(135deg, #F5E0A0 0%, #E8C46E 45%, #D4A745 100%);
+  border: 1px solid rgba(255,239,180,0.7);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.55) inset,
+    0 -1px 0 rgba(120,80,0,0.18) inset,
+    0 8px 22px -8px rgba(212,167,69,0.55),
+    0 0 0 1px rgba(212,167,69,0.25);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+.cta-strip .liquid-btn:hover .liquid-btn-glass {
+  background: linear-gradient(135deg, #FFEEB0 0%, #F0CE7C 45%, #DAB14F 100%);
+  border-color: rgba(255,243,200,0.85);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.7) inset,
+    0 -1px 0 rgba(120,80,0,0.2) inset,
+    0 12px 28px -8px rgba(212,167,69,0.7),
+    0 0 0 1px rgba(212,167,69,0.4);
+}
+.cta-strip .ghost-btn {
+  border-color: rgba(247,244,239,0.55) !important;
+  background: rgba(247,244,239,0.10) !important;
+  color: #F7F4EF !important;
+  font-weight: 600;
+}
+.cta-strip .ghost-btn:hover {
+  border-color: rgba(247,244,239,0.85) !important;
+  background: rgba(247,244,239,0.18) !important;
+}
+
+/* ── Compact inline stat strip ── */
+.proof-stat-strip {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 18px;
+  padding: 14px 20px;
+  background: rgba(255,255,255,0.55);
+  border: 1px solid #DDD8CF;
+  border-radius: 14px;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.5) inset, 0 10px 24px -18px rgba(20,25,40,0.18);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.proof-stat { display: inline-flex; flex-direction: column; align-items: flex-start; line-height: 1; }
+.proof-stat-value {
+  font-family: '"DM Serif Display"', Georgia, serif;
+  font-size: 22px;
+  letter-spacing: -0.025em;
+  color: #111110;
+}
+.proof-stat-value-accent { color: #B8912E; }
+.proof-stat-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #9B9890;
+  margin-top: 5px;
+}
+.proof-stat-divider {
+  width: 1px; height: 26px;
+  background: #DDD8CF;
+}
+@media (max-width: 640px) {
+  .proof-stat-strip { padding: 12px 14px; gap: 8px 12px; }
+  .proof-stat-value { font-size: 19px; }
+  .proof-stat-divider { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════ NAV ═══════════════════════════ -->
+<nav class="fixed top-0 left-0 right-0 z-50 h-16 flex items-center justify-between px-6 md:px-12 bg-cream/82 backdrop-blur-xl border-b border-cream-border">
+  <a href="/" class="flex items-center gap-2.5 font-semibold text-sm tracking-tight">
+    <img src="brand_assets/qwickstep.ai iconic mark (white).png" alt="QwickStep AI" class="w-7 h-7" style="filter: brightness(0) saturate(100%);">
+    QwickStep AI
+  </a>
+  <div class="hidden md:flex items-center gap-8">
+    <a href="/#services" class="font-mono text-[11px] tracking-wide text-ink-4 hover:text-ink transition-colors duration-200">SERVICES</a>
+    <a href="/#reviews" class="font-mono text-[11px] tracking-wide text-ink-4 hover:text-ink transition-colors duration-200">REVIEWS</a>
+    <a href="/#case-studies" class="font-mono text-[11px] tracking-wide text-ink-4 hover:text-ink transition-colors duration-200">CASE STUDIES</a>
+    <a href="/roi-calculator" class="nav-calc-pill">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="10" y2="10"/><line x1="14" y1="10" x2="16" y2="10"/></svg>
+      ROI CALCULATOR
+    </a>
+    <a href="javascript:void(0)" data-cal-link="hsienjun.ong/digital-coffee" data-cal-config='{"layout":"month_view"}' class="liquid-btn liquid-btn-square">
+      <span class="liquid-btn-glass"></span>
+      <span class="liquid-btn-inner text-xs px-5 py-2.5">Book Your Strategy Call</span>
+    </a>
+  </div>
+  <a href="javascript:void(0)" data-cal-link="hsienjun.ong/digital-coffee" data-cal-config='{"layout":"month_view"}' class="md:hidden liquid-btn liquid-btn-square">
+    <span class="liquid-btn-glass"></span>
+    <span class="liquid-btn-inner text-[11px] px-4 py-2">Book a Call</span>
+  </a>
+</nav>
+
+<!-- ═══════════════════════════ HERO + INLINE STATS ═══════════════════════════ -->
+<section class="relative pt-24 md:pt-28 pb-8 md:pb-10 overflow-hidden">
+  <div class="proof-hero-bg"></div>
+  <div class="proof-hero-grid"></div>
+  <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
+    <a href="/#case-studies" class="inline-flex items-center gap-2 font-mono text-[10.5px] tracking-widest uppercase text-ink-4 hover:text-ink transition-colors duration-200 reveal mb-5">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      BACK TO MAIN
+    </a>
+
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 lg:gap-10">
+      <div class="flex flex-col items-start max-w-3xl">
+        <div class="inline-flex items-center gap-3 px-3.5 py-1.5 rounded-full mb-4 reveal" style="background: linear-gradient(135deg, rgba(212,167,69,0.10) 0%, rgba(212,167,69,0.04) 100%); border: 1px solid rgba(212,167,69,0.22);">
+          <span class="w-1.5 h-1.5 rounded-full bg-gold" style="box-shadow: 0 0 6px rgba(212,167,69,0.6);"></span>
+          <span class="font-mono text-[10px] md:text-[11px] tracking-widest uppercase text-ink-3">Cold Email · Receipts</span>
+        </div>
+
+        <h1 class="font-serif text-3xl md:text-4xl lg:text-5xl leading-[1.05] text-ink mb-3 reveal" style="letter-spacing:-0.035em;">
+          The proof, <span class="italic" style="background: linear-gradient(135deg, #D4A745 0%, #B8912E 70%, #86700A 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">unfiltered.</span>
+        </h1>
+        <p class="text-[15px] md:text-base text-ink-3 font-light max-w-xl mb-5 reveal" style="letter-spacing:-0.012em; line-height: 1.5;">
+          Every screenshot below is from a live client campaign. Real inboxes, real calendars, real pipeline.
+        </p>
+
+        <div class="flex flex-wrap items-center gap-3 reveal">
+          <a href="javascript:void(0)" data-cal-link="hsienjun.ong/digital-coffee" data-cal-config='{"layout":"month_view"}' class="liquid-btn">
+            <span class="liquid-btn-glass"></span>
+            <span class="liquid-btn-inner text-[15px] px-7 py-3">Book Your Strategy Call</span>
+          </a>
+          <a href="#campaigns" class="ghost-btn" style="padding: 11px 22px; font-size: 14px;">
+            See the receipts
+            <svg class="w-4 h-4 opacity-60" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Compact inline stat strip -->
+      <div class="proof-stat-strip reveal">
+        <div class="proof-stat">
+          <span class="proof-stat-value proof-stat-value-accent">$1.4M+</span>
+          <span class="proof-stat-label">Pipeline</span>
+        </div>
+        <span class="proof-stat-divider"></span>
+        <div class="proof-stat">
+          <span class="proof-stat-value">750+</span>
+          <span class="proof-stat-label">Calls booked</span>
+        </div>
+        <span class="proof-stat-divider"></span>
+        <div class="proof-stat">
+          <span class="proof-stat-value">3,300+</span>
+          <span class="proof-stat-label">Positive replies</span>
+        </div>
+        <span class="proof-stat-divider"></span>
+        <div class="proof-stat">
+          <span class="proof-stat-value">60+</span>
+          <span class="proof-stat-label">Campaigns</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ THE PROOF · MIXED GALLERY ═══════════════════════════ -->
+<section id="campaigns" class="section-rule pt-8 md:pt-10 pb-20 md:pb-24">
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    <div class="mb-6 reveal flex flex-wrap items-end justify-between gap-4">
+      <div>
+        <span class="eyebrow">The Receipts</span>
+        <h2 class="font-serif text-xl md:text-2xl mt-2 leading-tight" style="letter-spacing:-0.025em;">Dashboards, payments, calendars, replies — mixed.</h2>
+      </div>
+      <p class="text-ink-4 text-xs md:text-[13px] max-w-sm leading-relaxed">Real client wins. Scroll on.</p>
+    </div>
+
+    <!-- Featured · best campaign across all clients -->
+    <article class="shot-featured reveal mb-5">
+      <span class="shot-featured-badge"><span class="dot"></span>Best campaign across all clients</span>
+      <img src="proof_assets/deployed/17.1%25%20reply%20rate%20%2B%20%24242k%20in%20pipeline.jpg" alt="Campaign analytics: 17.1% reply rate and $242k in pipeline">
+      <div class="shot-featured-caption">
+        <div class="shot-featured-eyebrow">FEATURED · CAMPAIGN ANALYTICS</div>
+        <div class="shot-featured-title">17.1% reply rate · $242k in pipeline.</div>
+        <div class="shot-featured-meta">The single best campaign we've ever shipped, across every client. One niche, one offer, one sequence — held above 17% for the full window. The kind of numbers that pay for the engagement many times over.</div>
+      </div>
+    </article>
+
+    <!-- Campaign dashboards · 2-up grid -->
+    <div class="mosaic mosaic-2 mt-5 reveal">
+      <article class="shot-frame">
+        <div class="shot-frame-bar">
+          <span class="shot-frame-dot"></span><span class="shot-frame-dot"></span><span class="shot-frame-dot"></span>
+          <span class="shot-frame-url">instantly.ai / pipeline</span>
+        </div>
+        <img src="proof_assets/deployed/%2478k%20in%20pipeline.png" alt="Campaign dashboard showing $78k in pipeline generated">
+        <div class="shot-caption">
+          <div class="shot-caption-eyebrow">PIPELINE</div>
+          <div class="shot-caption-title">$78k in pipeline generated.</div>
+          <div class="shot-caption-meta">Tracked from first reply through booked discovery call.</div>
+        </div>
+      </article>
+      <article class="shot-frame">
+        <div class="shot-frame-bar">
+          <span class="shot-frame-dot"></span><span class="shot-frame-dot"></span><span class="shot-frame-dot"></span>
+          <span class="shot-frame-url">instantly.ai / pipeline</span>
+        </div>
+        <img src="proof_assets/deployed/%2457k%20in%20pipeline%20in%207%20days.png" alt="Campaign showing $57k in pipeline generated in 7 days">
+        <div class="shot-caption">
+          <div class="shot-caption-eyebrow">7-DAY PIPELINE</div>
+          <div class="shot-caption-title">$57k in pipeline · 7 days.</div>
+          <div class="shot-caption-meta">From campaign go-live to first booked meetings, in a single week.</div>
+        </div>
+      </article>
+      <article class="shot-frame">
+        <div class="shot-frame-bar">
+          <span class="shot-frame-dot"></span><span class="shot-frame-dot"></span><span class="shot-frame-dot"></span>
+          <span class="shot-frame-url">instantly.ai / campaign</span>
+        </div>
+        <img src="proof_assets/deployed/10.68%25%20reply%20rate.png" alt="Campaign showing a 10.68% reply rate">
+        <div class="shot-caption">
+          <div class="shot-caption-eyebrow">REPLY RATE</div>
+          <div class="shot-caption-title">10.68% reply rate on a live campaign.</div>
+          <div class="shot-caption-meta">2x industry benchmark. Copy iterated until the numbers moved.</div>
+        </div>
+      </article>
+      <article class="shot-frame">
+        <div class="shot-frame-bar">
+          <span class="shot-frame-dot"></span><span class="shot-frame-dot"></span><span class="shot-frame-dot"></span>
+          <span class="shot-frame-url">instantly.ai / overall</span>
+        </div>
+        <img src="proof_assets/deployed/overall%20analytics%204.14%25%20reply%20rate.png" alt="Overall analytics showing a 4.14% reply rate">
+        <div class="shot-caption">
+          <div class="shot-caption-eyebrow">OVERALL ANALYTICS</div>
+          <div class="shot-caption-title">4.14% reply rate across all sends.</div>
+          <div class="shot-caption-meta">Aggregate across every active campaign on this client's workspace.</div>
+        </div>
+      </article>
+      <article class="shot-frame">
+        <div class="shot-frame-bar">
+          <span class="shot-frame-dot"></span><span class="shot-frame-dot"></span><span class="shot-frame-dot"></span>
+          <span class="shot-frame-url">instantly.ai / campaign</span>
+        </div>
+        <img src="proof_assets/deployed/5.94%25%20reply%20rate.png" alt="Campaign with 5.94% reply rate">
+        <div class="shot-caption">
+          <div class="shot-caption-eyebrow">REPLY RATE</div>
+          <div class="shot-caption-title">5.94% reply rate · sustained.</div>
+          <div class="shot-caption-meta">Held above 5% for 6+ weeks. Deliverability protected the whole way.</div>
+        </div>
+      </article>
+      <article class="shot-frame">
+        <div class="shot-frame-bar">
+          <span class="shot-frame-dot"></span><span class="shot-frame-dot"></span><span class="shot-frame-dot"></span>
+          <span class="shot-frame-url">instantly.ai / campaign</span>
+        </div>
+        <img src="proof_assets/deployed/5.45%25%20reply%20rate.png" alt="Campaign with 5.45% reply rate">
+        <div class="shot-caption">
+          <div class="shot-caption-eyebrow">REPLY RATE</div>
+          <div class="shot-caption-title">5.45% reply rate.</div>
+          <div class="shot-caption-meta">A different niche, same playbook. Numbers translate when the offer is dialed in.</div>
+        </div>
+      </article>
+    </div>
+
+    <!-- Row C · 2-up phone screenshots (no captions, image speaks for itself) -->
+    <div class="mosaic mosaic-2 mt-5 reveal">
+      <article class="shot-frame shot-phone">
+        <div class="shot-frame-bar">
+          <span class="shot-frame-dot"></span><span class="shot-frame-dot"></span><span class="shot-frame-dot"></span>
+          <span class="shot-frame-url">ios · cal.com notifications</span>
+        </div>
+        <div class="shot-phone-stage">
+          <img src="proof_assets/deployed/10%20booked%20appointments%20blurred.png" alt="Phone screenshot showing 10 booked Cal.com meeting notifications (names redacted)">
+        </div>
+      </article>
+      <article class="shot-frame shot-phone">
+        <div class="shot-frame-bar">
+          <span class="shot-frame-dot"></span><span class="shot-frame-dot"></span><span class="shot-frame-dot"></span>
+          <span class="shot-frame-url">ios · instantly notifications</span>
+        </div>
+        <div class="shot-phone-stage">
+          <img src="proof_assets/deployed/instantly%20new%20sales%20opportunities%20blurred.png" alt="Phone screenshot showing Instantly new sales opportunity notifications (email addresses redacted)">
+        </div>
+      </article>
+    </div>
+
+    <!-- Row D · Our client's fully booked calendar (full width) -->
+    <div class="mosaic mt-5 reveal">
+      <article class="shot-frame shot-square">
+        <div class="shot-frame-bar">
+          <span class="shot-frame-dot"></span><span class="shot-frame-dot"></span><span class="shot-frame-dot"></span>
+          <span class="shot-frame-url">google calendar · month view</span>
+        </div>
+        <img src="proof_assets/deployed/ryan's%20fully%20filled%20calendar%20blurred.png" alt="A client's calendar showing every slot booked solid (event names redacted)">
+        <div class="shot-caption">
+          <div class="shot-caption-eyebrow">CALENDAR · BOOKED SOLID</div>
+          <div class="shot-caption-title">Our client's calendar, every slot taken.</div>
+          <div class="shot-caption-meta">A month after launch. Event details blurred for privacy — the density is the story.</div>
+        </div>
+      </article>
+    </div>
+
+    <!-- Row E · 3-up positive replies (real screenshots, emails redacted) -->
+    <div class="mosaic mosaic-3 mt-5 reveal">
+      <article class="shot-frame shot-letter">
+        <div class="shot-frame-bar">
+          <span class="shot-frame-dot"></span><span class="shot-frame-dot"></span><span class="shot-frame-dot"></span>
+          <span class="shot-frame-url">gmail · positive reply</span>
+        </div>
+        <div class="shot-letter-image">
+          <img src="proof_assets/deployed/interested%20in%20hearing%20more%20blurred.png" alt="Reply from prospect: I'm interested in hearing more">
+        </div>
+        <div class="shot-caption">
+          <div class="shot-caption-eyebrow">POSITIVE REPLY</div>
+          <div class="shot-caption-title">"I'm interested in hearing more."</div>
+          <div class="shot-caption-meta">Real prospect, real reply. Sender email redacted for privacy.</div>
+        </div>
+      </article>
+      <article class="shot-frame shot-letter">
+        <div class="shot-frame-bar">
+          <span class="shot-frame-dot"></span><span class="shot-frame-dot"></span><span class="shot-frame-dot"></span>
+          <span class="shot-frame-url">gmail · positive reply</span>
+        </div>
+        <div class="shot-letter-image">
+          <img src="proof_assets/deployed/outreach%20is%20amazing%2C%20im%20all%20ears%20blurred.png" alt="Reply from prospect: Your outreach has been interesting, I'm all ears">
+        </div>
+        <div class="shot-caption">
+          <div class="shot-caption-eyebrow">POSITIVE REPLY</div>
+          <div class="shot-caption-title">"Your outreach has been interesting. I'm all ears."</div>
+          <div class="shot-caption-meta">"Send the video over" — qualified prospect, next step locked.</div>
+        </div>
+      </article>
+      <article class="shot-frame shot-letter">
+        <div class="shot-frame-bar">
+          <span class="shot-frame-dot"></span><span class="shot-frame-dot"></span><span class="shot-frame-dot"></span>
+          <span class="shot-frame-url">gmail · positive reply</span>
+        </div>
+        <div class="shot-letter-image">
+          <img src="proof_assets/deployed/would%20love%20to%20chat%20blurred.png" alt="Reply from prospect: Would love to chat">
+        </div>
+        <div class="shot-caption">
+          <div class="shot-caption-eyebrow">POSITIVE REPLY</div>
+          <div class="shot-caption-title">"Would love to chat. Friday or Monday works."</div>
+          <div class="shot-caption-meta">A founder replying personally, mid-week, offering specific times.</div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ FINAL CTA ═══════════════════════════ -->
+<section class="section-rule py-20 md:py-28">
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    <div class="cta-strip reveal">
+      <div class="relative z-10 flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+        <div class="max-w-xl">
+          <span class="tag-pill mb-5">YOUR INBOX, NEXT</span>
+          <h2 class="font-serif text-3xl md:text-4xl lg:text-[42px] leading-tight" style="letter-spacing:-0.03em; color:#F7F4EF;">
+            Want your screenshots <span class="italic" style="background: linear-gradient(135deg, #EAD98F 0%, #D4A745 70%, #B8912E 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">on this page</span> next quarter?
+          </h2>
+          <p class="mt-4 text-base md:text-lg" style="color: rgba(247,244,239,0.72); line-height: 1.55;">
+            Book a 30-minute strategy call. We'll show you the offer, the lead source, and the sequence we'd ship for your business.
+          </p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a href="javascript:void(0)" data-cal-link="hsienjun.ong/digital-coffee" data-cal-config='{"layout":"month_view"}' class="liquid-btn">
+            <span class="liquid-btn-glass"></span>
+            <span class="liquid-btn-inner">Book Your Strategy Call</span>
+          </a>
+          <a href="/#case-studies" class="ghost-btn">
+            Back to case studies
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ FOOTER ═══════════════════════════ -->
+<footer class="section-rule py-12">
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+      <a href="/" class="flex items-center gap-2.5 font-semibold text-sm tracking-tight">
+        <img src="brand_assets/qwickstep.ai iconic mark (white).png" alt="QwickStep AI" class="w-6 h-6" style="filter: brightness(0) saturate(100%);">
+        QwickStep AI
+      </a>
+      <div class="flex items-center gap-6 text-sm text-ink-4">
+        <a href="/#reviews" class="hover:text-ink transition-colors duration-200">Reviews and Case Studies</a>
+        <a href="/#faq" class="hover:text-ink transition-colors duration-200">FAQ</a>
+        <a href="javascript:void(0)" data-cal-link="hsienjun.ong/digital-coffee" data-cal-config='{"layout":"month_view"}' class="hover:text-gold transition-colors duration-200">Book Your Strategy Call</a>
+      </div>
+    </div>
+    <div class="mt-8 pt-6 border-t border-cream-border flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-ink-4">
+      <p>&copy; 2026 QwickStep AI. All rights reserved.</p>
+      <div class="flex items-center gap-4">
+        <a href="/" class="hover:text-ink transition-colors duration-200">Privacy Policy</a>
+        <a href="/" class="hover:text-ink transition-colors duration-200">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

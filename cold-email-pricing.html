@@ -672,11 +672,87 @@ body::before {
   background-size: 200px;
 }
 
+/* ── Engagement fit rows ── */
+.fit-row {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 24px;
+  padding: 20px 0;
+  border-bottom: 1px solid #EDE9E1;
+  align-items: start;
+}
+.fit-row:last-child { border-bottom: none; }
+.fit-row .lbl {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #6B6860;
+  padding-top: 3px;
+}
+.fit-row .val {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #2A2925;
+}
+
+/* ── Service scope cards ── */
+.scope-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+@media (min-width: 768px) {
+  .scope-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+}
+.scope-card {
+  background: #FFFFFF;
+  border: 1px solid #DDD8CF;
+  border-radius: 14px;
+  padding: 22px 24px;
+  transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+}
+.scope-card:hover {
+  border-color: #B8B2A8;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+  transform: translateY(-2px);
+}
+.scope-card .scope-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #B8912E;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+.scope-card .scope-body {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14.5px;
+  color: #4A4843;
+  line-height: 1.6;
+}
+
+/* ── Infrastructure callout ── */
+.infra-callout {
+  background: linear-gradient(180deg, #FFFFFF 0%, #FBF9F4 100%);
+  border: 1px solid #DDD8CF;
+  border-left: 3px solid #B8912E;
+  border-radius: 14px;
+  padding: 24px 28px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.03), 0 4px 12px rgba(0,0,0,0.02);
+}
+
 /* ── Mobile tweaks ── */
 @media (max-width: 768px) {
   .offer-card { padding: 28px 22px 24px; }
   .price-num { font-size: 2.1rem; }
   .axis { padding: 18px 18px; gap: 14px; }
+  .infra-callout { padding: 20px 22px; }
+}
+@media (max-width: 640px) {
+  .fit-row { grid-template-columns: 1fr; gap: 6px; padding: 16px 0; }
 }
 </style>
 </head>
@@ -698,21 +774,21 @@ body::before {
   <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 70% 50% at 50% -10%, rgba(212,167,69,0.09) 0%, transparent 70%);"></div>
   <div class="relative z-10 max-w-3xl mx-auto">
     <div class="anim-1 inline-flex items-center gap-2 mb-5">
-      <span class="font-mono text-[11px] tracking-[0.1em] uppercase text-gold-dark font-medium">Cold Email Offers</span>
+      <span class="font-mono text-[11px] tracking-[0.1em] uppercase text-gold-dark font-medium">Cold Email Outbound</span>
     </div>
     <h1 class="anim-2 font-serif text-[2.6rem] md:text-[3.5rem] text-ink leading-[1.08] tracking-[-0.03em] mb-5">
-      Four ways to run<br>
-      <em>cold email together.</em>
+      Priced on results.<br>
+      <em>Either we deliver, or you don't pay.</em>
     </h1>
     <p class="anim-3 text-ink-3 text-[17px] leading-[1.75] max-w-xl mx-auto mb-8">
-      Pick what you want delivered: replies or booked meetings. Then pick your commitment level. Same infrastructure underneath, four different ways in.
+      Four ways to start. Pure pay-per-performance, or a monthly retainer with a hard refund guarantee. Same infrastructure underneath. Same team owning it end to end.
     </p>
     <div class="anim-4 flex items-center justify-center gap-3 flex-wrap">
       <span class="font-mono text-[11px] tracking-widest uppercase text-ink-4">All figures in USD</span>
       <span class="text-cream-border">·</span>
       <span class="font-mono text-[11px] tracking-widest uppercase text-ink-4">Month-to-month</span>
       <span class="text-cream-border">·</span>
-      <span class="font-mono text-[11px] tracking-widest uppercase text-ink-4">3-week warmup before launch</span>
+      <span class="font-mono text-[11px] tracking-widest uppercase text-ink-4">2-3 week warmup before guarantee starts</span>
     </div>
   </div>
 </section>
@@ -734,8 +810,8 @@ body::before {
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 9h6m2 0h6M5 6l-3 3 3 3m8-6l3 3-3 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
       <div>
-        <p class="axis-q">Predictable or variable?</p>
-        <p class="axis-a">Commit to a monthly investment with a guaranteed minimum, or pay only for what's delivered.</p>
+        <p class="axis-q">Pay per result, or fixed monthly?</p>
+        <p class="axis-a">Pay only when each lead or appointment lands, or commit to a monthly retainer with a refund guarantee.</p>
       </div>
     </div>
   </div>
@@ -745,12 +821,12 @@ body::before {
 <section class="px-6 md:px-12 pb-16 relative z-10">
   <div class="max-w-6xl mx-auto">
 
-    <!-- Row label: Monthly Investment -->
+    <!-- Row label: Monthly Retainer -->
     <div class="flex items-center gap-3 mb-5">
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1l1.18 2.78 2.97.41-2.15 2.13.51 3-2.51-1.41-2.51 1.41.51-3L2.85 4.19l2.97-.41z" fill="#B8912E"/></svg>
-      <span class="font-mono text-[11px] tracking-[0.12em] uppercase text-gold-dark font-medium">Monthly Investment · Recommended</span>
+      <span class="font-mono text-[11px] tracking-[0.12em] uppercase text-gold-dark font-medium">Monthly Retainer · Refund Guarantee</span>
       <span class="flex-1 h-px bg-cream-border"></span>
-      <span class="font-mono text-[11px] tracking-[0.06em] uppercase text-ink-4">Predictable spend, guaranteed minimum results</span>
+      <span class="font-mono text-[11px] tracking-[0.06em] uppercase text-ink-4">Predictable spend, full refund if we miss</span>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 mb-12 items-stretch">
@@ -765,21 +841,21 @@ body::before {
             Recommended
           </span>
         </div>
-        <h3 class="offer-name">Lead Investment</h3>
-        <p class="offer-tagline">Predictable monthly investment. Guaranteed minimum lead volume every cycle.</p>
+        <h3 class="offer-name">Leads Guaranteed</h3>
+        <p class="offer-tagline">Predictable monthly retainer. 25 qualified leads, or the month is refunded in full.</p>
 
         <div class="price-block">
-          <p class="price-label">Monthly investment</p>
+          <p class="price-label">Monthly retainer</p>
           <div class="price-headline">
-            <span class="price-num">$2,088</span>
+            <span class="price-num">$1,888</span>
             <span class="price-unit">/ month</span>
           </div>
-          <p class="price-sub">Flat. No separate setup fee. The 3-week warmup is included.</p>
+          <p class="price-sub">Flat fee, billed at the start of the month. No setup fee. Infrastructure paid direct to vendors.</p>
 
           <div class="price-grid">
             <div class="price-cell">
               <p class="lbl">Guaranteed</p>
-              <p class="val">50 leads / cycle</p>
+              <p class="val">25 leads / month</p>
             </div>
             <div class="price-cell">
               <p class="lbl">Setup fee</p>
@@ -790,8 +866,8 @@ body::before {
           <div class="effective-row">
             <span class="lbl">Effective cost</span>
             <span>
-              <span class="val">$42 / lead</span>
-              <span class="discount-tag">17% off</span>
+              <span class="val">$76 / lead</span>
+              <span class="discount-tag">3% off</span>
             </span>
           </div>
         </div>
@@ -801,23 +877,19 @@ body::before {
             <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M3 5.5l2 2 4-4" stroke="#B8912E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
           <div>
-            <p class="guarantee-head">50 leads per cycle, guaranteed</p>
-            <p class="guarantee-sub">If we don't hit 50 in 30 days, work continues at no extra cost until we do.</p>
+            <p class="guarantee-head">25 qualified leads per month, or refund</p>
+            <p class="guarantee-sub">If we deliver fewer than 25 in a month, that month is refunded in full.</p>
           </div>
         </div>
 
         <div class="feat-list">
           <div class="feat-row">
             <svg class="feat-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="rgba(212,167,69,0.4)"/><path d="M5 8l2 2 4-4" stroke="#D4A745" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span>Full infrastructure (domains, mailboxes, scraping, enrichment, verification)</span>
+            <span>Full campaign ops: strategy, copy, list building, deliverability</span>
           </div>
           <div class="feat-row">
             <svg class="feat-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="rgba(212,167,69,0.4)"/><path d="M5 8l2 2 4-4" stroke="#D4A745" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span style="font-weight:600;">No separate setup fee</span>
-          </div>
-          <div class="feat-row">
-            <svg class="feat-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="rgba(212,167,69,0.4)"/><path d="M5 8l2 2 4-4" stroke="#D4A745" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span>Ongoing campaign optimization & A/B testing</span>
+            <span style="font-weight:600;">No setup fee. Infrastructure paid direct to vendors.</span>
           </div>
           <div class="feat-row">
             <svg class="feat-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="rgba(212,167,69,0.4)"/><path d="M5 8l2 2 4-4" stroke="#D4A745" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -825,7 +897,11 @@ body::before {
           </div>
           <div class="feat-row">
             <svg class="feat-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="rgba(212,167,69,0.4)"/><path d="M5 8l2 2 4-4" stroke="#D4A745" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span>Overdelivery within the cycle is included free</span>
+            <span>Ongoing A/B testing and reply analysis</span>
+          </div>
+          <div class="feat-row">
+            <svg class="feat-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="rgba(212,167,69,0.4)"/><path d="M5 8l2 2 4-4" stroke="#D4A745" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Overdelivery within the month is included free</span>
           </div>
           <div class="feat-row">
             <svg class="feat-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="rgba(212,167,69,0.4)"/><path d="M5 8l2 2 4-4" stroke="#D4A745" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -844,21 +920,21 @@ body::before {
             Recommended
           </span>
         </div>
-        <h3 class="offer-name">Appointment Investment</h3>
-        <p class="offer-tagline">Predictable monthly investment. Guaranteed booked meetings every cycle.</p>
+        <h3 class="offer-name">Appointments Guaranteed</h3>
+        <p class="offer-tagline">Calendar filled for you. 10 booked appointments, or the month is refunded in full.</p>
 
         <div class="price-block">
-          <p class="price-label">Monthly investment</p>
+          <p class="price-label">Monthly retainer</p>
           <div class="price-headline">
             <span class="price-num">$3,088</span>
             <span class="price-unit">/ month</span>
           </div>
-          <p class="price-sub">Flat. No separate setup fee. The 3-week warmup is included.</p>
+          <p class="price-sub">Flat fee, billed at the start of the month. SDR handles replies. Meetings booked onto your calendar.</p>
 
           <div class="price-grid">
             <div class="price-cell">
               <p class="lbl">Guaranteed</p>
-              <p class="val">10 appts / cycle</p>
+              <p class="val">10 appts / month</p>
             </div>
             <div class="price-cell">
               <p class="lbl">Setup fee</p>
@@ -880,19 +956,19 @@ body::before {
             <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M3 5.5l2 2 4-4" stroke="#B8912E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
           <div>
-            <p class="guarantee-head">10 appointments per cycle, guaranteed</p>
-            <p class="guarantee-sub">If we don't hit 10 in 30 days, work continues at no extra cost until we do.</p>
+            <p class="guarantee-head">10 booked appointments per month, or refund</p>
+            <p class="guarantee-sub">If we deliver fewer than 10 in a month, that month is refunded in full.</p>
           </div>
         </div>
 
         <div class="feat-list">
           <div class="feat-row">
             <svg class="feat-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="rgba(212,167,69,0.4)"/><path d="M5 8l2 2 4-4" stroke="#D4A745" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span>Everything in the lead offer, plus a dedicated SDR</span>
+            <span>Everything in Leads Guaranteed, plus a dedicated SDR</span>
           </div>
           <div class="feat-row">
             <svg class="feat-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="rgba(212,167,69,0.4)"/><path d="M5 8l2 2 4-4" stroke="#D4A745" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span style="font-weight:600;">No separate setup fee</span>
+            <span style="font-weight:600;">No setup fee. Infrastructure paid direct to vendors.</span>
           </div>
           <div class="feat-row">
             <svg class="feat-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="rgba(212,167,69,0.4)"/><path d="M5 8l2 2 4-4" stroke="#D4A745" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -904,7 +980,7 @@ body::before {
           </div>
           <div class="feat-row">
             <svg class="feat-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="rgba(212,167,69,0.4)"/><path d="M5 8l2 2 4-4" stroke="#D4A745" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span>Overdelivery within the cycle is included free</span>
+            <span>Overdelivery within the month is included free</span>
           </div>
           <div class="feat-row">
             <svg class="feat-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="rgba(212,167,69,0.4)"/><path d="M5 8l2 2 4-4" stroke="#D4A745" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -915,12 +991,12 @@ body::before {
 
     </div>
 
-    <!-- Row label: Pay Per Result -->
+    <!-- Row label: Pay-Per-Performance -->
     <div class="flex items-center gap-3 mb-5 mt-4">
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M5 4l-2 3 2 3m4-6l2 3-2 3" stroke="#6B6860" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <span class="font-mono text-[11px] tracking-[0.12em] uppercase text-ink-3 font-medium">Pay Per Result</span>
+      <span class="font-mono text-[11px] tracking-[0.12em] uppercase text-ink-3 font-medium">Pay-Per-Performance</span>
       <span class="flex-1 h-px bg-cream-border"></span>
-      <span class="font-mono text-[11px] tracking-[0.06em] uppercase text-ink-4">Variable spend, no volume commitment</span>
+      <span class="font-mono text-[11px] tracking-[0.06em] uppercase text-ink-4">Variable spend, pay only per delivered result</span>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 items-stretch">
@@ -933,20 +1009,20 @@ body::before {
           <span class="offer-pill pill-variable">Pay as you go</span>
         </div>
         <h3 class="offer-name">Pay-Per-Lead</h3>
-        <p class="offer-tagline">Pay only for the leads we deliver. No commitment, no volume guarantee.</p>
+        <p class="offer-tagline">Pay only for verified, ICP-matched leads that show buying interest. No setup. No monthly fee.</p>
 
         <div class="price-block">
-          <p class="price-label">One-time setup</p>
+          <p class="price-label">Per result</p>
           <div class="price-headline">
-            <span class="price-num">$2,088</span>
-            <span class="price-unit">setup</span>
+            <span class="price-num">$78</span>
+            <span class="price-unit">/ qualified lead</span>
           </div>
-          <p class="price-sub">Covers infrastructure, copy, and deliverability. Plus your <strong class="text-ink font-semibold">first 25 leads</strong> at no extra cost.</p>
+          <p class="price-sub">No setup fee. No monthly retainer. You only pay when a lead lands.</p>
 
           <div class="price-grid">
             <div class="price-cell">
-              <p class="lbl">After 25 leads</p>
-              <p class="val">$48 / lead</p>
+              <p class="lbl">Setup fee</p>
+              <p class="val">None</p>
             </div>
             <div class="price-cell">
               <p class="lbl">Monthly base</p>
@@ -956,7 +1032,7 @@ body::before {
 
           <div class="effective-row">
             <span class="lbl">Effective cost</span>
-            <span class="val">$48 / lead</span>
+            <span class="val">$78 / lead</span>
           </div>
         </div>
 
@@ -965,19 +1041,19 @@ body::before {
             <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M2 5.5h7" stroke="#9B9890" stroke-width="1.4" stroke-linecap="round"/></svg>
           </div>
           <div>
-            <p class="guarantee-head">No volume guarantee</p>
-            <p class="guarantee-sub">You pay only for the high-intent leads we actually deliver.</p>
+            <p class="guarantee-head">Pay only per lead delivered</p>
+            <p class="guarantee-sub">No volume commitment. We carry the cost of the campaign until results land.</p>
           </div>
         </div>
 
         <div class="feat-list">
           <div class="feat-row">
             <svg class="feat-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="#DDD8CF"/><path d="M5 8l2 2 4-4" stroke="#3F5749" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span>Full infrastructure (domains, mailboxes, scraping, enrichment, verification)</span>
+            <span>Full campaign ops: strategy, copy, list building, deliverability</span>
           </div>
           <div class="feat-row">
             <svg class="feat-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="#DDD8CF"/><path d="M5 8l2 2 4-4" stroke="#3F5749" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span>Campaign strategy, copywriting & deliverability management</span>
+            <span>No setup fee. Infrastructure paid direct to vendors.</span>
           </div>
           <div class="feat-row">
             <svg class="feat-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="#DDD8CF"/><path d="M5 8l2 2 4-4" stroke="#3F5749" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -985,7 +1061,7 @@ body::before {
           </div>
           <div class="feat-row">
             <svg class="feat-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="#DDD8CF"/><path d="M5 8l2 2 4-4" stroke="#3F5749" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span>First 25 high-intent leads included in setup</span>
+            <span>Ongoing A/B testing and reply analysis</span>
           </div>
           <div class="feat-row">
             <svg class="feat-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="#DDD8CF"/><path d="M5 8l2 2 4-4" stroke="#3F5749" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -1002,20 +1078,20 @@ body::before {
           <span class="offer-pill pill-variable">Pay as you go</span>
         </div>
         <h3 class="offer-name">Pay-Per-Appointment</h3>
-        <p class="offer-tagline">Skip the inbox work. Pay only for confirmed meetings on your calendar.</p>
+        <p class="offer-tagline">Skip the inbox work. Pay only for confirmed meetings on your calendar. No setup. No monthly fee.</p>
 
         <div class="price-block">
-          <p class="price-label">One-time setup</p>
+          <p class="price-label">Per result</p>
           <div class="price-headline">
-            <span class="price-num">$3,088</span>
-            <span class="price-unit">setup</span>
+            <span class="price-num">$348</span>
+            <span class="price-unit">/ booked appt</span>
           </div>
-          <p class="price-sub">Includes dedicated SDR, infrastructure, and your <strong class="text-ink font-semibold">first 10 booked appointments</strong>.</p>
+          <p class="price-sub">No setup fee. No monthly retainer. SDR handles replies. You only pay when meetings land.</p>
 
           <div class="price-grid">
             <div class="price-cell">
-              <p class="lbl">After 10 appts</p>
-              <p class="val">$348 / appt</p>
+              <p class="lbl">Setup fee</p>
+              <p class="val">None</p>
             </div>
             <div class="price-cell">
               <p class="lbl">Monthly base</p>
@@ -1034,15 +1110,19 @@ body::before {
             <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M2 5.5h7" stroke="#9B9890" stroke-width="1.4" stroke-linecap="round"/></svg>
           </div>
           <div>
-            <p class="guarantee-head">No volume guarantee</p>
-            <p class="guarantee-sub">You pay only for the appointments we book on your calendar.</p>
+            <p class="guarantee-head">Pay only per appointment booked</p>
+            <p class="guarantee-sub">No volume commitment. We carry the cost of the campaign and SDR until meetings land.</p>
           </div>
         </div>
 
         <div class="feat-list">
           <div class="feat-row">
             <svg class="feat-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="#DDD8CF"/><path d="M5 8l2 2 4-4" stroke="#B8912E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span>Everything in the lead offer, plus a dedicated SDR</span>
+            <span>Everything in Pay-Per-Lead, plus a dedicated SDR</span>
+          </div>
+          <div class="feat-row">
+            <svg class="feat-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="#DDD8CF"/><path d="M5 8l2 2 4-4" stroke="#B8912E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>No setup fee. Infrastructure paid direct to vendors.</span>
           </div>
           <div class="feat-row">
             <svg class="feat-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="#DDD8CF"/><path d="M5 8l2 2 4-4" stroke="#B8912E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -1054,15 +1134,34 @@ body::before {
           </div>
           <div class="feat-row">
             <svg class="feat-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="#DDD8CF"/><path d="M5 8l2 2 4-4" stroke="#B8912E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span>First 10 booked appointments included in setup</span>
-          </div>
-          <div class="feat-row">
-            <svg class="feat-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="#DDD8CF"/><path d="M5 8l2 2 4-4" stroke="#B8912E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             <span>You handle: pre-meeting nurture, show up, close</span>
           </div>
         </div>
       </div>
 
+    </div>
+  </div>
+</section>
+
+<!-- ── Infrastructure Callout ── -->
+<section class="px-6 md:px-12 pb-16 relative z-10">
+  <div class="max-w-6xl mx-auto">
+    <div class="infra-callout">
+      <div class="flex items-start gap-4">
+        <div class="flex-shrink-0 w-10 h-10 rounded-xl bg-gold-light flex items-center justify-center" style="border:1px solid rgba(212,167,69,0.32);">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 5h14M2 9h14M2 13h14" stroke="#B8912E" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="flex-1">
+          <p class="font-mono text-[11px] tracking-[0.1em] uppercase text-gold-dark mb-2 font-medium">Infrastructure · Paid direct to vendors</p>
+          <h3 class="font-serif text-[1.4rem] md:text-[1.6rem] text-ink mb-3 tracking-[-0.01em] leading-[1.15]">All four offers exclude infrastructure. You own the stack.</h3>
+          <p class="text-ink-3 text-[15px] leading-relaxed mb-4">
+            Sequencer (Instantly or Smartlead, $97-200/mo), domains ($10 each), mailboxes ($4 each), email verification (~$50/mo), and scraping tools (pay-as-you-go). <strong class="text-ink">Total: $300 to $600 per month, depending on send volume.</strong>
+          </p>
+          <p class="text-ink-3 text-[14.5px] leading-relaxed">
+            We tell you exactly what to buy, walk you through setup, and run every tool for you. If we ever part ways, you keep your domains, mailboxes, sending platform, and full campaign history. Bundling infrastructure into our fee would create dependency, not value.
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1077,7 +1176,7 @@ body::before {
         <h2 class="font-serif text-[1.9rem] md:text-[2.4rem] text-ink tracking-[-0.02em] leading-[1.1]">All four offers,<br>side by side.</h2>
       </div>
       <p class="text-ink-3 text-[14.5px] leading-relaxed max-w-sm">
-        The monthly investments are the better deal per result and bring a guarantee with them. Pay-as-you-go is the fastest way to test the channel.
+        The monthly retainer is the better deal per result and comes with a hard refund guarantee. Pay-per-performance is the fastest way to test the channel with zero fixed spend.
       </p>
     </div>
 
@@ -1088,11 +1187,11 @@ body::before {
             <tr>
               <th></th>
               <th class="col-rec">
-                <span class="colname">Lead Investment</span>
+                <span class="colname">Leads Guaranteed</span>
                 <span class="font-mono text-[10px] uppercase tracking-[0.08em] text-gold-dark">Recommended</span>
               </th>
               <th class="col-rec">
-                <span class="colname">Appt Investment</span>
+                <span class="colname">Appts Guaranteed</span>
                 <span class="font-mono text-[10px] uppercase tracking-[0.08em] text-gold-dark">Recommended</span>
               </th>
               <th>
@@ -1110,42 +1209,49 @@ body::before {
             <tr class="section-row"><td>Investment</td><td class="col-rec"></td><td class="col-rec"></td><td></td><td></td></tr>
 
             <tr>
+              <td>Price</td>
+              <td class="col-rec"><span class="font-semibold text-ink">$1,888</span> / month</td>
+              <td class="col-rec"><span class="font-semibold text-ink">$3,088</span> / month</td>
+              <td><span class="font-semibold text-ink">$78</span> / qualified lead</td>
+              <td><span class="font-semibold text-ink">$348</span> / booked appt</td>
+            </tr>
+            <tr>
               <td>Setup fee</td>
               <td class="col-rec sage">None</td>
               <td class="col-rec sage">None</td>
-              <td><span class="font-semibold text-ink">$2,088</span><br><span class="small">covers first 25 leads</span></td>
-              <td><span class="font-semibold text-ink">$3,088</span><br><span class="small">covers first 10 appts</span></td>
-            </tr>
-            <tr>
-              <td>Monthly</td>
-              <td class="col-rec"><span class="font-semibold text-ink">$2,088</span> flat</td>
-              <td class="col-rec"><span class="font-semibold text-ink">$3,088</span> flat</td>
-              <td><span class="small">$0 base</span><br>+ $48 / lead after 25</td>
-              <td><span class="small">$0 base</span><br>+ $348 / appt after 10</td>
+              <td class="sage">None</td>
+              <td class="sage">None</td>
             </tr>
             <tr>
               <td>Effective cost per result</td>
-              <td class="col-rec accent">$42 / lead <span class="small sage">(17% off)</span></td>
+              <td class="col-rec accent">$76 / lead <span class="small sage">(3% off)</span></td>
               <td class="col-rec accent">$309 / appt <span class="small sage">(11% off)</span></td>
-              <td class="accent">$48 / lead</td>
+              <td class="accent">$78 / lead</td>
               <td class="accent">$348 / appt</td>
             </tr>
 
-            <tr class="section-row"><td>Guarantee & Cycle</td><td class="col-rec"></td><td class="col-rec"></td><td></td><td></td></tr>
+            <tr class="section-row"><td>Guarantee</td><td class="col-rec"></td><td class="col-rec"></td><td></td><td></td></tr>
 
             <tr>
-              <td>Volume guarantee</td>
-              <td class="col-rec sage">50 leads / cycle</td>
-              <td class="col-rec sage">10 appts / cycle</td>
+              <td>Volume commitment</td>
+              <td class="col-rec sage">25 leads / month</td>
+              <td class="col-rec sage">10 appts / month</td>
               <td><span class="small">None</span></td>
               <td><span class="small">None</span></td>
             </tr>
             <tr>
-              <td>Billing cycle</td>
-              <td class="col-rec"><span class="small">30 days OR guarantee hit, whichever later</span></td>
-              <td class="col-rec"><span class="small">30 days OR guarantee hit, whichever later</span></td>
-              <td><span class="small">Monthly invoice</span></td>
-              <td><span class="small">Monthly invoice</span></td>
+              <td>If we miss the number</td>
+              <td class="col-rec"><span class="small">Month is refunded in full</span></td>
+              <td class="col-rec"><span class="small">Month is refunded in full</span></td>
+              <td><span class="small">n/a (no fixed fee)</span></td>
+              <td><span class="small">n/a (no fixed fee)</span></td>
+            </tr>
+            <tr>
+              <td>Billing</td>
+              <td class="col-rec"><span class="small">Start of month, refunded if missed</span></td>
+              <td class="col-rec"><span class="small">Start of month, refunded if missed</span></td>
+              <td><span class="small">Invoiced as leads land</span></td>
+              <td><span class="small">Invoiced as appointments land</span></td>
             </tr>
 
             <tr class="section-row"><td>Deliverable</td><td class="col-rec"></td><td class="col-rec"></td><td></td><td></td></tr>
@@ -1159,9 +1265,9 @@ body::before {
             </tr>
             <tr>
               <td>QwickStep handles</td>
-              <td class="col-rec"><span class="small">Campaigns &rarr; positive reply alert</span></td>
+              <td class="col-rec"><span class="small">Campaigns &rarr; reply alert</span></td>
               <td class="col-rec"><span class="small">Campaigns + SDR + calendar booking</span></td>
-              <td><span class="small">Campaigns &rarr; positive reply alert</span></td>
+              <td><span class="small">Campaigns &rarr; reply alert</span></td>
               <td><span class="small">Campaigns + SDR + calendar booking</span></td>
             </tr>
             <tr>
@@ -1176,18 +1282,18 @@ body::before {
 
             <tr>
               <td>Best for</td>
-              <td class="col-rec"><span class="small">Teams wanting predictable volume and the better per-lead rate</span></td>
-              <td class="col-rec"><span class="small">Teams wanting steady booked-meeting flow with a guarantee</span></td>
-              <td><span class="small">Testing the channel with variable spend, internal sales team handles replies</span></td>
-              <td><span class="small">Want appointments, not leads. No internal SDR. Comfortable with variable spend</span></td>
+              <td class="col-rec"><span class="small">Predictable spend, replies handled in-house</span></td>
+              <td class="col-rec"><span class="small">Predictable spend, fully hands-off calendar</span></td>
+              <td><span class="small">Variable spend, fastest way in, internal sales team handles replies</span></td>
+              <td><span class="small">Variable spend, want appointments not leads, no internal SDR</span></td>
             </tr>
             <tr>
-              <td>Pause</td>
-              <td colspan="4" class="text-center"><span class="small">$500 / month baseline (all offers). Keeps domains warm and the system ready to resume</span></td>
+              <td>Switching offers</td>
+              <td colspan="4" class="text-center"><span class="small">Switch between any of the four offers at the start of any month. Just let us know.</span></td>
             </tr>
             <tr>
               <td>Cancellation</td>
-              <td colspan="4" class="text-center"><span class="small">Month-to-month on every offer. Setup fees and monthly payments are non-refundable</span></td>
+              <td colspan="4" class="text-center"><span class="small">Month-to-month on every offer. End at the close of any billing cycle.</span></td>
             </tr>
 
           </tbody>
@@ -1199,6 +1305,92 @@ body::before {
   </div>
 </section>
 
+<!-- ── Engagement Fit ── -->
+<section class="px-6 md:px-12 pb-20 relative z-10">
+  <div class="max-w-5xl mx-auto">
+    <div class="divider"></div>
+    <div class="mb-10">
+      <p class="font-mono text-[11px] tracking-[0.1em] uppercase text-gold-dark mb-3">Engagement Fit</p>
+      <h2 class="font-serif text-[1.9rem] md:text-[2.4rem] text-ink tracking-[-0.02em] leading-[1.1]">Cold email doesn't<br>work for every business.</h2>
+      <p class="text-ink-3 text-[15px] leading-relaxed mt-4 max-w-2xl">
+        Before we get into the offers, here's what makes a good fit. If most of these line up, we're probably a match. If something is off, we'd rather flag it now than start a campaign that won't work.
+      </p>
+    </div>
+
+    <div class="bg-white border border-cream-border rounded-2xl px-6 md:px-8 py-2 shadow-sm">
+      <div class="fit-row">
+        <span class="lbl">Market Size</span>
+        <span class="val">10,000 to 15,000+ companies within the defined ICP. Smaller markets compress runway and limit how far we can optimize.</span>
+      </div>
+      <div class="fit-row">
+        <span class="lbl">Business Model</span>
+        <span class="val">B2B. Your buyers use email professionally and respond to it as part of how they do business.</span>
+      </div>
+      <div class="fit-row">
+        <span class="lbl">Customer Value</span>
+        <span class="val">Average deal value of $3,000+. Higher is better. One closed deal should pay back the engagement many times over.</span>
+      </div>
+      <div class="fit-row">
+        <span class="lbl">Offer Demand</span>
+        <span class="val">Clear, demonstrated demand for your product or service. We surface buying intent. We don't manufacture it.</span>
+      </div>
+      <div class="fit-row">
+        <span class="lbl">Sales Readiness</span>
+        <span class="val">You have the bandwidth and process to handle replies (lead offers) or show up and close calls (appointment offers) the moment results land.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Service Scope ── -->
+<section class="px-6 md:px-12 pb-20 relative z-10">
+  <div class="max-w-6xl mx-auto">
+    <div class="divider"></div>
+    <div class="mb-10">
+      <p class="font-mono text-[11px] tracking-[0.1em] uppercase text-gold-dark mb-3">Service Scope</p>
+      <h2 class="font-serif text-[1.9rem] md:text-[2.4rem] text-ink tracking-[-0.02em] leading-[1.1]">What's included.<br>Every offer, every layer.</h2>
+      <p class="text-ink-3 text-[15px] leading-relaxed mt-4 max-w-2xl">
+        Copy, list sourcing, infrastructure, deliverability, and daily ops all sit with our team. Not stitched together across freelancers and offshore VAs. One team owns the outcome end to end.
+      </p>
+    </div>
+
+    <div class="scope-grid">
+      <div class="scope-card">
+        <p class="scope-label">01 · Lead Sourcing</p>
+        <p class="scope-body">Market research, list building, and prospect scraping across multiple sources. Lists rebuilt and refreshed every campaign so you never burn the same contacts twice.</p>
+      </div>
+      <div class="scope-card">
+        <p class="scope-label">02 · Data Enrichment</p>
+        <p class="scope-body">First name, last name, company, role, and LinkedIn URL on every contact. The richer the data, the more personalised the outreach.</p>
+      </div>
+      <div class="scope-card">
+        <p class="scope-label">03 · Verification</p>
+        <p class="scope-body">Every email verified before it ever lands in a campaign. Bounces destroy deliverability, so we cut them off before they start.</p>
+      </div>
+      <div class="scope-card">
+        <p class="scope-label">04 · Copywriting</p>
+        <p class="scope-body">Full email sequence written, tested, and owned end to end. Multiple angles tested side by side, rewritten the moment reply rates start to drop.</p>
+      </div>
+      <div class="scope-card">
+        <p class="scope-label">05 · Infrastructure Management</p>
+        <p class="scope-body">Sending platform, dedicated domains, mailboxes, and deliverability warm-up. You own the tools. We run them for you.</p>
+      </div>
+      <div class="scope-card">
+        <p class="scope-label">06 · Campaign Management</p>
+        <p class="scope-body">Daily ops, send volume management, ICP refinement, and continuous optimization. If something stops working, we change it before you have to ask.</p>
+      </div>
+      <div class="scope-card">
+        <p class="scope-label">07 · Reply Handling</p>
+        <p class="scope-body">Appointment offers: SDR-managed inbox. Lead offers: real-time positive reply alerts routed directly to you.</p>
+      </div>
+      <div class="scope-card">
+        <p class="scope-label">08 · Reporting</p>
+        <p class="scope-body">Sends, reply rates, qualified leads, deliverability health, and every optimization made along the way. Full visibility, no black box.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ── Universal Terms ── -->
 <section class="px-6 md:px-12 pb-20 relative z-10">
   <div class="max-w-4xl mx-auto">
@@ -1207,7 +1399,7 @@ body::before {
       <p class="font-mono text-[11px] tracking-[0.1em] uppercase text-gold-dark mb-3">The fine print</p>
       <h2 class="font-serif text-[1.9rem] md:text-[2.4rem] text-ink tracking-[-0.02em] leading-[1.1]">Terms that apply<br>to every offer.</h2>
       <p class="text-ink-3 text-[15px] leading-relaxed mt-4 max-w-2xl">
-        We try to keep the surprises out of cold email. These six items cover how we define a result, what each party is responsible for, and how pause and cancellation work.
+        Eight items covering how a lead and an appointment are defined, how the refund guarantee works, what each party is responsible for, and how the engagement starts, switches, and ends.
       </p>
     </div>
 
@@ -1215,51 +1407,34 @@ body::before {
 
       <div class="term-item">
         <button class="term-q" onclick="toggleTerm(this)">
-          <span class="lhs"><span class="num">01</span>Lead definition</span>
+          <span class="lhs"><span class="num">01</span>What counts as a lead</span>
           <svg class="term-icon" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="#111110" stroke-width="1.5" stroke-linecap="round"/></svg>
         </button>
         <div class="term-a">
           <div class="term-a-inner">
-            <p>A <strong>high-intent lead</strong> is a prospect who replies to a campaign with explicit interest in your services.</p>
-            <p><em>Counts as a lead:</em></p>
+            <p>A unique individual who matches your ICP and gives a clear, positive response indicating interest in your product or service as a direct result of campaign outreach.</p>
+            <p><strong>To count, a lead must show all three:</strong></p>
             <ul>
-              <li>"Yes, please send more info"</li>
-              <li>"Send me a calendar link"</li>
-              <li>"What's your pricing?"</li>
-              <li>"Do you work with companies like mine?"</li>
+              <li><strong>ICP match.</strong> Matches the agreed criteria including job title, company size, industry, and geography.</li>
+              <li><strong>Demonstrated intent.</strong> Requests pricing, asks for more information or a link, asks relevant qualification questions, or expresses interest in discussing services.</li>
+              <li><strong>Real and unique.</strong> A real individual, not a generic inbox or role-based email. Not duplicated or previously counted.</li>
             </ul>
-            <p><em>Does not count:</em> bot responses, out-of-office replies, unsubscribes, negative replies, contacts outside the agreed ICP. Each lead must be a real, unique individual matching the ICP.</p>
+            <p><em>Does not count toward your billable total:</em> contacts outside the agreed ICP, students/freelancers/vendors (unless explicitly included), spam or bot responses, automated replies or out-of-office, duplicate contacts, responses unrelated to the offer, and negative or non-committal responses.</p>
           </div>
         </div>
       </div>
 
       <div class="term-item">
         <button class="term-q" onclick="toggleTerm(this)">
-          <span class="lhs"><span class="num">02</span>Appointment definition</span>
+          <span class="lhs"><span class="num">02</span>What counts as an appointment</span>
           <svg class="term-icon" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="#111110" stroke-width="1.5" stroke-linecap="round"/></svg>
         </button>
         <div class="term-a">
           <div class="term-a-inner">
-            <p>A <strong>booked appointment</strong> is a confirmed calendar event with an ICP-matched prospect who has explicitly agreed to a meeting time.</p>
-            <p>The prospect must be a real and unique individual (not previously booked) and must confirm via calendar acceptance or written confirmation.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="term-item">
-        <button class="term-q" onclick="toggleTerm(this)">
-          <span class="lhs"><span class="num">03</span>Appointment show-up rules</span>
-          <svg class="term-icon" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="#111110" stroke-width="1.5" stroke-linecap="round"/></svg>
-        </button>
-        <div class="term-a">
-          <div class="term-a-inner">
-            <p>Our deliverable ends at the confirmed booking. Show-up rate is not within our control. The pre-meeting nurture sequence (reminders, confirmations, rapport-building) is your responsibility.</p>
-            <p>How edge cases count:</p>
+            <p>An appointment counts when both are true:</p>
             <ul>
-              <li><strong>Reschedules:</strong> count as one appointment, not two</li>
-              <li><strong>No-shows:</strong> still count</li>
-              <li><strong>Cancellations &gt;24h before</strong> without reschedule: do not count</li>
-              <li><strong>Cancellations within 24h:</strong> count</li>
+              <li><strong>Scheduled on your calendar.</strong> The meeting is confirmed and visible on the calendar system we have access to. Shared source of truth, no disputes about what was booked when.</li>
+              <li><strong>ICP match.</strong> The lead matches the agreed Ideal Customer Profile, including job title, company size, industry, and geography. If someone slips through who isn't a fit, that one is on us and it doesn't count toward your billable total.</li>
             </ul>
           </div>
         </div>
@@ -1267,39 +1442,87 @@ body::before {
 
       <div class="term-item">
         <button class="term-q" onclick="toggleTerm(this)">
-          <span class="lhs"><span class="num">04</span>Pause policy</span>
+          <span class="lhs"><span class="num">03</span>Show-up rule, reschedules, and cancellations</span>
           <svg class="term-icon" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="#111110" stroke-width="1.5" stroke-linecap="round"/></svg>
         </button>
         <div class="term-a">
           <div class="term-a-inner">
-            <p>Active engagements can be paused at <strong>$500/month baseline</strong> (may be higher based on infrastructure footprint).</p>
-            <p>Paying the pause fee keeps your domains warm, mailboxes healthy, and the system ready to resume without re-warming. Re-warming a cold system takes ~3 weeks, so a short pause is almost always cheaper than a full restart.</p>
+            <p>Once an appointment lands on your calendar, our part of the work is done. We've sourced the lead, qualified them, handled the back-and-forth, and got the meeting booked. What drives show-up is the pre-call nurture (reminders, confirmations, follow-ups), which sits on your side. We'll help you set it up properly at onboarding.</p>
+            <p><strong>How edge cases count:</strong></p>
+            <ul>
+              <li><strong>Show-up:</strong> Bookings count as billable appointments whether or not the lead attends. We're accountable up to the booking; you're accountable for the conversion from there.</li>
+              <li><strong>Reschedules:</strong> If the same prospect reschedules once, twice, or four times, it still counts as one appointment. Same person, same conversation, billed once.</li>
+              <li><strong>Cancellation 48h+ before:</strong> Doesn't count toward your billable total. That gives us time to rebook or replace the slot.</li>
+              <li><strong>Cancellation within 48h:</strong> Counts. At that point the slot is effectively gone.</li>
+            </ul>
           </div>
         </div>
       </div>
 
       <div class="term-item">
         <button class="term-q" onclick="toggleTerm(this)">
-          <span class="lhs"><span class="num">05</span>Cancellation</span>
+          <span class="lhs"><span class="num">04</span>How the retainer guarantee works</span>
           <svg class="term-icon" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="#111110" stroke-width="1.5" stroke-linecap="round"/></svg>
         </button>
         <div class="term-a">
           <div class="term-a-inner">
-            <p>All offers are <strong>month-to-month</strong>. Either party can end the engagement at the close of any billing cycle. Setup fees and monthly payments are non-refundable.</p>
-            <p>For the monthly investment offers, if you cancel mid-cycle with the guarantee unmet, the rollover obligation expires on cancellation.</p>
+            <p>The two retainer offers come with a hard performance guarantee. If we miss the monthly number, you don't pay for that month.</p>
+            <ul>
+              <li><strong>Leads Guaranteed ($1,888/mo).</strong> Billed at the start of the month. We commit to 25 qualified, ICP-matched leads landing in that month. If we deliver fewer than 25, the month is refunded in full.</li>
+              <li><strong>Appointments Guaranteed ($3,088/mo).</strong> Billed at the start of the month. We commit to 10 booked appointments landing on your calendar in that month. If we deliver fewer than 10, the month is refunded in full.</li>
+            </ul>
+            <p>Overdelivery within the month is included at no extra cost. You only get billed once per month, regardless of how many results land beyond the minimum.</p>
           </div>
         </div>
       </div>
 
       <div class="term-item">
         <button class="term-q" onclick="toggleTerm(this)">
-          <span class="lhs"><span class="num">06</span>Infrastructure ownership</span>
+          <span class="lhs"><span class="num">05</span>Ramp-up period</span>
           <svg class="term-icon" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="#111110" stroke-width="1.5" stroke-linecap="round"/></svg>
         </button>
         <div class="term-a">
           <div class="term-a-inner">
-            <p>All infrastructure (domains, mailboxes, scrapers, automations, campaign assets) remains the property of QwickStep AI.</p>
-            <p>On offboarding, we hand over the full lead list scraped during the engagement as a goodwill gesture. The infrastructure itself does not transfer.</p>
+            <p>It takes <strong>2 to 3 weeks</strong> to warm up your sending infrastructure before campaigns can run at full volume. To keep the guarantee fair, the first month doesn't start when you sign. It starts the day campaigns go fully live.</p>
+            <p>We'll confirm the start date in writing once warmup is done. Nothing is billed against any monthly retainer during warmup.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="term-item">
+        <button class="term-q" onclick="toggleTerm(this)">
+          <span class="lhs"><span class="num">06</span>Switching offers</span>
+          <svg class="term-icon" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="#111110" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <div class="term-a">
+          <div class="term-a-inner">
+            <p>You can switch between any of the four offers at the start of any month. If you start on a retainer and want to move to pay-per-performance (or the other way around), just let us know before the next billing cycle.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="term-item">
+        <button class="term-q" onclick="toggleTerm(this)">
+          <span class="lhs"><span class="num">07</span>Infrastructure ownership</span>
+          <svg class="term-icon" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="#111110" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <div class="term-a">
+          <div class="term-a-inner">
+            <p>All third-party tools used in the campaign (sequencer, domains, mailboxes, verification, scraping/enrichment) are paid directly to vendors by you. Total cost typically runs <strong>$300 to $600 per month</strong>, depending on send volume.</p>
+            <p>You own everything. If we ever part ways, you keep your domains, mailboxes, sending platform, and full campaign history. Bundling infrastructure into our fee would create dependency, not value.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="term-item">
+        <button class="term-q" onclick="toggleTerm(this)">
+          <span class="lhs"><span class="num">08</span>Cancellation</span>
+          <svg class="term-icon" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="#111110" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <div class="term-a">
+          <div class="term-a-inner">
+            <p>All offers are <strong>month-to-month</strong>. Either party can end the engagement at the close of any billing cycle.</p>
+            <p>No setup fees apply on any offer. Retainer payments are refunded in full when the volume guarantee is missed; otherwise they are non-refundable. Pay-per-performance invoices are settled per result delivered.</p>
           </div>
         </div>
       </div>
@@ -1307,7 +1530,7 @@ body::before {
     </div>
 
     <p class="text-ink-4 text-[13px] leading-relaxed mt-8 italic">
-      Every engagement starts with a 3-week warmup before campaigns go live. The warmup covers domain warming, mailbox setup, list building, copy drafting, and campaign configuration. It's not counted against any guarantee.
+      Every engagement starts with a 2-3 week warmup before campaigns go live. The warmup covers domain warming, mailbox setup, list building, copy drafting, and campaign configuration. Nothing is billed against any monthly guarantee during warmup.
     </p>
   </div>
 </section>
