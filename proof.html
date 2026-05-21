@@ -607,6 +607,53 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
   .proof-stat-value { font-size: 19px; }
   .proof-stat-divider { display: none; }
 }
+
+/* ── Hero pull-quote ── */
+.proof-quote-card {
+  position: relative;
+  width: 0;
+  min-width: 100%;
+  padding: 20px 22px 18px;
+  background: linear-gradient(135deg, rgba(212,167,69,0.10) 0%, rgba(212,167,69,0.03) 100%);
+  border: 1px solid rgba(212,167,69,0.24);
+  border-radius: 14px;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.5) inset, 0 10px 24px -18px rgba(20,25,40,0.18);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.proof-quote-card::before {
+  content: "\201C";
+  position: absolute;
+  top: 2px; left: 14px;
+  font-family: '"DM Serif Display"', Georgia, serif;
+  font-size: 52px;
+  line-height: 1;
+  color: rgba(212,167,69,0.32);
+  pointer-events: none;
+}
+.proof-quote-text {
+  position: relative;
+  font-family: '"DM Serif Display"', Georgia, serif;
+  font-style: italic;
+  font-size: 14.5px;
+  line-height: 1.55;
+  letter-spacing: -0.01em;
+  color: #4a473f;
+}
+.proof-quote-cite {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 13px;
+}
+.proof-quote-cite-rule { width: 20px; height: 1px; background: #B8912E; }
+.proof-quote-cite-name {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #B8912E;
+}
 </style>
 </head>
 <body>
@@ -672,8 +719,16 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
         </div>
       </div>
 
-      <!-- Compact inline stat strip -->
-      <div class="proof-stat-strip reveal">
+      <!-- Right rail · pull-quote + inline stat strip -->
+      <div class="flex flex-col items-stretch lg:items-end gap-3.5">
+        <figure class="proof-quote-card reveal">
+          <p class="proof-quote-text">"The return on email is the highest across all platforms. The average person gets 36 to 1 return. If you're not making at least 30% of your revenue from email, you're missing out."</p>
+          <figcaption class="proof-quote-cite">
+            <span class="proof-quote-cite-rule"></span>
+            <span class="proof-quote-cite-name">Alex Hormozi</span>
+          </figcaption>
+        </figure>
+        <div class="proof-stat-strip reveal">
         <div class="proof-stat">
           <span class="proof-stat-value proof-stat-value-accent">$1.4M+</span>
           <span class="proof-stat-label">Pipeline</span>
@@ -692,6 +747,7 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
         <div class="proof-stat">
           <span class="proof-stat-value">60+</span>
           <span class="proof-stat-label">Campaigns</span>
+        </div>
         </div>
       </div>
     </div>
