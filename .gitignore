@@ -9,3 +9,9 @@ screenshot.mjs
 package.json
 package-lock.json
 CLAUDE.md
+
+# Unblurred / original screenshots — keep them off the public deploy.
+# Only the blurred copies in proof_assets/deployed/ should ever ship.
+proof_assets/not_deployed/
+# OCR scratch cache
+scripts/ocr_new/
