@@ -167,8 +167,7 @@ tailwind.config = {
   .spec dd strong{color:var(--ink);font-weight:600}
   .spec .price-lg{font-family:'DM Serif Display',serif;font-size:1.6rem;color:var(--ink);letter-spacing:-.01em;margin-right:4px}
   @media(max-width:640px){.spec-row{grid-template-columns:1fr;gap:7px;padding:17px 0}.spec dt{padding-top:0}}
-  .closer{max-width:56ch;margin:clamp(40px,6vw,68px) auto 0;text-align:center;font-family:'DM Serif Display',Georgia,serif;font-size:clamp(1.4rem,2.7vw,2.05rem);line-height:1.32;letter-spacing:-.015em;color:#33322e}
-  .closer .closer-hit{display:block;margin-top:12px;color:var(--accent)}
+  .spec dd .bleed{color:var(--accent);font-weight:600}
 
   /* timeline */
   .tl{display:grid;gap:14px;grid-template-columns:1fr}
@@ -442,7 +441,7 @@ tailwind.config = {
         </div>
         <div class="spec-row">
           <dt>Investment</dt>
-          <dd><span class="price-lg">$5,588</span> USD, one-time. 50% to start, 50% on delivery. No retainer, nothing recurring to QwickStep.</dd>
+          <dd><span class="price-lg">$5,588</span> USD, one-time, <span class="bleed">to stop the bleed</span>. You're putting $25K a month into Meta and losing $15K to $20K out the bottom on score 0 leads, every month. This stops that. 50% to start, 50% on delivery, no retainer.</dd>
         </div>
         <div class="spec-row">
           <dt>Timeline</dt>
@@ -462,7 +461,6 @@ tailwind.config = {
         </div>
       </dl>
     </div>
-    <p class="closer reveal">$25K a month goes into Meta to fill the funnel, and $15K to $20K leaks out the bottom every month on the leads you never route. <span class="closer-hit">$5,588, one-time, stops the bleed.</span></p>
   </div>
 </section>
 
