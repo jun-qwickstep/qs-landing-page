@@ -150,6 +150,24 @@ tailwind.config = {
   .tag:hover{border-color:var(--accent);transform:translateY(-2px)}
   .tag.opt{border-style:dashed;color:var(--muted)}
 
+  /* ===== executive-summary (one-page) layout ===== */
+  .summary{padding:clamp(118px,15vh,172px) 0 clamp(30px,4.5vw,52px)}
+  .summary .display{font-size:clamp(2.4rem,6vw,4.3rem)}
+  .brief{max-width:62ch;margin-top:30px;display:flex;flex-direction:column;gap:17px}
+  .brief p{font-size:clamp(1.06rem,1.55vw,1.28rem);line-height:1.72;color:#2c2b27}
+  .brief .hl{color:var(--accent);font-family:'DM Serif Display',Georgia,serif;font-style:italic;white-space:nowrap;font-size:1.06em}
+  .brief-label{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:46px}
+  .summary-tail{padding:clamp(30px,4.5vw,56px) 0 clamp(54px,8vw,92px)}
+  .spec{background:#fff;border:1px solid var(--hairline);border-radius:20px;padding:clamp(24px,3.4vw,40px) clamp(24px,3.6vw,46px);box-shadow:0 34px 64px -44px rgba(16,42,107,.4)}
+  .spec-head{margin-bottom:4px}
+  .spec-row{display:grid;grid-template-columns:170px 1fr;gap:28px;padding:21px 0;border-top:1px solid var(--hairline)}
+  .spec-row:first-of-type{border-top:0;padding-top:16px}
+  .spec dt{font-family:'DM Mono',monospace;font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);padding-top:5px}
+  .spec dd{font-size:16.5px;line-height:1.62;color:#33322e}
+  .spec dd strong{color:var(--ink);font-weight:600}
+  .spec .price-lg{font-family:'DM Serif Display',serif;font-size:1.6rem;color:var(--ink);letter-spacing:-.01em;margin-right:4px}
+  @media(max-width:640px){.spec-row{grid-template-columns:1fr;gap:7px;padding:17px 0}.spec dt{padding-top:0}}
+
   /* timeline */
   .tl{display:grid;gap:14px;grid-template-columns:1fr}
   @media(min-width:760px){.tl{grid-template-columns:repeat(5,1fr);gap:0}}
@@ -322,55 +340,27 @@ tailwind.config = {
 <!-- sticky top bar -->
 <header class="topbar" id="topbar">
   <span class="tb-left">Prepared for Viral App Launch</span>
-  <span class="tb-right">Lead Triage System</span>
+  <span class="tb-right">Executive Summary</span>
 </header>
 
 <a id="top"></a>
 
-<!-- ============ HERO ============ -->
-<section class="hero">
+<!-- ============ EXECUTIVE SUMMARY (one page) ============ -->
+<section class="summary">
   <div class="wrap">
-    <div class="kicker reveal in"><span class="dot"></span><span class="eyebrow">Prepared for Viral App Launch</span></div>
+    <div class="kicker reveal in"><span class="dot"></span><span class="eyebrow">Executive Summary</span></div>
     <h1 class="display reveal in" style="transition-delay:.05s">
       Viral App Launch,<br>
       <span class="hero-line2">Lead Triage System</span>
     </h1>
-    <div class="hero-rule reveal in" style="transition-delay:.12s"></div>
-    <p class="hero-sub reveal in" style="transition-delay:.16s">Catch every lead you already paid for, and send each one straight to the right place.</p>
-  </div>
-</section>
 
-<hr class="hr" style="max-width:var(--maxw);margin:0 auto">
-
-<!-- ============ 2. PROBLEM ============ -->
-<section class="sec-pad">
-  <div class="wrap">
-    <div class="kicker reveal"><span class="dot"></span><span class="eyebrow">The problem</span></div>
-    <h2 class="sec-h reveal" style="max-width:16ch">It's not a lead problem, it's a routing problem.</h2>
-    <p class="lede reveal narrow" style="margin-top:18px">About <strong>150 leads a week</strong>, roughly <strong>$25K/month</strong> in ad spend, all into one pipeline and one closer built for the <strong>$30K to $40K</strong> deals. Everyone smaller never hears back, that's money you already spent walking out the door.</p>
-  </div>
-</section>
-
-<!-- ============ 3. WHAT IT'S WORTH ============ -->
-<section class="sec-pad" style="background:linear-gradient(180deg,rgba(36,86,201,.035),transparent 40%)">
-  <div class="wrap">
-    <div class="kicker reveal"><span class="dot"></span><span class="eyebrow">What it's worth</span></div>
-    <div class="reveal">
-      <div class="worth-num"><span data-count="15000" data-prefix="$">$15,000</span> to <span data-count="20000" data-prefix="$">$20,000</span> <span class="u" style="font-size:.32em;letter-spacing:-.01em;font-family:'DM Mono',monospace;vertical-align:middle">/ month</span></div>
-      <p class="mono" style="font-size:13px;color:var(--muted);margin-top:14px;letter-spacing:.02em">Recoverable revenue. Illustrative, based on your current lead volume and offer pricing, not a guarantee.</p>
+    <div class="brief reveal in" style="transition-delay:.1s">
+      <p>You bring in around <strong>150 leads a week</strong> from Meta, roughly <strong>$25K a month</strong> in ad spend. Today they all land in one pipeline built for your <strong>$30K to $40K</strong> deals, so the smaller buyers, the ones who'd fit the <strong>$997</strong> course or Founders Club, never hear back.</p>
+      <p>We build a lead-triage system that sits on top of the ladder you already have. It catches every lead, scores it, and routes it to the right offer automatically, with the message, follow-up, and recovery built in.</p>
+      <p>Recover just <strong>15 to 20</strong> of those score 0 sales a month and that's <span class="hl">$15,000 to $20,000</span> a month back, before the bigger deals nobody follows up on today.</p>
     </div>
-    <p class="lede reveal narrow" style="margin-top:24px">Recover <strong>15 to 20</strong> score 0 sales a month into the <strong>$997</strong> course, from leads you already paid for. That's the floor, before the score 1 and score 2 deals with no follow-up today.</p>
-  </div>
-</section>
 
-<hr class="hr" style="max-width:var(--maxw);margin:0 auto">
-
-<!-- ============ 4. HOW IT WORKS ============ -->
-<section class="sec-pad">
-  <div class="wrap">
-    <div class="kicker reveal"><span class="dot"></span><span class="eyebrow">How it works</span></div>
-    <h2 class="sec-h reveal" style="max-width:20ch">It sits on top of the ladder you already built.</h2>
-    <p class="lede reveal narrow" style="margin-top:18px">Every lead scored and routed to the right offer, automatically. Hover or tap a lane to trace one path.</p>
+    <p class="brief-label reveal">The full flow, end to end. Hover or tap a lane to trace one path.</p>
 
     <!-- FLOW DIAGRAM -->
     <div class="flow-wrap reveal" id="flowWrap" style="margin-top:36px">
@@ -438,70 +428,37 @@ tailwind.config = {
   </div>
 </section>
 
-<hr class="hr" style="max-width:var(--maxw);margin:0 auto">
-
-<!-- ============ 5. WHAT'S INCLUDED ============ -->
-<section class="sec-pad">
+<!-- ============ AT A GLANCE (the deal, one panel) ============ -->
+<section class="summary-tail">
   <div class="wrap">
-    <div class="kicker reveal"><span class="dot"></span><span class="eyebrow">What's included</span></div>
-    <h2 class="sec-h reveal" style="max-width:18ch">The whole system, built and handed to you.</h2>
-    <div class="tagrow reveal" style="margin-top:32px">
-      <span class="tag">Trigger</span>
-      <span class="tag">Lead capture</span>
-      <span class="tag">Enrichment + claim check</span>
-      <span class="tag">AI scoring</span>
-      <span class="tag">Self-learning</span>
-      <span class="tag">Routing to your ladder</span>
-      <span class="tag">Marketing layer</span>
-      <span class="tag opt">Command center</span>
-      <span class="tag">Handoff + docs</span>
-    </div>
-    <p class="mono reveal" style="font-size:12.5px;color:var(--muted);margin-top:18px;letter-spacing:.01em">Command center is optional, on us. The whole thing runs on your own stack.</p>
-  </div>
-</section>
-
-<hr class="hr" style="max-width:var(--maxw);margin:0 auto">
-
-<!-- ============ 6. TIMELINE ============ -->
-<section class="sec-pad">
-  <div class="wrap">
-    <div class="kicker reveal"><span class="dot"></span><span class="eyebrow">Timeline</span></div>
-    <h2 class="sec-h reveal" style="max-width:16ch">From kickoff to handoff in 21 business days.</h2>
-    <div class="reveal" id="timeline" style="margin-top:44px">
-      <div class="tl-track"><div class="tl-prog" id="tlProg"></div></div>
-      <div class="tl">
-        <div class="tl-step"><span class="tl-node"></span><div class="tl-day">Days 1-4</div><div class="tl-t">Scope and map</div></div>
-        <div class="tl-step"><span class="tl-node"></span><div class="tl-day">Days 5-10</div><div class="tl-t">Build the engine</div></div>
-        <div class="tl-step"><span class="tl-node"></span><div class="tl-day">Days 11-14</div><div class="tl-t">Test and enrich</div></div>
-        <div class="tl-step"><span class="tl-node"></span><div class="tl-day">Days 15-18</div><div class="tl-t">Tune and dial it in</div></div>
-        <div class="tl-step"><span class="tl-node"></span><div class="tl-day">Days 19-21</div><div class="tl-t">Document and hand off</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 7. INVESTMENT ============ -->
-<section class="sec-pad" style="background:linear-gradient(180deg,transparent,rgba(16,42,107,.04))">
-  <div class="wrap">
-    <div class="kicker reveal"><span class="dot"></span><span class="eyebrow">Investment</span></div>
-    <div class="reveal">
-      <div class="price"><span data-count="5588" data-prefix="$">$5,588</span></div>
-      <p class="serif" style="font-size:clamp(1.3rem,2.6vw,1.9rem);margin-top:6px;color:var(--ink)">USD, one-time.</p>
-    </div>
-    <div class="narrow reveal" style="margin-top:30px">
-      <p class="lede" style="margin-bottom:14px">50% to start, 50% on delivery. No retainer, nothing recurring to QwickStep.</p>
-      <p class="lede">After handoff it runs on your own pay-as-you-go tools, about <strong>$70 to $120 a month</strong>, paid straight to the providers.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 9. GUARANTEE ============ -->
-<section class="sec-pad">
-  <div class="wrap">
-    <div class="navy-panel reveal">
-      <div class="kicker" style="margin-bottom:18px"><span class="dot" style="background:var(--teal);box-shadow:0 0 0 4px rgba(22,166,151,.22)"></span><span class="eyebrow" style="color:rgba(255,255,255,.7)">The guarantee</span></div>
-      <p class="serif" style="font-size:clamp(1.5rem,3.2vw,2.4rem);line-height:1.28;letter-spacing:-.01em;max-width:24ch">We build it to spec.</p>
-      <p style="font-size:clamp(1.05rem,1.7vw,1.22rem);line-height:1.65;color:#dfe4f1;max-width:60ch;margin-top:18px">If it doesn't work the way we describe, we keep iterating at no extra cost until it does. <span style="color:#fff;font-weight:500">The risk sits with us, not with you.</span></p>
+    <div class="spec reveal">
+      <div class="spec-head"><span class="eyebrow">At a glance</span></div>
+      <dl>
+        <div class="spec-row">
+          <dt>What you get</dt>
+          <dd>Trigger, lead capture, enrichment and claim check, AI scoring, self-learning, routing into your ladder, the marketing layer, and a full handoff with docs. Command center optional, on us.</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Investment</dt>
+          <dd><span class="price-lg">$5,588</span> USD, one-time. 50% to start, 50% on delivery. No retainer, nothing recurring to QwickStep.</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Timeline</dt>
+          <dd><strong>21 business days.</strong> Scope, build, test, tune, hand off.</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Running cost</dt>
+          <dd><strong>About $70 to $120 a month</strong> on your own pay-as-you-go tools, paid straight to the providers. Nothing to us after handoff.</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Runs on</dt>
+          <dd>Your own stack, in your accounts.</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Guarantee</dt>
+          <dd>Built to spec. If it doesn't work the way we describe, we iterate at no extra cost until it does. <strong>The risk sits with us, not you.</strong></dd>
+        </div>
+      </dl>
     </div>
   </div>
 </section>
