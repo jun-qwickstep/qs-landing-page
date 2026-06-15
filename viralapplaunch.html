@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Viral App Launch, Lead Triage System</title>
+<meta name="description" content="How QwickStep routes every lead you already paid for to the right offer, automatically.">
+<link rel="icon" type="image/png" href="brand_assets/qwickstep.ai iconic mark (white).png">
+
+<!-- Open Graph / Twitter -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Viral App Launch, Lead Triage System">
+<meta property="og:description" content="How QwickStep routes every lead you already paid for to the right offer, automatically.">
+<meta property="og:url" content="https://qwickstep.ai/viralapplaunch">
+<meta property="og:image" content="https://qwickstep.ai/images/og-viralapplaunch.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="QwickStep AI">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Viral App Launch, Lead Triage System">
+<meta name="twitter:description" content="How QwickStep routes every lead you already paid for to the right offer, automatically.">
+<meta name="twitter:image" content="https://qwickstep.ai/images/og-viralapplaunch.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        cream: '#FBF9F4',
+        panel: '#EFEAE0',
+        ink: '#111110',
+        muted: '#6E6E68',
+        accent: '#2456C9',
+        navy: '#102A6B',
+        teal: '#16A697',
+        hairline: '#D9D6CF',
+      },
+      fontFamily: {
+        serif: ['"DM Serif Display"', 'Georgia', 'serif'],
+        sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
+        mono: ['"DM Mono"', 'ui-monospace', 'monospace'],
+      },
+    },
+  },
+}
+</script>
+<style>
+  :root{
+    --cream:#FBF9F4; --panel:#EFEAE0; --ink:#111110; --muted:#6E6E68;
+    --accent:#2456C9; --navy:#102A6B; --teal:#16A697; --hairline:#D9D6CF;
+    --maxw:1080px;
+  }
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    font-family:'DM Sans',system-ui,sans-serif;
+    background:var(--cream); color:var(--ink);
+    line-height:1.65; font-size:17px; overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  }
+  ::selection{background:rgba(36,86,201,.16)}
+
+  /* atmosphere */
+  .bg-atmos{position:fixed;inset:0;z-index:-2;pointer-events:none;
+    background:
+      radial-gradient(900px 620px at 78% -6%, rgba(36,86,201,.10), transparent 60%),
+      radial-gradient(820px 600px at 4% 8%, rgba(22,166,151,.07), transparent 58%),
+      radial-gradient(1100px 900px at 50% 118%, rgba(16,42,107,.08), transparent 60%);
+  }
+  .bg-grain{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.4;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .narrow{max-width:760px}
+
+  /* type */
+  .serif{font-family:'DM Serif Display',Georgia,serif;font-weight:400}
+  .mono{font-family:'DM Mono',ui-monospace,monospace}
+  .eyebrow{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+  .display{font-family:'DM Serif Display',Georgia,serif;line-height:1.04;letter-spacing:-.025em}
+  h2.sec-h{font-family:'DM Serif Display',Georgia,serif;font-weight:400;line-height:1.06;letter-spacing:-.02em;
+    font-size:clamp(2rem,4.6vw,3.15rem)}
+  .lede{font-size:clamp(1.05rem,1.6vw,1.2rem);color:#33322e;line-height:1.7}
+  .muted{color:var(--muted)}
+  .accent{color:var(--accent)}
+  .tealc{color:var(--teal)}
+
+  section{position:relative}
+  .sec-pad{padding:clamp(64px,9vw,118px) 0}
+  .hr{height:1px;background:var(--hairline);border:0}
+  .kicker{display:inline-flex;align-items:center;gap:9px;margin-bottom:22px}
+  .kicker .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(36,86,201,.12)}
+
+  /* sticky top bar */
+  .topbar{position:fixed;top:0;left:0;right:0;z-index:60;
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
+    padding:14px clamp(18px,4vw,40px);
+    background:rgba(251,249,244,0);backdrop-filter:blur(0);
+    border-bottom:1px solid transparent;transition:background .35s ease,border-color .35s ease,padding .35s ease}
+  .topbar.solid{background:rgba(251,249,244,.82);backdrop-filter:blur(12px) saturate(1.1);border-bottom:1px solid var(--hairline);padding-top:11px;padding-bottom:11px}
+  .topbar .tb-left,.topbar .tb-right{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+  @media(max-width:560px){.topbar .tb-right{display:none}}
+  .wordmark{display:inline-flex;align-items:center;gap:9px;font-weight:600;letter-spacing:-.01em;color:var(--ink);font-size:14px;text-decoration:none}
+  .wmark{width:24px;height:24px;border-radius:7px;background:var(--navy);display:grid;place-items:center;box-shadow:0 2px 8px rgba(16,42,107,.25)}
+  .wmark img{width:15px;height:15px;display:block}
+  .scrollprog{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--teal));z-index:61;width:0;transition:width .1s linear}
+
+  /* hero */
+  .hero{padding:clamp(132px,18vh,190px) 0 clamp(56px,8vw,88px)}
+  .hero .display{font-size:clamp(2.6rem,7.4vw,5.1rem)}
+  .hero-line2{color:var(--accent);font-style:italic}
+  .hero-sub{font-size:clamp(1.12rem,2vw,1.42rem);color:#2c2b27;max-width:30ch;line-height:1.5}
+  .meta-chip{display:inline-flex;align-items:center;gap:10px;padding:8px 14px 8px 8px;border:1px solid var(--hairline);
+    border-radius:999px;background:rgba(255,255,255,.55);font-size:13px;color:var(--muted);font-family:'DM Mono',monospace}
+  .hero-rule{width:54px;height:3px;border-radius:3px;background:var(--accent);margin:26px 0}
+
+  /* callout / panels */
+  .callout{position:relative;background:var(--panel);border:1px solid var(--hairline);border-radius:18px;
+    padding:clamp(24px,3.4vw,38px);overflow:hidden}
+  .callout::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(var(--accent),var(--teal))}
+  .quote-h{font-family:'DM Serif Display',serif;font-size:clamp(1.3rem,2.4vw,1.85rem);line-height:1.35;letter-spacing:-.01em}
+  .pull{color:var(--accent);font-style:italic}
+
+  .card{background:#fff;border:1px solid var(--hairline);border-radius:16px;
+    box-shadow:0 1px 0 rgba(17,17,16,.02),0 14px 30px -22px rgba(16,42,107,.28);transition:transform .35s cubic-bezier(.34,1.4,.5,1),box-shadow .35s ease,border-color .35s ease}
+  .card:hover{transform:translateY(-4px);box-shadow:0 1px 0 rgba(17,17,16,.02),0 26px 46px -24px rgba(16,42,107,.38);border-color:#cfd9f0}
+
+  /* worth stat */
+  .worth-num{font-family:'DM Serif Display',serif;line-height:.96;letter-spacing:-.03em;
+    font-size:clamp(3rem,11vw,7.2rem);color:var(--ink)}
+  .worth-num .u{color:var(--accent)}
+
+  /* included cards grid */
+  .inc-grid{display:grid;grid-template-columns:repeat(1,1fr);gap:14px}
+  @media(min-width:640px){.inc-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(min-width:960px){.inc-grid{grid-template-columns:repeat(3,1fr)}}
+  .inc{padding:22px 22px 24px;display:flex;flex-direction:column;gap:9px;min-height:148px}
+  .inc .ix{font-family:'DM Mono',monospace;font-size:12px;color:var(--accent);letter-spacing:.06em}
+  .inc h4{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.22rem;letter-spacing:-.01em;line-height:1.15}
+  .inc p{font-size:14.5px;color:var(--muted);line-height:1.55}
+  .inc.opt{border-style:dashed}
+
+  /* timeline */
+  .tl{display:grid;gap:14px;grid-template-columns:1fr}
+  @media(min-width:760px){.tl{grid-template-columns:repeat(5,1fr);gap:0}}
+  .tl-step{position:relative;padding:22px 18px}
+  @media(min-width:760px){.tl-step{padding:26px 16px 22px}}
+  .tl-track{position:relative;height:2px;background:var(--hairline);margin:0 0 -1px;display:none}
+  @media(min-width:760px){.tl-track{display:block}}
+  .tl-prog{position:absolute;left:0;top:0;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--teal));transition:width 1.4s cubic-bezier(.5,0,.2,1)}
+  .tl-node{display:block;width:13px;height:13px;border-radius:50%;background:#fff;border:2px solid var(--accent);position:relative;z-index:2;margin-bottom:14px;box-shadow:0 0 0 4px var(--cream)}
+  .tl-day{font-family:'DM Mono',monospace;font-size:12.5px;color:var(--accent);letter-spacing:.04em;margin-bottom:6px}
+  .tl-t{font-family:'DM Serif Display',serif;font-size:1.12rem;line-height:1.2}
+
+  /* investment */
+  .price{font-family:'DM Serif Display',serif;letter-spacing:-.035em;line-height:.94;
+    font-size:clamp(3.2rem,12vw,8rem)}
+  .warn{background:#fff;border:1px solid #ead7c6;border-left:4px solid #c98a3c;border-radius:14px;padding:20px 22px;color:#5a4a35;font-size:15.5px}
+
+  /* run cost table */
+  .rt{width:100%;border-collapse:collapse}
+  .rt th{font-family:'DM Mono',monospace;font-weight:500;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-align:left;padding:0 16px 14px}
+  .rt td{padding:18px 16px;border-top:1px solid var(--hairline);vertical-align:top;font-size:15px}
+  .rt .tool{font-weight:600;color:var(--ink)}
+  .rt .tool span{display:block;font-weight:400;color:var(--muted);font-size:13px;font-family:'DM Mono',monospace;margin-top:3px}
+  .rt .rng{font-family:'DM Mono',monospace;white-space:nowrap;color:var(--ink);font-size:15px}
+  .rt .desc{color:#3a3935}
+  .rt tr.total td{border-top:2px solid var(--ink);font-weight:600}
+  .rt tr.total .rng{color:var(--accent)}
+  @media(max-width:680px){
+    .rt thead{display:none}
+    .rt,.rt tbody,.rt tr,.rt td{display:block;width:100%}
+    .rt tr{border-top:1px solid var(--hairline);padding:14px 0}
+    .rt td{border:0;padding:3px 0}
+    .rt .rng{font-size:18px;color:var(--accent);margin-top:4px}
+    .rt tr.total{border-top:2px solid var(--ink)}
+  }
+
+  /* navy guarantee */
+  .navy-panel{background:var(--navy);color:#eef1f8;border-radius:24px;padding:clamp(34px,5vw,64px);position:relative;overflow:hidden}
+  .navy-panel::after{content:"";position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(600px 360px at 88% -10%,rgba(36,86,201,.5),transparent 60%),radial-gradient(500px 340px at 0% 120%,rgba(22,166,151,.28),transparent 60%)}
+  .navy-panel>*{position:relative;z-index:1}
+
+  /* tldr */
+  .tldr{background:#fff;border:1px solid var(--hairline);border-radius:22px;padding:clamp(28px,4vw,48px);
+    box-shadow:0 30px 60px -38px rgba(16,42,107,.4)}
+  .tldr ul{list-style:none;display:flex;flex-direction:column;gap:16px;margin-top:24px}
+  .tldr li{display:flex;gap:14px;align-items:flex-start;font-size:16.5px;line-height:1.5}
+  .tldr li .tick{flex:none;width:24px;height:24px;border-radius:7px;background:rgba(36,86,201,.1);color:var(--accent);display:grid;place-items:center;margin-top:1px}
+  .tldr li .tick svg{width:14px;height:14px}
+
+  /* footer */
+  footer{padding:clamp(56px,8vw,96px) 0 64px;border-top:1px solid var(--hairline);text-align:center}
+
+  /* ===== FLOW DIAGRAM ===== */
+  .flow-shell{position:relative;background:#fff;border:1px solid var(--hairline);border-radius:22px;overflow:hidden;
+    box-shadow:0 30px 64px -40px rgba(16,42,107,.4)}
+  .flow-toolbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;
+    padding:16px 18px;border-bottom:1px solid var(--hairline);background:linear-gradient(#fff,#fcfbf8)}
+  .legend{display:flex;flex-wrap:wrap;gap:8px}
+  .lg-pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--hairline);background:#fff;
+    border-radius:999px;padding:7px 13px;font-size:13px;cursor:pointer;color:#33322e;
+    transition:border-color .2s,background .2s,transform .15s;user-select:none}
+  .lg-pill:hover{transform:translateY(-1px)}
+  .lg-pill .sw{width:11px;height:11px;border-radius:3px;flex:none}
+  .lg-pill .sw.engine{background:var(--accent)}
+  .lg-pill .sw.ladder{background:#fff;border:1.5px solid #c9c6bf}
+  .lg-pill .sw.marketing{background:var(--teal)}
+  .lg-pill[aria-pressed="true"]{border-color:var(--accent);background:#f1f5ff;color:var(--accent)}
+  .lg-pill:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .flow-hint{font-family:'DM Mono',monospace;font-size:11.5px;color:var(--muted);letter-spacing:.02em}
+  .flow-expand{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--hairline);background:#fff;border-radius:999px;
+    padding:8px 14px;font-size:13px;font-weight:500;cursor:pointer;color:var(--ink);transition:border-color .2s,transform .15s,box-shadow .2s}
+  .flow-expand:hover{transform:translateY(-1px);border-color:var(--accent);box-shadow:0 8px 20px -12px rgba(36,86,201,.5)}
+  .flow-expand:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .flow-expand svg{width:15px;height:15px}
+
+  .flow-scroll{position:relative;overflow:auto;-webkit-overflow-scrolling:touch;background:
+    repeating-linear-gradient(0deg,transparent,transparent 31px,rgba(217,214,207,.22) 31px,rgba(217,214,207,.22) 32px),
+    repeating-linear-gradient(90deg,transparent,transparent 31px,rgba(217,214,207,.22) 31px,rgba(217,214,207,.22) 32px),#fff}
+  .flow-stage{padding:20px}
+  .flow-svg{display:block;height:auto;font-family:'DM Sans',sans-serif;margin:0 auto}
+  /* desktop fits to width; mobile keeps min width + horizontal scroll */
+  .flow-svg{width:100%;max-width:1020px}
+  /* mobile: fit-to-width preview; full reading happens in the expand modal */
+  .flow-tap{display:none}
+  .flow-overlay{display:none}
+  @media(max-width:720px){
+    .flow-svg{width:100%;max-width:none}
+    .flow-scroll{overflow:hidden}
+    .flow-stage{padding:14px}
+    .flow-tap{display:inline-flex;align-items:center;gap:8px;position:absolute;left:50%;bottom:18px;transform:translateX(-50%);
+      z-index:5;border:1px solid var(--accent);background:rgba(255,255,255,.94);backdrop-filter:blur(4px);color:var(--accent);
+      font-family:'DM Mono',monospace;font-size:12.5px;letter-spacing:.04em;padding:10px 18px;border-radius:999px;cursor:pointer;
+      box-shadow:0 10px 26px -12px rgba(36,86,201,.55)}
+    .flow-tap svg{width:15px;height:15px}
+    .flow-overlay{display:block;position:absolute;inset:54px 0 0;z-index:4;cursor:pointer;
+      background:linear-gradient(180deg,rgba(251,249,244,0) 60%,rgba(251,249,244,.55))}
+  }
+
+  /* node grouping helpers */
+  .flow-svg .node{transform-box:fill-box;transform-origin:center}
+  .flow-svg .lane{cursor:pointer}
+  /* reveal: pre-state */
+  .flow-svg.anim .node{opacity:0;transform:scale(.92)}
+  .flow-svg.anim .lnk,.flow-svg.anim .lnk-label,.flow-svg.anim .frame,.flow-svg.anim .frame-lbl{opacity:0}
+  .flow-svg.anim .node,.flow-svg.anim .lnk,.flow-svg.anim .lnk-label,.flow-svg.anim .frame,.flow-svg.anim .frame-lbl{
+    transition:opacity .5s ease,transform .55s cubic-bezier(.2,.7,.3,1)}
+  .flow-svg.anim.go .node{opacity:1;transform:scale(1)}
+  .flow-svg.anim.go .lnk,.flow-svg.anim.go .lnk-label,.flow-svg.anim.go .frame,.flow-svg.anim.go .frame-lbl{opacity:1}
+
+  /* lane focus */
+  .flow-wrap[data-focus] .lane,.flow-wrap[data-layer] .node,.flow-wrap[data-layer] .lnk{transition:opacity .3s ease}
+  .flow-wrap[data-focus="0"] .lane:not([data-lane="0"]):not([data-lane="all"]),
+  .flow-wrap[data-focus="1"] .lane:not([data-lane="1"]):not([data-lane="all"]),
+  .flow-wrap[data-focus="2"] .lane:not([data-lane="2"]):not([data-lane="all"]){opacity:.12}
+  .flow-wrap[data-focus] .lane[data-lane="all"]{opacity:.5}
+  /* layer filter */
+  .flow-wrap[data-layer="engine"] .node:not(.lyr-engine),
+  .flow-wrap[data-layer="ladder"] .node:not(.lyr-ladder),
+  .flow-wrap[data-layer="marketing"] .node:not(.lyr-marketing){opacity:.13}
+  .flow-wrap[data-layer] .lnk,.flow-wrap[data-layer] .lnk-label{opacity:.22}
+
+  /* score band strip */
+  .bands{display:grid;grid-template-columns:1fr;gap:14px;margin-top:22px}
+  @media(min-width:760px){.bands{grid-template-columns:repeat(3,1fr)}}
+  .band{padding:20px 22px;cursor:pointer;border-radius:16px}
+  .band .bn{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:8px}
+  .band .bn::before{content:"";width:9px;height:9px;border-radius:50%}
+  .band[data-lane-control="0"] .bn::before{background:var(--teal)}
+  .band[data-lane-control="1"] .bn::before{background:#c9c6bf}
+  .band[data-lane-control="2"] .bn::before{background:var(--navy)}
+  .band h4{font-family:'DM Serif Display',serif;font-size:1.32rem;margin:8px 0 4px;letter-spacing:-.01em}
+  .band .br{font-family:'DM Mono',monospace;font-size:14px;color:var(--accent)}
+  .band p{font-size:14px;color:var(--muted);margin-top:7px}
+  .band.hot{border-color:var(--accent);box-shadow:0 14px 30px -18px rgba(36,86,201,.5)}
+
+  /* expand modal */
+  .modal{position:fixed;inset:0;z-index:120;background:rgba(17,17,16,.62);backdrop-filter:blur(6px);
+    display:none;flex-direction:column;padding:14px}
+  .modal.open{display:flex}
+  .modal-top{display:flex;align-items:center;justify-content:space-between;gap:12px;color:#fff;padding:6px 6px 12px}
+  .modal-title{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.85)}
+  .modal-ctrls{display:flex;gap:8px}
+  .mbtn{width:40px;height:40px;border-radius:11px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.1);
+    color:#fff;font-size:20px;display:grid;place-items:center;cursor:pointer;transition:background .2s}
+  .mbtn:hover{background:rgba(255,255,255,.22)}
+  .mbtn:focus-visible{outline:2px solid #fff;outline-offset:2px}
+  .modal-canvas{flex:1;overflow:auto;-webkit-overflow-scrolling:touch;background:var(--cream);border-radius:16px;touch-action:pinch-zoom pan-x pan-y}
+  .modal-zoomer{transform-origin:0 0;transition:transform .18s ease;width:max-content;padding:10px}
+  .modal-zoomer svg{display:block;width:1360px;max-width:none;height:auto}
+
+  @media(prefers-reduced-motion:reduce){
+    *{scroll-behavior:auto!important}
+    .flow-svg.anim .node{opacity:1;transform:none}
+    .flow-svg.anim .lnk,.flow-svg.anim .lnk-label,.flow-svg.anim .frame,.flow-svg.anim .frame-lbl{opacity:1}
+    .card,.flow-svg.anim .node,.flow-svg.anim .lnk{transition:none}
+  }
+
+  /* generic reveal for content blocks */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.3,1)}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="bg-atmos"></div>
+<div class="bg-grain"></div>
+<div class="scrollprog" id="scrollprog"></div>
+
+<!-- sticky top bar -->
+<header class="topbar" id="topbar">
+  <span class="tb-left">Prepared for Viral App Launch</span>
+  <span class="tb-right">Lead Triage System</span>
+</header>
+
+<a id="top"></a>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap">
+    <div class="kicker reveal in"><span class="dot"></span><span class="eyebrow">Prepared for Viral App Launch</span></div>
+    <h1 class="display reveal in" style="transition-delay:.05s">
+      Viral App Launch,<br>
+      <span class="hero-line2">Lead Triage System</span>
+    </h1>
+    <div class="hero-rule reveal in" style="transition-delay:.12s"></div>
+    <p class="hero-sub reveal in" style="transition-delay:.16s">Catch every lead you already paid for, and send each one straight to the right place.</p>
+  </div>
+</section>
+
+<hr class="hr" style="max-width:var(--maxw);margin:0 auto">
+
+<!-- ============ 2. PROBLEM ============ -->
+<section class="sec-pad">
+  <div class="wrap">
+    <div class="kicker reveal"><span class="dot"></span><span class="eyebrow">The problem</span></div>
+    <div style="display:grid;gap:clamp(28px,5vw,64px);grid-template-columns:1fr" class="prob-grid">
+      <h2 class="sec-h reveal" style="max-width:16ch">It's not a lead problem, it's a routing problem.</h2>
+      <div class="reveal" style="transition-delay:.08s">
+        <p class="lede" style="margin-bottom:20px">You bring in roughly <strong>150 leads a week</strong> from Meta, around <strong>$25K/month</strong> in ad spend. Leads are not the problem.</p>
+        <p class="lede" style="margin-bottom:20px">Every lead drops into one pipeline. Your closer is built for the <strong>$30K to $40K</strong> deals, so everyone else, the smaller buyers who would fit Founders Club or the <strong>$997 Blueprint</strong> course, your score 0 leads, sits there and never hears back.</p>
+        <p class="lede">On your own calls, those leads are <span class="pull">"just going to waste,"</span> and the IG and FB DMs are leads you are <span class="pull">"totally missing."</span> Jonathan booked four calls in one sitting just by replying himself.</p>
+      </div>
+    </div>
+    <div class="callout reveal" style="margin-top:clamp(34px,5vw,56px)">
+      <p class="quote-h">"When a lead lands on a 'thanks for applying' page, sees four random links, and leaves, that's money you already spent walking straight out the door."</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. WHAT IT'S WORTH ============ -->
+<section class="sec-pad" style="background:linear-gradient(180deg,rgba(36,86,201,.035),transparent 40%)">
+  <div class="wrap">
+    <div class="kicker reveal"><span class="dot"></span><span class="eyebrow">What it's worth</span></div>
+    <div class="reveal">
+      <div class="worth-num"><span data-count="15000" data-prefix="$">$15,000</span> to <span data-count="20000" data-prefix="$">$20,000</span> <span class="u" style="font-size:.32em;letter-spacing:-.01em;font-family:'DM Mono',monospace;vertical-align:middle">/ month</span></div>
+      <p class="mono" style="font-size:13px;color:var(--muted);margin-top:14px;letter-spacing:.02em">Recoverable revenue. Illustrative, based on your current lead volume and offer pricing, not a guarantee.</p>
+    </div>
+    <div class="narrow reveal" style="margin-top:40px">
+      <p class="lede" style="margin-bottom:20px">Recover just <strong>15 to 20</strong> score 0 sales a month into the <strong>$997</strong> Blueprint course, from leads you already paid for.</p>
+      <p class="lede" style="margin-bottom:20px">And that's just the floor. It doesn't count score 1 buyers (<strong>$5K to $15K</strong>) with no follow-up, score 2 deals (<strong>$30K to $40K</strong>) that leak when the closer is buried, or the hundreds of DM leads nobody works.</p>
+      <p class="lede">Routing is only half of it. The message, follow-up, and recovery that turn a routed lead into a sale are built in, not bolted on.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="hr" style="max-width:var(--maxw);margin:0 auto">
+
+<!-- ============ 4. HOW IT WORKS ============ -->
+<section class="sec-pad">
+  <div class="wrap">
+    <div class="kicker reveal"><span class="dot"></span><span class="eyebrow">How it works</span></div>
+    <h2 class="sec-h reveal" style="max-width:20ch">It sits on top of the ladder you already built.</h2>
+    <p class="lede reveal narrow" style="margin-top:18px">We don't replace your funnels, we make sure every lead hits the right one. Below is the full lead-triage flow, end to end.</p>
+
+    <!-- FLOW DIAGRAM -->
+    <div class="flow-wrap reveal" id="flowWrap" style="margin-top:36px">
+      <div class="flow-shell">
+        <div class="flow-toolbar">
+          <div class="legend" role="group" aria-label="Filter the diagram by layer">
+            <button class="lg-pill" data-layer-toggle="engine" aria-pressed="false"><span class="sw engine"></span>Triage engine, what we build</button>
+            <button class="lg-pill" data-layer-toggle="ladder" aria-pressed="false"><span class="sw ladder"></span>Your value ladder</button>
+            <button class="lg-pill" data-layer-toggle="marketing" aria-pressed="false"><span class="sw marketing"></span>Marketing layer we add</button>
+          </div>
+          <button class="flow-expand" id="flowExpandBtn" aria-label="Expand the diagram full screen">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+            Expand
+          </button>
+        </div>
+        <div class="flow-scroll" id="flowScroll">
+          <div class="flow-stage" id="flowStage">
+            <!-- inline SVG (grouped + classed for interactivity; node text identical to flow.svg) -->
+            <svg class="flow-svg" id="flowSvg" viewBox="0 0 1360 1372" font-family="'DM Sans','Segoe UI',sans-serif" role="img" aria-label="Lead triage flow: paid and organic leads are captured, enriched, scored by an AI engine, then routed by score into your existing value ladder, wrapped in a marketing layer.">
+<rect x="0" y="0" width="1360" height="1372" fill="#FBF9F4"/>
+<defs>
+<marker id="arr" markerWidth="7" markerHeight="7" refX="5.4" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#B7B4AD"/></marker>
+<filter id="soft" x="-12%" y="-30%" width="124%" height="160%"><feDropShadow dx="0" dy="1.4" stdDeviation="2.2" flood-color="#10204a" flood-opacity="0.10"/></filter>
+</defs>
+<g class="flow-frames"><rect class="frame" x="500" y="270" width="290" height="264" rx="12" fill="#EAF0FB" stroke="#2456C9" stroke-width="1.3" stroke-dasharray="5 4"/><rect class="frame" x="40" y="808" width="1295" height="548" rx="12" fill="none" stroke="#16A697" stroke-width="1.3" stroke-dasharray="5 4"/><rect class="frame" x="44" y="846" width="422" height="502" rx="12" fill="none" stroke="#C9C6BF" stroke-width="1.3" stroke-dasharray="5 4"/><rect class="frame" x="474" y="846" width="470" height="374" rx="12" fill="none" stroke="#C9C6BF" stroke-width="1.3" stroke-dasharray="5 4"/><rect class="frame" x="908" y="846" width="216" height="172" rx="12" fill="none" stroke="#C9C6BF" stroke-width="1.3" stroke-dasharray="5 4"/><text class="frame-lbl" x="512" y="286" text-anchor="start" font-size="11" font-weight="700" fill="#2456C9">TRIAGE ENGINE</text><text class="frame-lbl" x="800" y="286" text-anchor="start" font-size="11" font-weight="400" fill="#6E6E68">the brain we add on top of your ladder</text><text class="frame-lbl" x="687" y="824" text-anchor="middle" font-size="10.5" font-weight="700" fill="#16A697">YOUR EXISTING VALUE LADDER  +  the MARKETING LAYER we wrap around every lane</text><text class="frame-lbl" x="687" y="838" text-anchor="middle" font-size="10" font-weight="400" fill="#6E6E68">message-match copy · speed-to-lead + multi-touch follow-up · abandon &amp; no-show recovery · A/B + CRO</text><text class="frame-lbl" x="56" y="868" text-anchor="start" font-size="10" font-weight="600" fill="#6E6E68">SCORE 0 · DIY · under ~$1k/mo · self-serve funnel</text><text class="frame-lbl" x="486" y="868" text-anchor="start" font-size="10" font-weight="600" fill="#6E6E68">SCORE 1 · DWY · ~$1-5k/mo · budget-routed</text><text class="frame-lbl" x="918" y="868" text-anchor="start" font-size="9.5" font-weight="600" fill="#6E6E68">SCORE 2 · DFY · ~$5k/mo+ · high-touch close</text></g>
+<path class="lnk" d="M520,90 L520,122" fill="none" stroke="#B7B4AD" stroke-width="1.3"  marker-end="url(#arr)"/><path class="lnk" d="M770,90 L770,122" fill="none" stroke="#B7B4AD" stroke-width="1.3"  marker-end="url(#arr)"/><path class="lnk" d="M520,168 L520,184 L605,184 L605,200" fill="none" stroke="#B7B4AD" stroke-width="1.3"  marker-end="url(#arr)"/><path class="lnk" d="M770,168 L770,184 L685,184 L685,200" fill="none" stroke="#B7B4AD" stroke-width="1.3"  marker-end="url(#arr)"/><path class="lnk" d="M645,260 L645,294" fill="none" stroke="#B7B4AD" stroke-width="1.3"  marker-end="url(#arr)"/><path class="lnk" d="M645,340 L645,354" fill="none" stroke="#B7B4AD" stroke-width="1.3"  marker-end="url(#arr)"/><path class="lnk" d="M645,400 L645,414" fill="none" stroke="#B7B4AD" stroke-width="1.3"  marker-end="url(#arr)"/><path class="lnk" d="M645,460 L645,474" fill="none" stroke="#B7B4AD" stroke-width="1.3"  marker-end="url(#arr)"/><path class="lnk" d="M645,522 L645,560" fill="none" stroke="#B7B4AD" stroke-width="1.3"  marker-end="url(#arr)"/><g class="lnk-label"><rect x="678.0" y="530.5" width="56.0" height="13" fill="#FBF9F4"/><text x="706" y="540" text-anchor="middle" font-size="9.5" fill="#8A877F" font-style="italic">trains it</text></g><path class="lnk" d="M645,620 L645,642" fill="none" stroke="#B7B4AD" stroke-width="1.3"  marker-end="url(#arr)"/><path class="lnk" d="M645,690 L645,706" fill="none" stroke="#B7B4AD" stroke-width="1.3"  marker-end="url(#arr)"/>
+<g class="node lyr-ladder"><rect x="445" y="44" width="150" height="46" rx="11" fill="#FFFFFF" stroke="#C9C6BF" stroke-width="1.4"  filter="url(#soft)"/><text x="520" y="63.3" text-anchor="middle" font-size="12.5" font-weight="700" fill="#111110">Paid ads</text><text x="520" y="77.9" text-anchor="middle" font-size="10.5" font-weight="400" fill="#6E6E68">Meta · YouTube</text></g><g class="node lyr-ladder"><rect x="674" y="44" width="192" height="46" rx="11" fill="#FFFFFF" stroke="#C9C6BF" stroke-width="1.4"  filter="url(#soft)"/><text x="770" y="63.3" text-anchor="middle" font-size="12.5" font-weight="700" fill="#111110">Organic social</text><text x="770" y="77.9" text-anchor="middle" font-size="10.5" font-weight="400" fill="#6E6E68">IG · FB · TikTok · LinkedIn</text></g><g class="node lyr-ladder"><rect x="426" y="122" width="188" height="46" rx="11" fill="#FFFFFF" stroke="#C9C6BF" stroke-width="1.4"  filter="url(#soft)"/><text x="520" y="141.3" text-anchor="middle" font-size="12.5" font-weight="700" fill="#111110">Typeform</text><text x="520" y="155.9" text-anchor="middle" font-size="10.5" font-weight="400" fill="#6E6E68">budget + qualifying questions</text></g><g class="node lyr-marketing"><rect x="667" y="122" width="206" height="46" rx="11" fill="#FFFFFF" stroke="#16A697" stroke-width="1.4"  filter="url(#soft)"/><text x="770" y="141.3" text-anchor="middle" font-size="12.5" font-weight="700" fill="#16A697">ManyChat</text><text x="770" y="155.9" text-anchor="middle" font-size="10.5" font-weight="400" fill="#5AA59D">qualifying conversation we design</text></g><g class="node lyr-engine"><rect x="480" y="200" width="330" height="60" rx="11" fill="#2456C9" stroke="#2456C9" stroke-width="1.4"  filter="url(#soft)"/><text x="645" y="219.0" text-anchor="middle" font-size="12.5" font-weight="700" fill="#FFFFFF">Trigger we build</text><text x="645" y="233.6" text-anchor="middle" font-size="10.5" font-weight="400" fill="#DCE6FB">fires on Typeform submit / ManyChat complete</text><text x="645" y="248.2" text-anchor="middle" font-size="10.5" font-weight="400" fill="#DCE6FB">runs the full engine automatically</text></g><g class="node lyr-ladder"><rect x="523" y="294" width="244" height="46" rx="11" fill="#FFFFFF" stroke="#C9C6BF" stroke-width="1.4"  filter="url(#soft)"/><text x="645" y="313.3" text-anchor="middle" font-size="12.5" font-weight="700" fill="#111110">Enrich + research</text><text x="645" y="327.9" text-anchor="middle" font-size="10.5" font-weight="400" fill="#6E6E68">Perplexity · Apify (or equivalents)</text></g><g class="node lyr-ladder"><rect x="514" y="354" width="262" height="46" rx="11" fill="#FFFFFF" stroke="#C9C6BF" stroke-width="1.4"  filter="url(#soft)"/><text x="645" y="373.3" text-anchor="middle" font-size="12.5" font-weight="700" fill="#111110">Unified profile</text><text x="645" y="387.9" text-anchor="middle" font-size="10.5" font-weight="400" fill="#6E6E68">stage · revenue · funding · app maturity</text></g><g class="node lyr-ladder"><rect x="523" y="414" width="244" height="46" rx="11" fill="#FFFFFF" stroke="#C9C6BF" stroke-width="1.4"  filter="url(#soft)"/><text x="645" y="433.3" text-anchor="middle" font-size="12.5" font-weight="700" fill="#111110">Claim check</text><text x="645" y="447.9" text-anchor="middle" font-size="10.5" font-weight="400" fill="#6E6E68">flags over or under-stated budget</text></g><g class="node lyr-engine"><rect x="514" y="474" width="262" height="48" rx="11" fill="#2456C9" stroke="#2456C9" stroke-width="1.4"  filter="url(#soft)"/><text x="645" y="494.3" text-anchor="middle" font-size="12.5" font-weight="700" fill="#FFFFFF">AI decision</text><text x="645" y="508.9" text-anchor="middle" font-size="10.5" font-weight="400" fill="#DCE6FB">best-fit LANE + OFFER + MESSAGE</text></g><g class="node lyr-engine"><rect x="492" y="560" width="306" height="60" rx="11" fill="#FFFFFF" stroke="#2456C9" stroke-width="1.4"  filter="url(#soft)"/><text x="645" y="579.0" text-anchor="middle" font-size="12.5" font-weight="700" fill="#111110">Human review + self-learning</text><text x="645" y="593.6" text-anchor="middle" font-size="10.5" font-weight="400" fill="#6E6E68">first 30 days: did they buy what we predicted?</text><text x="645" y="608.2" text-anchor="middle" font-size="10.5" font-weight="400" fill="#6E6E68">retrain scoring · refine offer-fit · dial in bands</text></g><g class="node lyr-ladder"><rect x="514" y="642" width="262" height="48" rx="11" fill="#FFFFFF" stroke="#C9C6BF" stroke-width="1.4"  filter="url(#soft)"/><text x="645" y="662.3" text-anchor="middle" font-size="12.5" font-weight="700" fill="#111110">GoHighLevel, source of truth</text><text x="645" y="676.9" text-anchor="middle" font-size="10.5" font-weight="400" fill="#6E6E68">tags score · lane · offer · status</text></g><g class="node lyr-engine"><polygon points="645,706 729,744 645,782 561,744" fill="#2456C9" stroke="#2456C9" stroke-width="1.4" /><text x="645" y="747.6" text-anchor="middle" font-size="12.5" font-weight="700" fill="#FFFFFF">Route by score</text></g><g class="node lyr-ladder"><rect x="1111" y="876" width="198" height="50" rx="11" fill="#FFFFFF" stroke="#C9C6BF" stroke-width="1.4" stroke-dasharray="5 4" filter="url(#soft)"/><text x="1210" y="897.3" text-anchor="middle" font-size="11" font-weight="700" fill="#6E6E68">Flag in GHL: long-term nurture</text><text x="1210" y="911.9" text-anchor="middle" font-size="10.5" font-weight="400" fill="#9B9890">not ready now · re-score later</text></g>
+<g class="lane" data-lane="0"><path class="lnk" d="M645,782 L645,822 L250,822 L250,876" fill="none" stroke="#B7B4AD" stroke-width="1.3"  marker-end="url(#arr)"/><path class="lnk" d="M250,922 L250,946" fill="none" stroke="#B7B4AD" stroke-width="1.3"  marker-end="url(#arr)"/><path class="lnk" d="M250,992 L250,994" fill="none" stroke="#B7B4AD" stroke-width="1.3"  marker-end="url(#arr)"/><path class="lnk" d="M250,1090 L250,1108 L150,1108 L150,1126" fill="none" stroke="#B7B4AD" stroke-width="1.3"  marker-end="url(#arr)"/><g class="lnk-label"><rect x="164.0" y="1092.5" width="64.0" height="13" fill="#FBF9F4"/><text x="196" y="1102" text-anchor="middle" font-size="9.5" fill="#8A877F" font-style="italic">more budget</text></g><path class="lnk" d="M250,1090 L250,1108 L360,1108 L360,1126" fill="none" stroke="#B7B4AD" stroke-width="1.3"  marker-end="url(#arr)"/><g class="lnk-label"><rect x="287.0" y="1092.5" width="62.0" height="13" fill="#FBF9F4"/><text x="318" y="1102" text-anchor="middle" font-size="9.5" fill="#8A877F" font-style="italic">can't afford</text></g><path class="lnk" d="M360,1176 L360,1210" fill="none" stroke="#B7B4AD" stroke-width="1.3"  marker-end="url(#arr)"/><path class="lnk" d="M360,1248 L360,1282" fill="none" stroke="#B7B4AD" stroke-width="1.3"  marker-end="url(#arr)"/><g class="node lyr-marketing"><rect x="154" y="876" width="192" height="46" rx="11" fill="#FFFFFF" stroke="#16A697" stroke-width="1.4"  filter="url(#soft)"/><text x="250" y="895.3" text-anchor="middle" font-size="12.5" font-weight="700" fill="#16A697">Email</text><text x="250" y="909.9" text-anchor="middle" font-size="10.5" font-weight="400" fill="#5AA59D">funnels them into the course</text></g><g class="node lyr-ladder"><rect x="159" y="946" width="182" height="46" rx="11" fill="#FFFFFF" stroke="#C9C6BF" stroke-width="1.4"  filter="url(#soft)"/><text x="250" y="965.3" text-anchor="middle" font-size="12.5" font-weight="700" fill="#111110">Blueprint course</text><text x="250" y="979.9" text-anchor="middle" font-size="10.5" font-weight="400" fill="#6E6E68">$997 (front-end)</text></g><g class="node lyr-ladder"><polygon points="250,994 340,1042 250,1090 160,1042" fill="#FFFFFF" stroke="#C9C6BF" stroke-width="1.4" /><text x="250" y="1031.0" text-anchor="middle" font-size="11.5" font-weight="400" fill="#111110">Affordability /</text><text x="250" y="1045.6" text-anchor="middle" font-size="11.5" font-weight="400" fill="#111110">budget signal</text><text x="250" y="1060.2" text-anchor="middle" font-size="11.5" font-weight="400" fill="#111110">(A-B tested)</text></g><g class="node lyr-ladder"><rect x="52" y="1126" width="196" height="50" rx="11" fill="#FFFFFF" stroke="#C9C6BF" stroke-width="1.4"  filter="url(#soft)"/><text x="150" y="1147.3" text-anchor="middle" font-size="12.5" font-weight="400" fill="#111110">More budget · Cap raising</text><text x="150" y="1161.9" text-anchor="middle" font-size="10.5" font-weight="400" fill="#6E6E68">upsell · one-off / payment plan</text></g><g class="node lyr-ladder"><rect x="283" y="1126" width="154" height="50" rx="11" fill="#FFFFFF" stroke="#C9C6BF" stroke-width="1.4"  filter="url(#soft)"/><text x="360" y="1147.3" text-anchor="middle" font-size="12.5" font-weight="400" fill="#111110">Can't afford · ASO</text><text x="360" y="1161.9" text-anchor="middle" font-size="10.5" font-weight="400" fill="#6E6E68">downsell</text></g><g class="node lyr-ladder"><rect x="293" y="1210" width="134" height="38" rx="11" fill="#FFFFFF" stroke="#C9C6BF" stroke-width="1.4"  filter="url(#soft)"/><text x="360" y="1232.6" text-anchor="middle" font-size="12.5" font-weight="400" fill="#111110">Cart checkout</text></g><g class="node lyr-ladder"><rect x="269" y="1282" width="182" height="50" rx="11" fill="#FFFFFF" stroke="#C9C6BF" stroke-width="1.4"  filter="url(#soft)"/><text x="360" y="1303.3" text-anchor="middle" font-size="12.5" font-weight="700" fill="#111110">Join Founders Club</text><text x="360" y="1317.9" text-anchor="middle" font-size="10.5" font-weight="400" fill="#6E6E68">heavily recommended</text></g></g>
+<g class="lane" data-lane="1"><path class="lnk" d="M645,782 L645,822 L690,822 L690,864" fill="none" stroke="#B7B4AD" stroke-width="1.3"  marker-end="url(#arr)"/><path class="lnk" d="M690,940 L690,950 L585,950 L585,960" fill="none" stroke="#B7B4AD" stroke-width="1.3"  marker-end="url(#arr)"/><g class="lnk-label"><rect x="629.0" y="934.5" width="26.0" height="13" fill="#FBF9F4"/><text x="642" y="944" text-anchor="middle" font-size="9.5" fill="#8A877F" font-style="italic">&lt;2k</text></g><path class="lnk" d="M690,940 L690,950 L815,950 L815,960" fill="none" stroke="#B7B4AD" stroke-width="1.3"  marker-end="url(#arr)"/><g class="lnk-label"><rect x="741.0" y="934.5" width="26.0" height="13" fill="#FBF9F4"/><text x="754" y="944" text-anchor="middle" font-size="9.5" fill="#8A877F" font-style="italic">&gt;2k</text></g><path class="lnk" d="M585,1010 L585,1028" fill="none" stroke="#B7B4AD" stroke-width="1.3"  marker-end="url(#arr)"/><path class="lnk" d="M815,1010 L815,1046" fill="none" stroke="#B7B4AD" stroke-width="1.3"  marker-end="url(#arr)"/><path class="lnk" d="M585,1112 L585,1156" fill="none" stroke="#B7B4AD" stroke-width="1.3"  marker-end="url(#arr)"/><path class="lnk" d="M815,1096 L815,1156" fill="none" stroke="#B7B4AD" stroke-width="1.3"  marker-end="url(#arr)"/><g class="node lyr-ladder"><polygon points="690,864 750,902 690,940 630,902" fill="#FFFFFF" stroke="#C9C6BF" stroke-width="1.4" /><text x="690" y="905.6" text-anchor="middle" font-size="12.5" font-weight="700" fill="#111110">Budget?</text></g><g class="node lyr-ladder"><rect x="486" y="960" width="198" height="50" rx="11" fill="#FFFFFF" stroke="#C9C6BF" stroke-width="1.4"  filter="url(#soft)"/><text x="585" y="981.3" text-anchor="middle" font-size="12.5" font-weight="400" fill="#111110">&lt; 2k/mo · BP Base</text><text x="585" y="995.9" text-anchor="middle" font-size="10.5" font-weight="400" fill="#6E6E68">web funnel: coaching + course</text></g><g class="node lyr-ladder"><rect x="711" y="960" width="208" height="50" rx="11" fill="#FFFFFF" stroke="#C9C6BF" stroke-width="1.4"  filter="url(#soft)"/><text x="815" y="981.3" text-anchor="middle" font-size="12.5" font-weight="400" fill="#111110">&gt; 2k/mo</text><text x="815" y="995.9" text-anchor="middle" font-size="10.5" font-weight="400" fill="#6E6E68">book call / sales team · BP Pro</text></g><g class="node lyr-ladder"><polygon points="585,1028 637,1070 585,1112 533,1070" fill="#FFFFFF" stroke="#C9C6BF" stroke-width="1.4" /><text x="585" y="1073.6" text-anchor="middle" font-size="12.5" font-weight="700" fill="#111110">A / B test</text></g><g class="node lyr-ladder"><rect x="709" y="1046" width="212" height="50" rx="11" fill="#FFFFFF" stroke="#C9C6BF" stroke-width="1.4"  filter="url(#soft)"/><text x="815" y="1067.3" text-anchor="middle" font-size="12.5" font-weight="400" fill="#111110">On-call upsells</text><text x="815" y="1081.9" text-anchor="middle" font-size="10.5" font-weight="400" fill="#6E6E68">cap-raise · ad content · UX audit</text></g><g class="node lyr-ladder"><rect x="484" y="1156" width="202" height="50" rx="11" fill="#FFFFFF" stroke="#C9C6BF" stroke-width="1.4"  filter="url(#soft)"/><text x="585" y="1177.3" text-anchor="middle" font-size="12.5" font-weight="400" fill="#111110">Dedicated coach / BP Plus</text><text x="585" y="1191.9" text-anchor="middle" font-size="10.5" font-weight="400" fill="#6E6E68">media buying + creative → FC</text></g><g class="node lyr-ladder"><rect x="737" y="1156" width="156" height="46" rx="11" fill="#FFFFFF" stroke="#C9C6BF" stroke-width="1.4"  filter="url(#soft)"/><text x="815" y="1175.3" text-anchor="middle" font-size="12.5" font-weight="400" fill="#111110">BP Pro</text><text x="815" y="1189.9" text-anchor="middle" font-size="10.5" font-weight="400" fill="#6E6E68">upsell on call</text></g></g>
+<g class="lane" data-lane="2"><path class="lnk" d="M645,782 L645,822 L1015,822 L1015,876" fill="none" stroke="#B7B4AD" stroke-width="1.3"  marker-end="url(#arr)"/><path class="lnk" d="M1015,922 L1015,956" fill="none" stroke="#B7B4AD" stroke-width="1.3"  marker-end="url(#arr)"/><g class="node lyr-ladder"><rect x="919" y="876" width="192" height="46" rx="11" fill="#FFFFFF" stroke="#C9C6BF" stroke-width="1.4"  filter="url(#soft)"/><text x="1015" y="895.3" text-anchor="middle" font-size="12.5" font-weight="700" fill="#111110">Book call with Dan</text><text x="1015" y="909.9" text-anchor="middle" font-size="10.5" font-weight="400" fill="#6E6E68">SDR double-qualify</text></g><g class="node lyr-ladder"><rect x="932" y="956" width="166" height="46" rx="11" fill="#FFFFFF" stroke="#C9C6BF" stroke-width="1.4"  filter="url(#soft)"/><text x="1015" y="975.3" text-anchor="middle" font-size="12.5" font-weight="400" fill="#111110">Closing call</text><text x="1015" y="989.9" text-anchor="middle" font-size="10.5" font-weight="400" fill="#6E6E68">sell DFY services</text></g></g>
+<g class="lane" data-lane="all"><path class="lnk" d="M729,744 L1210,744 L1210,876" fill="none" stroke="#B7B4AD" stroke-width="1.3" stroke-dasharray="5 4" marker-end="url(#arr)"/><g class="lnk-label"><rect x="971.0" y="734" width="58.0" height="13" fill="#FBF9F4"/><text x="1000" y="743.5" text-anchor="middle" font-size="9.5" fill="#8A877F" font-style="italic">not ready</text></g><path class="lnk" d="M427,1229 L450,1229 L450,1307 L459,1307" fill="none" stroke="#B7B4AD" stroke-width="1.3" stroke-dasharray="5 4" marker-end="url(#arr)"/><g class="node lyr-marketing"><rect x="459" y="1282" width="362" height="50" rx="11" fill="#FFFFFF" stroke="#16A697" stroke-width="1.4"  filter="url(#soft)"/><text x="640" y="1303.3" text-anchor="middle" font-size="12.5" font-weight="700" fill="#16A697">Speed-to-lead + dialer</text><text x="640" y="1317.9" text-anchor="middle" font-size="10.5" font-weight="400" fill="#5AA59D">cart abandons · no-shows from any booking · re-engage</text></g></g>
+</svg>
+          </div>
+        </div>
+        <div class="flow-overlay" id="flowOverlay" aria-hidden="true"></div>
+        <button class="flow-tap" id="flowTap" aria-label="Open the flow diagram full screen">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+          Tap to open full screen
+        </button>
+      </div>
+
+      <!-- score band strip (doubles as lane controls) -->
+      <div class="bands">
+        <div class="band card" data-lane-control="0" tabindex="0" role="button" aria-label="Highlight score 0 path">
+          <div class="bn">Score 0 · DIY</div>
+          <h4>Self-serve funnel</h4>
+          <div class="br">under about $1k/mo</div>
+          <p>Routed into the $997 Blueprint course and the recovery flows around it.</p>
+        </div>
+        <div class="band card" data-lane-control="1" tabindex="0" role="button" aria-label="Highlight score 1 path">
+          <div class="bn">Score 1 · DWY</div>
+          <h4>Done with you</h4>
+          <div class="br">$1k to $5k/mo</div>
+          <p>Budget-routed into coaching, BP Base or Pro, with on-call upsells.</p>
+        </div>
+        <div class="band card" data-lane-control="2" tabindex="0" role="button" aria-label="Highlight score 2 path">
+          <div class="bn">Score 2 · DFY</div>
+          <h4>Done for you</h4>
+          <div class="br">$5k/mo and up</div>
+          <p>High-touch close: SDR double-qualify, then a closing call for DFY.</p>
+        </div>
+      </div>
+      <p class="mono" style="font-size:12.5px;color:var(--muted);margin-top:16px;letter-spacing:.01em">Budget is only one signal. The engine scores the full profile and the thresholds are tuned with you.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="hr" style="max-width:var(--maxw);margin:0 auto">
+
+<!-- ============ 5. WHAT'S INCLUDED ============ -->
+<section class="sec-pad">
+  <div class="wrap">
+    <div class="kicker reveal"><span class="dot"></span><span class="eyebrow">What's included</span></div>
+    <h2 class="sec-h reveal" style="max-width:18ch">Every piece of the system, built and handed to you.</h2>
+    <div class="inc-grid" style="margin-top:40px">
+      <div class="inc card reveal"><span class="ix">01</span><h4>Trigger</h4><p>Fires automatically the moment a lead completes Typeform or finishes the ManyChat conversation.</p></div>
+      <div class="inc card reveal"><span class="ix">02</span><h4>Lead capture</h4><p>Typeform and ManyChat pulled into one system, so every lead lands in the same place.</p></div>
+      <div class="inc card reveal"><span class="ix">03</span><h4>Enrichment</h4><p>A unified profile on each lead plus a claim check that flags over or under-stated budget.</p></div>
+      <div class="inc card reveal"><span class="ix">04</span><h4>AI decision</h4><p>Scores the lead and picks the best-fit lane, offer, and message for it.</p></div>
+      <div class="inc card reveal"><span class="ix">05</span><h4>Self-learning</h4><p>Human-in-the-loop first, retrains weekly, and tracks which leads actually bought.</p></div>
+      <div class="inc card reveal"><span class="ix">06</span><h4>Routing</h4><p>Sends each lead into your ladder and writes the score, lane, and offer to GoHighLevel.</p></div>
+      <div class="inc card reveal"><span class="ix">07</span><h4>Marketing layer</h4><p>Message-match copy, speed-to-lead, multi-touch follow-up, A/B and CRO, and recovery plays.</p></div>
+      <div class="inc card reveal opt"><span class="ix">08</span><h4>Command center</h4><p>An optional dashboard to watch the whole thing run. On us.</p></div>
+      <div class="inc card reveal"><span class="ix">09</span><h4>Handoff</h4><p>Delivery videos and full docs. It runs on your own stack, in your accounts.</p></div>
+    </div>
+  </div>
+</section>
+
+<hr class="hr" style="max-width:var(--maxw);margin:0 auto">
+
+<!-- ============ 6. TIMELINE ============ -->
+<section class="sec-pad">
+  <div class="wrap">
+    <div class="kicker reveal"><span class="dot"></span><span class="eyebrow">Timeline</span></div>
+    <h2 class="sec-h reveal" style="max-width:16ch">From kickoff to handoff in 21 business days.</h2>
+    <div class="reveal" id="timeline" style="margin-top:44px">
+      <div class="tl-track"><div class="tl-prog" id="tlProg"></div></div>
+      <div class="tl">
+        <div class="tl-step"><span class="tl-node"></span><div class="tl-day">Days 1-4</div><div class="tl-t">Scope and map</div></div>
+        <div class="tl-step"><span class="tl-node"></span><div class="tl-day">Days 5-10</div><div class="tl-t">Build the engine</div></div>
+        <div class="tl-step"><span class="tl-node"></span><div class="tl-day">Days 11-14</div><div class="tl-t">Test and enrich</div></div>
+        <div class="tl-step"><span class="tl-node"></span><div class="tl-day">Days 15-18</div><div class="tl-t">Tune and dial it in</div></div>
+        <div class="tl-step"><span class="tl-node"></span><div class="tl-day">Days 19-21</div><div class="tl-t">Document and hand off</div></div>
+      </div>
+    </div>
+    <p class="lede reveal" style="margin-top:26px;color:var(--muted)">21 business days, front-loaded scoping with real room to test and tune.</p>
+  </div>
+</section>
+
+<!-- ============ 7. INVESTMENT ============ -->
+<section class="sec-pad" style="background:linear-gradient(180deg,transparent,rgba(16,42,107,.04))">
+  <div class="wrap">
+    <div class="kicker reveal"><span class="dot"></span><span class="eyebrow">Investment</span></div>
+    <div class="reveal">
+      <div class="price"><span data-count="5588" data-prefix="$">$5,588</span></div>
+      <p class="serif" style="font-size:clamp(1.3rem,2.6vw,1.9rem);margin-top:6px;color:var(--ink)">USD, one-time, to stop the bleed.</p>
+    </div>
+    <div class="narrow reveal" style="margin-top:34px">
+      <div class="warn" style="margin-bottom:26px">Leave it open and you keep losing $15K to $20K out the bottom of your funnel, every single month.</div>
+      <p class="lede" style="margin-bottom:16px">50% to start, 50% on delivery. No retainer, no recurring fee to QwickStep.</p>
+      <p class="mono" style="font-size:13px;color:var(--muted);line-height:1.6">The intro build on purpose, the fastest way to prove out the quality on one slice of your funnel before scaling it across the rest.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="hr" style="max-width:var(--maxw);margin:0 auto">
+
+<!-- ============ 8. WHAT IT COSTS TO RUN ============ -->
+<section class="sec-pad">
+  <div class="wrap">
+    <div class="kicker reveal"><span class="dot"></span><span class="eyebrow">What it costs to run</span></div>
+    <h2 class="sec-h reveal" style="max-width:20ch">No fee to us after handoff.</h2>
+    <p class="lede reveal narrow" style="margin-top:18px">It runs on a few pay-as-you-go tools, on your own accounts. At about 600 leads a month, here is roughly where it goes.</p>
+    <div class="reveal card" style="margin-top:34px;padding:clamp(18px,2.5vw,26px);overflow-x:auto">
+      <table class="rt">
+        <thead><tr><th>Tool</th><th>What it does</th><th style="text-align:right">Rough monthly</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="tool">AI model<span>Claude API</span></td>
+            <td class="desc">Researches and scores each lead, about $0.05 to $0.10 a lead.</td>
+            <td class="rng" style="text-align:right">$30 to $60</td>
+          </tr>
+          <tr>
+            <td class="tool">Research and scraping<span>Apify</span></td>
+            <td class="desc">Pulls LinkedIn, company, and app-store data.</td>
+            <td class="rng" style="text-align:right">$5 to $30</td>
+          </tr>
+          <tr>
+            <td class="tool">Database<span>Supabase</span></td>
+            <td class="desc">Stores every lead, score, and decision. Free early, $25 Pro once live.</td>
+            <td class="rng" style="text-align:right">$0 to $25</td>
+          </tr>
+          <tr>
+            <td class="tool">Hosting<span>Vercel</span></td>
+            <td class="desc">Runs the engine and command center. Free for light use, $20 Pro in production.</td>
+            <td class="rng" style="text-align:right">$0 to $20</td>
+          </tr>
+          <tr class="total">
+            <td class="tool">A typical month</td>
+            <td class="desc">Lower on free tiers, higher at volume. The only ongoing cost.</td>
+            <td class="rng" style="text-align:right">$70 to $120</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="mono reveal narrow" style="font-size:12.5px;color:var(--muted);margin-top:20px;line-height:1.65">Based on the tools we expect to use today. If anything looks like it will run materially higher, we tell you and get your sign-off first. Nothing gets set up without your approval.</p>
+  </div>
+</section>
+
+<!-- ============ 9. GUARANTEE ============ -->
+<section class="sec-pad">
+  <div class="wrap">
+    <div class="navy-panel reveal">
+      <div class="kicker" style="margin-bottom:18px"><span class="dot" style="background:var(--teal);box-shadow:0 0 0 4px rgba(22,166,151,.22)"></span><span class="eyebrow" style="color:rgba(255,255,255,.7)">The guarantee</span></div>
+      <p class="serif" style="font-size:clamp(1.5rem,3.2vw,2.4rem);line-height:1.28;letter-spacing:-.01em;max-width:24ch">We build it to spec.</p>
+      <p style="font-size:clamp(1.05rem,1.7vw,1.22rem);line-height:1.65;color:#dfe4f1;max-width:62ch;margin-top:18px">If the system doesn't work the way this proposal describes, we keep iterating at no extra cost until it does. And if anything turns out to be unclear or we read your setup wrong, you get two full iterations on us.</p>
+      <p style="font-size:clamp(1.05rem,1.7vw,1.22rem);line-height:1.65;color:#fff;max-width:62ch;margin-top:18px;font-weight:500">The risk of this not working sits with us, not with you.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 10. TLDR ============ -->
+<section class="sec-pad" style="padding-top:0">
+  <div class="wrap">
+    <div class="tldr reveal">
+      <div class="kicker" style="margin-bottom:6px"><span class="dot"></span><span class="eyebrow">The short version</span></div>
+      <p class="serif" style="font-size:clamp(1.6rem,3vw,2.2rem);letter-spacing:-.01em;line-height:1.15">Everything, in five lines.</p>
+      <ul>
+        <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span>Custom software that acts as the connective tissue between your ad spend and your offers, so every lead gets routed to the right place automatically.</span></li>
+        <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span>Built and handed over within three weeks, guaranteed built to spec.</span></li>
+        <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span>Runs entirely on your own stack.</span></li>
+        <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span>No retainers.</span></li>
+        <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span>Running costs are roughly $70 to $120 a month, paid straight to the tool providers, not to us.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 11. FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <p class="lede" style="margin-bottom:18px">Questions, or want the full proposal?</p>
+    <a href="mailto:jun@qwickstep.ai" class="serif" style="font-size:clamp(1.5rem,3vw,2.1rem);color:var(--accent);text-decoration:none;letter-spacing:-.01em;border-bottom:1px solid rgba(36,86,201,.3);padding-bottom:2px">jun@qwickstep.ai</a>
+    <p class="mono" style="font-size:11.5px;color:var(--muted);margin-top:28px;letter-spacing:.06em">PREPARED FOR VIRAL APP LAUNCH · CONFIDENTIAL</p>
+  </div>
+</footer>
+
+<!-- ============ EXPAND MODAL ============ -->
+<div class="modal" id="flowModal" role="dialog" aria-modal="true" aria-label="Lead triage flow, full screen">
+  <div class="modal-top">
+    <span class="modal-title">Lead triage flow · pinch or use + / − to zoom</span>
+    <div class="modal-ctrls">
+      <button class="mbtn" id="zoomOut" aria-label="Zoom out">−</button>
+      <button class="mbtn" id="zoomIn" aria-label="Zoom in">+</button>
+      <button class="mbtn" id="modalClose" aria-label="Close full screen">✕</button>
+    </div>
+  </div>
+  <div class="modal-canvas" id="modalCanvas">
+    <div class="modal-zoomer" id="modalZoomer"><!-- svg moved here on open --></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- scroll progress + sticky bar ---------- */
+  var topbar = document.getElementById('topbar');
+  var prog = document.getElementById('scrollprog');
+  function onScroll(){
+    var st = window.scrollY || document.documentElement.scrollTop;
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    prog.style.width = (h>0 ? (st/h)*100 : 0) + '%';
+    topbar.classList.toggle('solid', st > 40);
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  /* ---------- generic reveals ---------- */
+  var revs = document.querySelectorAll('.reveal:not(.in)');
+  if('IntersectionObserver' in window){
+    var ro = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); ro.unobserve(e.target); } });
+    }, {threshold:.12, rootMargin:'0px 0px -8% 0px'});
+    revs.forEach(function(el){ ro.observe(el); });
+  } else { revs.forEach(function(el){ el.classList.add('in'); }); }
+
+  /* ---------- count-up ---------- */
+  function fmt(n){ return n.toLocaleString('en-US'); }
+  function countUp(el){
+    var to = parseInt(el.getAttribute('data-count'),10);
+    var pre = el.getAttribute('data-prefix') || '';
+    if(reduce){ el.textContent = pre + fmt(to); return; }
+    var dur = 1300, start = null;
+    function step(ts){
+      if(!start) start = ts;
+      var p = Math.min((ts-start)/dur, 1);
+      var eased = 1 - Math.pow(1-p, 3);
+      el.textContent = pre + fmt(Math.round(to*eased));
+      if(p<1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  var counters = document.querySelectorAll('[data-count]');
+  if('IntersectionObserver' in window){
+    var co = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ countUp(e.target); co.unobserve(e.target); } });
+    }, {threshold:.6});
+    counters.forEach(function(el){ co.observe(el); });
+  } else { counters.forEach(countUp); }
+
+  /* ---------- timeline progress ---------- */
+  var tl = document.getElementById('timeline');
+  if(tl && 'IntersectionObserver' in window){
+    var to2 = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ var p=document.getElementById('tlProg'); if(p) p.style.width='100%'; to2.unobserve(e.target);} });
+    }, {threshold:.4});
+    to2.observe(tl);
+  }
+
+  /* ---------- flow: scroll-reveal sequence ---------- */
+  var svg = document.getElementById('flowSvg');
+  if(svg && !reduce){
+    svg.classList.add('anim');
+    // build reveal order: frames first, then flow elements in DOM order
+    var frames = Array.prototype.slice.call(svg.querySelectorAll('.flow-frames > *'));
+    var seq = Array.prototype.slice.call(svg.querySelectorAll('.node, .lnk, .lnk-label'));
+    var fired = false;
+    function runReveal(){
+      if(fired) return; fired = true;
+      // frames fade in quickly together
+      frames.forEach(function(el){ el.style.transitionDelay = '0ms'; });
+      var base = 90, step = 18;
+      seq.forEach(function(el, i){ el.style.transitionDelay = (base + i*step) + 'ms'; });
+      requestAnimationFrame(function(){ svg.classList.add('go'); });
+    }
+    if('IntersectionObserver' in window){
+      var fo = new IntersectionObserver(function(es){
+        es.forEach(function(e){ if(e.isIntersecting){ runReveal(); fo.unobserve(e.target); } });
+      }, {threshold:.18});
+      fo.observe(svg);
+    } else { runReveal(); }
+  }
+
+  /* ---------- flow: lane focus + layer filter ---------- */
+  var wrap = document.getElementById('flowWrap');
+  var stickyLane = null, stickyLayer = null;
+  function setLane(lane){
+    if(lane==null){ wrap.removeAttribute('data-focus'); }
+    else { wrap.setAttribute('data-focus', lane); wrap.removeAttribute('data-layer'); clearLayerPills(); stickyLayer=null; }
+  }
+  function setLayer(layer){
+    if(layer==null){ wrap.removeAttribute('data-layer'); }
+    else { wrap.setAttribute('data-layer', layer); wrap.removeAttribute('data-focus'); stickyLane=null; updateBands(null); }
+  }
+  // lanes in the svg + band cards drive lane focus
+  var laneEls = Array.prototype.slice.call(svg.querySelectorAll('.lane[data-lane]'));
+  var bandEls = Array.prototype.slice.call(document.querySelectorAll('[data-lane-control]'));
+  function updateBands(lane){
+    bandEls.forEach(function(b){ b.classList.toggle('hot', String(b.getAttribute('data-lane-control'))===String(lane)); });
+  }
+  function hoverLane(lane){ if(stickyLane==null){ setLane(lane); updateBands(lane); } }
+  function unhoverLane(){ if(stickyLane==null){ setLane(null); updateBands(null); } }
+  function toggleLane(lane){
+    if(stickyLane===lane){ stickyLane=null; setLane(null); updateBands(null); }
+    else { stickyLane=lane; setLane(lane); updateBands(lane); }
+  }
+  laneEls.forEach(function(g){
+    var lane = g.getAttribute('data-lane');
+    if(lane==='all') return;
+    g.addEventListener('mouseenter', function(){ hoverLane(lane); });
+    g.addEventListener('mouseleave', unhoverLane);
+    g.addEventListener('click', function(){ toggleLane(lane); });
+  });
+  bandEls.forEach(function(b){
+    var lane = b.getAttribute('data-lane-control');
+    b.addEventListener('mouseenter', function(){ hoverLane(lane); });
+    b.addEventListener('mouseleave', unhoverLane);
+    b.addEventListener('click', function(){ toggleLane(lane); });
+    b.addEventListener('keydown', function(ev){ if(ev.key==='Enter'||ev.key===' '){ ev.preventDefault(); toggleLane(lane); } });
+  });
+
+  // layer pills
+  var layerPills = Array.prototype.slice.call(document.querySelectorAll('[data-layer-toggle]'));
+  function clearLayerPills(){ layerPills.forEach(function(p){ p.setAttribute('aria-pressed','false'); }); }
+  layerPills.forEach(function(p){
+    var layer = p.getAttribute('data-layer-toggle');
+    p.addEventListener('mouseenter', function(){ if(stickyLayer==null) setLayer(layer); });
+    p.addEventListener('mouseleave', function(){ if(stickyLayer==null) setLayer(null); });
+    p.addEventListener('click', function(){
+      if(stickyLayer===layer){ stickyLayer=null; setLayer(null); clearLayerPills(); }
+      else { stickyLayer=layer; setLayer(layer); clearLayerPills(); p.setAttribute('aria-pressed','true'); }
+    });
+  });
+
+  /* ---------- flow: expand modal with zoom ---------- */
+  var modal = document.getElementById('flowModal');
+  var zoomer = document.getElementById('modalZoomer');
+  var canvas = document.getElementById('modalCanvas');
+  var stage = document.getElementById('flowStage');
+  var expandBtn = document.getElementById('flowExpandBtn');
+  var zoom = 1;
+  function applyZoom(){ zoomer.style.transform = 'scale('+zoom+')'; }
+  function openModal(){
+    zoomer.appendChild(svg);            // move the live svg in
+    svg.classList.remove('anim','go');  // show fully in modal
+    zoom = 1; applyZoom();
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    // center horizontally
+    requestAnimationFrame(function(){ canvas.scrollLeft = (zoomer.scrollWidth - canvas.clientWidth)/2; });
+    modalClose.focus();
+  }
+  function closeModal(){
+    stage.appendChild(svg);             // move it back
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+    expandBtn.focus();
+  }
+  var modalClose = document.getElementById('modalClose');
+  expandBtn.addEventListener('click', openModal);
+  var flowTap = document.getElementById('flowTap');
+  var flowOverlay = document.getElementById('flowOverlay');
+  if(flowTap) flowTap.addEventListener('click', openModal);
+  if(flowOverlay) flowOverlay.addEventListener('click', openModal);
+  modalClose.addEventListener('click', closeModal);
+  modal.addEventListener('click', function(e){ if(e.target===modal) closeModal(); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape' && modal.classList.contains('open')) closeModal(); });
+  document.getElementById('zoomIn').addEventListener('click', function(){ zoom = Math.min(zoom+0.25, 3); applyZoom(); });
+  document.getElementById('zoomOut').addEventListener('click', function(){ zoom = Math.max(zoom-0.25, 0.5); applyZoom(); });
+})();
+</script>
+</body>
+</html>

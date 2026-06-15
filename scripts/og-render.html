@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{--cream:#FBF9F4;--ink:#111110;--muted:#6E6E68;--accent:#2456C9;--navy:#102A6B;--teal:#16A697;--hairline:#D9D6CF}
+  html,body{width:1200px;height:630px;overflow:hidden}
+  .card{position:relative;width:1200px;height:630px;background:var(--cream);padding:74px 80px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}
+  .atmos{position:absolute;inset:0;background:
+    radial-gradient(680px 520px at 100% -10%,rgba(36,86,201,.16),transparent 60%),
+    radial-gradient(560px 480px at -6% 110%,rgba(22,166,151,.13),transparent 60%)}
+  .grain{position:absolute;inset:0;opacity:.4;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E")}
+  .row{position:relative;display:flex;align-items:center;gap:14px}
+  .wmark{width:46px;height:46px;border-radius:13px;background:var(--navy);display:grid;place-items:center;box-shadow:0 6px 18px rgba(16,42,107,.3)}
+  .wmark img{width:28px;height:28px}
+  .brand{font-family:'DM Sans';font-weight:600;font-size:24px;letter-spacing:-.01em;color:var(--ink)}
+  .eyebrow{position:relative;font-family:'DM Mono';font-size:18px;letter-spacing:.26em;text-transform:uppercase;color:var(--muted);margin-bottom:26px;display:flex;align-items:center;gap:14px}
+  .eyebrow .dot{width:11px;height:11px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 6px rgba(36,86,201,.13)}
+  h1{position:relative;font-family:'DM Serif Display';font-weight:400;font-size:84px;line-height:1.02;letter-spacing:-.025em;color:var(--ink)}
+  h1 .l2{color:var(--accent);font-style:italic}
+  .sub{position:relative;font-family:'DM Sans';font-size:27px;line-height:1.45;color:#33322e;max-width:30ch;margin-top:30px}
+  .meta{position:relative;font-family:'DM Mono';font-size:19px;color:var(--muted)}
+  .rule{position:relative;width:66px;height:4px;border-radius:4px;background:var(--accent);margin:30px 0}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="atmos"></div>
+  <div class="grain"></div>
+  <div class="row" style="justify-content:space-between">
+    <div class="row">
+      <span class="wmark"><img src="../brand_assets/qwickstep.ai iconic mark (white).png" alt=""></span>
+      <span class="brand">QwickStep&nbsp;AI</span>
+    </div>
+    <span class="meta">jun@qwickstep.ai</span>
+  </div>
+  <div>
+    <div class="eyebrow"><span class="dot"></span>Prepared for Viral App Launch</div>
+    <h1>Viral App Launch,<br><span class="l2">Lead Triage System</span></h1>
+    <div class="rule"></div>
+    <p class="sub">Route every lead you already paid for to the right offer, automatically.</p>
+  </div>
+  <div class="meta" style="text-align:right">A two-minute executive summary</div>
+</div>
+</body>
+</html>
