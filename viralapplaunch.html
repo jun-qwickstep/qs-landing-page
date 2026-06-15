@@ -144,6 +144,12 @@ tailwind.config = {
   .inc p{font-size:14.5px;color:var(--muted);line-height:1.55}
   .inc.opt{border-style:dashed}
 
+  /* compact tag row (what's included) */
+  .tagrow{display:flex;flex-wrap:wrap;gap:10px}
+  .tag{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:.01em;color:#33322e;background:#fff;border:1px solid var(--hairline);border-radius:999px;padding:9px 16px;transition:border-color .25s ease,transform .2s ease}
+  .tag:hover{border-color:var(--accent);transform:translateY(-2px)}
+  .tag.opt{border-style:dashed;color:var(--muted)}
+
   /* timeline */
   .tl{display:grid;gap:14px;grid-template-columns:1fr}
   @media(min-width:760px){.tl{grid-template-columns:repeat(5,1fr);gap:0}}
@@ -340,17 +346,8 @@ tailwind.config = {
 <section class="sec-pad">
   <div class="wrap">
     <div class="kicker reveal"><span class="dot"></span><span class="eyebrow">The problem</span></div>
-    <div style="display:grid;gap:clamp(28px,5vw,64px);grid-template-columns:1fr" class="prob-grid">
-      <h2 class="sec-h reveal" style="max-width:16ch">It's not a lead problem, it's a routing problem.</h2>
-      <div class="reveal" style="transition-delay:.08s">
-        <p class="lede" style="margin-bottom:20px">You bring in roughly <strong>150 leads a week</strong> from Meta, around <strong>$25K/month</strong> in ad spend. Leads are not the problem.</p>
-        <p class="lede" style="margin-bottom:20px">Every lead drops into one pipeline. Your closer is built for the <strong>$30K to $40K</strong> deals, so everyone else, the smaller buyers who would fit Founders Club or the <strong>$997 Blueprint</strong> course, your score 0 leads, sits there and never hears back.</p>
-        <p class="lede">On your own calls, those leads are <span class="pull">"just going to waste,"</span> and the IG and FB DMs are leads you are <span class="pull">"totally missing."</span> Jonathan booked four calls in one sitting just by replying himself.</p>
-      </div>
-    </div>
-    <div class="callout reveal" style="margin-top:clamp(34px,5vw,56px)">
-      <p class="quote-h">"When a lead lands on a 'thanks for applying' page, sees four random links, and leaves, that's money you already spent walking straight out the door."</p>
-    </div>
+    <h2 class="sec-h reveal" style="max-width:16ch">It's not a lead problem, it's a routing problem.</h2>
+    <p class="lede reveal narrow" style="margin-top:18px">About <strong>150 leads a week</strong>, roughly <strong>$25K/month</strong> in ad spend, all into one pipeline and one closer built for the <strong>$30K to $40K</strong> deals. Everyone smaller never hears back, that's money you already spent walking out the door.</p>
   </div>
 </section>
 
@@ -362,11 +359,7 @@ tailwind.config = {
       <div class="worth-num"><span data-count="15000" data-prefix="$">$15,000</span> to <span data-count="20000" data-prefix="$">$20,000</span> <span class="u" style="font-size:.32em;letter-spacing:-.01em;font-family:'DM Mono',monospace;vertical-align:middle">/ month</span></div>
       <p class="mono" style="font-size:13px;color:var(--muted);margin-top:14px;letter-spacing:.02em">Recoverable revenue. Illustrative, based on your current lead volume and offer pricing, not a guarantee.</p>
     </div>
-    <div class="narrow reveal" style="margin-top:40px">
-      <p class="lede" style="margin-bottom:20px">Recover just <strong>15 to 20</strong> score 0 sales a month into the <strong>$997</strong> Blueprint course, from leads you already paid for.</p>
-      <p class="lede" style="margin-bottom:20px">And that's just the floor. It doesn't count score 1 buyers (<strong>$5K to $15K</strong>) with no follow-up, score 2 deals (<strong>$30K to $40K</strong>) that leak when the closer is buried, or the hundreds of DM leads nobody works.</p>
-      <p class="lede">Routing is only half of it. The message, follow-up, and recovery that turn a routed lead into a sale are built in, not bolted on.</p>
-    </div>
+    <p class="lede reveal narrow" style="margin-top:24px">Recover <strong>15 to 20</strong> score 0 sales a month into the <strong>$997</strong> course, from leads you already paid for. That's the floor, before the score 1 and score 2 deals with no follow-up today.</p>
   </div>
 </section>
 
@@ -377,7 +370,7 @@ tailwind.config = {
   <div class="wrap">
     <div class="kicker reveal"><span class="dot"></span><span class="eyebrow">How it works</span></div>
     <h2 class="sec-h reveal" style="max-width:20ch">It sits on top of the ladder you already built.</h2>
-    <p class="lede reveal narrow" style="margin-top:18px">We don't replace your funnels, we make sure every lead hits the right one. Below is the full lead-triage flow, end to end.</p>
+    <p class="lede reveal narrow" style="margin-top:18px">Every lead scored and routed to the right offer, automatically. Hover or tap a lane to trace one path.</p>
 
     <!-- FLOW DIAGRAM -->
     <div class="flow-wrap reveal" id="flowWrap" style="margin-top:36px">
@@ -451,18 +444,19 @@ tailwind.config = {
 <section class="sec-pad">
   <div class="wrap">
     <div class="kicker reveal"><span class="dot"></span><span class="eyebrow">What's included</span></div>
-    <h2 class="sec-h reveal" style="max-width:18ch">Every piece of the system, built and handed to you.</h2>
-    <div class="inc-grid" style="margin-top:40px">
-      <div class="inc card reveal"><span class="ix">01</span><h4>Trigger</h4><p>Fires automatically the moment a lead completes Typeform or finishes the ManyChat conversation.</p></div>
-      <div class="inc card reveal"><span class="ix">02</span><h4>Lead capture</h4><p>Typeform and ManyChat pulled into one system, so every lead lands in the same place.</p></div>
-      <div class="inc card reveal"><span class="ix">03</span><h4>Enrichment</h4><p>A unified profile on each lead plus a claim check that flags over or under-stated budget.</p></div>
-      <div class="inc card reveal"><span class="ix">04</span><h4>AI decision</h4><p>Scores the lead and picks the best-fit lane, offer, and message for it.</p></div>
-      <div class="inc card reveal"><span class="ix">05</span><h4>Self-learning</h4><p>Human-in-the-loop first, retrains weekly, and tracks which leads actually bought.</p></div>
-      <div class="inc card reveal"><span class="ix">06</span><h4>Routing</h4><p>Sends each lead into your ladder and writes the score, lane, and offer to GoHighLevel.</p></div>
-      <div class="inc card reveal"><span class="ix">07</span><h4>Marketing layer</h4><p>Message-match copy, speed-to-lead, multi-touch follow-up, A/B and CRO, and recovery plays.</p></div>
-      <div class="inc card reveal opt"><span class="ix">08</span><h4>Command center</h4><p>An optional dashboard to watch the whole thing run. On us.</p></div>
-      <div class="inc card reveal"><span class="ix">09</span><h4>Handoff</h4><p>Delivery videos and full docs. It runs on your own stack, in your accounts.</p></div>
+    <h2 class="sec-h reveal" style="max-width:18ch">The whole system, built and handed to you.</h2>
+    <div class="tagrow reveal" style="margin-top:32px">
+      <span class="tag">Trigger</span>
+      <span class="tag">Lead capture</span>
+      <span class="tag">Enrichment + claim check</span>
+      <span class="tag">AI scoring</span>
+      <span class="tag">Self-learning</span>
+      <span class="tag">Routing to your ladder</span>
+      <span class="tag">Marketing layer</span>
+      <span class="tag opt">Command center</span>
+      <span class="tag">Handoff + docs</span>
     </div>
+    <p class="mono reveal" style="font-size:12.5px;color:var(--muted);margin-top:18px;letter-spacing:.01em">Command center is optional, on us. The whole thing runs on your own stack.</p>
   </div>
 </section>
 
@@ -483,7 +477,6 @@ tailwind.config = {
         <div class="tl-step"><span class="tl-node"></span><div class="tl-day">Days 19-21</div><div class="tl-t">Document and hand off</div></div>
       </div>
     </div>
-    <p class="lede reveal" style="margin-top:26px;color:var(--muted)">21 business days, front-loaded scoping with real room to test and tune.</p>
   </div>
 </section>
 
@@ -493,57 +486,12 @@ tailwind.config = {
     <div class="kicker reveal"><span class="dot"></span><span class="eyebrow">Investment</span></div>
     <div class="reveal">
       <div class="price"><span data-count="5588" data-prefix="$">$5,588</span></div>
-      <p class="serif" style="font-size:clamp(1.3rem,2.6vw,1.9rem);margin-top:6px;color:var(--ink)">USD, one-time, to stop the bleed.</p>
+      <p class="serif" style="font-size:clamp(1.3rem,2.6vw,1.9rem);margin-top:6px;color:var(--ink)">USD, one-time.</p>
     </div>
-    <div class="narrow reveal" style="margin-top:34px">
-      <div class="warn" style="margin-bottom:26px">Leave it open and you keep losing $15K to $20K out the bottom of your funnel, every single month.</div>
-      <p class="lede" style="margin-bottom:16px">50% to start, 50% on delivery. No retainer, no recurring fee to QwickStep.</p>
-      <p class="mono" style="font-size:13px;color:var(--muted);line-height:1.6">The intro build on purpose, the fastest way to prove out the quality on one slice of your funnel before scaling it across the rest.</p>
+    <div class="narrow reveal" style="margin-top:30px">
+      <p class="lede" style="margin-bottom:14px">50% to start, 50% on delivery. No retainer, nothing recurring to QwickStep.</p>
+      <p class="lede">After handoff it runs on your own pay-as-you-go tools, about <strong>$70 to $120 a month</strong>, paid straight to the providers.</p>
     </div>
-  </div>
-</section>
-
-<hr class="hr" style="max-width:var(--maxw);margin:0 auto">
-
-<!-- ============ 8. WHAT IT COSTS TO RUN ============ -->
-<section class="sec-pad">
-  <div class="wrap">
-    <div class="kicker reveal"><span class="dot"></span><span class="eyebrow">What it costs to run</span></div>
-    <h2 class="sec-h reveal" style="max-width:20ch">No fee to us after handoff.</h2>
-    <p class="lede reveal narrow" style="margin-top:18px">It runs on a few pay-as-you-go tools, on your own accounts. At about 600 leads a month, here is roughly where it goes.</p>
-    <div class="reveal card" style="margin-top:34px;padding:clamp(18px,2.5vw,26px);overflow-x:auto">
-      <table class="rt">
-        <thead><tr><th>Tool</th><th>What it does</th><th style="text-align:right">Rough monthly</th></tr></thead>
-        <tbody>
-          <tr>
-            <td class="tool">AI model<span>Claude API</span></td>
-            <td class="desc">Researches and scores each lead, about $0.05 to $0.10 a lead.</td>
-            <td class="rng" style="text-align:right">$30 to $60</td>
-          </tr>
-          <tr>
-            <td class="tool">Research and scraping<span>Apify</span></td>
-            <td class="desc">Pulls LinkedIn, company, and app-store data.</td>
-            <td class="rng" style="text-align:right">$5 to $30</td>
-          </tr>
-          <tr>
-            <td class="tool">Database<span>Supabase</span></td>
-            <td class="desc">Stores every lead, score, and decision. Free early, $25 Pro once live.</td>
-            <td class="rng" style="text-align:right">$0 to $25</td>
-          </tr>
-          <tr>
-            <td class="tool">Hosting<span>Vercel</span></td>
-            <td class="desc">Runs the engine and command center. Free for light use, $20 Pro in production.</td>
-            <td class="rng" style="text-align:right">$0 to $20</td>
-          </tr>
-          <tr class="total">
-            <td class="tool">A typical month</td>
-            <td class="desc">Lower on free tiers, higher at volume. The only ongoing cost.</td>
-            <td class="rng" style="text-align:right">$70 to $120</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="mono reveal narrow" style="font-size:12.5px;color:var(--muted);margin-top:20px;line-height:1.65">Based on the tools we expect to use today. If anything looks like it will run materially higher, we tell you and get your sign-off first. Nothing gets set up without your approval.</p>
   </div>
 </section>
 
@@ -553,30 +501,12 @@ tailwind.config = {
     <div class="navy-panel reveal">
       <div class="kicker" style="margin-bottom:18px"><span class="dot" style="background:var(--teal);box-shadow:0 0 0 4px rgba(22,166,151,.22)"></span><span class="eyebrow" style="color:rgba(255,255,255,.7)">The guarantee</span></div>
       <p class="serif" style="font-size:clamp(1.5rem,3.2vw,2.4rem);line-height:1.28;letter-spacing:-.01em;max-width:24ch">We build it to spec.</p>
-      <p style="font-size:clamp(1.05rem,1.7vw,1.22rem);line-height:1.65;color:#dfe4f1;max-width:62ch;margin-top:18px">If the system doesn't work the way this proposal describes, we keep iterating at no extra cost until it does. And if anything turns out to be unclear or we read your setup wrong, you get two full iterations on us.</p>
-      <p style="font-size:clamp(1.05rem,1.7vw,1.22rem);line-height:1.65;color:#fff;max-width:62ch;margin-top:18px;font-weight:500">The risk of this not working sits with us, not with you.</p>
+      <p style="font-size:clamp(1.05rem,1.7vw,1.22rem);line-height:1.65;color:#dfe4f1;max-width:60ch;margin-top:18px">If it doesn't work the way we describe, we keep iterating at no extra cost until it does. <span style="color:#fff;font-weight:500">The risk sits with us, not with you.</span></p>
     </div>
   </div>
 </section>
 
-<!-- ============ 10. TLDR ============ -->
-<section class="sec-pad" style="padding-top:0">
-  <div class="wrap">
-    <div class="tldr reveal">
-      <div class="kicker" style="margin-bottom:6px"><span class="dot"></span><span class="eyebrow">The short version</span></div>
-      <p class="serif" style="font-size:clamp(1.6rem,3vw,2.2rem);letter-spacing:-.01em;line-height:1.15">Everything, in five lines.</p>
-      <ul>
-        <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span>Custom software that acts as the connective tissue between your ad spend and your offers, so every lead gets routed to the right place automatically.</span></li>
-        <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span>Built and handed over within three weeks, guaranteed built to spec.</span></li>
-        <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span>Runs entirely on your own stack.</span></li>
-        <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span>No retainers.</span></li>
-        <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span>Running costs are roughly $70 to $120 a month, paid straight to the tool providers, not to us.</span></li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 11. FOOTER ============ -->
+<!-- ============ FOOTER ============ -->
 <footer>
   <div class="wrap">
     <a href="mailto:jun@qwickstep.ai" class="serif" style="font-size:clamp(1.5rem,3vw,2.1rem);color:var(--accent);text-decoration:none;letter-spacing:-.01em;border-bottom:1px solid rgba(36,86,201,.3);padding-bottom:2px">jun@qwickstep.ai</a>
