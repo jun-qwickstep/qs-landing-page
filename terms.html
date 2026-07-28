@@ -142,6 +142,9 @@ body::before {
   color: #B8912E;
   font-weight: 500;
 }
+.legal ol.alpha > li::before {
+  content: "(" counter(section-counter, lower-alpha) ")";
+}
 .legal strong { color: #111110; font-weight: 600; }
 .legal em { font-style: italic; color: #6B6860; }
 .legal .caps {
@@ -272,9 +275,9 @@ section.legal-section { scroll-margin-top: 100px; }
       Cold email, automation, and related services.
     </p>
     <div class="anim-3 flex items-center gap-3 flex-wrap">
-      <span class="font-mono text-[11px] tracking-widest uppercase text-ink-4">Effective Date: May 14, 2026</span>
+      <span class="font-mono text-[11px] tracking-widest uppercase text-ink-4">Effective Date: July 28, 2026</span>
       <span class="text-cream-border">·</span>
-      <span class="font-mono text-[11px] tracking-widest uppercase text-ink-4">Version 1.0</span>
+      <span class="font-mono text-[11px] tracking-widest uppercase text-ink-4">Version 2.0</span>
     </div>
   </div>
 </section>
@@ -290,6 +293,11 @@ section.legal-section { scroll-margin-top: 100px; }
       Each written proposal approved by Client (each, a "Proposal") is incorporated into and governed by this Agreement. In the event of conflict, the Proposal controls with respect to scope, pricing, timelines, and expressly stated benchmarks, subject to the limitations and conditions set forth herein.
     </p>
 
+    <h3>Effectiveness and Consideration</h3>
+    <p>
+      This Agreement is effective upon execution by both parties, regardless of whether Services have commenced, fees have been paid, or any Proposal has been performed. Client acknowledges that Provider's disclosure of proposals, pricing, methodologies, frameworks, systems, personnel, subcontractors, and preliminary materials constitutes good and valuable consideration within the meaning of Section 26 of the Contracts Act 1950, the receipt and sufficiency of which Client hereby acknowledges, for all obligations undertaken by Client herein, including the covenants in Sections 11, 12, 25, and 28. Those covenants are binding upon Client upon execution and survive termination for any reason, including non-payment and termination prior to commencement of Services. Provider's obligation to perform Services is conditioned upon receipt of applicable upfront fees. These are separate conditions and do not affect the enforceability of Client's covenants.
+    </p>
+
     <!-- Table of contents -->
     <div class="toc">
       <p class="toc-title">Contents</p>
@@ -299,7 +307,7 @@ section.legal-section { scroll-margin-top: 100px; }
         <li><a href="#s3"><span class="num">03</span>Fees &amp; Payment</a></li>
         <li><a href="#s4"><span class="num">04</span>Change Requests</a></li>
         <li><a href="#s5"><span class="num">05</span>Build Completion</a></li>
-        <li><a href="#s6"><span class="num">06</span>Ongoing Services</a></li>
+        <li><a href="#s6"><span class="num">06</span>Cancellation &amp; Termination</a></li>
         <li><a href="#s7"><span class="num">07</span>Performance Guarantees</a></li>
         <li><a href="#s8"><span class="num">08</span>Warranty &amp; Disclaimers</a></li>
         <li><a href="#s9"><span class="num">09</span>Service Categories</a></li>
@@ -308,19 +316,21 @@ section.legal-section { scroll-margin-top: 100px; }
         <li><a href="#s12"><span class="num">12</span>Confidentiality</a></li>
         <li><a href="#s13"><span class="num">13</span>Data &amp; Compliance</a></li>
         <li><a href="#s14"><span class="num">14</span>Subcontractors</a></li>
-        <li><a href="#s15"><span class="num">15</span>Suspension &amp; Termination</a></li>
-        <li><a href="#s16"><span class="num">16</span>General Termination</a></li>
-        <li><a href="#s17"><span class="num">17</span>Limitation of Liability</a></li>
-        <li><a href="#s18"><span class="num">18</span>Indemnification</a></li>
-        <li><a href="#s19"><span class="num">19</span>Billing Disputes</a></li>
-        <li><a href="#s20"><span class="num">20</span>Governing Law &amp; Arbitration</a></li>
-        <li><a href="#s21"><span class="num">21</span>Entire Agreement</a></li>
-        <li><a href="#s22"><span class="num">22</span>Hourly Support</a></li>
-        <li><a href="#s23"><span class="num">23</span>Notices</a></li>
-        <li><a href="#s24"><span class="num">24</span>Insurance</a></li>
-        <li><a href="#s25"><span class="num">25</span>Assignment</a></li>
-        <li><a href="#s26"><span class="num">26</span>Non-Disparagement</a></li>
-        <li><a href="#s27"><span class="num">27</span>Survival</a></li>
+        <li><a href="#s15"><span class="num">15</span>Suspension &amp; Termination for Cause</a></li>
+        <li><a href="#s16"><span class="num">16</span>Limitation of Liability</a></li>
+        <li><a href="#s17"><span class="num">17</span>Indemnification</a></li>
+        <li><a href="#s18"><span class="num">18</span>Billing Disputes</a></li>
+        <li><a href="#s19"><span class="num">19</span>Governing Law &amp; Arbitration</a></li>
+        <li><a href="#s20"><span class="num">20</span>Entire Agreement</a></li>
+        <li><a href="#s21"><span class="num">21</span>Hourly Support</a></li>
+        <li><a href="#s22"><span class="num">22</span>Notices</a></li>
+        <li><a href="#s23"><span class="num">23</span>Insurance</a></li>
+        <li><a href="#s24"><span class="num">24</span>Assignment</a></li>
+        <li><a href="#s25"><span class="num">25</span>Non-Disparagement</a></li>
+        <li><a href="#s26"><span class="num">26</span>No-Fee Engagements</a></li>
+        <li><a href="#s27"><span class="num">27</span>Pilot &amp; Phase Engagements</a></li>
+        <li><a href="#s28"><span class="num">28</span>General Provisions</a></li>
+        <li><a href="#s29"><span class="num">29</span>Survival</a></li>
       </ol>
     </div>
 
@@ -351,7 +361,7 @@ section.legal-section { scroll-margin-top: 100px; }
         <li>Cooperation necessary for execution</li>
       </ul>
       <p>Delays, inaccuracies, or performance limitations caused by Client inaction, incomplete inputs, deliverability issues, or third-party dependencies are not the responsibility of Provider.</p>
-      <p>If Client is unresponsive for seven (7) consecutive days, Provider may pause Services, extend timelines, or deem affected deliverables complete based on work performed.</p>
+      <p>If Client is unresponsive for seven (7) consecutive business days, Provider may pause Services, extend timelines, or deem affected deliverables complete based on work performed. Provider-initiated pauses under this Section follow the billing treatment described in Section 6E.</p>
     </section>
 
     <!-- 3. Fees & Payment -->
@@ -359,11 +369,13 @@ section.legal-section { scroll-margin-top: 100px; }
       <h2>3. Fees &amp; Payment</h2>
       <p>Fees, billing structure, and payment schedules are defined in the applicable Proposal.</p>
       <p>Unless otherwise stated, implementation fees are due prior to commencement of work. Ongoing retainers renew monthly unless otherwise specified.</p>
-      <p>Fees are earned upon commencement of Services, including allocation of personnel and system resources.</p>
+      <p>Implementation, setup, and onboarding fees are earned upon execution of this Agreement. Retainer fees for each billing period are earned at the commencement of that billing period. Provider's allocation of personnel and system resources upon execution constitutes performance for which the implementation, setup, and onboarding fees are earned, whether or not Services have commenced.</p>
+      <p><strong>Commencement Date.</strong> For purposes of this Agreement, the "Commencement Date" means the later of (i) the date of execution of this Agreement, (ii) the date Provider receives the applicable upfront fee, and (iii) the date Client provides the initial access, credentials, and materials required under Section 2.</p>
       <p>Client remains responsible for all third-party software, platform, API, hosting, and usage fees required for operation, including but not limited to sequencing platforms, sending domains, mailboxes, email verification, and scraping or enrichment tools. Third-party costs are non-refundable and are paid directly by Client to the applicable vendor.</p>
-      <p>Late or unpaid invoices may result in suspension of Services.</p>
-      <p>Provider reserves the right to modify pricing structures, packaging, and service offerings for future engagements. No prior proposal, conversation, or negotiation establishes precedent for subsequent agreements.</p>
+      <p><strong>Late Payment Interest.</strong> Invoices unpaid after fifteen (15) days of the due date accrue interest at one and one-half percent (1.5%) per month (18% per annum), or the maximum rate permitted by applicable law, whichever is less, from the due date until paid in full. Late or unpaid invoices may also result in suspension of Services.</p>
+      <p><strong>Price Adjustments.</strong> Provider may adjust ongoing retainer fees with thirty (30) days' written notice. If Client does not accept the adjustment, Client may terminate the applicable Proposal for convenience within that thirty (30) day period, effective at the end of the billing period in which notice expires. Provider also reserves the right to modify pricing structures, packaging, and service offerings for future engagements. No prior proposal, conversation, or negotiation establishes precedent for subsequent agreements.</p>
       <p><strong>Software Cost Estimates.</strong> Any software, platform, API, or third-party usage cost estimates provided in a Proposal are non-binding good-faith projections. Client pays all third-party fees directly to the applicable vendor unless otherwise specified in writing. Provider is not liable for third-party price changes, billing errors, or vendor policy changes affecting Client's costs.</p>
+      <p><strong>Referral and Introducer Fees.</strong> Provider may pay or receive referral, introducer, or partner fees from third parties in connection with Client engagements. Any such fee is solely between Provider and the third party, does not increase Client's fees, and creates no obligation of Client. Introductions made in connection with this Agreement remain subject to Client's non-circumvention obligations in Section 11B.</p>
     </section>
 
     <!-- 4. Change Requests -->
@@ -379,29 +391,45 @@ section.legal-section { scroll-margin-top: 100px; }
       <p><strong>Acceptance Period.</strong> Upon delivery or handover, Client has ten (10) business days to identify, in writing, any material non-conformance with the Proposal specifications. If Client does not provide written notice of non-conformance within this period, the build is deemed accepted and Provider's build obligations are complete. Subsequent platform updates, third-party changes, or Client-side modifications do not constitute non-performance.</p>
     </section>
 
-    <!-- 6. Ongoing Services -->
+    <!-- 6. Cancellation, Termination, and Ongoing Services -->
     <section id="s6" class="legal-section">
-      <h2>6. Ongoing Services</h2>
-      <p>If applicable, ongoing services renew on a month-to-month basis unless otherwise defined in the Proposal. Cancellation requires written notice and takes effect at the end of the current billing period.</p>
-      <p>Retainer fees are non-refundable once services for that billing period have commenced, except as expressly provided under the volume-guarantee refund mechanism described in Section 7A.</p>
+      <h2>6. Cancellation, Termination, and Ongoing Services</h2>
+
+      <h3><span class="subsec">6A</span>Ongoing Services and Renewal</h3>
+      <p>If applicable, ongoing Services renew on a month-to-month basis unless otherwise defined in the Proposal. Retainer fees are non-refundable once Services for that billing period have commenced, except as expressly provided under the volume-guarantee refund mechanism described in Section 7A.</p>
+
+      <h3><span class="subsec">6B</span>Cancellation for Convenience</h3>
+      <p>Either party may cancel ongoing Services for convenience by providing thirty (30) days' written notice. Cancellation takes effect at the end of the billing period in which the thirty (30) day notice period expires. All fees accrued through the effective date of cancellation are due and non-refundable, except as expressly provided under Section 7A.</p>
+
+      <h3><span class="subsec">6C</span>Initial Commitment Periods</h3>
       <p>If a Proposal specifies an Initial Commitment Period, Client may not terminate for convenience during that Initial Commitment Period. Fees for that period remain due and non-refundable once Services commence.</p>
+
+      <h3><span class="subsec">6D</span>Failure to Commence</h3>
+      <p>If Client fails to remit the applicable upfront payment within ten (10) days of execution, Provider may terminate this Agreement and the applicable Proposal by written notice. Termination under this Section does not waive Provider's right to fees earned upon execution under Section 3. All Client covenants and obligations that survive termination remain in full force and effect.</p>
+
+      <h3><span class="subsec">6E</span>Pause at Client's Request</h3>
+      <p>Upon Client's written request, Provider may pause active delivery of Services for up to thirty (30) days. During any pause, work stops, but billing does not: monthly retainer fees continue to accrue and remain due as if Services were ongoing. This is not a billing holiday; it is a delivery hold at Client's request. Pauses beyond thirty (30) days require separate written agreement. Provider-initiated pauses under Section 2 (Client unresponsiveness) follow the same billing treatment.</p>
     </section>
 
     <!-- 7. Performance Guarantees & Limited Remedy -->
     <section id="s7" class="legal-section">
       <h2>7. Performance Guarantees &amp; Limited Remedy</h2>
-      <p>Provider does not guarantee revenue, profit, ROI, sales conversions, or business outcomes. Where the applicable Proposal includes a volume guarantee or pay-per-result pricing, the definitions and remedies in this Section apply.</p>
+      <p>Provider does not guarantee revenue, profit, ROI, sales conversions, or business outcomes. Performance benchmarks are not a standard feature of Provider's Services and apply only where a Proposal expressly states one. Where the applicable Proposal includes a volume guarantee, pay-per-result pricing, or revenue-share compensation, the definitions and remedies in this Section apply.</p>
 
       <h3><span class="subsec">7A</span>Benchmark-Based Guarantees and Refund Remedy</h3>
+      <p><strong>Benchmark Period.</strong> "Benchmark Period" means the period expressly stated in the applicable Proposal for measuring a stated benchmark. If the Proposal states a benchmark without specifying a Benchmark Period, the Benchmark Period is the first ninety (90) days following the Commencement Date.</p>
       <p>Where a Proposal specifies a monthly retainer with a volume guarantee (for example, the "Leads Guaranteed" or "Appointments Guaranteed" offers), the following applies:</p>
       <ul>
         <li>The volume commitment is measured over a calendar month beginning on the day campaigns go fully live following the warmup period described in the applicable Proposal.</li>
+        <li>All stated benchmarks are measured using Provider-controlled analytics and exclude spam, automated responses, and bot traffic.</li>
         <li>If Provider delivers fewer than the guaranteed number of qualifying Leads or Appointments (as defined below) within the applicable month, Client's sole and exclusive remedy is a full refund of the retainer fees paid for that month.</li>
-        <li>The guarantee is conditioned upon Client maintaining required access, providing approved messaging, complying with applicable laws and platform terms of service, and not pausing or interrupting Services during the measurement period.</li>
+        <li>The guarantee is conditioned upon Client maintaining required access, providing approved messaging, satisfying any participation, approval-turnaround, or engagement requirements expressly stated in the applicable Proposal, complying with applicable laws and platform terms of service, and not pausing or interrupting Services during the measurement period.</li>
         <li>Overdelivery within a month is included at no additional cost; Provider's compensation for that month is the flat retainer fee.</li>
         <li>Disputes regarding result validity or month-end totals must be submitted in writing within five (5) business days of the close of the applicable month.</li>
       </ul>
       <p>Where a Proposal specifies pay-per-performance pricing (for example, the "Pay-Per-Lead" or "Pay-Per-Appointment" offers), Client pays only for qualifying Leads or Appointments actually delivered, invoiced as results land. No volume guarantee applies and no monthly retainer is charged. Provider's compensation is contingent entirely on delivery.</p>
+      <p><strong>Remedy Waterfall.</strong> If a stated benchmark is not achieved during the Benchmark Period, and Client has satisfied the conditions above and any requirements stated in the applicable Proposal, Client's sole and exclusive remedy is as follows: (a) if the Proposal states a specific remedy, that remedy controls; (b) if the Proposal states that the remedy is continuation of Services, such continuation shall not exceed ninety (90) days; (c) if the Proposal provides Client an election between remedies, the election mechanics below apply; (d) if the Proposal is silent as to remedy, the default remedy is a full refund of retainer fees paid for the Benchmark Period. "Free month" means a refund of one month's retainer fees, not an extension of Services, unless the Proposal expressly states otherwise.</p>
+      <p><strong>Election is Final.</strong> Where a Proposal provides Client an election between remedies, Client's election is final once made or once the election window has closed. Client may not subsequently claim an alternative remedy or assert additional claims arising from the same Benchmark Period.</p>
 
       <h3><span class="subsec">7B</span>Lead Definition</h3>
       <p>A "Lead" is a unique individual who matches Client's agreed Ideal Customer Profile and gives a clear, positive response indicating interest in Client's product or service as a direct result of campaign outreach. To qualify, a Lead must satisfy all three:</p>
@@ -410,7 +438,7 @@ section.legal-section { scroll-margin-top: 100px; }
         <li><strong>Demonstrated intent.</strong> Requests pricing, asks for more information or a link, asks relevant qualification questions, or expresses interest in discussing services.</li>
         <li><strong>Real and unique.</strong> A real individual, not a generic inbox or role-based email; not duplicated or previously counted.</li>
       </ol>
-      <p>The following do not qualify and are not counted toward any guarantee or invoice: contacts outside the agreed ICP; students, freelancers, or vendors (unless expressly included in the ICP); spam or bot responses; automated replies or out-of-office messages; duplicate contacts; responses unrelated to the offer; and negative or non-committal responses. Disputes regarding lead validity must be submitted in writing within five (5) business days of delivery.</p>
+      <p>The following do not qualify and are not counted toward any guarantee or invoice: contacts outside the agreed ICP; students, freelancers, or vendors (unless expressly included in the ICP); spam or bot responses; automated replies or out-of-office messages; duplicate contacts from the same individual or company within ninety (90) days; responses unrelated to the offer; and negative or non-committal responses. Disputes regarding lead validity must be submitted in writing within five (5) business days of delivery. Failure to dispute within this window constitutes acceptance.</p>
 
       <h3><span class="subsec">7C</span>Appointment Definition and Show-Up Rule</h3>
       <p>An "Appointment" is a confirmed calendar event with an ICP-matched prospect, scheduled on a calendar system to which Provider has access, where the prospect has explicitly agreed to a meeting time. To qualify, an Appointment must satisfy both:</p>
@@ -421,15 +449,27 @@ section.legal-section { scroll-margin-top: 100px; }
       <p><strong>Show-Up.</strong> Once an Appointment is confirmed on Client's calendar, Provider's deliverable is complete. Whether the prospect attends is determined by pre-meeting nurture activities (reminders, confirmations, follow-ups), which are Client's responsibility. Confirmed Appointments count toward Client's billable total regardless of attendance.</p>
       <p><strong>Reschedules.</strong> If the same prospect reschedules one or more times, it still counts as a single Appointment for purposes of guarantee and invoicing.</p>
       <p><strong>Cancellations.</strong> If a prospect cancels with at least forty-eight (48) hours' notice prior to the scheduled time, the Appointment does not count toward Client's billable total. If the cancellation occurs within forty-eight (48) hours of the scheduled time, the Appointment counts as if attended.</p>
-      <p>Disputes regarding Appointment validity must be submitted in writing within five (5) business days of invoice issuance.</p>
+      <p>Disputes regarding Appointment validity must be submitted in writing within five (5) business days of invoice issuance. Failure to dispute within this window constitutes acceptance.</p>
+
+      <h3><span class="subsec">7D</span>Revenue-Share Compensation</h3>
+      <p>This Section 7D applies only where the applicable Proposal expressly contemplates revenue-share compensation. It is dormant for flat-fee, retainer, lead-based, and appointment-based engagements.</p>
+      <ol class="alpha">
+        <li><strong>Attributable Revenue.</strong> "Attributable Revenue" means revenue from customers, deals, or transactions originated by, first contacted through, or closed using the systems Provider builds or operates under the applicable Proposal, defined with specificity in that Proposal. Refunds, chargebacks, and taxes are excluded.</li>
+        <li><strong>Rate.</strong> Client shall pay Provider the percentage of Attributable Revenue stated in the applicable Proposal.</li>
+        <li><strong>Reporting and Payment.</strong> Client shall report Attributable Revenue and remit payment within the period stated in the applicable Proposal, or absent a stated period, within fifteen (15) days of the end of each calendar month. Reports shall include reasonable supporting detail.</li>
+        <li><strong>Audit Rights.</strong> No more than once per twelve (12) month period, Provider may, on reasonable written notice, review Client records reasonably necessary to verify Attributable Revenue. If an audit reveals an underpayment exceeding five percent (5%) for the reviewed period, Client bears the reasonable cost of the audit.</li>
+        <li><strong>Tail Period.</strong> Provider is entitled to revenue share on Attributable Revenue from customers or deals originated during the term for the number of months stated in the applicable Proposal following termination (the "Tail Period"). Absent a stated Tail Period, no revenue share accrues after termination.</li>
+        <li><strong>Disputes and Default.</strong> Revenue-share disputes are subject to Section 18. Client's failure to report or remit when due is a payment default under Section 15.</li>
+      </ol>
     </section>
 
     <!-- 8. System Functionality Warranty and Disclaimers -->
     <section id="s8" class="legal-section">
       <h2>8. System Functionality Warranty and Disclaimers</h2>
       <p>Provider warrants only that the system will materially perform as described in the Proposal at time of delivery. Provider does not warrant ongoing performance affected by third-party changes, Client modifications, or improper usage.</p>
-      <p><strong>No Implied Warranties.</strong> <span class="caps">Except as expressly stated in this Agreement, all Services and deliverables are provided "as is" and "as available." Provider disclaims all other warranties, express or implied, including without limitation implied warranties of merchantability, fitness for a particular purpose, non-infringement, accuracy, and uninterrupted operation.</span></p>
+      <p><strong>No Implied Warranties.</strong> <span class="caps">Except as expressly stated in this Agreement, all Services and deliverables are provided "as is" and "as available." To the maximum extent permitted by applicable law, Provider disclaims all other warranties, conditions, and terms, express or implied, whether arising under statute (including the Sale of Goods Act 1957 and the Contracts Act 1950), common law, or otherwise, including without limitation implied warranties of merchantability, fitness for a particular purpose, non-infringement, accuracy, and uninterrupted operation.</span></p>
       <p><strong>Post-Handover Operation.</strong> For engagements involving transfer of system operation to Client, Provider has no obligation to monitor, maintain, troubleshoot, or remediate Client-operated systems following handover, absent a separate paid engagement. Issues arising from Client configuration changes, usage patterns, personnel actions, or operational decisions post-handover are Client's responsibility.</p>
+      <p><strong>Handover Documentation.</strong> For Done-With-You or system-transfer engagements, Provider will provide a written Handover Certificate upon transfer documenting: the date of handover, system configuration at time of delivery, training completed, and access transferred. The "Handover Date" is the date stated on the Handover Certificate or, if none is executed, the date Provider delivers the completed system and handover materials to Client. Client's signature on the Handover Certificate constitutes acceptance of the system as delivered. Any Client modification following the Handover Date voids Provider's warranty with respect to the modified components. If Client does not execute the Handover Certificate or provide written notice of non-conformance within ten (10) business days of delivery, the system is deemed accepted, and Provider's build obligations are complete.</p>
     </section>
 
     <!-- 9. Service Categories and Risk Allocation -->
@@ -441,25 +481,45 @@ section.legal-section { scroll-margin-top: 100px; }
       <p>AI systems including but not limited to chatbots, voice agents, AI SDRs, AI receptionists, custom GPTs, RAG systems, embeddings, content generation tools, and any system using machine learning or generative models may produce inaccurate, incomplete, biased, defamatory, infringing, or otherwise erroneous outputs. Client is solely responsible for reviewing, supervising, validating, and approving all AI-generated outputs prior to use, publication, transmission, or deployment to end users. Client acknowledges that AI outputs are probabilistic and not deterministic, and Provider does not warrant the accuracy, completeness, safety, or fitness for purpose of any AI output. Provider is not liable for damages arising from AI outputs, including but not limited to misrepresentations made to Client's customers, hallucinated commitments, biased decisions, defamation, intellectual property infringement, or harm to end users.</p>
 
       <h3><span class="subsec">9B</span>Voice, Conversational, and Recorded Communications Systems</h3>
-      <p>For Services involving voice agents, call automation, conversational AI, chatbots, SMS systems, or any system that records, transmits, or processes communications, Client is solely responsible for compliance with all applicable consent, recording, disclosure, and wiretap laws, including but not limited to: the Telephone Consumer Protection Act (TCPA), the Electronic Communications Privacy Act (ECPA), the California Invasion of Privacy Act (CIPA), Florida Statutes Section 934.03, and all other federal, state, and local two-party consent or wiretap statutes. Client is responsible for: (i) obtaining all necessary consents from end users prior to system interaction; (ii) implementing AI disclosure language at the beginning of any call or conversation indicating that the user is interacting with artificial intelligence; (iii) updating disclosure language as laws change; (iv) maintaining records of consent; and (v) honoring revocation requests within required timeframes.</p>
+      <p>For Services involving voice agents, call automation, conversational AI, chatbots, SMS systems, or any system that records, transmits, or processes communications, Client is solely responsible for compliance with all applicable consent, recording, disclosure, and wiretap laws in every jurisdiction where Client's end users are located, including but not limited to: the Telephone Consumer Protection Act (TCPA), the Electronic Communications Privacy Act (ECPA), the California Invasion of Privacy Act (CIPA), Florida Statutes Section 934.03, all other federal, state, and local two-party consent or wiretap statutes, and, where applicable, the Communications and Multimedia Act 1998 (Malaysia) and the Personal Data Protection Act 2010 (Malaysia). Client is responsible for: (i) obtaining all necessary consents from end users prior to system interaction; (ii) implementing AI disclosure language at the beginning of any call or conversation indicating that the user is interacting with artificial intelligence; (iii) updating disclosure language as laws change; (iv) maintaining records of consent; and (v) honoring revocation requests within required timeframes.</p>
+      <p><strong>Biometric Data.</strong> This provision applies to any biometric identifier or biometric information, including voiceprints generated by speaker-recognition or speaker-identification features. Client acknowledges that biometric data constitutes "sensitive personal data" under the Personal Data Protection Act 2010 (Malaysia) as amended by the Personal Data Protection (Amendment) Act 2024, requiring explicit consent of the data subject. Client is solely responsible for compliance with all applicable biometric privacy laws, including where applicable the Illinois Biometric Information Privacy Act (740 ILCS 14), the Texas Capture or Use of Biometric Identifier Act, and the Washington biometric privacy statute, including providing written notice, obtaining explicit written consent prior to collection, and maintaining a published retention and destruction policy.</p>
+      <p><strong>Mutual Recording Consent.</strong> The parties mutually consent to the recording, transcription, and automated processing of calls and meetings conducted in connection with the Services, including through AI notetaking tools such as Fathom, Fireflies.ai, or equivalent, and including any speaker-identification or similar voice-processing features such tools apply. Each party will inform any additional participants of recording prior to the session. Either party may decline recording of a specific session by notice before that session, and the parties will conduct that session unrecorded.</p>
 
       <h3><span class="subsec">9C</span>Outbound Communications and Marketing Systems</h3>
-      <p>For Services involving cold email, SMS outreach, automated outbound messaging, AI-driven prospecting, telemarketing, or any unsolicited contact systems, Client is solely responsible for compliance with CAN-SPAM, TCPA, GDPR, CASL, the FCC's consent rules (including any one-to-one consent requirements applicable at the time of contact), state-level telemarketing and privacy laws, and Do-Not-Call registry obligations. Client is responsible for: (i) sender domain reputation and authentication; (ii) list hygiene, suppression lists, and opt-out processing; (iii) A2P 10DLC registration where applicable for SMS; (iv) lawful basis for outreach in all applicable jurisdictions; (v) honoring opt-out and revocation requests within required timeframes; and (vi) maintaining documentary evidence of consent. Provider's role is limited to system implementation; regulatory compliance is exclusively the Client's obligation.</p>
+      <p>For Services involving cold email, SMS outreach, automated outbound messaging, AI-driven prospecting, telemarketing, or any unsolicited contact systems, Client is solely responsible for compliance with CAN-SPAM, TCPA, GDPR, CASL, the FCC's consent rules (including any one-to-one consent requirements applicable at the time of contact), state-level telemarketing and privacy laws, Do-Not-Call registry obligations, and, where outreach targets recipients in Malaysia, the Personal Data Protection Act 2010 and the Communications and Multimedia Act 1998. Client is responsible for: (i) sender domain reputation and authentication; (ii) list hygiene, suppression lists, and opt-out processing; (iii) A2P 10DLC registration where applicable for SMS; (iv) lawful basis for outreach in all applicable jurisdictions; (v) honoring opt-out and revocation requests within required timeframes; and (vi) maintaining documentary evidence of consent. Provider's role is limited to system implementation; regulatory compliance is exclusively the Client's obligation.</p>
 
       <h3><span class="subsec">9D</span>Recruiting, Hiring, and HR Systems</h3>
-      <p>For Services involving recruiting automation, candidate screening, AI-assisted hiring, onboarding workflows, or any system that influences employment decisions, Client acknowledges that Client is the employer of record and retains sole authority over all hiring, screening, and employment decisions. Client is solely responsible for compliance with the Equal Employment Opportunity Commission (EEOC), the Americans with Disabilities Act (ADA), Title VII, the Age Discrimination in Employment Act (ADEA), state and local AI hiring laws (including but not limited to NYC Local Law 144, the Illinois AI Video Interview Act, and the Colorado AI Act), and all other applicable employment laws. Provider does not provide legal, HR, or employment law advice and is not liable for employment-related claims arising from Client's use of any system, including disparate impact, discrimination, or wrongful termination claims.</p>
+      <p>For Services involving recruiting automation, candidate screening, AI-assisted hiring, onboarding workflows, or any system that influences employment decisions, Client acknowledges that Client is the employer of record and retains sole authority over all hiring, screening, and employment decisions. Client is solely responsible for compliance with all applicable employment laws in Client's jurisdiction, including where applicable the Equal Employment Opportunity Commission (EEOC) requirements, the Americans with Disabilities Act (ADA), Title VII, the Age Discrimination in Employment Act (ADEA), state and local AI hiring laws (including but not limited to NYC Local Law 144, the Illinois AI Video Interview Act, and the Colorado AI Act), and, in Malaysia, the Employment Act 1955. Provider does not provide legal, HR, or employment law advice and is not liable for employment-related claims arising from Client's use of any system, including disparate impact, discrimination, or wrongful termination claims.</p>
 
       <h3><span class="subsec">9E</span>Financial and Back-Office Systems</h3>
       <p>For Services involving invoice automation, payment routing, financial reporting, accounting integrations, or back-office workflows handling financial data, Client is solely responsible for reviewing all financial outputs, transactions, and reports prior to action or reliance. Provider is not liable for financial errors, mis-routed payments, accounting discrepancies, tax errors, or losses arising from automated financial processes. Client agrees to maintain appropriate human review and reconciliation procedures and acknowledges that financial automation does not replace professional accounting, tax, or financial advisory services.</p>
 
       <h3><span class="subsec">9F</span>Data Processing and Personally Identifiable Information</h3>
-      <p>For Services that process, store, or transmit personally identifiable information (PII), customer records, conversation logs, health information, financial information, or other sensitive data, Client is the data controller and Provider acts as a data processor solely as directed by Client. Client is responsible for: (i) obtaining all necessary consents and providing required privacy disclosures; (ii) executing data processing agreements where required; (iii) compliance with applicable data protection laws including the Personal Data Protection Act 2010 (Malaysia), GDPR, CCPA, HIPAA where applicable, COPPA where applicable, and state-level privacy regulations; and (iv) determining the lawful basis for processing. Provider does not use Client data to train third-party AI models. Provider may use anonymized, aggregated data for service improvement, analytics, and benchmarking purposes.</p>
+      <p>For Services that process, store, or transmit personally identifiable information (PII), customer records, conversation logs, health information, financial information, or other sensitive data, Client is the data controller and Provider acts as a data processor solely as directed by Client. Client is responsible for: (i) obtaining all necessary consents and providing required privacy disclosures; (ii) executing data processing agreements where required; (iii) compliance with applicable data protection laws including the Personal Data Protection Act 2010 (Malaysia) as amended, GDPR, CCPA, HIPAA where applicable, COPPA where applicable, and state-level privacy regulations; and (iv) determining the lawful basis for processing.</p>
+      <p>Provider uses Client data to build, configure, tune, and operate systems for Client's benefit. Provider does not use Client's prospect or customer data to build, train, or deliver systems for other clients, and does not use Client data to train third-party AI models. Provider may use anonymized, aggregated data for service improvement, analytics, and benchmarking purposes.</p>
+      <p><strong>Prohibited Data.</strong> Except where a specific Proposal expressly authorizes such processing and the parties have executed a Business Associate Agreement or equivalent safeguard, the Services shall not be used to process protected health information (PHI) as defined under HIPAA or sensitive personal data requiring explicit consent under the Personal Data Protection Act 2010 (Malaysia) where such consent has not been obtained. Client is solely liable for any introduction of such data in violation of this Section.</p>
 
       <h3><span class="subsec">9G</span>Integrations and Third-Party Dependencies</h3>
       <p>Services involving integrations between platforms, APIs, webhooks, or third-party services depend on those third parties maintaining stable functionality. Provider is not liable for service disruptions, data loss, or system failures caused by third-party API changes, deprecations, outages, rate limit changes, model deprecations, platform policy changes, or vendor account suspensions. Remediation of post-handover integration breakage is available under hourly support terms or a separate paid engagement.</p>
 
       <h3><span class="subsec">9H</span>No Professional Advice</h3>
       <p>Provider does not provide legal, accounting, tax, medical, financial, employment, regulatory, or investment advice. All Services are operational and technical in nature. Client should consult qualified licensed professionals for guidance specific to Client's circumstances and jurisdiction.</p>
+
+      <h3><span class="subsec">9I</span>Content Publishing and Voice-Matched Content</h3>
+      <ol class="alpha">
+        <li><strong>License Grant.</strong> Client grants Provider a limited, non-exclusive license to Client's brand materials, written content, messaging, and communication style solely for the purpose of building and operating outreach, content, and messaging systems that draft, adapt, or send material in Client's voice. Matching Client's own voice is optional and applies only where the Proposal calls for it; Provider may otherwise produce content in a neutral brand voice, in which case no license to Client's communication style is needed. Where, and only where, the applicable Proposal expressly includes a voice, likeness, avatar, or synthetic-persona deliverable (including AI voice agents trained on a specific individual's voice), this license additionally extends to the name, voice, image, and likeness of the individual(s) identified in that Proposal, solely for that deliverable. This license terminates upon termination of this Agreement, and Provider will delete or disable the associated models and materials within thirty (30) days of termination.</li>
+        <li><strong>Individual Consent.</strong> Where a deliverable is built on the name, voice, image, or likeness of a specific named individual, that individual must separately execute this Agreement or a written consent addendum before that deliverable is built.</li>
+        <li><strong>Publisher of Record.</strong> Client is the publisher and sender of record for all content and outreach generated and distributed under Client's name, brand, or sending domains. Provider is not liable for published or sent content, including claims of defamation, false advertising, required-disclosure violations, or copyright infringement.</li>
+        <li><strong>Content Approval.</strong> Where the applicable Proposal provides for Client approval of content or messaging prior to sending or publication, and Client does not respond within the period stated in the applicable Proposal, the queue will pause pending Client instruction. Provider has no obligation to send or publish, and no liability for gaps in sending cadence or missed timing, arising from Client's failure to review or approve within the stated period. Provider may treat non-response as approval only where the applicable Proposal expressly says so.</li>
+        <li><strong>Third-Party Content and Sourcing.</strong> In preparing content, Provider uses publicly available or properly licensed source material. Client is responsible for ensuring published or sent content does not infringe third-party intellectual property rights, for reviewing and clearing the final form, and for any infringement arising from content distributed under Client's name or brand. Client indemnifies Provider for any infringement claims arising from such content.</li>
+      </ol>
+
+      <h3><span class="subsec">9J</span>Platform Account Risk</h3>
+      <p>Client acknowledges that platform enforcement actions, including account restriction, feature limitation, reduced deliverability or content distribution, domain or mailbox blacklisting, or permanent suspension, are known and accepted risks of operating any account with third-party tools and email or communication platforms, and Client accepts full responsibility for any such outcome affecting Client's accounts, domains, and mailboxes. Provider is not liable for any loss of account access, sending reputation, followers, content, data, or business opportunity resulting from platform enforcement.</p>
+      <p>Where Client independently selects and operates third-party tools on Client's own accounts outside the agreed scope, Client is solely responsible for licensing, configuring, and operating those tools, and Provider does not support them on Client's behalf.</p>
+
+      <h3><span class="subsec">9K</span>Credential Security and Access Management</h3>
+      <p>Provider stores credentials in a secure credential vault, applies least-privilege access, requires multi-factor authentication where technically feasible, and revokes contractor access within five (5) business days of offboarding. Provider will notify Client within seventy-two (72) hours of any confirmed security breach affecting Client credentials or data within Provider's possession or control.</p>
     </section>
 
     <!-- 10. Third-Party Platforms -->
@@ -473,19 +533,24 @@ section.legal-section { scroll-margin-top: 100px; }
       <h2>11. Intellectual Property</h2>
       <p>Upon full payment, Client owns custom deliverables created specifically under the applicable Proposal.</p>
       <p>Provider retains ownership of pre-existing materials, frameworks, automation methodologies, templates, processes, and general know-how.</p>
+      <p><strong>Legitimate Business Interests.</strong> Client acknowledges that the restrictions in Sections 11B, 11D, and 11E are reasonable and necessary to protect Provider's legitimate business interests, including its confidential information and trade secrets, its substantial relationships with specific prospective and existing clients and with its personnel and subcontractors, its investment in recruiting and training, and the goodwill associated with its business, brand, and methodologies, and that such restrictions do not restrain Client from carrying on its own lawful trade or business.</p>
 
       <h3><span class="subsec">11A</span>License Election &amp; Buyout</h3>
       <p>Where a Proposal includes a buyout provision, such option is governed exclusively by the Proposal terms. All buyout elections must be documented in writing as an amendment.</p>
       <p>Where a Proposal grants Client a "lifetime lease," "perpetual license," or similar grant, such grant means a perpetual, non-exclusive, non-transferable license to operate the delivered system for Client's internal business use only. Such grant does not include the right to resell, sublicense, white-label, distribute, replicate, or reverse-engineer the underlying methodology, frameworks, or system architecture. The grant terminates if Client materially breaches this Agreement and fails to cure within thirty (30) days of written notice.</p>
 
-      <h3><span class="subsec">11B</span>Non-Circumvention</h3>
-      <p>Client shall not solicit or engage any subcontractor introduced through Provider for twenty-four (24) months after termination without Provider's prior written consent.</p>
+      <h3><span class="subsec">11B</span>Non-Circumvention and Non-Solicitation</h3>
+      <p>Client shall not, directly or indirectly, solicit, hire, engage, or contract with any employee, contractor, subcontractor, partner, or affiliate introduced through or utilized by Provider, during the term of this Agreement and for twenty-four (24) months following termination, without Provider's prior written consent.</p>
+      <p>The parties agree that Provider's actual damages from a breach of this Section, including recruitment, replacement, onboarding, and institutional knowledge loss, are not readily ascertainable at the time of execution. As a genuine pre-estimate of those costs and as reasonable compensation within the meaning of Section 75 of the Contracts Act 1950, Client shall pay Provider an amount equal to fifty percent (50%) of the affected individual's anticipated first-year total compensation with Client, as liquidated damages and not as a penalty. This sum reflects industry-standard replacement costs, including third-party recruiting fees, onboarding investment, and lost productivity during the replacement period, and is Provider's sole and exclusive monetary remedy for breach of this Section.</p>
 
       <h3><span class="subsec">11C</span>No Exclusivity</h3>
       <p>Nothing in this Agreement grants Client exclusivity unless expressly stated in the applicable Proposal.</p>
 
       <h3><span class="subsec">11D</span>Non-Resale and Non-Replication</h3>
-      <p>Client shall not resell, sublicense, white-label, repackage, or offer to third parties any service, system, or methodology substantially derived from Provider's deliverables, frameworks, or methodologies for twenty-four (24) months following termination or completion of the engagement. This restriction does not limit Client's internal use of delivered systems.</p>
+      <p>Client shall not resell, sublicense, white-label, repackage, or offer to third parties any service, system, or methodology substantially derived from Provider's deliverables, frameworks, or methodologies during the term of this Agreement and for twenty-four (24) months following termination or completion of the engagement. This restriction does not limit Client's internal use of delivered systems and does not restrain Client from carrying on its own trade or business generally.</p>
+
+      <h3><span class="subsec">11E</span>Extension to Affiliates and Related Parties</h3>
+      <p>Client's obligations under Sections 11B and 11D extend to, and Client shall not circumvent them through, any parent, subsidiary, affiliate, entity under common ownership or control, officer, principal, or immediate family member of Client or of Client's principals. Client is responsible for ensuring the compliance of such parties.</p>
     </section>
 
     <!-- 12. Confidentiality -->
@@ -499,6 +564,16 @@ section.legal-section { scroll-margin-top: 100px; }
       <h2>13. Data &amp; Compliance</h2>
       <p>Client is responsible for compliance with applicable data protection and marketing regulations. All aggregated analytics and derivative reporting remain Provider's exclusive property.</p>
       <p><strong>Client Representations and Warranties.</strong> Client represents and warrants that: (i) Client has the right and authority to enter into this Agreement; (ii) all data, content, contact lists, and materials provided to Provider are owned by Client or licensed to Client with rights sufficient to authorize Provider's use; (iii) Client has obtained all necessary consents from end users for any communication, data processing, or AI interaction contemplated by the Services; (iv) Client's use of the Services and any deliverables will comply with all applicable laws and regulations; and (v) Client will not use the Services for unlawful, fraudulent, harassing, or harmful purposes.</p>
+
+      <h3><span class="subsec">13A</span>Data Handling, Retention, and Breach Notice</h3>
+      <ol class="alpha">
+        <li><strong>Non-Reuse.</strong> Provider shall not use Client data for any purpose other than performing the Services for Client, except as expressly permitted under Section 9F (anonymized, aggregated data).</li>
+        <li><strong>Custody.</strong> Where Services operate on Client's accounts and credentials, Client is the custodian of all data.</li>
+        <li><strong>Access Offboarding.</strong> Upon termination, Provider will remove or return Provider-held credentials on Client's written request.</li>
+        <li><strong>Deletion.</strong> Provider will delete Client data within thirty (30) days of written request following termination.</li>
+        <li><strong>Breach Notice.</strong> Provider will notify Client within seventy-two (72) hours of any confirmed security breach affecting Client data, consistent with the data breach notification requirements introduced by the Personal Data Protection (Amendment) Act 2024 (Malaysia). Where Provider acts as data processor, Client remains responsible for any notification to regulators or data subjects required of Client as data controller.</li>
+        <li><strong>Subprocessors and International Transfers.</strong> Provider may engage subcontractors and subprocessors, including personnel located outside Malaysia, to perform Services. A list of material subprocessors is available to Client on written request. Where Provider processes personal data of individuals in the European Economic Area, the United Kingdom, or other jurisdictions requiring transfer safeguards, the parties will cooperate in good faith to put appropriate transfer mechanisms, such as Standard Contractual Clauses, in place, and to comply with any applicable cross-border transfer requirements under the Personal Data Protection Act 2010 (Malaysia) as amended. Provider remains responsible for its subprocessors' performance of Services under this Agreement.</li>
+      </ol>
     </section>
 
     <!-- 14. Subcontractors -->
@@ -510,96 +585,135 @@ section.legal-section { scroll-margin-top: 100px; }
     <!-- 15. Suspension & Termination for Cause -->
     <section id="s15" class="legal-section">
       <h2>15. Suspension &amp; Termination for Cause</h2>
-      <p>Provider may suspend or terminate immediately if Client fails to provide access, requests illegal actions, interferes with performance, engages in abusive conduct, or fails to cure payment default within five (5) days.</p>
+      <p>Provider may suspend or terminate immediately if Client fails to provide access, requests illegal actions, interferes with performance, engages in abusive conduct, or engages in misuse creating legal exposure for Provider.</p>
+      <p><strong>Payment Default.</strong> Provider shall provide written notice of payment default. If not cured within five (5) business days, Provider may suspend Services or terminate without further notice.</p>
+      <p><strong>Termination for Other Breach.</strong> Provider may terminate with five (5) days' written notice for material breach not cured within that period.</p>
     </section>
 
-    <!-- 16. General Termination -->
+    <!-- 16. Limitation of Liability -->
     <section id="s16" class="legal-section">
-      <h2>16. General Termination</h2>
-      <p>Either party may terminate with thirty (30) days' written notice. Fees paid after commencement are non-refundable, except as expressly provided under the volume-guarantee refund mechanism in Section 7A.</p>
+      <h2>16. Limitation of Liability</h2>
+      <p class="caps">Except for (i) Client's indemnification obligations under Section 17, (ii) Client's breach of confidentiality under Section 12, (iii) Client's breach of intellectual property or non-circumvention obligations under Section 11, or (iv) either party's willful misconduct or fraud adjudicated by final, non-appealable order or award, in no event shall either party be liable for any indirect, incidental, consequential, special, punitive, or exemplary damages, including without limitation lost profits, lost revenue, loss of goodwill, or loss of business opportunity, regardless of the theory of liability and even if advised of the possibility of such damages.</p>
+      <p class="caps">Provider's total cumulative liability under this Agreement shall not exceed the greater of (a) the fees actually paid by Client to Provider under the applicable Proposal in the six (6) months preceding the event giving rise to the claim, or (b) five thousand United States dollars (US$5,000), except that this cap does not apply to the carve-out categories identified in the preceding paragraph.</p>
     </section>
 
-    <!-- 17. Limitation of Liability -->
+    <!-- 17. Indemnification -->
     <section id="s17" class="legal-section">
-      <h2>17. Limitation of Liability</h2>
-      <p class="caps">Except for (i) Client's indemnification obligations under Section 18, (ii) breach of confidentiality under Section 12, (iii) breach of intellectual property obligations under Section 11, or (iv) willful misconduct or fraud adjudicated by final, non-appealable order, in no event shall either party be liable for any indirect, incidental, consequential, special, punitive, or exemplary damages, including without limitation lost profits, lost revenue, loss of goodwill, or loss of business opportunity, regardless of the theory of liability and even if advised of the possibility of such damages.</p>
-      <p class="caps">Except for the carve-outs listed above, Provider's total cumulative liability under this Agreement shall not exceed the greater of (a) the fees actually paid by Client to Provider under the applicable Proposal in the twelve (12) months preceding the event giving rise to the claim, or (b) five thousand United States dollars (US$5,000).</p>
-    </section>
+      <h2>17. Indemnification</h2>
 
-    <!-- 18. Indemnification -->
-    <section id="s18" class="legal-section">
-      <h2>18. Indemnification</h2>
+      <h3><span class="subsec">17A</span>Client Indemnification of Provider</h3>
+      <p>Client agrees to defend, indemnify, and hold harmless Provider, its officers, employees, contractors, and affiliates from and against any and all claims, damages, losses, liabilities, judgments, settlements, fines, penalties, and expenses (including reasonable attorneys' fees and defense costs) arising out of or relating to: (i) Client-provided content, data, contact lists, or materials; (ii) Client's failure to obtain required consents, authorizations, or permissions from end users; (iii) any claim under TCPA, CAN-SPAM, GDPR, CCPA, CIPA, ECPA, state wiretap statutes, the Personal Data Protection Act 2010 (Malaysia), or any other communications, marketing, or privacy law arising from communications sent through, generated by, or facilitated by the Services, including claims arising in whole or in part from Provider's own negligence or omission in implementation, except where such claim arises solely from Provider's willful misconduct or fraud adjudicated by final, non-appealable order or award; (iv) Client's violation of third-party platform terms of service; (v) Client's misuse, modification, or unauthorized operation of any system or deliverable; (vi) Client's regulatory non-compliance, including in employment, financial, healthcare, or other regulated domains; (vii) Client's breach of representations and warranties under this Agreement; (viii) third-party claims arising from content or outreach distributed under Client's name, brand, or sending domains pursuant to Section 9I; and (ix) any other third-party claim arising from Client's use of the Services or deliverables.</p>
 
-      <h3><span class="subsec">18A</span>Client Indemnification of Provider</h3>
-      <p>Client agrees to defend, indemnify, and hold harmless Provider, its officers, employees, contractors, and affiliates from and against any and all claims, damages, losses, liabilities, judgments, settlements, fines, penalties, and expenses (including reasonable attorneys' fees and defense costs) arising out of or relating to: (i) Client-provided content, data, contact lists, or materials; (ii) Client's failure to obtain required consents, authorizations, or permissions from end users; (iii) any claim under TCPA, CAN-SPAM, GDPR, CCPA, CIPA, ECPA, state wiretap statutes, the Malaysian Personal Data Protection Act 2010, or any other communications, marketing, or privacy law arising from communications sent through, generated by, or facilitated by the Services, regardless of which party is alleged to have committed the violation, except where such claim arises from Provider's willful misconduct or fraud adjudicated by final, non-appealable order; (iv) Client's violation of third-party platform terms of service; (v) Client's misuse, modification, or unauthorized operation of any system or deliverable; (vi) Client's regulatory non-compliance, including in employment, financial, healthcare, or other regulated domains; (vii) Client's breach of representations and warranties under this Agreement; and (viii) any third-party claim arising from Client's use of the Services or deliverables.</p>
+      <h3><span class="subsec">17B</span>Provider Indemnification of Client</h3>
+      <p>Provider agrees to defend, indemnify, and hold harmless Client from and against third-party claims arising solely from Provider's willful misconduct or fraud in performance of the Services, subject to the limitations of liability in Section 16.</p>
 
-      <h3><span class="subsec">18B</span>Provider Indemnification of Client</h3>
-      <p>Provider agrees to defend, indemnify, and hold harmless Client from and against third-party claims arising solely from Provider's willful misconduct or fraud in performance of the Services, subject to the limitations of liability in Section 17.</p>
-
-      <h3><span class="subsec">18C</span>Indemnification Procedures</h3>
+      <h3><span class="subsec">17C</span>Indemnification Procedures</h3>
       <p>The indemnified party shall promptly notify the indemnifying party of any claim, allow the indemnifying party to control the defense, and provide reasonable cooperation. The indemnifying party shall not settle any claim that imposes obligations on the indemnified party without the indemnified party's prior written consent.</p>
 
-      <h3><span class="subsec">18D</span>Joint Defense and Cooperation</h3>
-      <p>In the event a third party files a claim against both Provider and Client arising from or related to the Services, the parties shall reasonably cooperate in defense of such claims, including sharing of relevant documentation, joint defense agreements where appropriate, and coordination of litigation strategy. Client's indemnification obligations under 18A apply to all third-party claims arising from communications, marketing, privacy, or platform-related violations, including claims naming Provider as co-defendant. Provider retains the right to select its own counsel at Client's expense for matters subject to Client indemnification, subject to reasonable cost approval.</p>
+      <h3><span class="subsec">17D</span>Joint Defense and Cooperation</h3>
+      <p>In the event a third party asserts claims against both Provider and Client arising from the same Services, transaction, or set of operative facts (a "Joint Claim"), the parties shall reasonably cooperate in defense of such claims, including sharing of relevant documentation, joint defense agreements where appropriate, and coordination of strategy. Client's indemnification obligations under 17A apply to all third-party claims arising from communications, marketing, privacy, or platform-related violations, including claims naming Provider as co-defendant. Provider retains the right to select its own counsel at Client's expense for matters subject to Client indemnification, subject to reasonable cost approval.</p>
     </section>
 
-    <!-- 19. Billing Disputes & Chargebacks -->
-    <section id="s19" class="legal-section">
-      <h2>19. Billing Disputes &amp; Chargebacks</h2>
+    <!-- 18. Billing Disputes & Chargebacks -->
+    <section id="s18" class="legal-section">
+      <h2>18. Billing Disputes &amp; Chargebacks</h2>
       <p>Client must notify Provider in writing and allow fifteen (15) days for resolution prior to initiating any chargeback. Initiating a chargeback without this process constitutes material breach.</p>
     </section>
 
-    <!-- 20. Governing Law, Dispute Resolution, and Class Action Waiver -->
-    <section id="s20" class="legal-section">
-      <h2>20. Governing Law, Dispute Resolution, and Class Action Waiver</h2>
+    <!-- 19. Governing Law, Dispute Resolution, and Class Action Waiver -->
+    <section id="s19" class="legal-section">
+      <h2>19. Governing Law, Dispute Resolution, and Class Action Waiver</h2>
       <p>This Agreement is governed by and construed in accordance with the laws of Malaysia, including the Contracts Act 1950 and the Arbitration Act 2005 (as amended), without regard to conflict of laws principles.</p>
-      <p><strong>Mandatory Arbitration.</strong> Any dispute, claim, or controversy arising out of or relating to this Agreement, including its formation, interpretation, breach, or termination, shall be resolved exclusively by binding arbitration administered by the Asian International Arbitration Centre (AIAC) under the AIAC Arbitration Rules 2023 (or the latest version in force at the time of arbitration), in accordance with the Arbitration Act 2005. The seat of arbitration shall be Kuala Lumpur, Malaysia, before a single arbitrator, with proceedings conducted in the English language. The arbitrator's decision shall be final and binding, and judgment on the award may be entered in any court of competent jurisdiction.</p>
-      <p><strong>Class Action and Jury Trial Waiver.</strong> <span class="caps">Each party expressly waives any right to participate in a class action, collective action, or representative proceeding against the other. Each party expressly waives any right to trial by jury where such right would otherwise apply. Disputes shall be resolved on an individual basis only.</span></p>
-      <p><strong>Injunctive Relief Carve-Out.</strong> Notwithstanding the foregoing, either party may seek injunctive or other equitable relief from the High Court of Malaya at Kuala Lumpur, or any other court of competent jurisdiction in Malaysia, to protect intellectual property, confidential information, or to enforce non-circumvention obligations pending the outcome of arbitration.</p>
+      <p><strong>Collections and Small Claims Carve-Out.</strong> Notwithstanding the arbitration provision below, either party may pursue collection of undisputed unpaid fees in any court of competent jurisdiction, including the Malaysian subordinate courts, without arbitration, and either party may bring a claim within the monetary jurisdiction of the small claims procedure of the Magistrates' Court of Malaysia without arbitration.</p>
+      <p><strong>Mandatory Arbitration.</strong> All other disputes, claims, or controversies arising out of or relating to this Agreement, including its formation, interpretation, breach, or termination, shall be resolved exclusively by binding arbitration administered by the Asian International Arbitration Centre (AIAC) under the AIAC Arbitration Rules 2023 (or the latest version in force at the time of arbitration), in accordance with the Arbitration Act 2005. The seat of arbitration shall be Kuala Lumpur, Malaysia, before a single arbitrator, with proceedings conducted in the English language. The arbitrator's decision shall be final and binding, and judgment on the award may be entered in any court of competent jurisdiction.</p>
+      <p><strong>Arbitration Costs.</strong> Each party shall bear its own costs and shall split the arbitrator's fees and the AIAC administrative fees equally, provided that the arbitrator may, in accordance with the Arbitration Act 2005, award all such fees and costs, together with reasonable attorneys' fees, to the prevailing party.</p>
+      <p><strong>Prevailing Party Fees.</strong> The prevailing party in any arbitration or court proceeding arising out of this Agreement is entitled to recover reasonable attorneys' fees and costs.</p>
+      <p><strong>Class Action and Jury Trial Waiver.</strong> <span class="caps">Each party expressly waives any right to participate in a class action, collective action, or representative proceeding against the other. Each party expressly waives any right to trial by jury in any forum where such right would otherwise apply. Disputes shall be resolved on an individual basis only.</span></p>
+      <p><strong>Injunctive Relief Carve-Out.</strong> Notwithstanding the foregoing, either party may seek injunctive or other equitable relief from the High Court of Malaya at Kuala Lumpur, or any other court of competent jurisdiction, to protect intellectual property, confidential information, or to enforce non-circumvention obligations pending the outcome of arbitration.</p>
       <p><strong>Limitation Period.</strong> Any claim arising out of or relating to this Agreement must be commenced within the limitation period prescribed by the Limitation Act 1953 of Malaysia, and no later than six (6) years from the date the cause of action accrued.</p>
     </section>
 
-    <!-- 21. Entire Agreement; Force Majeure -->
-    <section id="s21" class="legal-section">
-      <h2>21. Entire Agreement; Force Majeure</h2>
+    <!-- 20. Entire Agreement; Force Majeure -->
+    <section id="s20" class="legal-section">
+      <h2>20. Entire Agreement; Force Majeure</h2>
       <p>This Agreement and each Proposal constitute the entire agreement between the parties and supersede all prior agreements, understandings, and communications.</p>
-      <p><strong>Force Majeure.</strong> Neither party shall be liable for delays or failures in performance caused by events beyond reasonable control, including without limitation: acts of God, war, terrorism, civil unrest, pandemic, government action, regulatory changes affecting the legality of Services, third-party AI model deprecations or restrictions, third-party platform bans or suspensions, internet or telecommunications outages, cyberattacks, and supply chain disruptions.</p>
+      <p><strong>Force Majeure.</strong> Neither party shall be liable for delays or failures in performance caused by events beyond reasonable control, including without limitation: acts of God, war, terrorism, civil unrest, pandemic, government action, regulatory changes affecting the legality of Services, third-party AI model deprecations or restrictions, third-party platform bans or suspensions, internet or telecommunications outages, cyberattacks, and supply chain disruptions. Force majeure does not excuse Client's obligation to pay for Services already rendered or resources already allocated prior to the triggering event.</p>
     </section>
 
-    <!-- 22. Hourly Support and Tune-Up Services -->
+    <!-- 21. Hourly Support and Tune-Up Services -->
+    <section id="s21" class="legal-section">
+      <h2>21. Hourly Support and Tune-Up Services</h2>
+      <p>Hourly support, tune-up, and maintenance services are billed in thirty (30) minute increments at the rate stated in the applicable Proposal. Sessions are scheduled in advance during standard business hours (Monday through Friday, 9:00 AM to 5:00 PM Eastern Time (ET), excluding U.S. federal holidays), aligned with Provider's primarily US-based client base. Hourly fees are due upon invoice unless prepaid.</p>
+      <p>Provider does not guarantee any specific response time, resolution time, or system uptime unless expressly stated in a separate written service level agreement signed by both parties.</p>
+    </section>
+
+    <!-- 22. Notices -->
     <section id="s22" class="legal-section">
-      <h2>22. Hourly Support and Tune-Up Services</h2>
-      <p>Hourly support, tune-up, and maintenance services are billed in thirty (30) minute increments at the rate stated in the applicable Proposal. Sessions are scheduled in advance during standard business hours (Monday through Friday, 9:00 AM to 5:00 PM Eastern Time (ET), excluding U.S. federal holidays), aligned with Provider's primarily US-based client base. Hourly support does not include guaranteed response times, emergency availability, or service level commitments unless expressly stated in writing as part of a separate support agreement. Hourly fees are due upon invoice unless prepaid.</p>
-    </section>
-
-    <!-- 23. Notices -->
-    <section id="s23" class="legal-section">
-      <h2>23. Notices</h2>
+      <h2>22. Notices</h2>
       <p>All legal notices required under this Agreement shall be in writing and delivered by: (i) email to the addresses on file for each party, with confirmation of receipt; or (ii) registered post or nationally recognized overnight courier to the parties' principal business addresses. Notices are effective upon receipt or, for email, upon confirmation of delivery. Routine communications regarding Services may be conducted via email, Slack, project management platforms, or other agreed channels.</p>
     </section>
 
-    <!-- 24. Insurance -->
-    <section id="s24" class="legal-section">
-      <h2>24. Insurance</h2>
+    <!-- 23. Insurance -->
+    <section id="s23" class="legal-section">
+      <h2>23. Insurance</h2>
       <p>Each party shall maintain reasonable commercial insurance appropriate to its business operations, including general liability coverage. For Proposals with total fees exceeding twenty-five thousand United States dollars (US$25,000), Client shall maintain general liability insurance with minimum limits of one million United States dollars (US$1,000,000) per occurrence and shall provide a certificate of insurance upon Provider's request. Provider shall maintain professional liability (errors and omissions) coverage appropriate to the Services rendered.</p>
     </section>
 
-    <!-- 25. Assignment -->
-    <section id="s25" class="legal-section">
-      <h2>25. Assignment</h2>
+    <!-- 24. Assignment -->
+    <section id="s24" class="legal-section">
+      <h2>24. Assignment</h2>
       <p>Neither party may assign this Agreement or any rights or obligations hereunder without the prior written consent of the other party, except that either party may assign this Agreement without consent in connection with a merger, acquisition, reorganization, or sale of substantially all assets, provided the successor agrees in writing to be bound by all terms.</p>
     </section>
 
-    <!-- 26. Non-Disparagement -->
-    <section id="s26" class="legal-section">
-      <h2>26. Non-Disparagement</h2>
-      <p>During the term of this Agreement and for two (2) years following its termination, neither party shall make, publish, or communicate any statement, post, review, or comment in any medium (including online platforms, social media, review sites, and public forums) that is disparaging, defamatory, or harmful to the reputation of the other party, its officers, employees, services, or business operations. This provision does not prohibit truthful statements required by law, regulatory authority, or legal process.</p>
+    <!-- 25. Non-Disparagement -->
+    <section id="s25" class="legal-section">
+      <h2>25. Non-Disparagement</h2>
+      <p>During the term of this Agreement and for two (2) years following its termination, neither party shall make, publish, or communicate knowingly false and materially harmful statements about the other party, its officers, employees, services, or business operations, in any medium (including online platforms, social media, review sites, and public forums). This provision does not prohibit truthful statements, honest reviews, or disclosures required by law, regulatory authority, or legal process.</p>
     </section>
 
-    <!-- 27. Survival -->
+    <!-- 26. No-Fee and Complimentary Engagements -->
+    <section id="s26" class="legal-section">
+      <h2>26. No-Fee and Complimentary Engagements</h2>
+      <p>Where a Proposal designates Services as complimentary, no-fee, or zero-dollar (a "No-Fee Engagement"), the following terms apply and control over any conflicting provision in this Agreement:</p>
+      <ol class="alpha">
+        <li><strong>No Ownership Transfers.</strong> No ownership of any deliverable, system, workflow, prompt, configuration, methodology, or underlying architecture transfers to Client under a No-Fee Engagement, regardless of the scope of work delivered. Client receives only a non-exclusive, non-transferable, revocable license to operate the delivered system for Client's internal business use, for so long as Client remains in compliance with this Agreement. The "upon full payment" ownership trigger in Section 11 does not apply.</li>
+        <li><strong>No Obligations on Provider.</strong> Provider has no obligation to complete, deliver, iterate, or continue any No-Fee Engagement. Provider may pause, modify, or discontinue a No-Fee Engagement at any time, for any reason or no reason, without notice and without liability of any kind to Client.</li>
+        <li><strong>No Warranty.</strong> No-Fee Engagements are delivered strictly "as is." Provider makes no warranty, representation, or commitment regarding functionality, fitness for purpose, accuracy, or results. Section 8 warranties do not apply.</li>
+        <li><strong>No Support, Maintenance, or Iteration.</strong> A No-Fee Engagement includes initial build and handover only. Provider has no obligation to provide support, troubleshooting, training, updates, iterations, or maintenance. Client requests for changes or improvements after handover are at Provider's sole discretion and may be subject to fees.</li>
+        <li><strong>Liability Cap.</strong> Provider's total cumulative liability arising from or relating to a No-Fee Engagement shall not exceed five hundred United States dollars (US$500). The US$5,000 floor in Section 16 does not apply.</li>
+        <li><strong>License Revocable.</strong> Provider may revoke Client's license to operate the delivered system at any time upon written notice, including if Client fails to convert to a paid engagement within a timeframe specified in the Proposal, or if no timeframe is specified, within ninety (90) days of handover.</li>
+        <li><strong>No Precedent.</strong> A No-Fee Engagement creates no precedent, expectation, entitlement, or obligation regarding future Services, pricing, continued operation, or any ongoing relationship. Client may not reference a No-Fee Engagement as evidence of Provider's standard pricing, scope, or terms.</li>
+        <li><strong>Portfolio Rights.</strong> Provider may use the No-Fee Engagement, including deliverables, results, and Client's general description, as a portfolio example and case study without separate consent, subject to the marketing rights opt-out in Section 28.</li>
+        <li><strong>Expiration.</strong> If Client does not respond to handover communications within ten (10) business days of delivery, the No-Fee Engagement is deemed complete, and the license in subsection (a) does not take effect. Provider has no further obligation.</li>
+      </ol>
+    </section>
+
+    <!-- 27. Pilot and Phase Engagements -->
     <section id="s27" class="legal-section">
-      <h2>27. Survival</h2>
-      <p>The following provisions survive termination or expiration of this Agreement: Section 3 (Fees &amp; Payment, with respect to amounts owed), Section 9 (Service Categories and Risk Allocation), Section 11 (Intellectual Property), Section 12 (Confidentiality), Section 13 (Data &amp; Compliance, including Client representations), Section 17 (Limitation of Liability), Section 18 (Indemnification), Section 20 (Governing Law, Dispute Resolution, and Class Action Waiver), Section 23 (Notices), Section 26 (Non-Disparagement), and this Section 27.</p>
+      <h2>27. Pilot and Phase Engagements</h2>
+      <ol class="alpha">
+        <li>Pilot fees are non-refundable upon commencement, except as expressly provided under Section 7A where a volume guarantee applies.</li>
+        <li>Neither party is obligated to proceed to subsequent phases.</li>
+        <li>The deliverable is the work product, not a guaranteed outcome.</li>
+        <li>Pilot pricing sets no precedent for future engagements.</li>
+      </ol>
+    </section>
+
+    <!-- 28. General Provisions -->
+    <section id="s28" class="legal-section">
+      <h2>28. General Provisions</h2>
+      <p><strong>Severability.</strong> If any provision of this Agreement is held invalid or unenforceable, it shall be modified to the minimum extent necessary to make it enforceable or, if incapable of modification, severed; the remaining provisions continue in full force and effect.</p>
+      <p><strong>Waiver.</strong> No failure or delay by either party in exercising any right constitutes a waiver of that right.</p>
+      <p><strong>Independent Contractor.</strong> Provider is an independent contractor, not an employee, agent, partner, or joint venturer of Client.</p>
+      <p><strong>Electronic Signatures.</strong> Electronic signatures executed through PandaDoc or equivalent platforms are valid and binding in accordance with the Electronic Commerce Act 2006 (Malaysia) and applicable electronic signature laws of Client's jurisdiction.</p>
+      <p><strong>Marketing and Testimonial Rights.</strong> Client grants Provider a non-exclusive license to reference Client's name, logo, and general engagement description (including anonymized campaign results) for marketing purposes, unless Client opts out in writing within thirty (30) days of execution.</p>
+      <p><strong>Amendment.</strong> This Agreement may only be amended by a written instrument signed by authorized representatives of both parties. No email, Slack message, oral agreement, or course of conduct constitutes an amendment unless reduced to a signed writing.</p>
+    </section>
+
+    <!-- 29. Survival -->
+    <section id="s29" class="legal-section">
+      <h2>29. Survival</h2>
+      <p>The following provisions survive termination or expiration of this Agreement: Effectiveness and Consideration (covenant obligations); Section 3 (Fees &amp; Payment, with respect to amounts owed and earned); Section 7D (Revenue-Share Compensation, with respect to any Tail Period); Section 9 (Service Categories and Risk Allocation); Section 10 (Third-Party Platforms and Compliance); Section 11 (Intellectual Property and restrictive covenants); Section 12 (Confidentiality); Section 13 (Data &amp; Compliance, including Client representations and Section 13A); Section 16 (Limitation of Liability); Section 17 (Indemnification); Section 19 (Governing Law, Dispute Resolution, and Class Action Waiver); Section 22 (Notices); Section 25 (Non-Disparagement); Sections 26 and 27 (No-Fee and Pilot Engagements); Section 28 (General Provisions, including marketing and testimonial rights); and this Section 29.</p>
     </section>
 
     <div class="divider"></div>
