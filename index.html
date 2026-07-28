@@ -522,35 +522,7 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
 }
 .review-card, .case-card { flex-shrink: 0; }
 
-/* Instantly.ai affiliation chip + inline links (Harry Rawles review) */
-.instantly-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  flex-shrink: 0;
-  padding: 4px 10px 4px 8px;
-  border-radius: 999px;
-  border: 1px solid rgba(212, 167, 69, 0.32);
-  background: #F5EEDC;
-  font-family: 'DM Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #B8912E;
-  white-space: nowrap;
-  transition: background-color 200ms ease, border-color 200ms ease;
-}
-/* once the chip sits beside the eyebrow, stop it growing the row so this card's
-   stars and headline stay on the same baseline as the cards next to it */
-@media (min-width: 640px) { .instantly-chip { margin-block: -4px; } }
-.instantly-chip:hover { background: #EFE4C9; border-color: rgba(212, 167, 69, 0.6); }
-.instantly-chip:active { background: #E8DBBA; }
-.instantly-chip:focus-visible { outline: 2px solid #D4A745; outline-offset: 2px; }
-.instantly-chip-dot {
-  width: 5px; height: 5px; border-radius: 999px;
-  background: #D4A745;
-  box-shadow: 0 0 0 3px rgba(212, 167, 69, 0.18);
-}
+/* Instantly.ai affiliation link (Harry Rawles review) */
 .instantly-inline {
   color: #B8912E;
   text-decoration: underline;
@@ -1519,12 +1491,7 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
 
       <!-- Review 2: Client Acquisition Consulting (Harry Rawles - Instantly.ai) -->
       <div class="review-card w-[85vw] sm:w-[540px] md:w-[580px] bg-white rounded-xl border border-cream-border p-8 flex flex-col min-h-[460px]">
-        <div class="flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-3 mb-4">
-          <span class="font-mono text-[11px] tracking-widest text-gold uppercase">CLIENT ACQUISITION</span>
-          <a href="https://instantly.ai" target="_blank" rel="noopener noreferrer" class="instantly-chip">
-            <span class="instantly-chip-dot"></span>Instantly.ai team
-          </a>
-        </div>
+        <span class="font-mono text-[11px] tracking-widest text-gold uppercase mb-4">CLIENT ACQUISITION CONSULTING</span>
         <div class="border-t border-cream-border pt-4 mb-3">
           <div class="flex gap-0.5">
             <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
@@ -1537,7 +1504,6 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
         <div class="border-t border-cream-border pt-4 flex-1">
           <h3 class="font-serif text-2xl md:text-[26px] text-ink mb-4 leading-tight" style="letter-spacing:-0.02em;">Qualified calls booked every month.</h3>
           <p class="text-ink-3 text-[15px] leading-relaxed">Had a consulting call with Jun where he walked me through building out my client acquisition. He showed me how to structure a LinkedIn authority funnel and run cold email alongside it, and since putting it into action I've had a consistent high number of qualified calls booked every month. Highly recommend working with Jun.</p>
-          <p class="mt-6 pl-4 border-l-2 border-gold/40 font-mono text-[11.5px] leading-[1.7] text-ink-3">Harry builds go-to-market at <a href="https://instantly.ai" target="_blank" rel="noopener noreferrer" class="instantly-inline">Instantly.ai</a>, the cold email platform we run client campaigns on.</p>
         </div>
         <div class="mt-6 pt-4 border-t border-cream-border">
           <div class="flex items-center gap-3">
@@ -1548,6 +1514,7 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
                 <span class="inline-flex items-center gap-1 text-xs text-gold"><svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>Verified Client</span>
               </div>
               <p class="text-[13px] text-ink-3 mt-0.5">GTM Engineer at <a href="https://instantly.ai" target="_blank" rel="noopener noreferrer" class="instantly-inline font-semibold">Instantly.ai</a></p>
+              <p class="text-xs text-ink-4 mt-0.5">Ex-Founder, Refine Flow · $895k client revenue · $6m+ client pipeline</p>
             </div>
           </div>
         </div>
