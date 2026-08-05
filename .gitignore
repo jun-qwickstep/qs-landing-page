@@ -15,3 +15,14 @@ CLAUDE.md
 proof_assets/not_deployed/
 # OCR scratch cache
 scripts/ocr_new/
+
+# Client-confidential material. Vercel deploys every tracked file, so anything
+# committed here becomes downloadable from the live site. Keep it local only.
+case_study/
+docs/
+flow.svg
+scripts/proof-deck.html
+scripts/proof-deck-wl.html
+scripts/blur_replies.py
+scripts/build-proof-pdf.mjs
+scripts/ocr_words.swift
