@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cold Email Infrastructure Calculator — QwickStep AI</title>
+<meta name="description" content="Work backwards from a monthly send target to the exact number of mailboxes and domains you need, and what it costs. Built on real InboxKit and registrar pricing.">
+<link rel="icon" type="image/png" href="brand_assets/qwickstep.ai iconic mark (white).png">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        cream: '#F7F4EF',
+        'cream-dark': '#EDE9E1',
+        'cream-border': '#DDD8CF',
+        ink: '#111110',
+        'ink-2': '#2A2925',
+        'ink-3': '#6B6860',
+        'ink-4': '#9B9890',
+        gold: '#D4A745',
+        'gold-light': '#F5EEDC',
+        'gold-dark': '#B8912E',
+        navy: '#141928',
+        'navy-light': '#1E2640',
+        qblue: '#2563EB',
+        'qblue-light': '#EFF4FF',
+        teal: '#0D9488',
+        'teal-light': '#F0FDFA',
+        'teal-dark': '#0F766E',
+      },
+      fontFamily: {
+        serif: ['"DM Serif Display"', 'Georgia', 'serif'],
+        sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
+        mono: ['"DM Mono"', 'monospace'],
+      },
+    },
+  },
+}
+</script>
+<!-- Cal.com embed -->
+<script type="text/javascript">
+(function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+Cal("init", {origin:"https://cal.com"});
+Cal("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+</script>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+/* Liquid Glass Button */
+.liquid-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  padding: 0;
+  font-family: inherit;
+}
+.liquid-btn-inner {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 40px;
+  border-radius: 999px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #111110;
+  letter-spacing: -0.01em;
+  z-index: 1;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.liquid-btn:hover .liquid-btn-inner { transform: scale(1.04); }
+.liquid-btn:active .liquid-btn-inner { transform: scale(0.97); }
+.liquid-btn-glass {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(212,167,69,0.25) 0%, rgba(212,167,69,0.12) 50%, rgba(212,167,69,0.2) 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(212,167,69,0.35);
+  box-shadow:
+    0 0 6px rgba(0,0,0,0.03),
+    0 2px 8px rgba(212,167,69,0.12),
+    inset 0 1px 1px rgba(255,255,255,0.4),
+    inset 0 -1px 1px rgba(0,0,0,0.05),
+    0 0 20px rgba(212,167,69,0.08);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.liquid-btn:hover .liquid-btn-glass {
+  box-shadow:
+    0 0 8px rgba(0,0,0,0.04),
+    0 4px 16px rgba(212,167,69,0.18),
+    inset 0 1px 1px rgba(255,255,255,0.5),
+    inset 0 -1px 1px rgba(0,0,0,0.05),
+    0 0 30px rgba(212,167,69,0.12);
+  border-color: rgba(212,167,69,0.5);
+}
+.liquid-btn:focus-visible .liquid-btn-glass {
+  outline: 2px solid #D4A745;
+  outline-offset: 3px;
+}
+
+/* Calculator Nav Pill */
+.nav-calc-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #0D9488;
+  border: 1px solid rgba(13,148,136,0.35);
+  border-radius: 999px;
+  padding: 5px 14px;
+  text-decoration: none;
+  transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.nav-calc-pill:hover {
+  background: rgba(13,148,136,0.07);
+  border-color: rgba(13,148,136,0.55);
+  box-shadow: 0 0 12px rgba(13,148,136,0.1);
+}
+.nav-calc-pill:focus-visible {
+  outline: 2px solid #0D9488;
+  outline-offset: 2px;
+}
+.nav-calc-pill.active {
+  background: rgba(13,148,136,0.1);
+  border-color: rgba(13,148,136,0.5);
+}
+
+/* Custom Range Slider */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: #DDD8CF;
+  outline: none;
+  cursor: pointer;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid #0D9488;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+  box-shadow: 0 2px 8px rgba(13,148,136,0.25);
+}
+input[type="range"]::-webkit-slider-thumb:active { transform: scale(1.05); }
+input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid #0D9488;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+  cursor: pointer;
+}
+input[type="range"]::-moz-range-track { height: 6px; border-radius: 3px; background: #DDD8CF; }
+input[type="range"]:focus-visible::-webkit-slider-thumb { outline: 2px solid #0D9488; outline-offset: 2px; }
+
+/* Tooltip */
+.tooltip-trigger {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid #9B9890;
+  color: #9B9890;
+  font-size: 10px;
+  font-weight: 600;
+  cursor: help;
+  transition: border-color 0.2s ease, color 0.2s ease;
+  flex-shrink: 0;
+}
+.tooltip-trigger:hover { border-color: #0D9488; color: #0D9488; }
+.tooltip-box {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: #111110;
+  color: #F7F4EF;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5;
+  padding: 10px 14px;
+  border-radius: 8px;
+  width: max-content;
+  max-width: 240px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 50;
+  text-transform: none;
+  letter-spacing: normal;
+}
+.tooltip-box::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: #111110;
+}
+.tooltip-trigger:hover .tooltip-box { opacity: 1; transform: translateX(-50%) translateY(0); }
+/* On narrow screens a centred tooltip runs off the edge, so anchor it to the trigger instead */
+@media (max-width: 640px) {
+  .tooltip-box {
+    left: auto;
+    right: -8px;
+    transform: translateX(0) translateY(4px);
+    max-width: min(240px, calc(100vw - 72px));
+  }
+  .tooltip-trigger:hover .tooltip-box { transform: translateX(0) translateY(0); }
+  .tooltip-box::after { left: auto; right: 10px; transform: none; }
+}
+
+/* Keep the off-canvas menu from widening the document while it's closed */
+#mobile-menu { overflow-x: hidden; }
+
+/* Number inputs — strip spinners */
+.num-input { -moz-appearance: textfield; }
+.num-input::-webkit-outer-spin-button,
+.num-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.num-input:focus { outline: none; border-color: #0D9488; box-shadow: 0 0 0 3px rgba(13,148,136,0.1); }
+
+/* Preset chips */
+.chip-preset {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid #DDD8CF;
+  background: #FFFFFF;
+  color: #6B6860;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+.chip-preset:hover { color: #111110; border-color: #9B9890; }
+.chip-preset:focus-visible { outline: 2px solid #0D9488; outline-offset: 2px; }
+.chip-preset.active { background: #F0FDFA; border-color: rgba(13,148,136,0.5); color: #0F766E; }
+
+/* Billing cycle segmented control */
+.cycle-btn {
+  flex: 1;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 10px 8px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  color: #6B6860;
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+}
+.cycle-btn:hover { color: #111110; }
+.cycle-btn:focus-visible { outline: 2px solid #0D9488; outline-offset: 2px; }
+.cycle-btn[aria-pressed="true"] {
+  background: #FFFFFF;
+  color: #0F766E;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 2px 8px rgba(0,0,0,0.04);
+}
+
+/* Output cards */
+.output-card { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+.output-card:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+.output-card.highlight {
+  border-left: 3px solid #0D9488;
+  background: linear-gradient(135deg, #F0FDFA 0%, #FFFFFF 100%);
+}
+
+/* ── Signature: the infrastructure map ── */
+.domain-tile {
+  border-radius: 10px;
+  padding: 10px 10px 9px;
+  border: 1px solid #DDD8CF;
+  background: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  animation: tileIn 0.32s cubic-bezier(0.34, 1.4, 0.64, 1) both;
+}
+.domain-tile.is-com { border-color: rgba(13,148,136,0.4); background: linear-gradient(160deg, #F0FDFA 0%, #FFFFFF 70%); }
+.domain-tile.is-co { border-color: #DDD8CF; background: #FFFFFF; }
+.domain-tile-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  color: #9B9890;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.domain-tile.is-com .domain-tile-label { color: #0F766E; }
+.mailbox-dots { display: flex; flex-wrap: wrap; gap: 3px; }
+.mailbox-dot { width: 7px; height: 7px; border-radius: 2px; background: #DDD8CF; }
+.domain-tile.is-com .mailbox-dot { background: #0D9488; }
+.domain-tile.is-co .mailbox-dot { background: #9B9890; }
+@keyframes tileIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .domain-tile { animation: none; }
+}
+
+/* Tables */
+.calc-table { width: 100%; min-width: 520px; border-collapse: collapse; }
+.calc-table th {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #9B9890;
+  font-weight: 500;
+  text-align: left;
+  padding: 12px 20px;
+  white-space: nowrap;
+  border-bottom: 1px solid #DDD8CF;
+}
+.calc-table td {
+  padding: 13px 20px;
+  font-size: 14px;
+  color: #2A2925;
+  border-bottom: 1px solid #EDE9E1;
+}
+.calc-table tbody tr:last-child td { border-bottom: none; }
+.calc-table .n { text-align: right; font-family: 'DM Mono', monospace; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.calc-table tr.row-total td {
+  background: #FAF8F5;
+  border-top: 1px solid #DDD8CF;
+  font-weight: 600;
+  color: #111110;
+}
+.calc-table tr.row-total td.n { color: #0F766E; font-size: 16px; }
+.calc-table tr.row-win td { background: #F0FDFA; }
+.calc-table td .cell-note { display: block; font-size: 11.5px; color: #9B9890; font-weight: 400; margin-top: 2px; }
+.pill-win {
+  display: inline-block;
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #0F766E;
+  border: 1px solid rgba(13,148,136,0.45);
+  border-radius: 999px;
+  padding: 2px 7px;
+  margin-left: 8px;
+  vertical-align: 1px;
+}
+.table-scroll { overflow-x: auto; }
+
+/* Reveal animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s cubic-bezier(0.4,0,0.2,1), transform 0.6s cubic-bezier(0.4,0,0.2,1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
+}
+</style>
+</head>
+<body class="bg-cream text-ink font-sans">
+
+<!-- ═══════════════════════════ NAV ═══════════════════════════ -->
+<nav class="fixed top-0 left-0 right-0 z-50 h-16 flex items-center justify-between px-6 md:px-12 bg-cream/82 backdrop-blur-xl border-b border-cream-border">
+  <a href="index.html" class="flex items-center gap-2.5 font-semibold text-sm tracking-tight">
+    <img src="brand_assets/qwickstep.ai iconic mark (white).webp" alt="QwickStep AI" class="w-7 h-7" style="filter: brightness(0) saturate(100%);">
+    QwickStep AI
+  </a>
+  <div class="hidden md:flex items-center gap-8">
+    <a href="index.html#services" class="font-mono text-[11px] tracking-wide text-ink-4 hover:text-ink transition-colors duration-200">SERVICES</a>
+    <a href="index.html#reviews" class="font-mono text-[11px] tracking-wide text-ink-4 hover:text-ink transition-colors duration-200">REVIEWS</a>
+    <a href="index.html#case-studies" class="font-mono text-[11px] tracking-wide text-ink-4 hover:text-ink transition-colors duration-200">CASE STUDIES</a>
+    <a href="/calculator" class="nav-calc-pill active">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 8h20"/><path d="M7 13h4"/></svg>
+      INFRA CALCULATOR
+    </a>
+    <a href="javascript:void(0)" data-cal-link="hsienjun.ong/digital-coffee" data-cal-config='{"layout":"month_view"}' class="liquid-btn">
+      <span class="liquid-btn-glass"></span>
+      <span class="liquid-btn-inner text-xs px-5 py-2.5">Book Your Strategy Call</span>
+    </a>
+  </div>
+  <button id="mobile-menu-btn" class="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5" aria-label="Open menu">
+    <span class="mobile-bar block w-5 h-[1.5px] bg-ink rounded-full" style="transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), opacity 0.2s ease;"></span>
+    <span class="mobile-bar block w-5 h-[1.5px] bg-ink rounded-full" style="transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), opacity 0.2s ease;"></span>
+    <span class="mobile-bar block w-5 h-[1.5px] bg-ink rounded-full" style="transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), opacity 0.2s ease;"></span>
+  </button>
+</nav>
+
+<!-- Mobile menu overlay -->
+<div id="mobile-menu" class="fixed inset-0 z-40 pointer-events-none" style="opacity:0; transition: opacity 0.3s ease;">
+  <div class="absolute inset-0 bg-ink/40 backdrop-blur-sm" id="mobile-menu-backdrop"></div>
+  <div id="mobile-menu-panel" class="absolute top-0 right-0 w-72 h-full bg-cream border-l border-cream-border flex flex-col pt-20 px-8 gap-1" style="transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);">
+    <a href="index.html#services" class="mobile-nav-link font-mono text-[12px] tracking-widest text-ink-3 uppercase py-3 border-b border-cream-border/60 hover:text-ink" style="transition: color 0.2s;">SERVICES</a>
+    <a href="index.html#reviews" class="mobile-nav-link font-mono text-[12px] tracking-widest text-ink-3 uppercase py-3 border-b border-cream-border/60 hover:text-ink" style="transition: color 0.2s;">REVIEWS</a>
+    <a href="index.html#case-studies" class="mobile-nav-link font-mono text-[12px] tracking-widest text-ink-3 uppercase py-3 border-b border-cream-border/60 hover:text-ink" style="transition: color 0.2s;">CASE STUDIES</a>
+    <a href="/calculator" class="nav-calc-pill active mt-3 mb-1 justify-center py-3" style="font-size: 12px; letter-spacing: 0.1em;">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 8h20"/><path d="M7 13h4"/></svg>
+      INFRA CALCULATOR
+    </a>
+    <a href="/roi-calculator" class="mobile-nav-link font-mono text-[12px] tracking-widest text-ink-3 uppercase py-3 border-b border-cream-border/60 hover:text-ink" style="transition: color 0.2s;">ROI CALCULATOR</a>
+    <div class="mt-4">
+      <a href="javascript:void(0)" data-cal-link="hsienjun.ong/digital-coffee" data-cal-config='{"layout":"month_view"}' class="liquid-btn w-full">
+        <span class="liquid-btn-glass"></span>
+        <span class="liquid-btn-inner text-sm px-5 py-3 w-full">Book Your Strategy Call</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════ PAGE HEADER ═══════════════════════════ -->
+<section class="pt-28 pb-16 border-b border-cream-border">
+  <div class="max-w-4xl mx-auto px-6 md:px-12 text-center reveal">
+    <span class="inline-flex items-center gap-1.5 font-mono text-[10px] tracking-widest uppercase text-teal bg-teal-light border border-teal/20 rounded-full px-4 py-1.5 mb-6">
+      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      FREE TOOL
+    </span>
+    <h1 class="font-serif text-4xl md:text-5xl lg:text-[3.5rem] leading-tight mb-4" style="letter-spacing:-0.03em;">Cold Email Infrastructure Calculator</h1>
+    <p class="text-ink-3 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">Tell it how many emails you want to send each month. It works backwards to the exact number of mailboxes and domains you need to buy, and what that costs.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ CALCULATOR ═══════════════════════════ -->
+<section class="py-14 md:py-20">
+  <div class="max-w-6xl mx-auto px-6 md:px-12">
+    <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,340px)_minmax(0,1fr)] gap-6 lg:gap-8 items-start">
+
+      <!-- ══════ CONTROLS ══════ -->
+      <div class="flex flex-col gap-5 reveal min-w-0 lg:sticky lg:top-24">
+
+        <!-- Target -->
+        <div class="bg-white rounded-2xl border border-cream-border p-6" style="box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);">
+          <label for="target" class="block font-mono text-[10px] tracking-widest uppercase text-ink-4 mb-2.5">Emails per month</label>
+          <input type="number" id="target" value="50000" min="1" step="1000"
+                 class="num-input w-full bg-cream rounded-lg border border-cream-border px-4 py-3 font-mono text-2xl text-ink tabular-nums transition-colors duration-200">
+          <div class="flex flex-wrap gap-2 mt-3.5" id="presets">
+            <button type="button" class="chip-preset" data-preset="10000">10k</button>
+            <button type="button" class="chip-preset" data-preset="25000">25k</button>
+            <button type="button" class="chip-preset active" data-preset="50000">50k</button>
+            <button type="button" class="chip-preset" data-preset="100000">100k</button>
+            <button type="button" class="chip-preset" data-preset="250000">250k</button>
+          </div>
+        </div>
+
+        <!-- Sending assumptions -->
+        <div class="bg-white rounded-2xl border border-cream-border p-6" style="box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);">
+          <h2 class="font-mono text-[10px] tracking-widest uppercase text-ink-4 mb-4">Sending</h2>
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label for="daily" class="flex items-center gap-1.5 text-[13px] font-medium text-ink-2 mb-2">
+                Per mailbox / day
+                <span class="tooltip-trigger">?<span class="tooltip-box">25 a day is the safe ceiling for Google and Microsoft mailboxes. Push past it and you start burning domains.</span></span>
+              </label>
+              <input type="number" id="daily" value="25" min="1" max="200"
+                     class="num-input w-full bg-cream rounded-lg border border-cream-border px-3 py-2.5 font-mono text-[15px] text-ink tabular-nums transition-colors duration-200">
+            </div>
+            <div>
+              <label for="days" class="flex items-center gap-1.5 text-[13px] font-medium text-ink-2 mb-2">
+                Days / month
+                <span class="tooltip-trigger">?<span class="tooltip-box">Weekdays only, so 22 is a normal month. Cold email sent on weekends converts worse.</span></span>
+              </label>
+              <input type="number" id="days" value="22" min="1" max="31"
+                     class="num-input w-full bg-cream rounded-lg border border-cream-border px-3 py-2.5 font-mono text-[15px] text-ink tabular-nums transition-colors duration-200">
+            </div>
+          </div>
+        </div>
+
+        <!-- Domains -->
+        <div class="bg-white rounded-2xl border border-cream-border p-6" style="box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);">
+          <h2 class="font-mono text-[10px] tracking-widest uppercase text-ink-4 mb-4">Domains</h2>
+
+          <label for="perdomain" class="flex items-center gap-1.5 text-[13px] font-medium text-ink-2 mb-2">
+            Mailboxes per domain
+            <span class="tooltip-trigger">?<span class="tooltip-box">Three is our rule for Google and Microsoft. Any more concentrates your whole sending reputation on one domain.</span></span>
+          </label>
+          <input type="number" id="perdomain" value="3" min="1" max="100"
+                 class="num-input w-full bg-cream rounded-lg border border-cream-border px-3 py-2.5 font-mono text-[15px] text-ink tabular-nums transition-colors duration-200">
+
+          <div class="mt-5">
+            <div class="flex items-center justify-between mb-2.5">
+              <span class="text-[13px] font-medium text-ink-2">TLD mix</span>
+              <span class="font-mono text-[11px] text-teal-dark tabular-nums" id="splitRead">70 / 30</span>
+            </div>
+            <input type="range" id="split" value="70" min="0" max="100" step="5" aria-label="Percentage of .com domains">
+            <div class="flex justify-between mt-2 font-mono text-[10px] text-ink-4">
+              <span id="splitCom">70% .com</span>
+              <span id="splitCo">30% .co</span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4 mt-5">
+            <div>
+              <label for="pcom" class="block text-[13px] font-medium text-ink-2 mb-2">.com / year</label>
+              <div class="relative">
+                <span class="absolute left-3 top-1/2 -translate-y-1/2 font-mono text-[13px] text-ink-4">$</span>
+                <input type="number" id="pcom" value="13" min="0" step="0.5"
+                       class="num-input w-full bg-cream rounded-lg border border-cream-border pl-7 pr-3 py-2.5 font-mono text-[15px] text-ink tabular-nums transition-colors duration-200">
+              </div>
+            </div>
+            <div>
+              <label for="pco" class="block text-[13px] font-medium text-ink-2 mb-2">.co / year</label>
+              <div class="relative">
+                <span class="absolute left-3 top-1/2 -translate-y-1/2 font-mono text-[13px] text-ink-4">$</span>
+                <input type="number" id="pco" value="4.50" min="0" step="0.5"
+                       class="num-input w-full bg-cream rounded-lg border border-cream-border pl-7 pr-3 py-2.5 font-mono text-[15px] text-ink tabular-nums transition-colors duration-200">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Billing -->
+        <div class="bg-white rounded-2xl border border-cream-border p-6" style="box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);">
+          <h2 class="font-mono text-[10px] tracking-widest uppercase text-ink-4 mb-4">Billing</h2>
+          <div class="flex gap-1.5 bg-cream-dark rounded-[10px] p-1.5 border border-cream-border" id="cycle">
+            <button type="button" class="cycle-btn" data-cycle="monthly" aria-pressed="true">Monthly</button>
+            <button type="button" class="cycle-btn" data-cycle="annual" aria-pressed="false">Annual &minus;20%</button>
+          </div>
+          <label class="flex items-start gap-3 mt-5 cursor-pointer">
+            <input type="checkbox" id="warmup" class="mt-0.5 w-4 h-4 rounded accent-teal cursor-pointer">
+            <span>
+              <span class="block text-[13px] font-medium text-ink-2">Add InboxKit warmup</span>
+              <span class="block text-[12px] text-ink-4 leading-relaxed mt-0.5">$3 per mailbox monthly. Leave it off if your sending platform already warms up your mailboxes.</span>
+            </span>
+          </label>
+        </div>
+      </div>
+
+      <!-- ══════ RESULTS ══════ -->
+      <div class="flex flex-col gap-6 min-w-0">
+
+        <!-- Headline numbers -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 reveal">
+          <div class="output-card highlight bg-white rounded-xl border border-cream-border p-6" style="box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);">
+            <div class="flex items-center justify-between mb-3">
+              <span class="font-mono text-[10px] tracking-widest text-ink-4 uppercase">Mailboxes</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M4 9h16"/><path d="M8 14h3"/></svg>
+            </div>
+            <div id="rMailboxes" class="font-serif text-4xl text-teal mb-1 tabular-nums">93</div>
+            <div class="text-xs text-ink-4" id="rMailboxesNote">550 sends each per month</div>
+          </div>
+          <div class="output-card bg-white rounded-xl border border-cream-border p-6" style="box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);">
+            <div class="flex items-center justify-between mb-3">
+              <span class="font-mono text-[10px] tracking-widest text-ink-4 uppercase">Domains</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18z"/></svg>
+            </div>
+            <div id="rDomains" class="font-serif text-4xl text-ink mb-1 tabular-nums">31</div>
+            <div class="text-xs text-ink-4" id="rDomainsNote">3 mailboxes per domain</div>
+          </div>
+          <div class="output-card bg-white rounded-xl border border-cream-border p-6" style="box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);">
+            <div class="flex items-center justify-between mb-3">
+              <span class="font-mono text-[10px] tracking-widest text-ink-4 uppercase">All-in monthly</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="22"/><path d="M17 6H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H7"/></svg>
+            </div>
+            <div id="rMonthly" class="font-serif text-4xl text-ink mb-1 tabular-nums">$326</div>
+            <div class="text-xs text-ink-4" id="rMonthlyNote">domains spread over 12 months</div>
+          </div>
+        </div>
+
+        <!-- Plan verdict -->
+        <div class="bg-teal-light border border-teal/20 rounded-xl px-5 py-4 flex gap-3 reveal">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 mt-0.5"><path d="M20 6L9 17l-5-5"/></svg>
+          <p class="text-[13.5px] text-ink-2 leading-relaxed" id="planLine"></p>
+        </div>
+
+        <!-- ══════ SIGNATURE: INFRASTRUCTURE MAP ══════ -->
+        <div class="bg-white rounded-2xl border border-cream-border overflow-hidden reveal" style="box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);">
+          <div class="flex items-baseline justify-between gap-4 px-6 py-4 border-b border-cream-border">
+            <h2 class="font-mono text-[10px] tracking-widest uppercase text-ink-4">What you're buying</h2>
+            <div class="flex items-center gap-4 font-mono text-[10px] text-ink-4">
+              <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-sm bg-teal"></span><span id="legendCom">.com</span></span>
+              <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-sm bg-ink-4"></span><span id="legendCo">.co</span></span>
+            </div>
+          </div>
+          <div class="p-6">
+            <div id="infraMap" class="grid gap-2.5" style="grid-template-columns: repeat(auto-fill, minmax(76px, 1fr));"></div>
+            <p class="font-mono text-[11px] text-ink-4 mt-4" id="mapNote"></p>
+          </div>
+        </div>
+
+        <!-- Cost breakdown -->
+        <div class="bg-white rounded-2xl border border-cream-border overflow-hidden reveal" style="box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);">
+          <div class="px-6 py-4 border-b border-cream-border">
+            <h2 class="font-mono text-[10px] tracking-widest uppercase text-ink-4">Cost breakdown</h2>
+          </div>
+          <div class="table-scroll">
+            <table class="calc-table">
+              <thead>
+                <tr><th>Line item</th><th class="n">Qty</th><th class="n">Rate</th><th class="n">Cost</th></tr>
+              </thead>
+              <tbody id="breakdown"></tbody>
+            </table>
+          </div>
+          <div class="px-6 py-4 border-t border-cream-border bg-cream/50">
+            <p class="text-[13px] text-ink-3 leading-relaxed" id="perEmail"></p>
+          </div>
+        </div>
+
+        <!-- Plan comparison -->
+        <div class="bg-white rounded-2xl border border-cream-border overflow-hidden reveal" style="box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);">
+          <div class="flex items-baseline justify-between gap-4 px-6 py-4 border-b border-cream-border">
+            <h2 class="font-mono text-[10px] tracking-widest uppercase text-ink-4">Which plan is cheapest</h2>
+            <span class="font-mono text-[10px] text-ink-4">at <span id="cmpCount">93</span> mailboxes</span>
+          </div>
+          <div class="table-scroll">
+            <table class="calc-table">
+              <thead>
+                <tr><th>Plan</th><th class="n">Slots</th><th class="n">Base</th><th class="n">Extra mailboxes</th><th class="n">Monthly</th></tr>
+              </thead>
+              <tbody id="compare"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Year one -->
+        <div class="bg-white rounded-2xl border border-cream-border overflow-hidden reveal" style="box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);">
+          <div class="px-6 py-4 border-b border-cream-border">
+            <h2 class="font-mono text-[10px] tracking-widest uppercase text-ink-4">Year one</h2>
+          </div>
+          <div class="table-scroll">
+            <table class="calc-table">
+              <thead>
+                <tr><th>Period</th><th class="n">Mailboxes</th><th class="n">Domains</th><th class="n">Total</th></tr>
+              </thead>
+              <tbody id="year"></tbody>
+            </table>
+          </div>
+          <div class="px-6 py-4 border-t border-cream-border bg-gold-light/40 flex gap-3">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#B8912E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 mt-0.5"><path d="M12 9v4"/><path d="M12 17h.01"/><circle cx="12" cy="12" r="9"/></svg>
+            <p class="text-[13px] text-ink-3 leading-relaxed">The first three weeks are warm-up. Volume ramps from a handful of sends per mailbox per day up to full capacity, so month one costs the same but delivers a fraction of the number above. Plan your pipeline around month two.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ ASSUMPTIONS ═══════════════════════════ -->
+<section class="py-16 md:py-20 border-t border-cream-border">
+  <div class="max-w-3xl mx-auto px-6 md:px-12 reveal">
+    <h2 class="font-serif text-3xl md:text-4xl mb-3" style="letter-spacing:-0.02em;">The numbers behind it</h2>
+    <p class="text-ink-3 text-[15px] leading-relaxed mb-8">Mailbox pricing is InboxKit's published rate card. Domain pricing is what a .com and a .co actually cost at a normal registrar. Change any of it above if your setup differs.</p>
+
+    <div class="flex flex-col gap-5">
+      <div class="flex gap-4">
+        <span class="font-mono text-[11px] text-ink-4 pt-0.5 flex-shrink-0 w-20">MAILBOXES</span>
+        <p class="text-[14px] text-ink-2 leading-relaxed">You buy a plan with a bucket of slots, then pay per mailbox only for the overflow. Monthly billing runs $39 for 10 slots, $99 for 30, or $299 for 100, with extras at $3.50, $3.25 and $2.99. Annual billing drops the base to $31, $81 and $250 and the extras to $3.10, $2.70 and $2.50. The calculator picks whichever tier lands cheapest at your mailbox count.</p>
+      </div>
+      <div class="flex gap-4">
+        <span class="font-mono text-[11px] text-ink-4 pt-0.5 flex-shrink-0 w-20">PROVIDERS</span>
+        <p class="text-[14px] text-ink-2 leading-relaxed">Google Workspace and Microsoft 365 mailboxes cost the same. There's no Microsoft premium. Azure is a different model entirely, priced per tenant with far more mailboxes on a single domain, and this calculator doesn't cover it.</p>
+      </div>
+      <div class="flex gap-4">
+        <span class="font-mono text-[11px] text-ink-4 pt-0.5 flex-shrink-0 w-20">WARMUP</span>
+        <p class="text-[14px] text-ink-2 leading-relaxed">Warmup is a separate $3 per mailbox per month add-on, not part of the plan. If your sending platform already handles warmup, you're paying twice, which is why the toggle starts off.</p>
+      </div>
+      <div class="flex gap-4">
+        <span class="font-mono text-[11px] text-ink-4 pt-0.5 flex-shrink-0 w-20">VOLUME</span>
+        <p class="text-[14px] text-ink-2 leading-relaxed">25 sends per mailbox per day is the ceiling we hold to, across 22 weekdays. It's conservative on purpose. The cost of replacing a burnt domain is much higher than the cost of one more mailbox.</p>
+      </div>
+      <div class="flex gap-4">
+        <span class="font-mono text-[11px] text-ink-4 pt-0.5 flex-shrink-0 w-20">ROUNDING</span>
+        <p class="text-[14px] text-ink-2 leading-relaxed">Mailboxes round up to a whole number of domains, so you never end up with a half-populated domain. That's why the capacity figure sits slightly above your target.</p>
+      </div>
+    </div>
+
+    <p class="font-mono text-[11px] text-ink-4 mt-10 pt-6 border-t border-cream-border">Rate card checked 11 Aug 2026 · <a href="https://www.inboxkit.com/pricing" target="_blank" rel="noopener" class="text-teal hover:text-teal-dark transition-colors duration-200">inboxkit.com/pricing</a></p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ FINAL CTA ═══════════════════════════ -->
+<section class="py-24 md:py-32 border-t border-cream-border">
+  <div class="max-w-3xl mx-auto px-6 md:px-12 text-center reveal">
+    <h2 class="font-serif text-4xl md:text-5xl lg:text-[3.5rem] leading-tight mb-6" style="letter-spacing:-0.03em;">Want us to build it instead?</h2>
+    <p class="text-ink-3 text-base md:text-lg leading-relaxed mb-10 max-w-xl mx-auto">Book a 30-minute call and we'll spec the domains, mailboxes and warm-up schedule for your volume, then run it for you.</p>
+    <a href="javascript:void(0)" data-cal-link="hsienjun.ong/digital-coffee" data-cal-config='{"layout":"month_view"}' class="liquid-btn">
+      <span class="liquid-btn-glass"></span>
+      <span class="liquid-btn-inner text-lg px-12 py-5">Book Your Strategy Call</span>
+    </a>
+    <p class="italic text-ink-4 text-sm mt-5">30 minutes. No pitch deck. No pressure.</p>
+    <p class="text-sm text-ink-4 mt-10 pt-8 border-t border-cream-border">Know your infrastructure and want the pipeline math? Try the <a href="/roi-calculator" class="text-teal hover:text-teal-dark transition-colors duration-200 font-medium">Cold Email ROI Calculator</a>.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ FOOTER ═══════════════════════════ -->
+<footer class="border-t border-cream-border py-12">
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+      <a href="index.html" class="flex items-center gap-2.5 font-semibold text-sm tracking-tight">
+        <img src="brand_assets/qwickstep.ai iconic mark (white).webp" alt="QwickStep AI" class="w-6 h-6" style="filter: brightness(0) saturate(100%);">
+        QwickStep AI
+      </a>
+      <div class="flex items-center gap-6 text-sm text-ink-4">
+        <a href="/roi-calculator" class="hover:text-ink transition-colors duration-200">ROI Calculator</a>
+        <a href="index.html#reviews" class="hover:text-ink transition-colors duration-200">Reviews and Case Studies</a>
+        <a href="index.html#faq" class="hover:text-ink transition-colors duration-200">FAQ</a>
+        <a href="javascript:void(0)" data-cal-link="hsienjun.ong/digital-coffee" data-cal-config='{"layout":"month_view"}' class="hover:text-gold transition-colors duration-200">Book Your Strategy Call</a>
+      </div>
+    </div>
+    <div class="mt-8 pt-6 border-t border-cream-border flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-ink-4">
+      <p>Vendor pricing changes without notice. Confirm current rates before you buy.</p>
+      <div class="flex items-center gap-4 flex-shrink-0">
+        <a href="#" class="hover:text-ink transition-colors duration-200">Privacy Policy</a>
+        <a href="/terms" class="hover:text-ink transition-colors duration-200">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ═══════════════════════════ RATE CARD ═══════════════════════════
+var PLANS = {
+  monthly: [
+    { name: 'Professional', base: 39,  slots: 10,  extra: 3.50 },
+    { name: 'Agency',       base: 99,  slots: 30,  extra: 3.25 },
+    { name: 'Enterprise',   base: 299, slots: 100, extra: 2.99 }
+  ],
+  annual: [
+    { name: 'Professional', base: 31,  slots: 10,  extra: 3.10 },
+    { name: 'Agency',       base: 81,  slots: 30,  extra: 2.70 },
+    { name: 'Enterprise',   base: 250, slots: 100, extra: 2.50 }
+  ]
+};
+var WARMUP_PER_MAILBOX = 3;
+var MAX_TILES = 60;
+var cycle = 'monthly';
+
+function $(id) { return document.getElementById(id); }
+function num(n) { return n.toLocaleString('en-US'); }
+function usd(n, dp) {
+  dp = dp || 0;
+  return '$' + n.toLocaleString('en-US', { minimumFractionDigits: dp, maximumFractionDigits: dp });
+}
+function val(id, fallback, min) {
+  var v = parseFloat($(id).value);
+  if (isNaN(v) || v < min) return fallback;
+  return v;
+}
+
+// ═══════════════════════════ CALCULATION ═══════════════════════════
+function compute() {
+  var target    = Math.max(1, val('target', 1, 1));
+  var daily     = Math.max(1, val('daily', 25, 1));
+  var days      = Math.max(1, val('days', 22, 1));
+  var perDomain = Math.max(1, Math.floor(val('perdomain', 3, 1)));
+  var comPct    = parseInt($('split').value, 10);
+  var pcom      = Math.max(0, val('pcom', 13, 0));
+  var pco       = Math.max(0, val('pco', 4.5, 0));
+  var warmupOn  = $('warmup').checked;
+
+  var perMailboxMonth = daily * days;
+  var rawMailboxes = Math.ceil(target / perMailboxMonth);
+  var domains = Math.ceil(rawMailboxes / perDomain);
+  var mailboxes = domains * perDomain;
+  var capacity = mailboxes * perMailboxMonth;
+
+  var comDomains = Math.round(domains * comPct / 100);
+  var coDomains = domains - comDomains;
+  var domainYear = comDomains * pcom + coDomains * pco;
+
+  var plans = PLANS[cycle].map(function (p) {
+    var extras = Math.max(0, mailboxes - p.slots);
+    return { name: p.name, base: p.base, slots: p.slots, extra: p.extra,
+             extras: extras, cost: p.base + extras * p.extra };
+  });
+  var best = plans.reduce(function (a, b) { return b.cost < a.cost ? b : a; });
+
+  var warmupCost = warmupOn ? mailboxes * WARMUP_PER_MAILBOX : 0;
+  var monthly = best.cost + warmupCost;
+  var allIn = monthly + domainYear / 12;
+
+  return { target: target, daily: daily, days: days, perDomain: perDomain,
+           perMailboxMonth: perMailboxMonth, mailboxes: mailboxes, domains: domains,
+           capacity: capacity, comDomains: comDomains, coDomains: coDomains,
+           pcom: pcom, pco: pco, domainYear: domainYear, plans: plans, best: best,
+           warmupOn: warmupOn, warmupCost: warmupCost, monthly: monthly, allIn: allIn };
+}
+
+// ═══════════════════════════ RENDER ═══════════════════════════
+function render() {
+  var r = compute();
+  var comPct = parseInt($('split').value, 10);
+
+  // TLD split labels
+  $('splitRead').textContent = comPct + ' / ' + (100 - comPct);
+  $('splitCom').textContent = comPct + '% .com';
+  $('splitCo').textContent = (100 - comPct) + '% .co';
+
+  // Headline
+  $('rMailboxes').textContent = num(r.mailboxes);
+  $('rMailboxesNote').textContent = num(r.perMailboxMonth) + ' sends each per month';
+  $('rDomains').textContent = num(r.domains);
+  $('rDomainsNote').textContent = r.perDomain + ' mailbox' + (r.perDomain === 1 ? '' : 'es') + ' per domain';
+  $('rMonthly').textContent = usd(r.allIn);
+  $('rMonthlyNote').textContent = 'domains spread over 12 months';
+
+  // Verdict
+  var headroom = r.capacity - r.target;
+  var slotLine = r.mailboxes <= r.best.slots
+    ? 'All ' + num(r.mailboxes) + ' mailboxes fit inside the included slots.'
+    : num(r.best.extras) + ' of them bill as extras at ' + usd(r.best.extra, 2) + ' each.';
+  $('planLine').innerHTML =
+    'Cheapest fit is <strong>InboxKit ' + r.best.name + '</strong> on ' + cycle + ' billing, '
+    + usd(r.best.cost, 2) + ' a month, which is ' + usd(r.best.cost / r.mailboxes, 2)
+    + ' per mailbox. ' + slotLine + ' Real capacity comes to ' + num(r.capacity) + ' sends a month'
+    + (headroom > 0 ? ', giving you ' + num(headroom) + ' of headroom.' : ', an exact fit.');
+
+  // Infrastructure map
+  $('legendCom').textContent = num(r.comDomains) + ' × .com';
+  $('legendCo').textContent = num(r.coDomains) + ' × .co';
+  var shown = Math.min(r.domains, MAX_TILES);
+  var dots = '';
+  for (var d = 0; d < r.perDomain; d++) dots += '<span class="mailbox-dot"></span>';
+  var tiles = '';
+  for (var i = 0; i < shown; i++) {
+    var isCom = i < r.comDomains;
+    tiles += '<div class="domain-tile ' + (isCom ? 'is-com' : 'is-co') + '" style="animation-delay:'
+          + Math.min(i * 12, 400) + 'ms">'
+          + '<span class="domain-tile-label">' + (i + 1 < 10 ? '0' : '') + (i + 1)
+          + (isCom ? '.com' : '.co') + '</span>'
+          + '<span class="mailbox-dots">' + dots + '</span></div>';
+  }
+  $('infraMap').innerHTML = tiles;
+  var hidden = r.domains - shown;
+  $('mapNote').textContent = hidden > 0
+    ? num(hidden) + ' more domain' + (hidden === 1 ? '' : 's') + ' not shown · '
+      + num(r.mailboxes) + ' mailboxes across ' + num(r.domains) + ' domains in total'
+    : 'Each tile is one domain. Each square is one mailbox on it.';
+
+  // Cost breakdown
+  var rows = [];
+  rows.push([
+    'InboxKit ' + r.best.name + ' base',
+    num(Math.min(r.mailboxes, r.best.slots)) + ' of ' + r.best.slots + ' slots',
+    usd(r.best.base) + '/mo',
+    usd(r.best.base, 2) + '/mo'
+  ]);
+  if (r.best.extras > 0) {
+    rows.push([
+      'Additional mailboxes',
+      num(r.best.extras),
+      usd(r.best.extra, 2) + '/mo',
+      usd(r.best.extras * r.best.extra, 2) + '/mo'
+    ]);
+  }
+  if (r.warmupOn) {
+    rows.push(['Warmup add-on', num(r.mailboxes), usd(WARMUP_PER_MAILBOX, 2) + '/mo', usd(r.warmupCost, 2) + '/mo']);
+  }
+  if (r.comDomains > 0) {
+    rows.push(['.com registrations', num(r.comDomains), usd(r.pcom, 2) + '/yr', usd(r.comDomains * r.pcom, 2) + '/yr']);
+  }
+  if (r.coDomains > 0) {
+    rows.push(['.co registrations', num(r.coDomains), usd(r.pco, 2) + '/yr', usd(r.coDomains * r.pco, 2) + '/yr']);
+  }
+  var html = rows.map(function (c) {
+    return '<tr><td>' + c[0] + '</td><td class="n">' + c[1] + '</td><td class="n">' + c[2] + '</td><td class="n">' + c[3] + '</td></tr>';
+  }).join('');
+  html += '<tr class="row-total"><td>All-in monthly'
+       + '<span class="cell-note">' + usd(r.monthly, 2) + ' recurring, plus ' + usd(r.domainYear, 2)
+       + ' of domains spread over 12 months</span></td>'
+       + '<td class="n"></td><td class="n"></td><td class="n">' + usd(r.allIn, 2) + '</td></tr>';
+  $('breakdown').innerHTML = html;
+
+  $('perEmail').innerHTML = 'That works out to <strong>' + usd(r.allIn / (r.target / 1000), 2)
+    + ' per 1,000 emails sent</strong> — ' + usd(r.monthly * 12) + ' a year to InboxKit, plus '
+    + usd(r.domainYear, 2) + ' to register the domains.';
+
+  // Plan comparison
+  $('cmpCount').textContent = num(r.mailboxes);
+  $('compare').innerHTML = r.plans.map(function (p) {
+    var isWin = p.name === r.best.name;
+    return '<tr class="' + (isWin ? 'row-win' : '') + '">'
+      + '<td>' + p.name + (isWin ? '<span class="pill-win">Cheapest</span>' : '') + '</td>'
+      + '<td class="n">' + num(p.slots) + '</td>'
+      + '<td class="n">' + usd(p.base) + '</td>'
+      + '<td class="n">' + (p.extras > 0 ? num(p.extras) + ' × ' + usd(p.extra, 2) : '—') + '</td>'
+      + '<td class="n">' + usd(p.cost, 2) + '</td></tr>';
+  }).join('');
+
+  // Year one
+  var yearRows = [
+    ['Month 1', r.monthly, r.domainYear, r.monthly + r.domainYear],
+    ['Months 2 to 12', r.monthly * 11, 0, r.monthly * 11],
+    ['Year one total', r.monthly * 12, r.domainYear, r.monthly * 12 + r.domainYear]
+  ];
+  $('year').innerHTML = yearRows.map(function (c, i) {
+    return '<tr class="' + (i === 2 ? 'row-total' : '') + '"><td>' + c[0] + '</td>'
+      + '<td class="n">' + usd(c[1], 2) + '</td>'
+      + '<td class="n">' + (c[2] > 0 ? usd(c[2], 2) : '—') + '</td>'
+      + '<td class="n">' + usd(c[3], 2) + '</td></tr>';
+  }).join('');
+
+  syncPresets();
+}
+
+function syncPresets() {
+  var v = parseFloat($('target').value);
+  document.querySelectorAll('.chip-preset').forEach(function (b) {
+    b.classList.toggle('active', parseFloat(b.dataset.preset) === v);
+  });
+}
+
+// ═══════════════════════════ WIRING ═══════════════════════════
+['target', 'daily', 'days', 'perdomain', 'split', 'pcom', 'pco', 'warmup'].forEach(function (id) {
+  $(id).addEventListener('input', render);
+  $(id).addEventListener('change', render);
+});
+
+document.querySelectorAll('.chip-preset').forEach(function (b) {
+  b.addEventListener('click', function () {
+    $('target').value = b.dataset.preset;
+    render();
+  });
+});
+
+document.querySelectorAll('.cycle-btn').forEach(function (b) {
+  b.addEventListener('click', function () {
+    cycle = b.dataset.cycle;
+    document.querySelectorAll('.cycle-btn').forEach(function (x) {
+      x.setAttribute('aria-pressed', String(x === b));
+    });
+    render();
+  });
+});
+
+render();
+
+// Reveal animation
+var observer = new IntersectionObserver(function (entries) {
+  entries.forEach(function (entry) {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(function (el) { observer.observe(el); });
+
+// ═══════════════════════════ MOBILE MENU ═══════════════════════════
+(function () {
+  var btn = document.getElementById('mobile-menu-btn');
+  var menu = document.getElementById('mobile-menu');
+  var panel = document.getElementById('mobile-menu-panel');
+  var backdrop = document.getElementById('mobile-menu-backdrop');
+  if (!btn || !menu || !panel) return;
+
+  var isOpen = false;
+  var bars = btn.querySelectorAll('.mobile-bar');
+
+  function openMenu() {
+    isOpen = true;
+    menu.style.opacity = '1';
+    menu.style.pointerEvents = 'auto';
+    panel.style.transform = 'translateX(0)';
+    document.body.style.overflow = 'hidden';
+    if (bars[0]) { bars[0].style.transform = 'translateY(4.5px) rotate(45deg)'; }
+    if (bars[1]) { bars[1].style.opacity = '0'; }
+    if (bars[2]) { bars[2].style.transform = 'translateY(-4.5px) rotate(-45deg)'; }
+  }
+
+  function closeMenu() {
+    isOpen = false;
+    menu.style.opacity = '0';
+    menu.style.pointerEvents = 'none';
+    panel.style.transform = 'translateX(100%)';
+    document.body.style.overflow = '';
+    if (bars[0]) { bars[0].style.transform = ''; }
+    if (bars[1]) { bars[1].style.opacity = '1'; }
+    if (bars[2]) { bars[2].style.transform = ''; }
+  }
+
+  btn.addEventListener('click', function () { isOpen ? closeMenu() : openMenu(); });
+  if (backdrop) backdrop.addEventListener('click', closeMenu);
+  menu.querySelectorAll('.mobile-nav-link').forEach(function (link) {
+    link.addEventListener('click', closeMenu);
+  });
+})();
+</script>
+</body>
+</html>
