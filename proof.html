@@ -378,6 +378,60 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
   max-width: 720px;
 }
 
+/* ── Latest campaign (August 2026) · sibling of the featured card ── */
+.shot-featured-latest {
+  border-color: rgba(20,25,40,0.22);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.6) inset, 0 2px 6px rgba(0,0,0,0.04), 0 24px 50px -22px rgba(20,25,40,0.28);
+}
+.shot-featured-latest:hover {
+  border-color: rgba(20,25,40,0.42);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.7) inset, 0 2px 8px rgba(0,0,0,0.05), 0 30px 60px -22px rgba(20,25,40,0.36);
+}
+.shot-featured-latest .shot-featured-badge {
+  /* sits in its own row above the dashboard so it never covers the numbers */
+  position: static;
+  margin: 16px 18px 14px;
+  background: linear-gradient(135deg, #1E2640 0%, #141928 100%);
+  border: 1px solid rgba(212,167,69,0.32);
+  color: #EAD98F;
+  box-shadow: 0 6px 20px -6px rgba(20,25,40,0.55), 0 1px 0 rgba(255,255,255,0.06) inset;
+}
+.shot-featured-latest .shot-featured-badge .dot {
+  background: #D4A745;
+  box-shadow: 0 0 8px rgba(212,167,69,0.7);
+  animation: latestPulse 1.8s ease-in-out infinite;
+}
+@keyframes latestPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.6; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .shot-featured-latest .shot-featured-badge .dot { animation: none; }
+}
+.shot-featured-stats {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 14px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid #DDD8CF;
+}
+.shot-featured-stat {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12.5px;
+  color: #6B6860;
+  white-space: nowrap;
+}
+.shot-featured-stat b {
+  font-family: 'DM Mono', monospace;
+  font-weight: 600;
+  font-size: 13px;
+  color: #B8912E;
+  margin-right: 3px;
+}
+.shot-featured-stat-divider { width: 1px; height: 12px; background: #DDD8CF; }
+
 /* ── Phone card (portrait screenshots) ── */
 .shot-phone {
   background: #0B0D14;
@@ -776,9 +830,31 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
       </div>
     </article>
 
+    <!-- Latest · the August 2026 campaign -->
+    <article class="shot-featured shot-featured-latest reveal mb-5">
+      <span class="shot-featured-badge"><span class="dot"></span>Latest campaign · August 2026</span>
+      <img src="proof_assets/deployed/8.56%25%20reply%20rate%20%2B%20%24210k%20in%20pipeline.webp" alt="Campaign analytics, August 2026: 3,516 sequences started, 8.56% reply rate from 301 replies, 70 opportunities worth $210,000">
+      <div class="shot-featured-caption">
+        <div class="shot-featured-eyebrow">LATEST · AUGUST 2026 · CAMPAIGN ANALYTICS</div>
+        <div class="shot-featured-title">8.56% reply rate · 70 opportunities · $210k in pipeline.</div>
+        <div class="shot-featured-meta">The most recent campaign we've run, July 26 through August 28, 2026. 3,516 prospects sequenced, 301 replies, and 70 of those turned into opportunities worth $210,000. Still live, still climbing.</div>
+        <div class="shot-featured-stats">
+          <span class="shot-featured-stat"><b>3,516</b> sequenced</span>
+          <span class="shot-featured-stat-divider"></span>
+          <span class="shot-featured-stat"><b>8.56%</b> reply rate</span>
+          <span class="shot-featured-stat-divider"></span>
+          <span class="shot-featured-stat"><b>301</b> replies</span>
+          <span class="shot-featured-stat-divider"></span>
+          <span class="shot-featured-stat"><b>70</b> opportunities</span>
+          <span class="shot-featured-stat-divider"></span>
+          <span class="shot-featured-stat"><b>$210,000</b> pipeline</span>
+        </div>
+      </div>
+    </article>
+
     <!-- Campaign dashboards · 2-up grid -->
     <div class="mosaic mosaic-2 mt-5 reveal">
-      <!-- Most recent campaign · leads the grid -->
+      <!-- $153k campaign · leads the grid -->
       <article class="shot-frame">
         <div class="shot-frame-bar">
           <span class="shot-frame-dot"></span><span class="shot-frame-dot"></span><span class="shot-frame-dot"></span>
@@ -786,9 +862,9 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
         </div>
         <img src="proof_assets/deployed/%24153k%20in%20pipeline.webp" alt="Campaign analytics: 3,245 sequenced, 3.2% reply rate, 49.04% positive reply rate, 51 opportunities worth $153,000">
         <div class="shot-caption">
-          <div class="shot-caption-eyebrow">MOST RECENT · PIPELINE</div>
+          <div class="shot-caption-eyebrow">POSITIVE REPLY · PIPELINE</div>
           <div class="shot-caption-title">$153k in pipeline · 51 opportunities.</div>
-          <div class="shot-caption-meta">Our most recent campaign, live through today. 3,245 sequenced, 104 replies, and 49% of those a yes. 51 opportunities worth $153,000.</div>
+          <div class="shot-caption-meta">3,245 sequenced, 104 replies, and 49% of those a yes. 51 opportunities worth $153,000 from one campaign.</div>
         </div>
       </article>
       <article class="shot-frame">
@@ -911,32 +987,32 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
       </article>
     </div>
 
-    <!-- Row D · Our client's fully booked calendar (full width) -->
+    <!-- Row D · Our own calendar, August 2026 (full width) -->
     <div class="mosaic mt-5 reveal">
-      <article class="shot-frame shot-square">
+      <article class="shot-frame">
         <div class="shot-frame-bar">
           <span class="shot-frame-dot"></span><span class="shot-frame-dot"></span><span class="shot-frame-dot"></span>
-          <span class="shot-frame-url">google calendar · month view</span>
+          <span class="shot-frame-url">calendar · august 2026 · month view</span>
         </div>
-        <img src="proof_assets/deployed/ryan's%20fully%20filled%20calendar%20blurred.webp" alt="A client's calendar showing every slot booked solid (event names redacted)">
+        <img src="proof_assets/deployed/august%20calendar%20blurred.webp" alt="Jun's August 2026 calendar, booked out with Digital Coffee sales calls from cold email, prospect names blurred">
         <div class="shot-caption">
-          <div class="shot-caption-eyebrow">CALENDAR · BOOKED SOLID</div>
-          <div class="shot-caption-title">Our client's calendar, every slot taken.</div>
-          <div class="shot-caption-meta">A month after launch. Event details blurred for privacy — the density is the story.</div>
+          <div class="shot-caption-eyebrow">OUR CALENDAR · AUGUST 2026 · LATEST</div>
+          <div class="shot-caption-title">Our own calendar this month, booked out with qualified sales calls.</div>
+          <div class="shot-caption-meta">August 2026, every "Digital Coffee" is a qualified sales call that started as a cold email. Prospect names blurred for privacy. The density is the story.</div>
         </div>
       </article>
     </div>
 
-    <!-- Row D2 · Our own calendar, booked with Digital Coffee calls -->
+    <!-- Row D2 · Our own calendar, May 2026 (full width) -->
     <div class="mosaic mt-5 reveal">
-      <article class="shot-frame" style="max-width: 880px; margin-inline: auto;">
+      <article class="shot-frame">
         <div class="shot-frame-bar">
           <span class="shot-frame-dot"></span><span class="shot-frame-dot"></span><span class="shot-frame-dot"></span>
-          <span class="shot-frame-url">calendar · month view</span>
+          <span class="shot-frame-url">calendar · may 2026 · month view</span>
         </div>
-        <img src="proof_assets/deployed/calendar%20booked%20blurred.webp" alt="A full month calendar booked wall to wall with Digital Coffee calls, attendee names redacted">
+        <img src="proof_assets/deployed/calendar%20booked%20blurred.webp" alt="Jun's May 2026 calendar booked wall to wall with Digital Coffee calls, attendee names redacted">
         <div class="shot-caption">
-          <div class="shot-caption-eyebrow">OUR CALENDAR · BOOKED SOLID</div>
+          <div class="shot-caption-eyebrow">OUR CALENDAR · MAY 2026</div>
           <div class="shot-caption-title">Our own calendar, booked wall to wall.</div>
           <div class="shot-caption-meta">One month, nearly every slot a booked "Digital Coffee" call. Attendee names blurred for privacy. The density is the story.</div>
         </div>
