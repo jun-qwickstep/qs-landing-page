@@ -26,3 +26,7 @@ scripts/proof-deck-wl.html
 scripts/blur_replies.py
 scripts/build-proof-pdf.mjs
 scripts/ocr_words.swift
+
+# September 2026 raw reply screenshots (unblurred PII) — never deploy
+sept 2026 +ve responses/
+scripts/blur_sept_replies.mjs
