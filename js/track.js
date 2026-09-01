@@ -107,21 +107,29 @@
       entries.forEach(function (en) {
         var s = byEl.get(en.target);
         if (!s) return;
-        if (en.isIntersecting && en.intersectionRatio >= 0.25) {
-          if (!s.since) s.since = now;
-        } else if (s.since) {
-          s.acc += now - s.since;
-          s.since = 0;
+        // A section counts as "being read" at >=25% of itself in view, OR
+        // when it fills most of the viewport (tall sections never reach 25%).
+        var reading = en.isIntersecting &&
+          (en.intersectionRatio >= 0.25 ||
+            en.intersectionRect.height >= window.innerHeight * 0.45);
+        if (reading) {
+          s.vis = true;
+          if (!s.since && document.visibilityState === "visible") s.since = now;
+        } else {
+          s.vis = false;
+          if (s.since) { s.acc += now - s.since; s.since = 0; }
         }
       });
-    }, { threshold: [0, 0.25] });
+    }, { threshold: [0, 0.1, 0.15, 0.2, 0.25] });
     sections.forEach(function (s) { io.observe(s.el); });
   }
 
-  function foldSections() {
+  // stop=true (tab hidden): bank the time and stop the clocks — a background
+  // tab must not accrue dwell or keep emitting heartbeats.
+  function foldSections(stop) {
     var now = performance.now();
     sections.forEach(function (s) {
-      if (s.since) { s.acc += now - s.since; s.since = now; }
+      if (s.since) { s.acc += now - s.since; s.since = stop ? 0 : now; }
       if (s.acc >= 500) {
         push({ e: "section_time", k: s.name, ms: Math.round(s.acc) });
         s.acc = 0;
@@ -166,8 +174,13 @@
 
   var sentDepth = 0;
   function onHide() {
-    if (document.visibilityState === "visible") return;
-    foldSections();
+    if (document.visibilityState === "visible") {
+      // Tab came back: restart the clock on sections still in view.
+      var now = performance.now();
+      sections.forEach(function (s) { if (s.vis && !s.since) s.since = now; });
+      return;
+    }
+    foldSections(true);
     if (maxDepth > sentDepth) {
       sentDepth = maxDepth;
       push({ e: "scroll", d: maxDepth });
