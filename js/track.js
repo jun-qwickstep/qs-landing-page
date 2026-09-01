@@ -15,6 +15,14 @@
   if (navigator.webdriver && !debug) return;
   if (/^(localhost|127\.|192\.168\.)/.test(location.hostname) && !debug) return;
 
+  // Owner opt-out: visit any page once with ?qs_off=1 and that browser stops
+  // being counted (persists via localStorage); ?qs_off=0 turns it back on.
+  try {
+    var off = /[?&]qs_off=([01])/.exec(location.search);
+    if (off) localStorage.setItem("qs_no_track", off[1]);
+    if (localStorage.getItem("qs_no_track") === "1") return;
+  } catch (e) { /* storage blocked — keep tracking */ }
+
   var uuid = function () {
     if (window.crypto && crypto.randomUUID) return crypto.randomUUID();
     return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
