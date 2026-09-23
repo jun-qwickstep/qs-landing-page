@@ -8,6 +8,14 @@
  *   section_time  visible-time deltas per <section>, flushed every 15s + on hide
  *   click         any <a> or <button> (label + href)
  *   scroll        max scroll depth %, sent on hide
+ *   booking       the Cal.com embed confirmed a booking (uid, start, channel)
+ *
+ * Channel: the visitor's FIRST known channel (utm_source, else a YouTube or
+ * LinkedIn referrer) is kept in localStorage `qs_ch`, handed to every Cal
+ * popup as utm_source (Cal stores it on the booking) and stamped on the
+ * booking event, so a visitor who arrives from YouTube and books days later
+ * still counts as YouTube. The OS matches the booking to the Cal event on
+ * Jun's calendar to learn who it was.
  */
 (function () {
   "use strict";
@@ -71,6 +79,28 @@
     var v = params.get("utm_" + k);
     if (v) utm[k] = v.slice(0, 120);
   });
+  var channelOf = function (src, ref) {
+    src = (src || "").toLowerCase().trim();
+    if (src) {
+      if (/youtu|^yt$/.test(src)) return "youtube";
+      if (/linkedin|^li$/.test(src)) return "linkedin";
+      return src.replace(/[^a-z0-9_-]+/g, "").slice(0, 40) || null;
+    }
+    var host = "";
+    try { host = ref ? new URL(ref).hostname.replace(/^www\./, "") : ""; } catch (e) {}
+    if (/(^|\.)youtube\.com$|^youtu\.be$/.test(host)) return "youtube";
+    if (/(^|\.)linkedin\.com$|^lnkd\.in$/.test(host)) return "linkedin";
+    return null;
+  };
+  var channel = null;
+  try {
+    channel = localStorage.getItem("qs_ch");
+    if (!channel) {
+      channel = channelOf(utm.source, document.referrer);
+      if (channel) localStorage.setItem("qs_ch", channel);
+    }
+  } catch (e) { channel = channelOf(utm.source, document.referrer); }
+
   push({
     e: "pageview",
     r: (document.referrer || "").slice(0, 300),
@@ -78,6 +108,29 @@
     sw: screen.width,
     sh: screen.height
   });
+
+  // ---- bookings (Cal.com embed) -----------------------------------------
+  if (channel) {
+    Array.prototype.forEach.call(document.querySelectorAll("[data-cal-link]"), function (el) {
+      var cfg = {};
+      try { cfg = JSON.parse(el.getAttribute("data-cal-config") || "{}"); } catch (e) {}
+      cfg.utm_source = channel;
+      el.setAttribute("data-cal-config", JSON.stringify(cfg));
+    });
+  }
+  if (typeof window.Cal === "function") {
+    var booked = {};
+    window.Cal("on", {
+      action: "bookingSuccessfulV2",
+      callback: function (e) {
+        var d = e && e.detail && e.detail.data;
+        if (!d || !d.uid || booked[d.uid]) return;
+        booked[d.uid] = true;
+        push({ e: "booking", k: String(d.uid), st: d.startTime || null, c: channel });
+        flush();
+      }
+    });
+  }
 
   // ---- section visible time ----------------------------------------------
   // Sections without an id are named from their first heading so nothing on

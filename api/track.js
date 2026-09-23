@@ -13,7 +13,7 @@ const SUPABASE_URL = "https://wvdvnvpcjzgtsanedsig.supabase.co";
 const ANON_KEY =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind2ZHZudnBjanpndHNhbmVkc2lnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgxMzk4NTgsImV4cCI6MjA5MzcxNTg1OH0.PCPaxBjn7OIc1ee-oMQ-ycYuSS2BGEPzNOZQi7440dY";
 
-const EVENTS = new Set(["pageview", "section_time", "click", "scroll"]);
+const EVENTS = new Set(["pageview", "section_time", "click", "scroll", "booking"]);
 const BOT_RE = /bot|crawl|spider|slurp|headless|lighthouse|pingdom|monitor|preview|facebookexternalhit|whatsapp|telegram|curl|wget|python-requests/i;
 
 const s = (v, max) => (typeof v === "string" && v.length ? v.slice(0, max) : null);
@@ -86,6 +86,7 @@ module.exports = async (req, res) => {
       ...geo,
       section: null, ms: null, depth: null, target: null, href: null,
       referrer: null, utm: null, screen_w: null, screen_h: null,
+      booking_start: null,
     };
     if (ev.e === "pageview") {
       row.referrer = s(ev.r, 300);
@@ -99,6 +100,15 @@ module.exports = async (req, res) => {
     } else if (ev.e === "click") {
       row.target = s(ev.t, 120);
       row.href = s(ev.h, 300);
+      if (!row.target) continue;
+    } else if (ev.e === "booking") {
+      // Cal booking uid + call start; the channel rides in utm.source so
+      // the OS reads bookings and tagged pageviews the same way.
+      row.target = s(ev.k, 120);
+      const start = typeof ev.st === "string" ? Date.parse(ev.st) : NaN;
+      row.booking_start = Number.isFinite(start) ? new Date(start).toISOString() : null;
+      const ch = s(ev.c, 40);
+      row.utm = ch ? { source: ch } : null;
       if (!row.target) continue;
     } else if (ev.e === "scroll") {
       row.depth = n(ev.d, 100);
