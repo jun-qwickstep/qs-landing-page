@@ -477,6 +477,32 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
     0 1px 3px rgba(46,98,170,0.08),
     0 8px 24px rgba(46,98,170,0.10),
     inset 0 1px 0 rgba(255,255,255,0.9);
+  text-decoration: none;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+.instantly-cert:hover {
+  border-color: rgba(74,144,226,0.5);
+  box-shadow:
+    0 0 0 1px rgba(74,144,226,0.12),
+    0 1px 3px rgba(46,98,170,0.12),
+    0 10px 28px rgba(46,98,170,0.16),
+    inset 0 1px 0 rgba(255,255,255,0.9);
+  transform: translateY(-1px);
+}
+.instantly-cert:focus-visible { outline: none; box-shadow: 0 0 0 2px #FAF8F4, 0 0 0 4px rgba(63,114,190,0.6); }
+.instantly-cert:active { transform: translateY(0) scale(0.99); }
+.instantly-cert-arrow {
+  color: #5B8FD6;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  flex-shrink: 0;
+}
+.instantly-cert:hover .instantly-cert-arrow,
+.instantly-cert:focus-visible .instantly-cert-arrow {
+  opacity: 1;
+  transform: translateX(0);
 }
 .instantly-cert-shield {
   width: 38px;
@@ -1192,13 +1218,14 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
       </div>
       <!-- Partner row: Instantly (primary) + Retell AI -->
       <div class="partner-row mt-2">
-        <div class="instantly-cert" role="img" aria-label="QwickStep AI is an official Instantly Solutions Partner">
+        <a href="https://instantly.ai" target="_blank" rel="noopener" class="instantly-cert" aria-label="QwickStep AI is an official Instantly Solutions Partner (opens instantly.ai)">
           <img src="/images/instantly-solutions-partner.webp" alt="" width="180" height="186" class="instantly-cert-shield" decoding="async" fetchpriority="high">
           <div class="instantly-cert-text">
             <span class="instantly-cert-label">Official Solutions Partner</span>
             <span class="instantly-cert-brand">Instantly</span>
           </div>
-        </div>
+          <svg class="instantly-cert-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+        </a>
         <a href="https://www.retellai.com/partner/qwickstep" target="_blank" rel="noopener" class="retell-cert-badge group">
           <div class="retell-cert-inner">
             <div class="retell-cert-seal">
